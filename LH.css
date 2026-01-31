@@ -1,0 +1,1066 @@
+/* ========================================================================
+   LIGHTHOUSE PROTOCOLS - HYBRID CSS
+   Combines your visual design with sticky sidebar navigation
+   Fixed anchor jumping issue + enhanced navigation
+   ======================================================================== */
+
+:root {
+    --content-max-width: 900px;
+    --sidebar-width: 320px;
+    --content-padding: 20px;
+    --dk-green: #014c3d;
+    --md-green: #01735C;
+    --bl-bkg: #e6f1ff;
+    --bkg-pbl: #CDCDFE;
+    --gr-bkg: #f5f5f5;
+    --bkg-opt:  #d9d9d9;
+    --bl-fgd:  #2980B9;
+    --Cornsilk:#FFF8DC; 
+    --bkg-yellow: #fdfdce;
+    background-color: #fcfcfc;
+}
+
+/* CRITICAL: Anchor scroll positioning - accounts for sticky header */
+:target {
+    scroll-margin-top: 80px;
+}
+
+/* ========================================================================
+   STICKY SIDEBAR NAVIGATION
+   ======================================================================== */
+
+/* Hide the master TOC heading that org-mode generates */
+#outline-container-toc-chap > h2 {
+    display: none;
+}
+
+/* Style the navigation sidebar */
+#table-of-contents {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    overflow-y: auto;
+    background: #f8f8f8;
+    border-right: 3px solid #2980B9;
+    padding: 1.5rem 1rem;
+    z-index: 1000;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+#table-of-contents h2 {
+    font-size: 1.1em;
+    color: #2980B9;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #2980B9;
+}
+
+#text-table-of-contents {
+    font-size: 0.9rem;
+}
+
+#text-table-of-contents > ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#text-table-of-contents li {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+#text-table-of-contents a {
+    color: #2980B9;
+    text-decoration: none;
+    display: block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+
+#text-table-of-contents a:hover {
+    background-color: #e6f1ff;
+}
+
+/* Add visual indicator for current section */
+#text-table-of-contents a:target,
+#text-table-of-contents a:focus {
+    background-color: #d0e7ff;
+    font-weight: bold;
+}
+
+/* Adjust nested list indentation */
+#text-table-of-contents ul ul {
+    padding-left: 1rem;
+}
+
+/* ========================================================================
+   MAIN CONTENT - Shifted to make room for sidebar
+   ======================================================================== */
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    hyphens: auto;
+    max-width: 800px;
+    padding: 40px;
+    margin-left: calc(var(--sidebar-width) + 40px);
+    border-left: none; /* Remove left border since sidebar provides visual separation */
+}
+
+/* Wrapper for main content */
+#content {
+    margin-left: 0;
+}
+
+/* ========================================================================
+   STICKY TOP NAVIGATION (Contents | Top links)
+   ======================================================================== */
+
+.hlt {
+    background-color: var(--Cornsilk);
+    font-size: 0.85rem;
+    font-weight: bold;
+    position: fixed;
+    top: 0.5rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid #999;
+    border-radius: 4px;
+    z-index: 2000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hlt a {
+    margin: 0 0.5rem;
+    color: #2980B9;
+    text-decoration: none;
+}
+
+.hlt a:hover {
+    text-decoration: underline;
+}
+
+/* ========================================================================
+   BASE TYPOGRAPHY
+   ======================================================================== */
+
+p, li {
+    color: #444;
+    margin-bottom: 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, "Times New Roman", serif;
+    text-wrap: balance;
+}
+
+h1 {
+    font-size: 1.4em;
+    line-height: 1.8em;
+}
+
+h2 {
+    margin: 3em 0 0.5em 0;
+    font-size: 1.5em;
+}
+
+h2::before {
+    content: "Chapter ";
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+/* Don't add "Chapter" before TOC headings */
+.toc h2::before,
+#outline-container-toc-chap h2::before {
+    content: "";
+}
+
+h3 {
+    margin-top: 2em;
+    font-size: 1.2em;
+}
+
+h4, h5, h6 {
+    color: #444;
+    font-weight: bold;
+    margin: 2em 0 0.5em 0;
+}
+
+/* ========================================================================
+   LINKS
+   ======================================================================== */
+
+a {
+    text-decoration: none;
+    color: #2980B9;
+}
+
+a:visited {
+    color: #2980B9;
+}
+
+/* ========================================================================
+   LOCAL TABLES OF CONTENTS (within chapters)
+   ======================================================================== */
+
+[role="doc-toc"] * {
+    font-size: 0.9rem;
+    font-family: Arial;
+}
+
+[role="doc-toc"] ul li {
+    margin-bottom: 0;
+}
+
+nav[role="doc-toc"]:not(#table-of-contents) h2 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/* Style for local TOCs (not the main sidebar) */
+div.toc-local {
+    background-color: #f8fbff;
+    border-left: 4px solid #2980B9;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+}
+
+div#text-toc-chap a:link,
+div#text-toc-chap a:active,
+div#text-toc-chap a:visited,
+div#text-toc-chap a:hover,
+div.toc-local a:link,
+div.toc-local a:active,
+div.toc-local a:visited,
+div.toc-local a:hover {
+    color: #2980B9;
+}
+
+/* ========================================================================
+   PROTOCOL TEXT (blue background, Arial font)
+   ======================================================================== */
+
+div.cl5 h3 {
+    background-color: #e6f1ff;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    padding: 1rem;
+    margin: 3rem -1rem 1rem -1rem;
+    line-height: 2rem;
+    font-size: 1.3em;
+}
+
+div.cl7.outline-4 h4 {
+    color: #444;
+    margin-bottom: -2rem;
+    font-size: 1.1em;
+    padding: 0.5em 0.5em 3em 0;
+}
+
+div.cl7 div.outline-text-3,
+div.cl7 div.outline-text-4 {
+    line-height: 1.8em;
+    background-color: #e6f1ff;
+    padding: 0.5em 0.5em 0.1em 1em;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+div.cl7 ol li {
+    margin-left: -2rem;
+}
+
+div.cl7 ol li ol {
+    margin-left: 1rem;
+}
+
+/* ========================================================================
+   OPTION TEXT (gray background, Arial font)
+   ======================================================================== */
+
+div.optn-txt.outline-4 h4,
+div.optn-txt.outline-5 h5 {
+    color: #444;
+    margin-bottom: -2rem;
+    font-size: 1.1em;
+    padding: 0.5em 0.5em 3em 0;
+}
+
+div.optn-txt div.outline-text-4,
+div.optn-txt.outline-5 div.outline-text-5 {
+    background-color: #e1e1e1;
+    padding: 0.5em 0.5em 0.1em 1em;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+div.optn-txt ol li {
+    margin-left: -2rem;
+}
+
+div.optn-text div.outline-text-5 ol li ol li {
+    margin-left: 10rem;
+}
+
+/* ========================================================================
+   FIELD NOTES / ADDITIONAL NOTES
+   ======================================================================== */
+
+div.addl div.outline-text-3 p {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1em;
+}
+
+/* ========================================================================
+   COMMENTARY / NOTES (.cmtry class) - FIXED
+   ======================================================================== */
+
+/* Style for commentary sections (typically h5 or h6 level) */
+.cmtry {
+    margin: 1.5rem 0 1rem 2rem;
+}
+
+.cmtry h5,
+.cmtry h6 {
+    font-size: 0.95em;
+    color: #666;
+    margin: 1rem 0 0.5rem -1rem;
+    font-style: normal;
+}
+
+.cmtry .outline-text-5,
+.cmtry .outline-text-6 {
+    margin-left: -1rem;
+    font-size: 1em;
+    color: #555;
+    font-style: normal;
+    line-height: 1.6em;
+}
+
+.cmtry p {
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* Alternative: if cmtry is applied directly to divs */
+div.cmtry {
+    margin-left: -1rem;
+    font-size: 1.2em;
+    color: #666;
+}
+
+div.cmtry p {
+    color: #555;
+}
+
+/* ========================================================================
+   SPECIAL BOXES AND BORDERS
+   ======================================================================== */
+
+div.alt, .bordered {
+    padding: 0.5rem 2.5rem;
+    border: 3px solid #d5d5d5;
+    margin-bottom: 1rem;
+}
+
+div.bord {
+    padding: 0.5rem 1rem;
+    border: 3px solid #2980B9;
+    margin: 1rem 0;
+}
+
+.bbox {
+    padding: 1rem;
+    border: 3px solid black;
+    margin: 1rem 0;
+}
+
+/* ========================================================================
+   LISTS
+   ======================================================================== */
+
+ol {
+    margin-left: 0;
+    list-style-position: inside;
+}
+
+ol li {
+    list-style-type: decimal;
+    margin-bottom: 1em;
+}
+
+ol li ol {
+    margin-left: 0;
+}
+
+ol li ol li {
+    list-style-type: lower-alpha;
+    margin-top: 1em;
+}
+
+ul li ul {
+    margin-top: 1em;
+}
+
+/* ========================================================================
+   CITATIONS AND ASIDES
+   ======================================================================== */
+
+cite, aside {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: normal;
+    font-size: 0.75em;
+}
+
+cite a, cite i, aside a, aside i {
+    font-size: 1em;
+}
+
+blockquote {
+    font-style: normal;
+    margin: 0.5rem 0 0 0;
+    padding: 0 1em;
+    border-left: 5px solid #d9d9d9;
+}
+
+/* ========================================================================
+   IMAGES
+   ======================================================================== */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cc {
+    width: 150px;
+    margin-top: 0.5rem;
+    display: block;
+    float: right;
+    margin-right: -5px;
+    padding: 0 0 0.5rem 1rem;
+}
+
+/* Photo positioning classes */
+.photo-lighthouse {
+    display: block;
+    float: right;
+    margin-right: -40px;
+    padding: 0 0 0.5rem 0.5rem;
+    margin-top: -7rem;
+    width: 8%;
+}
+
+.photo-lighthouse-nocd {
+    display: block;
+    float: right;
+    margin-right: -20px;
+    padding: 0 0 0.5rem 0.5rem;
+    margin-top: -6rem;
+    width: 10%;
+}
+
+.photo-logo {
+    position: relative;
+    top: -100px;
+    left: calc(90%);
+    width: 9%;
+    margin-bottom: -5rem;
+}
+
+.photo-logo-gears-embed {
+    position: relative;
+    top: -200px;
+    left: calc(90%);
+    width: 80px;
+    margin-bottom: -10rem;
+}
+
+.photo-logo-no-sign { 
+    position: relative;
+    float: right;
+    top: -20px;
+    right: -30px;
+    width: 13%;
+    margin: 0 0 -40rem 0;
+}
+
+.photo-no-legalese {
+    float: right;
+    width: 12%;
+}
+
+.photo-at-right {
+    display: block;
+    float: right;
+    margin-right: 0;
+    padding: 0 0 0.5rem 1rem;
+}
+
+.photo-dct {
+    display: block;
+    float: right;
+    width: 150px;
+    padding-left: 10px;
+    position: relative;
+}
+
+.photo-left {
+    margin: 0.5rem 3rem 1rem 0;
+    float: left;
+}
+
+.photo-up {
+    position: relative;
+    top: -100px;
+}
+
+/* Width classes for images */
+.photowidth05 { width: 5%; }
+.photowidth07 { width: 7%; }
+.photowidth08 { width: 8%; }
+.photowidth09 { width: 9%; }
+.photowidth10 { width: 10%; }
+.photowidth11 { width: 11%; }
+.photowidth12 { width: 12%; }
+.photowidth15 { width: 15%; }
+.photowidth18 { width: 18%; }
+.photowidth20 { width: 20%; }
+.photowidth22 { width: 22%; }
+.photowidth25 { width: 25%; }
+.photowidth30 { width: 30%; }
+.photowidth35 { width: 35%; }
+.photowidth40 { width: 40%; }
+.photowidth45 { width: 45%; }
+.photowidth60 { width: 60%; }
+
+/* Centered photo classes */
+.photocenter10, 
+.photocenter15,
+.photocenter20, 
+.photocenter25, 
+.photocenter30, 
+.photocenter50, 
+.photocenter60, 
+.photocenter80, 
+.photocenter90, 
+.photocenter90C, 
+.photocenter100 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photocenter10 { width: 10%; }
+.photocenter15 { width: 15%; text-align: center; }
+.photocenter20 { width: 20%; }
+.photocenter25 { width: 25%; }
+.photocenter30 { width: 30%; }
+.photocenter50 { width: 50%; }
+.photocenter60 { width: 60%; text-align: center; }
+.photocenter80 { width: 80%; padding: 0.5em; }
+.photocenter90 { width: 90%; padding: 0.5em; }
+.photocenter100 { width: 100%; padding: 0.5em; }
+
+.photowidth90L {
+    display: block;
+    margin-left: auto;
+    padding-bottom: 2rem;
+}
+
+.photowidth90C {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-bottom: 5rem;
+}
+
+.photowidth80C {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    padding: 0.5em;
+}
+
+.photowidth60C {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding: 0.5em;
+}
+
+/* ========================================================================
+   UTILITY CLASSES
+   ======================================================================== */
+
+.chap {
+    page-break-before: always;
+}
+
+.h {
+    font-weight: bold;
+    color: #2980B9;
+}
+
+.fl {
+    float: left;
+    margin-right: 1rem;
+}
+
+.NUMN {
+    margin-left: 2rem;
+}
+
+.NUMINDENT {
+    margin-left: 4rem;
+}
+
+.NUMNOINDENT {
+    margin-left: 0;
+}
+
+/* ========================================================================
+   FOOTNOTES
+   ======================================================================== */
+
+div.footpara p, div.footpara li {
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+div.footpara, 
+div.footpara p:first-of-type {
+    display: inline;
+}
+
+div.footpara p {
+    color: #444;
+}
+
+div.footpara div.alt p,
+div.footpara div.bordered p {
+    margin: 0;
+}
+
+div.footdef {
+    margin: 1.5rem 0 0 0;
+}
+
+.footnum::before, .footref::before {
+    content: " [";
+}
+
+.footnum::after, .footref::after {
+    content: "]";
+}
+
+.footref {
+    margin-left: 0;
+    padding: 1px;
+}
+
+/* ========================================================================
+   MOBILE MENU TOGGLE BUTTON
+   ======================================================================== */
+
+/* Hamburger menu button - hidden on desktop, visible on mobile */
+#menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 3000;
+    background: #2980B9;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+#menu-toggle:hover {
+    background: #1e6a9e;
+}
+
+#menu-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Overlay for mobile menu */
+#sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#sidebar-overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+/* ========================================================================
+   RESPONSIVE DESIGN - Tablet/Desktop
+   ======================================================================== */
+
+@media (max-width: 1200px) {
+    /* On medium screens, slightly narrower sidebar */
+    #table-of-contents {
+        width: 280px;
+    }
+    
+    body {
+        margin-left: calc(280px + 20px);
+        max-width: 700px;
+        padding: 30px;
+    }
+}
+
+/* ========================================================================
+   RESPONSIVE DESIGN - Mobile/Phone
+   ======================================================================== */
+
+@media (max-width: 900px) {
+    /* Show hamburger menu button */
+    #menu-toggle {
+        display: block;
+    }
+    
+    /* Hide sidebar by default, slide in when active */
+    #table-of-contents {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        width: 280px;
+        z-index: 2000;
+        box-shadow: 2px 0 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Show sidebar when toggled */
+    #table-of-contents.show {
+        transform: translateX(0);
+    }
+    
+    /* Main content takes full width on mobile */
+    body {
+        margin-left: 0;
+        padding: 1rem;
+        max-width: 100%;
+        font-size: 18px; /* Slightly smaller base font for mobile */
+    }
+    
+    /* Adjust top nav for mobile */
+    .hlt {
+        top: 1rem;
+        right: 1rem;
+        font-size: 0.75rem;
+        padding: 0.4rem 0.75rem;
+    }
+    
+    /* Make headings slightly smaller on mobile */
+    h1 {
+        font-size: 1.3em;
+    }
+    
+    h2 {
+        font-size: 1.3em;
+        margin: 2em 0 0.5em 0;
+    }
+    
+    h3 {
+        font-size: 1.15em;
+    }
+    
+    /* Adjust Protocol/Option boxes for mobile */
+    div.cl5 h3,
+    div.cl7 div.outline-text-3,
+    div.cl7 div.outline-text-4,
+    div.optn-txt div.outline-text-4,
+    div.optn-txt.outline-5 div.outline-text-5 {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        border-radius: 0; /* Extend to edges on mobile */
+    }
+    
+    /* Make images responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Float images stack on mobile */
+    .photo-at-right,
+    .photo-left,
+    .photo-lighthouse,
+    .cc {
+        float: none;
+        display: block;
+        margin: 1rem auto;
+        max-width: 80%;
+    }
+    
+    /* Lists with better mobile spacing */
+    ol, ul {
+        padding-left: 1.5rem;
+    }
+    
+    /* Reduce margins on mobile */
+    .cmtry {
+        margin-left: 1rem;
+    }
+    
+    div.bord,
+    .bbox,
+    div.alt,
+    .bordered {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+        padding: 0.75rem;
+    }
+    
+    #table-of-contents {
+        width: 85%; /* Wider sidebar on very small screens */
+        max-width: 300px;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+    
+    .hlt {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
+    }
+}
+
+/* ========================================================================
+   PRINT/PDF STYLES - Optimized to prevent excessive page count
+   ======================================================================== */
+
+@media print {
+    /* Critical: Set proper page size and margins */
+    @page {
+        size: letter; /* or A4 */
+        margin: 0.75in 0.75in 1in 0.75in; /* top, right, bottom, left */
+    }
+    
+    /* Hide navigation elements */
+    #table-of-contents,
+    #outline-container-toc-chap,
+    .hlt,
+    #menu-toggle,
+    #sidebar-overlay {
+        display: none !important;
+    }
+    
+    /* Reset body for print */
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        font-size: 11pt !important; /* Smaller font for print efficiency */
+        line-height: 1.3 !important; /* Tighter line spacing */
+        border: none !important;
+        background: white !important;
+    }
+    
+    /* Optimize content wrapper */
+    #content {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* Reduce heading sizes for print */
+    h1 {
+        font-size: 16pt !important;
+        margin: 12pt 0 6pt 0 !important;
+        page-break-after: avoid;
+    }
+    
+    h2 {
+        font-size: 14pt !important;
+        margin: 12pt 0 6pt 0 !important;
+        page-break-after: avoid;
+    }
+    
+    h2::before {
+        content: ""; /* Remove "Chapter" prefix in print */
+    }
+    
+    h3 {
+        font-size: 12pt !important;
+        margin: 10pt 0 4pt 0 !important;
+        page-break-after: avoid;
+    }
+    
+    h4, h5, h6 {
+        font-size: 11pt !important;
+        margin: 8pt 0 4pt 0 !important;
+        page-break-after: avoid;
+    }
+    
+    /* Optimize paragraph spacing */
+    p {
+        margin: 0 0 6pt 0 !important;
+        font-size: 11pt !important;
+        orphans: 3;
+        widows: 3;
+    }
+    
+    /* Compact lists */
+    ul, ol {
+        margin: 6pt 0 !important;
+    }
+    
+    li {
+        margin-bottom: 3pt !important;
+        font-size: 11pt !important;
+    }
+    
+    /* Protocol/Option boxes - compact but preserve styling */
+    div.cl5 h3,
+    div.cl7 div.outline-text-3,
+    div.cl7 div.outline-text-4 {
+        background-color: #e6f1ff !important;
+        padding: 6pt 8pt !important;
+        margin: 8pt 0 !important;
+        font-size: 10pt !important;
+        page-break-inside: avoid;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    div.optn-txt div.outline-text-4,
+    div.optn-txt.outline-5 div.outline-text-5 {
+        background-color: #e1e1e1 !important;
+        padding: 6pt 8pt !important;
+        margin: 8pt 0 !important;
+        font-size: 10pt !important;
+        page-break-inside: avoid;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    /* Smart page breaks */
+    h2 {
+        page-break-before: auto; /* Don't force new page for every chapter */
+    }
+    
+    h3, h4, h5, h6 {
+        page-break-before: avoid;
+        page-break-after: avoid;
+    }
+    
+    /* Only break before explicitly marked chapters */
+    .chap {
+        page-break-before: always;
+    }
+    
+    /* Avoid breaking inside these elements */
+    blockquote,
+    div.bord,
+    .bbox,
+    div.alt,
+    .bordered,
+    cite,
+    aside,
+    div.footdef {
+        page-break-inside: avoid;
+    }
+    
+    /* Commentary sections - smaller font */
+    .cmtry,
+    div.cmtry {
+        font-size: 9pt !important;
+        margin: 6pt 0 6pt 12pt !important;
+    }
+    
+    /* Images - prevent page breaks and size appropriately */
+    img {
+        max-width: 4in !important;
+        max-height: 3in !important;
+        page-break-inside: avoid;
+    }
+    
+    /* Hide decorative images in print */
+    .photo-lighthouse,
+    .photo-lighthouse-nocd,
+    .photo-logo,
+    .photo-up,
+    .cc {
+        display: none !important; /* Hide decorative images */
+    }
+    
+    /* Keep content images but size them appropriately */
+    .photo-at-right,
+    .photo-left {
+        display: block;
+        float: none;
+        margin: 6pt auto;
+        max-width: 3in;
+    }
+    
+    /* Footnotes - compact */
+    div.footpara {
+        font-size: 9pt !important;
+    }
+    
+    div.footdef {
+        margin: 4pt 0 !important;
+    }
+    
+    /* Links - show URLs in print */
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        font-style: italic;
+    }
+    
+    /* Don't show URLs for internal links */
+    a[href^="#"]::after {
+        content: "";
+    }
+    
+    /* Ensure proper text rendering */
+    * {
+        background: transparent !important;
+        color: black !important;
+        text-shadow: none !important;
+        filter: none !important;
+        -ms-filter: none !important;
+    }
+    
+    /* Preserve background colors for Protocol/Option boxes only */
+    div.cl5 h3,
+    div.cl7 div.outline-text-3,
+    div.cl7 div.outline-text-4,
+    div.optn-txt div.outline-text-4,
+    div.optn-txt.outline-5 div.outline-text-5 {
+        background: inherit !important; /* This preserves the blue/gray we set above */
+    }
+}
