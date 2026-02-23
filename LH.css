@@ -504,6 +504,17 @@ blockquote cite, blockquote aside {
     margin-left: 6em;
 }
 
+.cl7 aside {
+    background-color: #fcfcfc;
+    padding: .5em 1em;
+}
+
+aside cite {
+    display: inline;
+    font-size: 1em;
+    margin: 0 !important;
+}
+
 li cite, li aside {
     margin-left: 5em;
 }
