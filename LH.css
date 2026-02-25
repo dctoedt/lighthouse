@@ -294,9 +294,13 @@ div.cl5 h3 {
 
 div.cl5 h3:before,
 div.cl7 h3:before {
-    content: "Rule ";
+    content: "Clause ";
     font-weight: normal;
     font-size: .9em;
+}
+
+div.cl5 h4 {
+    font-weight: normal;
 }
 
 div.chap span.section-number-2, 
