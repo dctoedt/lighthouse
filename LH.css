@@ -292,13 +292,14 @@ div.cl5 h3 {
     font-size: 1.3em;
 }
 
+/*
 div.cl5 h3:before,
 div.cl7 h3:before {
-    content: "Clause ";
+    content: "Protocol ";
     font-weight: normal;
     font-size: .9em;
 }
-
+*/
 div.cl5 h4 {
     font-weight: normal;
 }
@@ -435,10 +436,10 @@ div.bord {
     margin: 1rem 0;
 }
 
-.bbox {
-    padding: 1rem;
-    border: 3px solid black;
-    margin: 1rem 0;
+.bbox, .bboxy, .bboxn {
+    padding: 1em;
+    margin: 1em 0;
+    font-size: 1.5em;
 }
 
 /* ========================================================================
