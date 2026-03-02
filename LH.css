@@ -214,6 +214,7 @@ h3 {
     font-size: 1.2em;
 }
 
+
 h4, h5, h6 {
     color: #444;
     font-weight: bold;
@@ -978,7 +979,8 @@ div.footdef {
     h3 {
         font-size: 1.15em;
     }
-    
+
+
     /* Adjust Protocol/Option boxes for mobile */
     div.cl5 h3,
     div.cl7 div.outline-text-3,
