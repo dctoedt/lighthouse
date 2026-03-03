@@ -497,7 +497,7 @@ cite, aside {
     margin: .5em 0 1rem 7rem;
 
   /* Visual styling */
-  font-size: 0.85em;
+  font-size: .9em;
   line-height: 1.4;
   font-style: normal; /* Override browser default italic */
   color: #666;
@@ -589,7 +589,6 @@ li cite:first-child {
 cite, aside {
     font-family: Georgia, "Times New Roman", serif;
     font-style: normal;
-    font-size: 0.75em;
 }
 
 cite a, cite i, aside a, aside i {
