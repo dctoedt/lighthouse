@@ -564,6 +564,12 @@ li cite:first-child {
     padding-left: 1em;
   }
   
+aside cite {
+    display: inline;
+    font-size: 1em;
+    margin: 0 !important;
+}
+
   #content {
     padding-right: 20px;
     max-width: 100%;
@@ -580,6 +586,12 @@ li cite:first-child {
     font-size: 0.9em;
   }
   
+aside cite {
+    display: inline;
+    font-size: 1em;
+    margin: 0 !important;
+}
+
   #content {
     padding-left: 15px;
     padding-right: 15px;
@@ -626,7 +638,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -13rem;
+    margin-top: -11rem;
     width: 8%;
 }
 
