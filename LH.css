@@ -221,6 +221,14 @@ h4, h5, h6 {
     margin: 2em 0 0.5em 0;
 }
 
+h4, h5 {
+    font-weight: bold;
+}
+
+h6 {
+    font-weight: normal;
+}
+
 .addl h4 {
     font-size: 1.1em;
 }
@@ -247,7 +255,7 @@ a:visited {
    ======================================================================== */
 
 [role="doc-toc"] * {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-family: Arial;
 }
 
@@ -269,6 +277,7 @@ div.toc-local {
     margin: 1.5rem 0;
 }
 
+
 div#text-toc-chap a:link,
 div#text-toc-chap a:active,
 div#text-toc-chap a:visited,
@@ -278,6 +287,12 @@ div.toc-local a:active,
 div.toc-local a:visited,
 div.toc-local a:hover {
     color: #2980B9;
+}
+
+nav div#text-table-of-contents a,
+nav div#text-table-of-contents i,
+nav div#text-table-of-contents li {
+    font-size: .9em !important;
 }
 
 /* ========================================================================
@@ -302,7 +317,6 @@ div.cl7 h3:before {
 }
 */
 div.cl5 h4 {
-    font-weight: normal;
 }
 
 div.chap span.section-number-2, 
@@ -638,7 +652,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -11rem;
+    margin-top: -13rem;
     width: 8%;
 }
 
