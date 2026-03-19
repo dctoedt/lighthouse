@@ -506,9 +506,22 @@ cite, aside {
  */
 
 /* Position */
+  cite {
+    margin-left: 0;
+    padding: 0.75em;
+    background-color: #f5f5f5;
+/*
+    background-color: #f8f8f8;
+    border-left: 3px solid #ccc;
+*/
+    font-size: 0.9em;
+  }
+
+
+
 cite, aside {
     display: block;
-    margin: .5em 0 1rem 7rem;
+    margin: .5em 0 1rem 0rem;
 
   /* Visual styling */
   font-size: .9em;
@@ -520,9 +533,11 @@ cite, aside {
   page-break-inside: avoid;
 }
 
+/*
 blockquote cite, blockquote aside {
     margin-left: 6em;
 }
+*/
 
 .cl7 aside {
     background-color: #fcfcfc;
@@ -535,9 +550,11 @@ aside cite {
     margin: 0 !important;
 }
 
+/*
 li cite, li aside {
     margin-left: 5em;
 }
+*/
 
 /* Ensure parent containers can accommodate margin notes */
 /*
