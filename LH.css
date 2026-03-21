@@ -124,6 +124,7 @@ div.asis {
     padding-left: 1rem;
 }
 
+
 /* ========================================================================
    MAIN CONTENT - Shifted to make room for sidebar
    ======================================================================== */
@@ -505,6 +506,18 @@ cite, aside {
   margin-bottom: 1em;
  */
 
+aside, cite {
+  display: block;
+  /* Visual styling */
+  font-size: .9em;
+  line-height: 1.4;
+  font-style: normal; /* Override browser default italic */
+  color: #666;
+  
+  /* Prevent orphaned citations */
+  page-break-inside: avoid;
+}
+
 /* Position */
   cite {
     margin-left: 0;
@@ -519,19 +532,13 @@ cite, aside {
 
 
 
-cite, aside {
-    display: block;
-    margin: .5em 0 1rem 0rem;
-
-  /* Visual styling */
-  font-size: .9em;
-  line-height: 1.4;
-  font-style: normal; /* Override browser default italic */
-  color: #666;
-  
-  /* Prevent orphaned citations */
-  page-break-inside: avoid;
+aside {
+    margin: .5em 0 1rem 8rem;
 }
+cite {
+    margin: .5em 0 1rem 0rem;
+}
+
 
 /*
 blockquote cite, blockquote aside {
