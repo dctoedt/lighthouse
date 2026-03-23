@@ -188,7 +188,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 1.35em;
+    font-size: 1.5em;
     line-height: 1.8em;
 }
 
@@ -304,7 +304,7 @@ div.cl5 h3 {
     background-color: #e6f1ff;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     padding: 1rem;
-    margin: 3rem -1rem 1rem -1rem;
+    margin: 5rem -1rem 1rem -1rem;
     line-height: 2rem;
     font-size: 1.3em;
 }
@@ -322,13 +322,19 @@ div.cl5 h4 {
 
 div.chap span.section-number-2, 
 div.cl5 span.section-number-3,
-div.cl7 span.section-number-3 {
+div.cl7 span.section-number-3,
+div.cl8 span.section-number-4 {
+    font-size: .9em;
+    font-weight: normal;
+}
+ {
     font-size: .9em;
     font-weight: normal;
 }
 
 div.chap span.section-number-2:after, 
-div.cl5 span.section-number-3:after {
+div.cl5 span.section-number-3:after,
+div.cl8 span.section-number-4:after {
     content: "    ";
 }
 
@@ -356,6 +362,16 @@ div.cl7 ol li {
 div.cl7 ol li ol {
     margin-left: 1rem;
 }
+
+div.cl8 h4 {
+    background-color: #e6f1ff;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    padding: 1rem;
+    margin: 3rem -1rem 1rem -1rem;
+    line-height: 2rem;
+    font-size: 1.1em;
+}
+
 
 /* ========================================================================
    OPTION TEXT (gray background, Arial font)
