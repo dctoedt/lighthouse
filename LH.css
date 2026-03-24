@@ -692,8 +692,8 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -13rem;
-    width: 8%;
+    margin-top: -21rem;
+    width: 14%;
 }
 
 .photo-lighthouse-nocd {
@@ -745,8 +745,9 @@ img {
 .photo-dct {
     display: block;
     float: right;
-    width: 150px;
-    padding-left: 10px;
+    width: 160px;
+    margin-right: -2rem;
+    padding-left: 20px;
     position: relative;
 }
 
