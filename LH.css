@@ -238,6 +238,7 @@ h6 {
     font-size: .9em;
 }
 
+
 /* ========================================================================
    LINKS
    ======================================================================== */
@@ -317,8 +318,6 @@ div.cl7 h3:before {
     font-size: .9em;
 }
 */
-div.cl5 h4 {
-}
 
 div.chap span.section-number-2, 
 div.cl5 span.section-number-3,
@@ -419,13 +418,14 @@ div.addl div.outline-text-3 p {
     margin: 1.5rem 0 1rem 1rem;
 }
 
-.cmtry h5,
+
 .cmtry h6 {
-    font-size: .9em;
+    font-size: .8em;
     color: #666;
     margin: 1rem 0 0.5rem 1rem;
-    font-style: normal;
+    font-weight: bold;
 }
+
 
 .cmtry .outline-text-5,
 .cmtry .outline-text-6 {
