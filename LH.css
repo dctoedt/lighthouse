@@ -95,7 +95,7 @@ div.asis {
 }
 
 #text-table-of-contents li {
-    margin-bottom: 0.5rem;
+    margin-bottom: .8rem;
     line-height: 1.4;
 }
 
@@ -262,7 +262,7 @@ a:visited {
 }
 
 [role="doc-toc"] ul li {
-    margin-bottom: 0;
+    margin-bottom: 0.4em;
 }
 
 nav[role="doc-toc"]:not(#table-of-contents) h2 {
