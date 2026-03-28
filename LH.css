@@ -310,6 +310,7 @@ div.cl5 h3 {
     font-size: 1.3em;
 }
 
+
 /*
 div.cl5 h3:before,
 div.cl7 h3:before {
@@ -469,8 +470,6 @@ div.bord {
 }
 
 .bbox, .bboxy, .bboxn {
-    padding: 1em;
-    margin: 1em 0;
     font-size: 1.5em;
 }
 
@@ -499,6 +498,17 @@ ol li ol li {
 
 ul li ul {
     margin-top: 1em;
+}
+
+/* ========================================================================
+   STRIKETHROUGH
+   ======================================================================== */
+
+.na {
+    font-size: .9em;
+    color: gray;
+    text-decoration: line-through;
+    text-decoration-color: gray;
 }
 
 /* ========================================================================
