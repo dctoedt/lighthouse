@@ -88,7 +88,8 @@ div.asis {
     font-size: 0.9rem;
 }
 
-#text-table-of-contents > ul {
+#text-table-of-contents > ul,
+[role="doc-toc"] ul {
     list-style: none;
     padding-left: 0;
     margin: 0;
@@ -179,7 +180,7 @@ body {
 
 p, li {
     color: #444;
-    margin-bottom: 1em;
+    margin-bottom: .5em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -222,9 +223,14 @@ h4, h5, h6 {
     margin: 2em 0 0.5em 0;
 }
 
+.cl7 h4 {
+    margin-top: 1em;
+}
+
 h4, h5 {
     font-weight: bold;
 }
+
 
 h6 {
     font-weight: normal;
@@ -320,21 +326,26 @@ div.cl7 h3:before {
 }
 */
 
+
+div.cl7 h5 {
+    font-size: 1.2rem;
+}
+
 div.chap span.section-number-2, 
 div.cl5 span.section-number-3,
 div.cl7 span.section-number-3,
-div.cl8 span.section-number-4 {
-    font-size: .9em;
-    font-weight: normal;
-}
- {
+div.cl8 span.section-number-4,
+div.cl9 span.section-number-3,
+div.cl9 span.section-number-4 {
     font-size: .9em;
     font-weight: normal;
 }
 
 div.chap span.section-number-2:after, 
 div.cl5 span.section-number-3:after,
-div.cl8 span.section-number-4:after {
+div.cl8 span.section-number-4:after,
+div.cl9 span.section-number-3:after,
+div.cl9 span.section-number-4:after {
     content: "    ";
 }
 
@@ -346,8 +357,16 @@ div.cl7.outline-4 h4 {
     padding: 0.5em 0.5em 3em 0;
 }
 
+div.cl7,
+div.cl9 {
+    border-top: 3px black solid;
+    border-bottom: 3px black solid;
+}
+
 div.cl7 div.outline-text-3,
-div.cl7 div.outline-text-4 {
+div.cl7.outline-4,
+div.cl9.outline-3 {
+    margin-top: 4em;
     line-height: 1.8em;
     background-color: #e6f1ff;
     padding: 0.5em 0.5em 0.1em 1em;
@@ -355,7 +374,26 @@ div.cl7 div.outline-text-4 {
     font-size: 1em;
 }
 
-div.cl7 ol li {
+div.cl9 h3 {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1.2em;
+    margin-top: 1em;
+}
+
+
+div.cl7 h4,
+div.cl9 h4 {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+div.cl7 ol,
+div.cl7 ul {
+    margin-top: 0;
+}
+
+div.cl7 ol li,
+div.cl9 ol li {
     margin-left: -2rem;
 }
 
@@ -460,7 +498,7 @@ div.cmtry p {
 div.alt, .bordered {
     padding: 0.5rem 2.5rem;
     border: 3px solid #d5d5d5;
-    margin-bottom: 1rem;
+    margin: 2rem 5rem;
 }
 
 div.bord {
@@ -484,7 +522,7 @@ ol {
 
 ol li {
     list-style-type: decimal;
-    margin-bottom: 1em;
+    margin-bottom: .5em;
 }
 
 ol li ol {
@@ -493,11 +531,11 @@ ol li ol {
 
 ol li ol li {
     list-style-type: lower-alpha;
-    margin-top: 1em;
+    margin-top: .5em;
 }
 
 ul li ul {
-    margin-top: 1em;
+    margin-top: 5em;
 }
 
 /* ========================================================================
@@ -548,8 +586,8 @@ aside, cite {
   cite {
     margin-left: 0;
     padding: 0.75em;
-    background-color: #f5f5f5;
 /*
+    background-color: #f5f5f5;
     background-color: #f8f8f8;
     border-left: 3px solid #ccc;
 */
@@ -560,9 +598,11 @@ aside, cite {
 
 aside {
     margin: .5em 0 1rem 8rem;
+    padding: 0.75em;
+    background-color: #fcfcfc;
 }
 cite {
-    margin: .5em 0 1rem 0rem;
+    margin: 0em 0 1rem 2rem;
 }
 
 
@@ -676,6 +716,11 @@ blockquote {
     margin: 0.5rem 0 0 0;
     padding: 0 1em;
     border-left: 5px solid #d9d9d9;
+}
+
+.cl7 blockquote {
+    margin: .5rem 0 0 5rem;
+
 }
 
 /* ========================================================================
