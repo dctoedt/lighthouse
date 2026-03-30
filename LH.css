@@ -522,7 +522,7 @@ ol {
 
 ol li {
     list-style-type: decimal;
-    margin-bottom: .5em;
+    margin-bottom: 1.5em;
 }
 
 ol li ol {
@@ -532,6 +532,7 @@ ol li ol {
 ol li ol li {
     list-style-type: lower-alpha;
     margin-top: .5em;
+    margin-bottom: .75em;
 }
 
 ul li ul {
@@ -747,8 +748,8 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -21rem;
-    width: 14%;
+    margin-top: -18.5rem;
+    width: 10%;
 }
 
 .photo-lighthouse-nocd {
