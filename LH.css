@@ -392,10 +392,6 @@ div.cl7 ul {
     margin-top: 0;
 }
 
-div.cl7 ol li,
-div.cl9 ol li {
-    margin-left: -2rem;
-}
 
 div.cl7 ol li ol {
     margin-left: 1rem;
@@ -571,7 +567,8 @@ cite, aside {
   margin-bottom: 1em;
  */
 
-aside, cite {
+/*aside, cite */
+aside {
   display: block;
   /* Visual styling */
   font-size: .9em;
@@ -584,16 +581,16 @@ aside, cite {
 }
 
 /* Position */
+/*
   cite {
     margin-left: 0;
     padding: 0.75em;
-/*
     background-color: #f5f5f5;
     background-color: #f8f8f8;
     border-left: 3px solid #ccc;
-*/
     font-size: 0.9em;
   }
+*/
 
 
 
@@ -602,14 +599,9 @@ aside {
     padding: 0.75em;
     background-color: #fcfcfc;
 }
-cite {
+
+/*cite {
     margin: 0em 0 1rem 2rem;
-}
-
-
-/*
-blockquote cite, blockquote aside {
-    margin-left: 6em;
 }
 */
 
@@ -618,12 +610,13 @@ blockquote cite, blockquote aside {
     padding: .5em 1em;
 }
 
+/*
 aside cite {
     display: inline;
     font-size: 1em;
     margin: 0 !important;
 }
-
+*/
 /*
 li cite, li aside {
     margin-left: 5em;

@@ -1,0 +1,97 @@
+/* cite-toggle.css
+ * Complete CSS package for <cite> toggle elements in Lighthouse HTML export.
+ *
+ * Three states:
+ *   1. JS-disabled (default): cite displays as indented block, always visible.
+ *   2. JS-enabled (.js-ready on <html>): cite is inline with a toggle button.
+ *   3. Print: cite displays as indented block, always visible; toggle hidden.
+ *
+ * Usage in org-mode file header:
+ *   #+HTML_HEAD: <link rel="stylesheet" href="cite-toggle.css">
+ *   #+HTML_HEAD: <script src="cite-toggle.js" defer></script>
+ */
+
+/* -----------------------------------------------------------
+   1. BASE (JS-disabled fallback): block, indented, always visible
+   ----------------------------------------------------------- */
+
+cite {
+  display: block;
+  font-style: normal;
+  margin: 0.4em 0 0.4em 2.5em;
+  font-size: 0.9em;
+  color: #444;
+}
+
+/* Toggle button hidden until JS runs */
+cite .cite-toggle {
+  display: none;
+}
+
+
+/* -----------------------------------------------------------
+   2. JS-ENABLED: inline toggle mode
+   ----------------------------------------------------------- */
+
+.js-ready cite {
+  display: inline;
+  font-size: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+.js-ready cite .cite-toggle {
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.72em;
+  font-weight: 500;
+  color: #1a6bbd;
+  background: #eaf3fc;
+  border: 1px solid #9fc5e8;
+  border-radius: 3px;
+  padding: 1px 6px;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.js-ready cite .cite-toggle:hover {
+  background: #d0e8f8;
+  border-color: #5b9fd4;
+  color: #0f4a8a;
+}
+
+.js-ready cite .cite-toggle:active {
+  background: #bdd9f2;
+}
+
+.js-ready cite .cite-content {
+  display: none;
+}
+
+.js-ready cite .cite-content.open {
+  display: inline;
+}
+
+
+/* -----------------------------------------------------------
+   3. PRINT: always show citation text, never show toggle button
+   ----------------------------------------------------------- */
+
+@media print {
+  cite {
+    display: block;
+    font-style: normal;
+    margin: 0.4em 0 0.4em 2.5em;
+    font-size: 0.9em;
+    color: #444;
+  }
+  cite .cite-toggle {
+    display: none !important;
+  }
+  cite .cite-content {
+    display: inline !important;
+  }
+}
