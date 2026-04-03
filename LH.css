@@ -392,6 +392,9 @@ div.cl7 ul {
     margin-top: 0;
 }
 
+div.cl7 ol li {
+    list-display-type: none;
+}
 
 div.cl7 ol li ol {
     margin-left: 1rem;
