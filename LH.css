@@ -317,15 +317,12 @@ div.cl5 h3 {
 }
 
 
-/*
 div.cl5 h3:before,
-div.cl7 h3:before {
-    content: "Protocol ";
+div.cl9 h3:before {
+    content: "Practice ";
     font-weight: normal;
     font-size: .9em;
 }
-*/
-
 
 div.cl7 h5 {
     font-size: 1.2rem;
