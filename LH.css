@@ -451,6 +451,7 @@ div.addl div.outline-text-3 p {
 /* Style for commentary sections (typically h5 or h6 level) */
 .cmtry {
     margin: 1.5rem 0 1rem 1rem;
+    background-color: #fcfcfc;
 }
 
 
@@ -469,6 +470,7 @@ div.addl div.outline-text-3 p {
     color: #555;
     font-style: normal;
     line-height: 1.6em;
+    background-color: #fcfcfc;
 }
 
 .cmtry p, .cmtry li {
@@ -532,7 +534,7 @@ ol li ol li {
 }
 
 ul li ul {
-    margin-top: 5em;
+    margin-top: .5em;
 }
 
 /* ========================================================================
