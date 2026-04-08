@@ -436,6 +436,47 @@ div.optn-text div.outline-text-5 ol li ol li {
 }
 
 /* ========================================================================
+   RUN-IN SUBHEADINGS
+  ======================================================================== */
+div.cl8.outline-5 > h5,
+div.optn-txt.outline-5 > h5 {
+  display: inline;
+  font-size: inherit;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+div.cl8.outline-5 > h5:after,
+div.optn-txt.outline-5 > h5:after {
+    content: ":  ";
+}
+
+div.cl8.outline-5 > .outline-text-5,
+div.optn-txt.outline-5 > .outline-text-5 {
+  display: inline;
+}
+
+div.cl8.outline-5 > .outline-text-5 > p:first-child,
+div.optn-txt.outline-5 > .outline-text-5 > p:first-child {
+  display: inline;
+}
+
+div.cl8.outline-5::after,
+div.optn-txt.outline-5::after {
+  content: "";
+  display: block;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+div.cl8 span.section-number-5 {
+    font-weight: normal;
+    padding-right: .2em;
+}
+
+
+/* ========================================================================
    FIELD NOTES / ADDITIONAL NOTES
    ======================================================================== */
 
@@ -443,6 +484,8 @@ div.addl div.outline-text-3 p {
     font-family: Georgia, "Times New Roman", serif;
     font-size: 1em;
 }
+
+
 
 /* ========================================================================
    COMMENTARY / NOTES (.cmtry class) - FIXED
