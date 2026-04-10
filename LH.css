@@ -319,7 +319,7 @@ div.cl5 h3 {
 
 div.cl5 h3:before,
 div.cl9 h3:before {
-    content: "Practice ";
+    content: "Model Practice ";
     font-weight: normal;
     font-size: .9em;
 }
@@ -438,6 +438,7 @@ div.optn-text div.outline-text-5 ol li ol li {
 /* ========================================================================
    RUN-IN SUBHEADINGS
   ======================================================================== */
+/*
 div.cl8.outline-5 > h5,
 div.optn-txt.outline-5 > h5 {
   display: inline;
@@ -469,10 +470,10 @@ div.optn-txt.outline-5::after {
   margin-top: 1.5em;
   margin-bottom: 1em;
 }
-
+*/
 div.cl8 span.section-number-5 {
     font-weight: normal;
-    padding-right: .2em;
+    padding-right: .5em;
 }
 
 
@@ -493,26 +494,28 @@ div.addl div.outline-text-3 p {
 
 /* Style for commentary sections (typically h5 or h6 level) */
 .cmtry {
-    margin: 1.5rem 0 1rem 1rem;
+    font-family: Georgia, "Times New Roman", serif;
+    margin: 1.5rem 0 1rem 8rem;
     background-color: #fcfcfc;
+    padding: .1em .5em;
 }
 
 
-.cmtry h6 {
-    font-size: .8em;
+.cmtry h6, .cmtry h7 {
+    display: none !important;
+    font-size: .9em;
     color: #666;
-    margin: 1rem 0 0.5rem 1rem;
+    margin: 1rem 0 0.5rem 0;
     font-weight: bold;
 }
 
 
 .cmtry .outline-text-5,
-.cmtry .outline-text-6 {
-    margin-left: 1rem;
-    font-size: .85em;
+.cmtry .outline-text-6,
+.cmtry .outline-text-7 {
     color: #555;
     font-style: normal;
-    line-height: 1.6em;
+    line-height: 1.4em;
     background-color: #fcfcfc;
 }
 
@@ -522,12 +525,13 @@ div.addl div.outline-text-3 p {
 }
 
 /* Alternative: if cmtry is applied directly to divs */
+/*
 div.cmtry {
     margin-left: -1rem;
     font-size: 1.2em;
     color: #666;
 }
-
+*/
 div.cmtry p {
     color: #555;
 }
