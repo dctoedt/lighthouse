@@ -16,21 +16,21 @@
 (function () {
   function initCiteToggles() {
     document.documentElement.classList.add("js-ready");
-    document.querySelectorAll("cite").forEach(function (cite) {
+    document.querySelectorAll(".cmtry cite").forEach(function (cite) {
       var content = document.createElement("span");
       content.className = "cite-content";
       content.innerHTML = cite.innerHTML;
 
       var toggle = document.createElement("span");
       toggle.className = "cite-toggle";
-      toggle.textContent = "Cite";
+      toggle.textContent = "More";
       toggle.setAttribute("role", "button");
       toggle.setAttribute("tabindex", "0");
       toggle.setAttribute("aria-expanded", "false");
 
       function doToggle() {
         var isOpen = content.classList.toggle("open");
-        toggle.textContent = isOpen ? "Hide" : "Cite";
+        toggle.textContent = isOpen ? "Hide" : "More";
         toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
       }
 
