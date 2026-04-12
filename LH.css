@@ -411,21 +411,26 @@ div.cl8 h4 {
    OPTION TEXT (gray background, Arial font)
    ======================================================================== */
 
-div.optn-txt.outline-4 h4,
-div.optn-txt.outline-5 h5 {
-    color: #444;
-    margin-bottom: -2rem;
-    font-size: 1.1em;
-    padding: 0.5em 0.5em 3em 0;
-}
-
-div.optn-txt div.outline-text-4,
-div.optn-txt.outline-5 div.outline-text-5 {
+div.optn-txt.outline-4,
+div.optn-txt.outline-5 {
+    margin-top: 4em;
+    line-height: 1.8em;
     background-color: #e1e1e1;
     padding: 0.5em 0.5em 0.1em 1em;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 1em;
 }
+
+
+div.optn-txt.outline-4 h4,
+div.optn-txt.outline-5 h5 {
+    color: #444;
+    margin-top: 0;
+    margin-bottom: -4rem;
+    font-size: 1.1em;
+    padding: 0.5em 0.5em 3em 0;
+}
+
 
 div.optn-txt ol li {
     margin-left: -2rem;
@@ -1314,8 +1319,7 @@ div.footdef {
         print-color-adjust: exact;
     }
     
-    div.optn-txt div.outline-text-4,
-    div.optn-txt.outline-5 div.outline-text-5 {
+.optn-txt {
         background-color: #e1e1e1 !important;
         padding: 6pt 8pt !important;
         margin: 8pt 0 !important;
