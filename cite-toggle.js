@@ -1,7 +1,7 @@
 /* cite-toggle.js
  * Initializes togglable citation elements for Lighthouse HTML export.
  *
- * For each <cite> element, wraps its contents in a .cite-content span
+ * For each <cite> element NOT in a footnote, wraps its contents in a .cite-content span
  * and prepends a .cite-toggle button that shows/hides the citation.
  *
  * Adds "js-ready" to <html> so CSS can distinguish JS-enabled rendering
@@ -16,7 +16,7 @@
 (function () {
   function initCiteToggles() {
     document.documentElement.classList.add("js-ready");
-    document.querySelectorAll(".cmtry cite").forEach(function (cite) {
+    document.querySelectorAll("cite:not(.footpara cite)").forEach(function (cite) {
       var content = document.createElement("span");
       content.className = "cite-content";
       content.innerHTML = cite.innerHTML;
