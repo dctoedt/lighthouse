@@ -317,7 +317,7 @@ div.cl5 h3 {
 }
 
 
-div.cl5 h3:before,
+div.cl7 h5:before,
 div.cl9 h3:before {
     content: "Rule ";
     font-weight: normal;
