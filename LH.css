@@ -319,7 +319,7 @@ div.cl5 h3 {
 
 div.cl7 h5:before,
 div.cl9 h3:before {
-    content: "Rule ";
+/*    content: "Rule "; */
     font-weight: normal;
     font-size: .9em;
 }
