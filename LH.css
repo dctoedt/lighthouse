@@ -331,6 +331,8 @@ div.cl7 h5 {
 div.chap span.section-number-2, 
 div.cl5 span.section-number-3,
 div.cl7 span.section-number-3,
+div.cl7 span.section-number-4,
+div.cl7 span.section-number-5,
 div.cl8 span.section-number-4,
 div.cl9 span.section-number-3,
 div.cl9 span.section-number-4 {
@@ -340,6 +342,9 @@ div.cl9 span.section-number-4 {
 
 div.chap span.section-number-2:after, 
 div.cl5 span.section-number-3:after,
+div.cl7 span.section-number-3:after,
+div.cl7 span.section-number-4:after,
+div.cl7 span.section-number-5:after,
 div.cl8 span.section-number-4:after,
 div.cl9 span.section-number-3:after,
 div.cl9 span.section-number-4:after {
@@ -406,7 +411,20 @@ div.cl8 h4 {
     font-size: 1.1em;
 }
 
-
+/* ===========
+   TABLE TEXT
+   ===========
+*/
+table {
+    border: thin solid gray;
+    font-size: .85em;
+    line-height: 1.2em;
+    margin: 1em;
+}
+table td {
+    vertical-align: top;
+    padding: .25em;
+}
 /* ========================================================================
    OPTION TEXT (gray background, Arial font)
    ======================================================================== */
@@ -500,18 +518,21 @@ div.addl div.outline-text-3 p {
 /* Style for commentary sections (typically h5 or h6 level) */
 .cmtry {
     font-family: Georgia, "Times New Roman", serif;
-    margin: 1.5rem 0 1rem 8rem;
+    margin: 1.5em .5em 1em .5em;
     background-color: #fcfcfc;
-    padding: .1em .5em;
+    padding: .1em .75em;
 }
 
 
 .cmtry h6, .cmtry h7 {
-    display: none !important;
     font-size: .9em;
     color: #666;
-    margin: 1rem 0 0.5rem 0;
-    font-weight: bold;
+    margin: .2em 0 0.5em 0;
+    font-weight: normal;
+}
+
+.cmtry h6:after {
+    content: ":";
 }
 
 
