@@ -7,6 +7,10 @@
  * For each <aside> element, wraps its contents in a .aside-content span
  * and prepends a .aside-toggle button labeled "Note" that shows/hides the aside.
  *
+ * For each Protocol section (div.pr-top) that contains at least one
+ * toggle, inserts a small "[ expand notes ]" / "[ collapse notes ]" link
+ * after the section heading so all notes can be opened or closed at once.
+ *
  * Adds "js-ready" to <html> so CSS can distinguish JS-enabled rendering
  * (inline toggle mode) from JS-disabled rendering (block citation mode).
  *
@@ -91,9 +95,88 @@
     });
   }
 
+  function initSectionExpanders() {
+    // Target the same container classes used for Protocol / clause sections.
+    document.querySelectorAll("div.pr-top").forEach(function (section) {
+      // Collect every toggle button in this section.
+      var toggles = section.querySelectorAll(".cite-toggle, .aside-toggle");
+      if (toggles.length === 0) { return; }
+
+      // Find the first heading element to anchor the expander link after.
+      var heading = section.querySelector("h3, h4, h5, h6");
+      if (!heading) { return; }
+
+      var expander = document.createElement("span");
+      expander.className = "section-expander";
+      expander.setAttribute("role", "button");
+      expander.setAttribute("tabindex", "0");
+
+      function allOpen() {
+        return Array.prototype.every.call(toggles, function (t) {
+          return t.getAttribute("aria-expanded") === "true";
+        });
+      }
+
+      function updateLabel() {
+        expander.textContent = allOpen() ? "[ collapse notes ]" : "[ expand notes ]";
+      }
+
+      function doExpand() {
+        var opening = !allOpen();
+        toggles.forEach(function (toggle) {
+          // Determine the paired content span: the next sibling of the toggle.
+          var content = toggle.nextElementSibling;
+          if (!content) { return; }
+          var alreadyOpen = toggle.getAttribute("aria-expanded") === "true";
+          if (opening && !alreadyOpen) {
+            content.classList.add("open");
+            toggle.setAttribute("aria-expanded", "true");
+            // Update individual toggle label.
+            if (toggle.classList.contains("cite-toggle")) {
+              toggle.textContent = "Hide";
+            } else if (toggle.classList.contains("aside-toggle")) {
+              toggle.textContent = "Hide";
+            }
+          } else if (!opening && alreadyOpen) {
+            content.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+            if (toggle.classList.contains("cite-toggle")) {
+              toggle.textContent = "More";
+            } else if (toggle.classList.contains("aside-toggle")) {
+              toggle.textContent = "Note";
+            }
+          }
+        });
+        updateLabel();
+      }
+
+      expander.addEventListener("click", doExpand);
+      expander.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          doExpand();
+        }
+      });
+
+      // Also keep the expander label in sync when individual toggles are clicked.
+      toggles.forEach(function (toggle) {
+        toggle.addEventListener("click", updateLabel);
+      });
+
+      updateLabel();
+
+      // Insert as a new block line immediately after the heading.
+      var wrapper = document.createElement("div");
+      wrapper.className = "section-expander-wrapper";
+      wrapper.appendChild(expander);
+      heading.insertAdjacentElement("afterend", wrapper);
+    });
+  }
+
   function init() {
     initCiteToggles();
     initAsideToggles();
+    initSectionExpanders();
   }
 
   if (document.readyState === "loading") {
