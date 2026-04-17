@@ -530,8 +530,14 @@ div.addl div.outline-text-3 p {
 .cmtry {
     font-family: Georgia, "Times New Roman", serif;
     margin: .5em .5em 1em .5em;
-    background-color: #fcfcfc;
+    /* Collapsed: match the Protocol blue background so the div blends in. */
+    background-color: #e6f1ff;
     padding: .1em .75em;
+}
+
+/* Expanded: switch to the same off-white as revealed aside/cite content. */
+.cmtry.cmtry-open {
+    background-color: #fcfcfc;
 }
 
 
