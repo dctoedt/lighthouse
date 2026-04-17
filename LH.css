@@ -235,6 +235,12 @@ h6 {
     font-weight: normal;
 }
 
+.addl {
+    background-color: #fcfcfc;
+    padding: .1em .75em;
+    margin: .5em .5em 1em .5em;
+}
+
 .addl h4 {
     font-size: 1.1em;
 }
@@ -282,6 +288,16 @@ div.toc-local {
     border-left: 4px solid #2980B9;
     padding: 1rem 1.5rem;
     margin: 1.5rem 0;
+}
+
+/* The local TOC inside an addl section: override blue backgrounds to white.
+   Targets both div.toc-local and any element with role=doc-toc (org-mode varies). */
+.addl div.toc-local,
+.addl-body div.toc-local,
+.addl [role="doc-toc"],
+.addl-body [role="doc-toc"] {
+    background-color: #fcfcfc !important;
+    border-left-color: #9fc5e8;
 }
 
 
@@ -409,6 +425,15 @@ div.pr-top .outline-text-4 {
     font-size: 1em;
 }
 
+/* Suppress the Protocol blue background inside addl sections.
+   Three-part selector beats div.pr-top .outline-text-4 on specificity. */
+div.pr-top div.addl .outline-text-4,
+div.pr-top div.addl-body .outline-text-4 {
+    background-color: #fcfcfc;
+    padding: 0;
+    margin-top: 0;
+}
+
 div.pr-top h3 {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     margin-top: 0em;
@@ -530,14 +555,8 @@ div.addl div.outline-text-3 p {
 .cmtry {
     font-family: Georgia, "Times New Roman", serif;
     margin: .5em .5em 1em .5em;
-    /* Collapsed: match the Protocol blue background so the div blends in. */
-    background-color: #e6f1ff;
-    padding: .1em .75em;
-}
-
-/* Expanded: switch to the same off-white as revealed aside/cite content. */
-.cmtry.cmtry-open {
     background-color: #fcfcfc;
+    padding: .1em .75em;
 }
 
 
@@ -646,6 +665,17 @@ ul li ul {
    CITE-TOGGLE / ASIDE-TOGGLE (cite-toggle.js)
    ======================================================================== */
 
+/* addl-body is hidden by default when JS is active; JS sets display=""
+   to reveal it. Doing this in CSS ensures initial state is correct even
+   if JS runs late or body.style.display is overridden. */
+html.js-ready div.addl-body {
+    display: none;
+}
+
+html.js-ready div.addl-body.addl-open {
+    display: block;
+}
+
 /* JS-enabled: neutralize the cite wrapper box so the inline toggle
    button and content span sit naturally in running text.
    For <aside>, the JS relocates the toggle into the preceding sibling
@@ -730,6 +760,22 @@ html.js-ready cite {
 }
 
 .section-expander:hover {
+    text-decoration: underline;
+}
+
+/* addl-toggle: "[ show ]" / "[ hide ]" link appended to the section heading.
+   Styled like section-expander — plain text link, no box. */
+.addl-toggle {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 0.7em;
+    color: #1a6bbd;
+    cursor: pointer;
+    user-select: none;
+    margin-left: 0.6em;
+    vertical-align: middle;
+}
+
+.addl-toggle:hover {
     text-decoration: underline;
 }
 
