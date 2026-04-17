@@ -34,14 +34,14 @@
 
       var toggle = document.createElement("span");
       toggle.className = "cite-toggle";
-      toggle.textContent = "More";
+      toggle.textContent = "Cite";
       toggle.setAttribute("role", "button");
       toggle.setAttribute("tabindex", "0");
       toggle.setAttribute("aria-expanded", "false");
 
       function doToggle() {
         var isOpen = content.classList.toggle("open");
-        toggle.textContent = isOpen ? "Hide" : "More";
+        toggle.textContent = isOpen ? "Hide" : "Cite";
         toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
       }
 
@@ -223,7 +223,7 @@
             } else if (!opening && alreadyOpen) {
               content.classList.remove("open");
               toggle.setAttribute("aria-expanded", "false");
-              toggle.textContent = toggle.classList.contains("cite-toggle") ? "More" : "Note";
+              toggle.textContent = toggle.classList.contains("cite-toggle") ? "Cite" : "Note";
             }
           }
         });
