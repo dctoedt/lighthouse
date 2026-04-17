@@ -397,16 +397,21 @@ div.cl7 ol li ol {
 div.pr-top {
     margin-top: 5em;
     border: 2px gray solid;
-    padding: .5em 1em;
+    padding: 2em;
 }
 
 div.pr-top .outline-text-4 {
     margin-top: 1em;
     line-height: 1.8em;
     background-color: #e6f1ff;
-    padding: 0.5em 0.5em 0.1em 1em;
+    padding: 0.5em 0.5em 0.5em 1em;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 1em;
+}
+
+div.pr-top h3 {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    margin-top: 0em;
 }
 
 div.pr-top h4 {
@@ -524,23 +529,26 @@ div.addl div.outline-text-3 p {
 /* Style for commentary sections (typically h5 or h6 level) */
 .cmtry {
     font-family: Georgia, "Times New Roman", serif;
-    margin: 1.5em .5em 1em .5em;
+    margin: .5em .5em 1em .5em;
     background-color: #fcfcfc;
     padding: .1em .75em;
 }
 
 
 .cmtry h6, .cmtry h7 {
+    display: none;
+/*
     font-size: .9em;
     color: #666;
     margin: .2em 0 0.5em 0;
     font-weight: normal;
+*/
 }
-
+/*
 .cmtry h6:after {
     content: ":";
 }
-
+*/
 
 .cmtry .outline-text-5,
 .cmtry .outline-text-6,
@@ -695,14 +703,28 @@ html.js-ready cite {
     display: inline-block;
     font-size: .8em;
     background-color: #fcfcfc;
-    padding-left: 1em;
-    padding-right: .2em;
+    padding: .5em .2em .5em 1em;
     margin-top: .5em;
     line-height: 1.5em;
 }
 
-span.aside-content.open:before {
-    content: "Note: ";
+
+/* Section-level "[ expand notes ]" / "[ collapse notes ]" link */
+.section-expander-wrapper {
+    margin: 0.25em 0 0.5em 0;
+}
+
+.section-expander {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 0.75em;
+    color: #1a6bbd;
+    cursor: pointer;
+    user-select: none;
+    letter-spacing: 0.01em;
+}
+
+.section-expander:hover {
+    text-decoration: underline;
 }
 
 /* ========================================================================
