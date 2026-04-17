@@ -262,7 +262,7 @@
   function initSectionExpanders() {
     document.querySelectorAll("div.pr-top").forEach(function (section) {
       // Collect every toggle button in this section, including cmtry toggles.
-      var toggles = section.querySelectorAll(".cite-toggle, .aside-toggle, .addl-toggle");
+      var toggles = section.querySelectorAll(".aside-toggle, .addl-toggle");
       if (toggles.length === 0) { return; }
 
       // Find the first heading element to anchor the expander link after.
