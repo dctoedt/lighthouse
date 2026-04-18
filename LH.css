@@ -447,6 +447,29 @@ div.pr-top h4 {
 
 
 /* ===========
+   NUMBERS IN PARENTHESES
+   ===========
+*/
+
+.pr-top .outline-text-4 ol {
+  list-style: none;
+  counter-reset: ol-counter;
+  padding-left: 2em;
+}
+
+.pr-top .outline-text-4 ol li {
+  counter-increment: ol-counter;
+  position: relative;
+  list-style: none;
+}
+
+.pr-top .outline-text-4 ol li::before {
+  content: "(" counter(ol-counter) ")";
+  position: absolute;
+  left: -1.8em;
+}
+
+/* ===========
    TABLE TEXT
    ===========
 */
