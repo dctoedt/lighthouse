@@ -333,8 +333,9 @@ div.cl5 h3 {
 
 
 div.cl7 h5:before,
-div.cl9 h3:before {
-/*    content: "Protocol "; */
+div.cl9 h3:before,
+div.pr-top h3:before {
+    content: "Clause "; 
     font-weight: normal;
     font-size: .9em;
 }
@@ -346,6 +347,7 @@ div.cl7 h5 {
 div.chap span.section-number-2, 
 div.cl5 span.section-number-3,
 div.cl7 span.section-number-3,
+div.pr-top span.section-number-3,
 span.section-number-4,
 span.section-number-5  {
     font-size: .9em;
@@ -416,7 +418,7 @@ div.pr-top {
     padding: 2em;
 }
 
-div.pr-top .outline-text-4 {
+div.pr-top .outline-text-4:not(.optn-txt .outline-text-4, .addl .outline-text-4, .addl-body .outline-text-4) {
     margin-top: 1em;
     line-height: 1.8em;
     background-color: #e6f1ff;
@@ -424,7 +426,6 @@ div.pr-top .outline-text-4 {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 1em;
 }
-
 /* Suppress the Protocol blue background inside addl sections.
    Three-part selector beats div.pr-top .outline-text-4 on specificity. */
 div.pr-top div.addl .outline-text-4,
