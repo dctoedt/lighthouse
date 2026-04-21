@@ -86,18 +86,13 @@
         }
       });
 
-      // <aside> is a block sibling of <p>, not inline inside it.
-      // To get the toggle button inline in the preceding text, we
-      // append the toggle and content spans directly to the previous
-      // sibling element (typically the <p> before the aside), then
-      // hide the now-empty aside shell rather than fighting its
-      // block formatting context with CSS.
-      var anchor = aside.previousElementSibling || aside.parentElement;
-      anchor.appendChild(toggle);
-      anchor.appendChild(content);
-      // Start open: add .open to content so it's visible on load.
+      // Keep the <aside> shell as a visible block container so the toggle
+      // button remains visible even when the content is hidden. Put the br,
+      // toggle, and content span inside the aside itself.
+      aside.innerHTML = "";
       content.classList.add("open");
-      aside.style.display = "none";
+      aside.appendChild(content);
+      aside.appendChild(toggle);
     });
   }
 
@@ -331,8 +326,12 @@
             }
 
           } else {
-            // cite / aside toggle: content is nextElementSibling, uses .open class.
-            var content = toggle.nextElementSibling;
+            // cite / aside toggle: uses .open class.
+            // For cite: content is nextElementSibling (toggle comes first).
+            // For aside: content is previousElementSibling (content comes before toggle).
+            var content = toggle.classList.contains("cite-toggle")
+              ? toggle.nextElementSibling
+              : toggle.previousElementSibling;
             if (!content) { return; }
             if (opening && !alreadyOpen) {
               content.classList.add("open");
