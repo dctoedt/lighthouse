@@ -67,14 +67,14 @@
 
       var toggle = document.createElement("span");
       toggle.className = "aside-toggle";
-      toggle.textContent = "Note";
+      toggle.textContent = "Hide";
       toggle.setAttribute("role", "button");
       toggle.setAttribute("tabindex", "0");
-      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-expanded", "true");
 
       function doToggle() {
         var isOpen = content.classList.toggle("open");
-        toggle.textContent = isOpen ? "Hide" : "Note";
+        toggle.textContent = isOpen ? "Hide note" : "Show note";
         toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
       }
 
@@ -95,6 +95,8 @@
       var anchor = aside.previousElementSibling || aside.parentElement;
       anchor.appendChild(toggle);
       anchor.appendChild(content);
+      // Start open: add .open to content so it's visible on load.
+      content.classList.add("open");
       aside.style.display = "none";
     });
   }
@@ -125,7 +127,7 @@
       // Build the toggle button to replace the heading.
       var toggle = document.createElement("span");
       toggle.className = "aside-toggle cmtry-toggle";
-      toggle.textContent = "Note";
+      toggle.textContent = "Hide note";
       toggle.setAttribute("role", "button");
       toggle.setAttribute("tabindex", "0");
       toggle.setAttribute("aria-expanded", "false");
@@ -136,11 +138,11 @@
         var isOpen = toggle.getAttribute("aria-expanded") === "true";
         if (isOpen) {
           body.style.display = "none";
-          toggle.textContent = "Note";
+          toggle.textContent = "Show note";
           toggle.setAttribute("aria-expanded", "false");
         } else {
           body.style.display = "";
-          toggle.textContent = "Hide";
+          toggle.textContent = "Hide note";
           toggle.setAttribute("aria-expanded", "true");
         }
       }
@@ -153,8 +155,9 @@
         }
       });
 
-      // Hide body initially; replace heading with toggle button.
-      body.style.display = "none";
+      // Start open: body visible, toggle shows "Hide".
+      toggle.textContent = "Hide note";
+      toggle.setAttribute("aria-expanded", "true");
       heading.replaceWith(toggle);
     });
   }
@@ -223,26 +226,27 @@
       });
 
       // Insert wrapper after div.addl in the parent.
+      // Start open: add addl-open so CSS shows it on load.
       addl.insertAdjacentElement("afterend", body);
-      body.style.display = "none";
+      body.classList.add("addl-open");
 
       var toggle = document.createElement("span");
       toggle.className = "addl-toggle";
-      toggle.textContent = "[ show ]";
+      toggle.textContent = "[ hide note ]";
       toggle.setAttribute("role", "button");
       toggle.setAttribute("tabindex", "0");
-      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-expanded", "true");
       toggle.setAttribute("data-addl-toggle", "true");
 
       function doToggle() {
         var isOpen = toggle.getAttribute("aria-expanded") === "true";
         if (isOpen) {
           body.style.display = "none";
-          toggle.textContent = "[ show ]";
+          toggle.textContent = "[ show note ]";
           toggle.setAttribute("aria-expanded", "false");
         } else {
           body.style.display = "block";
-          toggle.textContent = "[ hide ]";
+          toggle.textContent = "[ hide note ]";
           toggle.setAttribute("aria-expanded", "true");
         }
       }
@@ -300,11 +304,11 @@
             if (!body) { return; }
             if (opening && !alreadyOpen) {
               body.style.display = "block";
-              toggle.textContent = "[ hide ]";
+              toggle.textContent = "[ hide note ]";
               toggle.setAttribute("aria-expanded", "true");
             } else if (!opening && alreadyOpen) {
               body.style.display = "none";
-              toggle.textContent = "[ show ]";
+              toggle.textContent = "[ show note ]";
               toggle.setAttribute("aria-expanded", "false");
             }
 
@@ -318,11 +322,11 @@
             if (!body) { return; }
             if (opening && !alreadyOpen) {
               body.style.display = "";
-              toggle.textContent = "Hide";
+              toggle.textContent = "Hide note";
               toggle.setAttribute("aria-expanded", "true");
             } else if (!opening && alreadyOpen) {
               body.style.display = "none";
-              toggle.textContent = "Note";
+              toggle.textContent = "Show note";
               toggle.setAttribute("aria-expanded", "false");
             }
 
@@ -333,11 +337,11 @@
             if (opening && !alreadyOpen) {
               content.classList.add("open");
               toggle.setAttribute("aria-expanded", "true");
-              toggle.textContent = "Hide";
+              toggle.textContent = "Hide note";
             } else if (!opening && alreadyOpen) {
               content.classList.remove("open");
               toggle.setAttribute("aria-expanded", "false");
-              toggle.textContent = toggle.classList.contains("cite-toggle") ? "Cite" : "Note";
+              toggle.textContent = toggle.classList.contains("cite-toggle") ? "Cite" : "Show note";
             }
           }
         });

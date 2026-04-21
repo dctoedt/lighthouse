@@ -333,9 +333,8 @@ div.cl5 h3 {
 
 
 div.cl7 h5:before,
-div.cl9 h3:before,
-div.pr-top h3:before {
-    content: "Clause "; 
+div.cl9 h3:before {
+/*    content: "Protocol "; */
     font-weight: normal;
     font-size: .9em;
 }
@@ -347,7 +346,6 @@ div.cl7 h5 {
 div.chap span.section-number-2, 
 div.cl5 span.section-number-3,
 div.cl7 span.section-number-3,
-div.pr-top span.section-number-3,
 span.section-number-4,
 span.section-number-5  {
     font-size: .9em;
@@ -414,11 +412,11 @@ div.cl7 ol li ol {
 
 div.pr-top {
     margin-top: 5em;
-    border: 4px gray solid;
+    border: 2px gray solid;
     padding: 2em;
 }
 
-div.pr-top .outline-text-4:not(.optn-txt .outline-text-4, .addl .outline-text-4, .addl-body .outline-text-4) {
+div.pr-top .outline-text-4 {
     margin-top: 1em;
     line-height: 1.8em;
     background-color: #e6f1ff;
@@ -426,6 +424,7 @@ div.pr-top .outline-text-4:not(.optn-txt .outline-text-4, .addl .outline-text-4,
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 1em;
 }
+
 /* Suppress the Protocol blue background inside addl sections.
    Three-part selector beats div.pr-top .outline-text-4 on specificity. */
 div.pr-top div.addl .outline-text-4,
@@ -447,28 +446,6 @@ div.pr-top h4 {
 }
 
 
-/* ===========
-   NUMBERS IN PARENTHESES
-   ===========
-*/
-
-.pr-top .outline-text-4 ol {
-  list-style: none;
-  counter-reset: ol-counter;
-  padding-left: 2em;
-}
-
-.pr-top .outline-text-4 ol li {
-  counter-increment: ol-counter;
-  position: relative;
-  list-style: none;
-}
-
-.pr-top .outline-text-4 ol li::before {
-  content: "(" counter(ol-counter) ")";
-  position: absolute;
-  left: -1.8em;
-}
 
 /* ===========
    TABLE TEXT
@@ -691,12 +668,16 @@ ul li ul {
 /* addl-body is hidden by default when JS is active; JS sets display=""
    to reveal it. Doing this in CSS ensures initial state is correct even
    if JS runs late or body.style.display is overridden. */
+/* addl-body is visible by default; addl-open class is added on creation.
+   Hiding is done by removing addl-open (body falls back to this rule only
+   when the class is absent, but since we use explicit style.display in JS,
+   this rule primarily guards against flash-of-content before JS runs). */
 html.js-ready div.addl-body {
-    display: none;
+    display: block;
 }
 
-html.js-ready div.addl-body.addl-open {
-    display: block;
+html.js-ready div.addl-body:not(.addl-open) {
+    display: none;
 }
 
 /* JS-enabled: neutralize the cite wrapper box so the inline toggle
