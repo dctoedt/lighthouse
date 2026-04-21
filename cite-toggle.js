@@ -67,7 +67,7 @@
 
       var toggle = document.createElement("span");
       toggle.className = "aside-toggle";
-      toggle.textContent = "Hide";
+      toggle.textContent = "Hide note";
       toggle.setAttribute("role", "button");
       toggle.setAttribute("tabindex", "0");
       toggle.setAttribute("aria-expanded", "true");
