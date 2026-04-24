@@ -126,13 +126,30 @@ div.asis {
 }
 
 
-div.toc-det #text-table-of-contents > ul,
-div.toc-det #text-table-of-contents > ul li ul,
-[role="doc-toc"] ul li ul {
+div.toc-det [role="doc-toc"] ul {
     list-style: none;
     padding-left: 0;
-    margin: 2rem 0;
+    margin: 1em 0 1em 0;
 }
+
+div.toc-det [role="doc-toc"] ul li {
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+div.toc-det [role="doc-toc"] ul li ul {
+    margin: 0em 1em 1em 1em;
+}
+
+div.toc-det [role="doc-toc"] ul li ul li {
+    font-weight: normal;
+    margin-top: .5em;
+}
+
+div.toc-det [role="doc-toc"] ul li ul li ul {
+    margin: 0em 2em;
+}
+
 
 /* ========================================================================
    MAIN CONTENT - Shifted to make room for sidebar
@@ -207,7 +224,7 @@ h2 {
     line-height: 140%;
 }
 
-h2::before {
+.chap h2::before {
     content: "Chapter ";
     font-weight: normal;
     font-size: 0.8em;
@@ -754,11 +771,13 @@ html.js-ready aside {
 .aside-content.open {
     font-family: Georgia, "Times New Roman", serif;
     display: inline-block;
-    font-size: .8em;
     background-color: #fcfcfc;
+/*
+    font-size: .8em; 
     padding: .5em .2em .5em 1em;
     margin-top: .5em;
     line-height: 1.5em;
+*/
 }
 
 
