@@ -487,6 +487,7 @@ table td {
    OPTION TEXT (gray background, Arial font)
    ======================================================================== */
 
+/*
 div.optn-txt.outline-4,
 div.optn-txt.outline-5 {
     margin-top: 4em;
@@ -515,6 +516,8 @@ div.optn-txt ol li {
 div.optn-text div.outline-text-5 ol li ol li {
     margin-left: 10rem;
 }
+
+*/
 
 /* ========================================================================
    RUN-IN SUBHEADINGS
