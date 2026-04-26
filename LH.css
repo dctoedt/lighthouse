@@ -126,27 +126,27 @@ div.asis {
 }
 
 
-div.toc-det [role="doc-toc"] ul {
+[role="doc-toc"] ul {
     list-style: none;
     padding-left: 0;
     margin: 1em 0 1em 0;
 }
 
-div.toc-det [role="doc-toc"] ul li {
-    font-weight: bold;
+[role="doc-toc"] ul li {
+/*    font-weight: bold; */
     margin-top: 1em;
 }
 
-div.toc-det [role="doc-toc"] ul li ul {
+[role="doc-toc"] ul li ul {
     margin: 0em 1em 1em 1em;
 }
 
-div.toc-det [role="doc-toc"] ul li ul li {
+[role="doc-toc"] ul li ul li {
     font-weight: normal;
     margin-top: .5em;
 }
 
-div.toc-det [role="doc-toc"] ul li ul li ul {
+[role="doc-toc"] ul li ul li ul {
     margin: 0em 2em;
 }
 
