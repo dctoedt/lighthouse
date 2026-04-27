@@ -467,7 +467,9 @@ div.pr-top h4 {
     margin-top: 2em;
 }
 
-
+div.pr-top .outline-text-4 ul {
+    list-style: none;
+}
 
 /* ===========
    TABLE TEXT
@@ -475,13 +477,14 @@ div.pr-top h4 {
 */
 table {
     border: thin solid gray;
-    font-size: .85em;
+    font-size: .9em;
     line-height: 1.2em;
     margin: 1em;
 }
 table td {
     vertical-align: top;
-    padding: .25em;
+    padding: .5em .75em;
+    line-height: 1.5em;
 }
 /* ========================================================================
    OPTION TEXT (gray background, Arial font)
