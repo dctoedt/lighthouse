@@ -250,10 +250,16 @@ h3 {
 }
 
 
-h4, h5, h6 {
+h4, h6 {
     color: #444;
     font-weight: bold;
     margin: 3em 0 0.5em 0;
+}
+
+h5 {
+    color: #444;
+    font-weight: bold;
+    margin: 2em 0 0.5em 0;
 }
 
 .cl7 h4 {
