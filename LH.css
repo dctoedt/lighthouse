@@ -253,7 +253,7 @@ h3 {
 h4, h5, h6 {
     color: #444;
     font-weight: bold;
-    margin: 2em 0 0.5em 0;
+    margin: 3em 0 0.5em 0;
 }
 
 .cl7 h4 {
@@ -479,7 +479,7 @@ div.pr-top h3 {
 div.pr-top h4 {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 1em;
-    margin-top: 2em;
+    margin-top: 3em;
 }
 
 div.pr-top .outline-text-4 ul {
