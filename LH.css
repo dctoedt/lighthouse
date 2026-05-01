@@ -30,7 +30,7 @@
 
 .subtitle {
     text-wrap: balance;
-    font-size: 1.2em !important;
+    font-size: 1.3em;
     hyphens: auto !important;
     margin-bottom: 1em;
     line-height: 1.5em;
@@ -222,8 +222,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 1.5em;
-    line-height: 1.8em;
+    font-size: 1.3em;
+    line-height: 1.6em;
 }
 
 h2 {
@@ -232,7 +232,8 @@ h2 {
     line-height: 140%;
 }
 
-.chap h2::before {
+.chap h2::before,
+.intro h2::before {
     content: "Chapter ";
     font-weight: normal;
     font-size: 0.8em;
@@ -319,6 +320,16 @@ a:visited {
     font-family: Arial;
 }
 
+.intro .outline-text-2 [role="doc-toc"] ul li,
+.toc-det .outline-text-2 [role="doc-toc"] ul li {
+    font-weight: bold;
+}
+
+div.intro .outline-text-2  [role="doc-toc"] ul li ul li,
+div.toc-det .outline-text-2  [role="doc-toc"] ul li ul li {
+    font-weight: normal;
+}
+
 [role="doc-toc"] ul li {
     margin-bottom: 0.4em;
 }
@@ -388,6 +399,7 @@ div.cl9 h3:before {
 
 
 div.chap span.section-number-2, 
+div.intro span.section-number-2, 
 div.cl5 span.section-number-3,
 div.cl7 span.section-number-3,
 span.section-number-4  {
@@ -396,6 +408,7 @@ span.section-number-4  {
 }
 
 div.chap span.section-number-2:after, 
+div.intro span.section-number-2:after, 
 span.section-number-3:after,
 span.section-number-4:after,
 span.section-number-4:after {
@@ -1038,7 +1051,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -17rem;
+    margin-top: -11rem;
     width: 10%;
 }
 
@@ -1188,7 +1201,8 @@ img {
    UTILITY CLASSES
    ======================================================================== */
 
-.chap {
+.chap,
+.intro {
     page-break-before: always;
 }
 
@@ -1582,7 +1596,8 @@ div.footdef {
     }
     
     /* Only break before explicitly marked chapters */
-    .chap {
+    .chap,
+    .intro {
         page-break-before: always;
     }
     
