@@ -110,9 +110,12 @@
     /* Clicking the overlay closes the drawer */
     overlay.addEventListener("click", closeDrawer);
 
-    /* Clicking any TOC link closes the drawer (navigating to anchor) */
+    /* Clicking any TOC link closes the drawer — but only when the click will
+     * actually navigate.  toc-collapse.js calls e.preventDefault() on a
+     * collapsed chapter link (expand-only, no navigation), so we check
+     * e.defaultPrevented to avoid closing the drawer in that case. */
     toc.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") {
+      if (e.target.tagName === "A" && !e.defaultPrevented) {
         closeDrawer();
       }
     });

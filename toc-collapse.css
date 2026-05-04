@@ -1,0 +1,37 @@
+/* ========================================================================
+   TOC COLLAPSE (toc-collapse.js)
+   ======================================================================== */
+
+/* Hidden child list */
+#text-table-of-contents ul.toc-collapsed {
+    display: none;
+}
+
+/* Triangle toggle button */
+.toc-toggle {
+    display: inline-block;
+    width: 1.2em;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.75em;
+    color: #2980B9;
+    vertical-align: middle;
+    margin-right: 0.1em;
+    /* Prevent the triangle from being selected as text */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.toc-toggle:hover {
+    color: var(--dk-green);
+}
+
+.toc-toggle:focus {
+    outline: 2px solid #2980B9;
+    border-radius: 2px;
+}
+
+/* When a parent <li> has a triangle, its <a> should still fill remaining width */
+#text-table-of-contents li:has(> .toc-toggle) > a {
+    display: inline;   /* override the block display so triangle sits beside it */
+}
