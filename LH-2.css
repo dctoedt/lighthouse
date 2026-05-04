@@ -1,0 +1,1703 @@
+/* ========================================================================
+   LIGHTHOUSE PROTOCOLS - HYBRID CSS
+   Combines your visual design with sticky sidebar navigation
+   Fixed anchor jumping issue + enhanced navigation
+   ======================================================================== */
+
+:root {
+    --content-max-width: 1200px;
+    --sidebar-width: 320px;
+    --content-padding: 20px;
+    --dk-green: #014c3d;
+    --md-green: #01735C;
+    --bl-bkg: #e6f1ff;
+    --bkg-pbl: #CDCDFE;
+    --gr-bkg: #f5f5f5;
+    --bkg-opt:  #d9d9d9;
+    --bl-fgd:  #2980B9;
+    --Cornsilk:#FFF8DC; 
+    --bkg-yellow: #fdfdce;
+    background-color: #fcfcfc;
+}
+
+/* CRITICAL: Anchor scroll positioning - accounts for sticky header */
+/*
+:target {
+    scroll-margin-top: 80px;
+}
+*/
+
+
+.subtitle {
+    text-wrap: balance;
+    font-size: 1.3em;
+    hyphens: auto !important;
+    margin-bottom: 1em;
+    line-height: 1.5em;
+    margin-right: 0em;
+}
+
+
+.subtitle i, .subtitle a {
+    font-size: 1em !important;
+}
+
+div.asis {
+    margin: 2rem -1rem 1rem -1rem;
+    padding: 1rem 1rem 0 1rem;
+    border: solid 5px DarkGray;
+}
+
+
+
+/* =================
+   SUBHEADING LEAD-IN
+   =================
+*/
+span.sh {
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+/* ========================================================================
+   STICKY SIDEBAR NAVIGATION
+   ======================================================================== */
+
+/* Hide the master TOC heading that org-mode generates */
+#outline-container-toc-chap > h2 {
+    display: none;
+}
+
+/* Navigation sidebar — slide-in drawer on all screen sizes */
+#table-of-contents {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    overflow-y: auto;
+    background: #f8f8f8;
+    border-right: 3px solid #2980B9;
+    padding: 1.5rem 1rem;
+    z-index: 2000;
+    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.3);
+    /* Hidden by default; JS adds .show to slide it in */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+#table-of-contents.show {
+    transform: translateX(0);
+}
+
+#table-of-contents h2 {
+    font-size: 1.1em;
+    color: #2980B9;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #2980B9;
+}
+
+#text-table-of-contents {
+    font-size: 0.9rem;
+}
+
+#text-table-of-contents > ul,
+[role="doc-toc"] ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#text-table-of-contents li {
+    margin-bottom: .8rem;
+    line-height: 1.4;
+}
+
+#text-table-of-contents a {
+    color: #2980B9;
+    text-decoration: none;
+    display: block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+
+#text-table-of-contents a:hover {
+    background-color: #e6f1ff;
+}
+
+/* Add visual indicator for current section */
+#text-table-of-contents a:target,
+#text-table-of-contents a:focus {
+    background-color: #d0e7ff;
+    font-weight: bold;
+}
+
+/* Adjust nested list indentation */
+#text-table-of-contents ul ul {
+    padding-left: 1rem;
+}
+
+
+[role="doc-toc"] ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1em 0 1em 0;
+}
+
+[role="doc-toc"] ul li {
+/*    font-weight: bold; */
+    margin-top: 1em;
+}
+
+[role="doc-toc"] ul li ul {
+    margin: 0em 1em 1em 1em;
+}
+
+[role="doc-toc"] ul li ul li {
+    font-weight: normal;
+    margin-top: .5em;
+}
+
+[role="doc-toc"] ul li ul li ul {
+    margin: 0em 2em;
+}
+
+
+/* ========================================================================
+   MAIN CONTENT - Shifted to make room for sidebar
+   ======================================================================== */
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    hyphens: auto;
+    max-width: 900px;
+    padding: 40px;
+    margin-left: 60px;   /* room for hamburger button; no sidebar offset */
+    border-left: none;
+}
+
+/* Wrapper for main content */
+#content {
+    margin-left: 0;
+}
+
+/* ========================================================================
+   STICKY TOP NAVIGATION (Contents | Top links)
+   ======================================================================== */
+
+.hlt {
+    background-color: var(--Cornsilk);
+    font-size: 0.85rem;
+    font-weight: bold;
+    position: fixed;
+    top: 0.5rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid #999;
+    border-radius: 4px;
+    z-index: 2000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hlt a {
+    margin: 0 0.5rem;
+    color: #2980B9;
+    text-decoration: none;
+}
+
+.hlt a:hover {
+    text-decoration: underline;
+}
+
+/* ========================================================================
+   BASE TYPOGRAPHY
+   ======================================================================== */
+
+p, li {
+    color: #444;
+    margin-bottom: .5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, "Times New Roman", serif;
+    text-wrap: balance;
+}
+
+h1 {
+    font-size: 1.3em;
+    line-height: 1.6em;
+}
+
+h2 {
+    margin: 3em 0 0.5em 0;
+    font-size: 1.5em;
+    line-height: 140%;
+}
+
+.chap h2::before,
+.intro h2::before {
+    content: "Chapter ";
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+/* Don't add "Chapter" before TOC headings */
+.toc h2::before,
+#outline-container-toc-chap h2::before {
+    content: "";
+}
+
+h3 {
+    font-size: 1.2em;
+    margin-top: 4em;
+}
+
+
+h4, h6 {
+    color: #444;
+    font-weight: bold;
+    margin: 3em 0 0.5em 0;
+}
+
+h5 {
+    color: #444;
+    font-weight: bold;
+    margin: 2em 0 0.5em 0;
+}
+
+.cl7 h4 {
+    margin-top: 1em;
+}
+
+h4, h5 {
+    font-weight: bold;
+}
+
+h5 {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1.1em;
+    font-weight: normal;
+    font-style: italic;
+}
+
+h5 i, h5 em {
+    font-weight: bold;
+}
+
+h6 {
+    font-weight: normal;
+}
+
+.addl {
+    background-color: #fcfcfc;
+    padding: 0;
+    margin: 0;
+}
+
+.addl h4 {
+    font-size: 1.1em;
+}
+
+.addl h5 {
+    font-size: 1em;
+}
+
+
+/* ========================================================================
+   LINKS
+   ======================================================================== */
+
+a {
+    text-decoration: none;
+    color: #2980B9;
+}
+
+a:visited {
+    color: #2980B9;
+}
+
+/* ========================================================================
+   LOCAL TABLES OF CONTENTS (within chapters)
+   ======================================================================== */
+
+[role="doc-toc"] * {
+    font-size: 1.3rem;
+    font-family: Arial;
+}
+
+.intro .outline-text-2 [role="doc-toc"] ul li,
+.toc-det .outline-text-2 [role="doc-toc"] ul li {
+    font-weight: bold;
+}
+
+div.intro .outline-text-2  [role="doc-toc"] ul li ul li,
+div.toc-det .outline-text-2  [role="doc-toc"] ul li ul li {
+    font-weight: normal;
+}
+
+[role="doc-toc"] ul li {
+    margin-bottom: 0.4em;
+}
+
+nav[role="doc-toc"]:not(#table-of-contents) h2 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/* Style for local TOCs (not the main sidebar) */
+div.toc-local {
+    background-color: #f8fbff;
+    border-left: 4px solid #2980B9;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+}
+
+/* The local TOC inside an addl section: override blue backgrounds to white.
+   Targets both div.toc-local and any element with role=doc-toc (org-mode varies). */
+.addl div.toc-local,
+.addl-body div.toc-local,
+.addl [role="doc-toc"],
+.addl-body [role="doc-toc"] {
+    background-color: #fcfcfc !important;
+    border-left-color: #9fc5e8;
+}
+
+
+div#text-toc-chap a:link,
+div#text-toc-chap a:active,
+div#text-toc-chap a:visited,
+div#text-toc-chap a:hover,
+div.toc-local a:link,
+div.toc-local a:active,
+div.toc-local a:visited,
+div.toc-local a:hover {
+    color: #2980B9;
+}
+
+nav div#text-table-of-contents a,
+nav div#text-table-of-contents i,
+nav div#text-table-of-contents li {
+    font-size: .9em !important;
+}
+
+/* ========================================================================
+   RULE TEXT (blue background, Arial font)
+   ======================================================================== */
+
+div.cl5 h3 {
+    background-color: #e6f1ff;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    padding: 1rem;
+    margin: 5rem -1rem 1rem -1rem;
+    line-height: 2rem;
+    font-size: 1.3em;
+}
+
+
+div.cl7 h5:before,
+div.cl9 h3:before {
+/*    content: "Protocol "; */
+    font-weight: normal;
+    font-size: .9em;
+}
+
+
+div.chap span.section-number-2, 
+div.intro span.section-number-2, 
+div.cl5 span.section-number-3,
+div.cl7 span.section-number-3,
+span.section-number-4  {
+    font-size: .9em;
+    font-weight: normal;
+}
+
+div.chap span.section-number-2:after, 
+div.intro span.section-number-2:after, 
+span.section-number-3:after,
+span.section-number-4:after,
+span.section-number-4:after {
+    content: "    ";
+}
+
+
+div.cl7 {
+    border-top: 3px black solid;
+    border-bottom: 3px black solid;
+}
+
+div.cl7 div.outline-text-3,
+div.cl7.outline-4 {
+    margin-top: 4em;
+    line-height: 1.8em;
+    background-color: #e6f1ff;
+    padding: 0.5em 0.5em 0.1em 1em;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+div.cl9 .outline-text-4 {
+    margin-top: 1em;
+    line-height: 1.8em;
+    background-color: #e6f1ff;
+    padding: 0.5em 0.5em 0.1em 1em;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+div.cl9 h3 {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1.2em;
+    margin-top: 1em;
+}
+
+
+div.cl7 h4,
+div.cl9 h4 {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+div.cl7 ol,
+div.cl7 ul {
+    margin-top: 0;
+}
+
+div.cl7 ol li {
+    list-display-type: none;
+}
+
+div.cl7 ol li ol {
+    margin-left: 1rem;
+}
+
+div.pr-top {
+    margin-top: 5em;
+    border: 2px gray solid;
+    padding: 2em;
+}
+
+div.pr-top .outline-text-4 {
+    margin-top: 1em;
+    line-height: 1.8em;
+    background-color: #e6f1ff;
+    padding: 0.5em 0.5em 0.5em 1em;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+/* Suppress the Protocol blue background inside addl sections.
+   Three-part selector beats div.pr-top .outline-text-4 on specificity. */
+div.pr-top div.addl .outline-text-4,
+div.pr-top div.addl-body .outline-text-4 {
+    background-color: #fcfcfc;
+    padding: 0;
+    margin-top: 0;
+}
+
+div.pr-top h3 {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    margin-top: 0em;
+}
+
+div.pr-top h4 {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1em;
+    margin-top: 3em;
+}
+
+div.pr-top .outline-text-4 ul {
+    list-style: none;
+}
+
+/* ===========
+   TABLE TEXT
+   ===========
+*/
+table {
+    border: thin solid gray;
+    font-size: .9em;
+    line-height: 1.2em;
+    margin: 1em;
+}
+table td {
+    vertical-align: top;
+    padding: .5em .75em;
+    line-height: 1.5em;
+}
+/* ========================================================================
+   OPTION TEXT (gray background, Arial font)
+   ======================================================================== */
+
+/*
+div.optn-txt.outline-4,
+div.optn-txt.outline-5 {
+    margin-top: 4em;
+    line-height: 1.8em;
+    background-color: #e1e1e1;
+    padding: 0.5em 0.5em 0.1em 1em;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+
+div.optn-txt.outline-4 h4,
+div.optn-txt.outline-5 h5 {
+    color: #444;
+    margin-top: 0;
+    margin-bottom: -4rem;
+    font-size: 1.1em;
+    padding: 0.5em 0.5em 3em 0;
+}
+
+
+div.optn-txt ol li {
+    margin-left: -2rem;
+}
+
+div.optn-text div.outline-text-5 ol li ol li {
+    margin-left: 10rem;
+}
+
+*/
+
+/* ========================================================================
+   RUN-IN SUBHEADINGS
+  ======================================================================== */
+/*
+div.cl8.outline-5 > h5,
+div.optn-txt.outline-5 > h5 {
+  display: inline;
+  font-size: inherit;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+div.cl8.outline-5 > h5:after,
+div.optn-txt.outline-5 > h5:after {
+    content: ":  ";
+}
+
+div.cl8.outline-5 > .outline-text-5,
+div.optn-txt.outline-5 > .outline-text-5 {
+  display: inline;
+}
+
+div.cl8.outline-5 > .outline-text-5 > p:first-child,
+div.optn-txt.outline-5 > .outline-text-5 > p:first-child {
+  display: inline;
+}
+
+div.cl8.outline-5::after,
+div.optn-txt.outline-5::after {
+  content: "";
+  display: block;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+*/
+span.section-number-5 {
+    font-size: .9em;
+    font-weight: normal;
+    padding-right: .5em;
+}
+
+
+/* ========================================================================
+   FIELD NOTES / ADDITIONAL NOTES
+   ======================================================================== */
+
+div.addl div.outline-text-3 p {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1em;
+}
+
+
+
+/* ========================================================================
+   COMMENTARY / NOTES (.cmtry class) - FIXED
+   ======================================================================== */
+
+/* Style for commentary sections (typically h5 or h6 level) */
+.cmtry {
+    font-family: Georgia, "Times New Roman", serif;
+    margin: .5em .5em 1em .5em;
+    background-color: #fcfcfc;
+    padding: .1em .75em;
+}
+
+
+.cmtry h6, .cmtry h7 {
+    display: none;
+/*
+    font-size: .9em;
+    color: #666;
+    margin: .2em 0 0.5em 0;
+    font-weight: normal;
+*/
+}
+/*
+.cmtry h6:after {
+    content: ":";
+}
+*/
+
+.cmtry .outline-text-5,
+.cmtry .outline-text-6,
+.cmtry .outline-text-7 {
+    color: #555;
+    font-style: normal;
+    line-height: 1.4em;
+    font-weight: normal;
+    background-color: #fcfcfc;
+}
+
+.cmtry p, .cmtry li {
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* Alternative: if cmtry is applied directly to divs */
+/*
+div.cmtry {
+    margin-left: -1rem;
+    font-size: 1.2em;
+    color: #666;
+}
+*/
+div.cmtry p {
+    color: #555;
+}
+
+/* ========================================================================
+   SPECIAL BOXES AND BORDERS
+   ======================================================================== */
+
+div.alt, .bordered {
+    padding: 0.5rem 2.5rem;
+    border: 3px solid #d5d5d5;
+    margin: 2rem 5rem;
+}
+
+div.bord {
+    padding: 0.5rem 1rem;
+    border: 3px solid #2980B9;
+    margin: 1rem 0;
+}
+
+.bbox, .bboxy, .bboxn {
+    font-size: 1.5em;
+}
+
+/* ========================================================================
+   LISTS
+   ======================================================================== */
+
+ol {
+    margin-left: 0;
+    list-style-position: inside;
+}
+
+ol li {
+    list-style-type: decimal;
+    margin-bottom: 1.5em;
+}
+
+ol li ol {
+    margin-left: 0;
+}
+
+ol li ol li {
+    list-style-type: lower-alpha;
+    margin-top: .5em;
+    margin-bottom: .75em;
+}
+
+ul li ul {
+    margin-top: .5em;
+}
+
+/* ========================================================================
+   STRIKETHROUGH
+   ======================================================================== */
+
+.na {
+    font-size: .9em;
+    color: gray;
+    text-decoration: line-through;
+    text-decoration-color: gray;
+}
+
+/* ========================================================================
+   CITE-TOGGLE / ASIDE-TOGGLE (cite-toggle.js)
+   ======================================================================== */
+
+/* addl-body is hidden by default when JS is active; JS sets display=""
+   to reveal it. Doing this in CSS ensures initial state is correct even
+   if JS runs late or body.style.display is overridden. */
+/* addl-body is visible by default; addl-open class is added on creation.
+   Hiding is done by removing addl-open (body falls back to this rule only
+   when the class is absent, but since we use explicit style.display in JS,
+   this rule primarily guards against flash-of-content before JS runs). */
+html.js-ready div.addl-body {
+    display: block;
+}
+
+html.js-ready div.addl-body:not(.addl-open) {
+    display: none;
+}
+
+/* JS-enabled: neutralize the cite wrapper box so the inline toggle
+   button and content span sit naturally in running text. */
+html.js-ready cite {
+    display: inline !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/* JS-enabled: aside stays as a visible block container; the toggle button
+   and content span live inside it. Reset margins/padding so it sits flush
+   with the surrounding text rather than using the default aside indentation. */
+html.js-ready aside {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/* The toggle button (shared appearance for both cite and aside) */
+.cite-toggle,
+.aside-toggle {
+    display: inline;
+    cursor: pointer;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 0.8em;
+    font-style: normal;
+    color: #1a6bbd;
+    border: 1px solid #9fc5e8;
+    border-radius: 3px;
+    padding: 0.1em 0.45em;
+    margin: 0 0.25em;
+    white-space: nowrap;
+    user-select: none;
+    vertical-align: baseline;
+}
+
+.aside-toggle {
+    background-color: #fcfcfc;
+}
+
+.cite-toggle {
+    background-color: #eaf3fc;
+}
+
+.cite-toggle:hover,
+.aside-toggle:hover {
+    background-color: #d0e7ff;
+}
+
+.cite-toggle:active,
+.aside-toggle:active {
+    background-color: #b8d8f8;
+}
+
+/* Hidden state: cite-content / aside-content not yet toggled open */
+.cite-content,
+.aside-content {
+    display: none;
+    font-style: normal;
+}
+
+/* Revealed state */
+.cite-content.open,
+.aside-content.open {
+    font-family: Georgia, "Times New Roman", serif;
+    display: inline-block;
+    background-color: #fcfcfc;
+/*
+    font-size: .8em; 
+    padding: .5em .2em .5em 1em;
+    margin-top: .5em;
+    line-height: 1.5em;
+*/
+}
+
+
+/* Section-level "[ expand notes ]" / "[ collapse notes ]" link */
+.section-expander-wrapper {
+    margin: 0.25em 0 0.5em 0;
+}
+
+.section-expander {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 0.75em;
+    color: #1a6bbd;
+    cursor: pointer;
+    user-select: none;
+    letter-spacing: 0.01em;
+}
+
+.section-expander:hover {
+    text-decoration: underline;
+}
+
+/* addl-toggle: "[ show ]" / "[ hide ]" link appended to the section heading.
+   Styled like section-expander — plain text link, no box. */
+.addl-toggle {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 0.7em;
+    color: #1a6bbd;
+    cursor: pointer;
+    user-select: none;
+    margin-left: 0.6em;
+    vertical-align: middle;
+}
+
+.addl-toggle:hover {
+    text-decoration: underline;
+}
+
+/* ========================================================================
+   CITATIONS AND ASIDES
+   ======================================================================== */
+
+/* Citation margin notes */
+/* Remove from normal flow */
+/*
+cite, aside {
+  float: right;
+  clear: right;
+  */
+ /* Position in right margin */
+/* Margin-right = Width + desired gap from text */
+/*
+  width: 200px;
+  margin-right: -240px; 
+  margin-left: 20px;
+  margin-top: .5rem;
+  margin-bottom: 1em;
+ */
+
+/*aside, cite */
+aside {
+  display: block;
+  /* Visual styling */
+  font-size: .9em;
+  line-height: 1.4;
+  font-style: normal; /* Override browser default italic */
+  color: #666;
+  
+  /* Prevent orphaned citations */
+  page-break-inside: avoid;
+}
+
+/* Position */
+/*
+  cite {
+    margin-left: 0;
+    padding: 0.75em;
+    background-color: #f5f5f5;
+    background-color: #f8f8f8;
+    border-left: 3px solid #ccc;
+    font-size: 0.9em;
+  }
+*/
+
+
+
+aside {
+    margin: .5em 0 1rem 8rem;
+    padding: 0.75em;
+    background-color: #fcfcfc;
+}
+
+/*cite {
+    margin: 0em 0 1rem 2rem;
+}
+*/
+
+.cl7 aside {
+    background-color: #fcfcfc;
+    padding: .5em 1em;
+}
+
+/*
+aside cite {
+    display: inline;
+    font-size: 1em;
+    margin: 0 !important;
+}
+*/
+/*
+li cite, li aside {
+    margin-left: 5em;
+}
+*/
+
+/* Ensure parent containers can accommodate margin notes */
+/*
+p:has(cite),
+li:has(cite) {
+  position: relative;
+}
+*/
+/* Alternative approach if the above doesn't align perfectly */
+/*
+p cite:first-child,
+li cite:first-child {
+  margin-top: 0;
+}
+*/
+
+/* Container needs right margin to make space for notes */
+/* padding-right accommodate the margin note width */
+/*
+#content {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 260px;
+  padding-left: 20px;
+}
+*/
+/* Tablet: Stack citations below on narrower screens */
+@media (max-width: 1024px) {
+  cite {
+    float: none;
+    width: auto;
+    margin-right: 0;
+    margin-left: 2em;
+    margin-top: 0.5em;
+    display: block;
+    border-left: 3px solid #ddd;
+    padding-left: 1em;
+  }
+  
+aside cite {
+    display: inline;
+    font-size: 1em;
+    margin: 0 !important;
+}
+
+  #content {
+    padding-right: 20px;
+    max-width: 100%;
+  }
+}
+
+/* Mobile: Full width with clear visual distinction */
+@media (max-width: 640px) {
+  cite {
+    margin-left: 0;
+    padding: 0.75em;
+    background-color: #f8f8f8;
+    border-left: 3px solid #ccc;
+    font-size: 0.9em;
+  }
+  
+aside cite {
+    display: inline;
+    font-size: 1em;
+    margin: 0 !important;
+}
+
+  #content {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+cite, aside {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: normal;
+}
+
+cite a, cite i, aside a, aside i {
+    font-size: 1em;
+}
+
+blockquote {
+    font-style: normal;
+    margin: 0rem 2em 0 2em;
+    padding: .5em 1em;
+    background-color: #e9e9e9; 
+}
+
+.cl7 blockquote {
+    margin: .5rem 0 0 5rem;
+
+}
+
+/* ========================================================================
+   IMAGES
+   ======================================================================== */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cc {
+    width: 150px;
+    margin-top: 0.5rem;
+    display: block;
+    float: right;
+    margin-right: -5px;
+    padding: 0 0 0.5rem 1rem;
+}
+
+/* Photo positioning classes */
+.photo-lighthouse {
+    display: block;
+    float: right;
+    margin-right: -40px;
+    padding: 0 0 0.5rem 0.5rem;
+    margin-top: -11rem;
+    width: 10%;
+}
+
+.photo-lighthouse-nocd {
+    display: block;
+    float: right;
+    margin-right: -20px;
+    padding: 0 0 0.5rem 0.5rem;
+    margin-top: -6rem;
+    width: 10%;
+}
+
+.photo-logo {
+    position: relative;
+    top: -100px;
+    left: calc(90%);
+    width: 9%;
+    margin-bottom: -5rem;
+}
+
+.photo-logo-gears-embed {
+    position: relative;
+    top: -200px;
+    left: calc(90%);
+    width: 80px;
+    margin-bottom: -10rem;
+}
+
+.photo-logo-no-sign { 
+    position: relative;
+    float: right;
+    top: -20px;
+    right: -30px;
+    width: 13%;
+    margin: 0 0 -40rem 0;
+}
+
+.photo-no-legalese {
+    float: right;
+    width: 12%;
+}
+
+.photo-at-right {
+    display: block;
+    float: right;
+    margin-right: 0;
+    padding: 0 0 0.5rem 1rem;
+}
+
+.photo-dct {
+    display: block;
+    float: right;
+    width: 160px;
+    margin-right: -2rem;
+    padding-left: 20px;
+    position: relative;
+}
+
+.photo-left {
+    margin: 0.5rem 3rem 1rem 0;
+    float: left;
+}
+
+.photo-up {
+    position: relative;
+    top: -100px;
+}
+
+/* Width classes for images */
+.photowidth05 { width: 5%; }
+.photowidth07 { width: 7%; }
+.photowidth08 { width: 8%; }
+.photowidth09 { width: 9%; }
+.photowidth10 { width: 10%; }
+.photowidth11 { width: 11%; }
+.photowidth12 { width: 12%; }
+.photowidth15 { width: 15%; }
+.photowidth18 { width: 18%; }
+.photowidth20 { width: 20%; }
+.photowidth22 { width: 22%; }
+.photowidth25 { width: 25%; }
+.photowidth30 { width: 30%; }
+.photowidth35 { width: 35%; }
+.photowidth40 { width: 40%; }
+.photowidth45 { width: 45%; }
+.photowidth60 { width: 60%; }
+
+/* Centered photo classes */
+.photocenter10, 
+.photocenter15,
+.photocenter20, 
+.photocenter25, 
+.photocenter30, 
+.photocenter50, 
+.photocenter60, 
+.photocenter80, 
+.photocenter90, 
+.photocenter90C, 
+.photocenter100 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photocenter10 { width: 10%; }
+.photocenter15 { width: 15%; text-align: center; }
+.photocenter20 { width: 20%; }
+.photocenter25 { width: 25%; }
+.photocenter30 { width: 30%; }
+.photocenter50 { width: 50%; }
+.photocenter60 { width: 60%; text-align: center; }
+.photocenter80 { width: 80%; padding: 0.5em; }
+.photocenter90 { width: 90%; padding: 0.5em; }
+.photocenter100 { width: 100%; padding: 0.5em; }
+
+.photowidth90L {
+    display: block;
+    margin-left: auto;
+    padding-bottom: 2rem;
+}
+
+.photowidth90C {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-bottom: 5rem;
+}
+
+.photowidth80C {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    padding: 0.5em;
+}
+
+.photowidth60C {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding: 0.5em;
+}
+
+/* ========================================================================
+   UTILITY CLASSES
+   ======================================================================== */
+
+.chap,
+.intro {
+    page-break-before: always;
+}
+
+div.gray-shaded {
+     background-color: #e5e5e5;
+    padding: 0.5em 0.5em 0.1em 1em;
+}
+
+.h {
+    font-weight: bold;
+    color: #2980B9;
+}
+
+/*
+.fl {
+    float: left;
+    margin-right: 1rem;
+}
+*/
+
+.NUMN {
+    margin-left: 2rem;
+}
+
+.NUMINDENT {
+    margin-left: 4rem;
+}
+
+.NUMNOINDENT {
+    margin-left: 0;
+}
+
+.v {
+    color: brown;
+}
+
+/* ========================================================================
+   FOOTNOTES
+   ======================================================================== */
+
+
+div.footpara p, div.footpara li {
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+sup:has(a.footnum),
+sup:has(a.footref) {
+  vertical-align: baseline;
+  font-size: 80% !important;
+  position: static;
+}
+
+div.footpara, 
+div.footpara p:first-of-type {
+    display: inline;
+}
+
+div.footpara p {
+    color: #444;
+}
+
+div.footpara div.alt p,
+div.footpara div.bordered p {
+    margin: 0;
+}
+
+div.footdef {
+    margin: 1.5rem 0 0 0;
+}
+
+.footnum::before, .footref::before {
+    content: " [";
+}
+
+.footnum::after, .footref::after {
+    content: "]";
+}
+
+.footref {
+    margin-left: 0;
+    padding: 1px;
+}
+
+/* ========================================================================
+   MOBILE MENU TOGGLE BUTTON
+   ======================================================================== */
+
+/* Hamburger menu button — always visible, fixed top-left */
+#menu-toggle {
+    display: block;
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 3000;
+    background: #2980B9;
+    color: white;
+    border: none;
+    padding: 0.55rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    line-height: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+#menu-toggle:hover {
+    background: #1e6a9e;
+}
+
+#menu-toggle:active {
+    transform: scale(0.95);
+}
+
+/* ========================================================================
+   FIXED "NOT LEGAL ADVICE" NOTICE — top-right
+   ======================================================================== */
+
+#nla-notice {
+    position: fixed;
+    top: 0.6rem;
+    /* left is set dynamically by lighthouse-2.js to track content column right edge */
+    z-index: 3000;
+    background: var(--Cornsilk);
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 0.3rem 0.65rem;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 0.78rem;
+    line-height: 1.3;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    white-space: nowrap;   /* single line; no forced wrapping */
+    text-align: center;
+    /* Hidden until JS positions it, to avoid a flash at wrong location */
+    visibility: hidden;
+}
+
+#nla-notice a {
+    color: #2980B9;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+#nla-notice a:hover {
+    text-decoration: underline;
+}
+
+/* Overlay for mobile menu */
+#sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#sidebar-overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+/* ========================================================================
+   RESPONSIVE DESIGN - Tablet/Desktop
+   ======================================================================== */
+
+@media (max-width: 1200px) {
+    body {
+        max-width: 700px;
+        padding: 30px 30px 30px 60px;
+    }
+}
+
+/* ========================================================================
+   RESPONSIVE DESIGN - Mobile/Phone
+   ======================================================================== */
+
+@media (max-width: 900px) {
+    /* Main content takes full width on mobile */
+    body {
+        margin-left: 0;
+        padding: 1rem 1rem 1rem 60px;
+        max-width: 100%;
+        font-size: 18px;
+    }
+
+    /* NLA notice: hide on very small screens where it would overlap content */
+    #nla-notice {
+        display: none;
+    }
+    
+    /* Make headings slightly smaller on mobile */
+    h1 {
+        font-size: 1.3em;
+    }
+    
+    h2 {
+        font-size: 1.3em;
+        margin: 2em 0 0.5em 0;
+    }
+    
+    h3 {
+        font-size: 1.15em;
+    }
+
+
+    /* Adjust Protocol/Option boxes for mobile */
+    div.cl5 h3,
+    div.cl7 div.outline-text-3,
+    div.cl7 div.outline-text-4,
+    div.optn-txt div.outline-text-4,
+    div.optn-txt.outline-5 div.outline-text-5 {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        border-radius: 0; /* Extend to edges on mobile */
+    }
+    
+    /* Make images responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Float images stack on mobile */
+    .photo-at-right,
+    .photo-left,
+    .photo-lighthouse,
+    .cc {
+        float: none;
+        display: block;
+        margin: 1rem auto;
+        max-width: 80%;
+    }
+    
+    /* Lists with better mobile spacing */
+    ol, ul {
+        padding-left: 1.5rem;
+    }
+    
+    /* Reduce margins on mobile */
+    .cmtry {
+        margin-left: 1rem;
+    }
+    
+    div.bord,
+    .bbox,
+    div.alt,
+    .bordered {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+        padding: 0.75rem;
+    }
+    
+    #table-of-contents {
+        width: 85%; /* Wider sidebar on very small screens */
+        max-width: 300px;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+    
+    .hlt {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
+    }
+}
+
+/* ========================================================================
+   PRINT/PDF STYLES - Optimized to prevent excessive page count
+   ======================================================================== */
+
+@media print {
+    /* Critical: Set proper page size and margins */
+    @page {
+        size: letter; /* or A4 */
+        margin: 0.75in 0.75in 1in 0.75in; /* top, right, bottom, left */
+    }
+    
+    /* Hide navigation elements */
+    #table-of-contents,
+    #outline-container-toc-chap,
+    .hlt,
+    #menu-toggle,
+    #nla-notice,
+    #sidebar-overlay {
+        display: none !important;
+    }
+    
+    /* Reset body for print */
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        font-size: 12pt !important; /* Smaller font for print efficiency */
+        line-height: 1.5 !important; /* Tighter line spacing */
+        border: none !important;
+        background: white !important;
+    }
+    
+    /* Optimize content wrapper */
+    #content {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* Reduce heading sizes for print */
+    h1 {
+        font-size: 16pt !important;
+        margin: 12pt 0 6pt 0 !important;
+        page-break-after: avoid;
+    }
+    
+    h2 {
+        font-size: 14pt !important;
+        margin: 12pt 0 6pt 0 !important;
+        page-break-after: avoid;
+    }
+    
+    h2::before {
+        content: ""; /* Remove "Chapter" prefix in print */
+    }
+    
+    h3 {
+        font-size: 12pt !important;
+        margin: 10pt 0 4pt 0 !important;
+        page-break-after: avoid;
+    }
+    
+    h4, h5, h6 {
+        font-size: 11pt !important;
+        margin: 8pt 0 4pt 0 !important;
+        page-break-after: avoid;
+    }
+    
+    /* Optimize paragraph spacing */
+    p {
+        margin: 0 0 6pt 0 !important;
+        font-size: 11pt !important;
+        orphans: 3;
+        widows: 3;
+    }
+    
+    /* Compact lists */
+    ul, ol {
+        margin: 6pt 0 !important;
+    }
+    
+    li {
+        margin-bottom: 3pt !important;
+        font-size: 11pt !important;
+    }
+    
+    /* Protocol/Option boxes - compact but preserve styling */
+    div.cl5 h3,
+    div.cl7 div.outline-text-3,
+    div.cl7 div.outline-text-4 {
+        background-color: #e6f1ff !important;
+        padding: 6pt 8pt !important;
+        margin: 8pt 0 !important;
+        font-size: 10pt !important;
+        page-break-inside: avoid;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+.optn-txt {
+        background-color: #e1e1e1 !important;
+        padding: 6pt 8pt !important;
+        margin: 8pt 0 !important;
+        font-size: 10pt !important;
+        page-break-inside: avoid;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    /* Smart page breaks */
+    h2 {
+        page-break-before: auto; /* Don't force new page for every chapter */
+    }
+    
+    h3, h4, h5, h6 {
+        page-break-before: avoid;
+        page-break-after: avoid;
+    }
+    
+    /* Only break before explicitly marked chapters */
+    .chap,
+    .intro {
+        page-break-before: always;
+    }
+    
+    /* Avoid breaking inside these elements */
+    blockquote,
+    div.bord,
+    .bbox,
+    div.alt,
+    .bordered,
+    cite,
+    aside,
+    div.footdef {
+        page-break-inside: avoid;
+    }
+    
+    /* Commentary sections - smaller font */
+    .cmtry,
+    div.cmtry {
+        font-size: 9pt !important;
+        margin: 6pt 0 6pt 12pt !important;
+    }
+    
+    /* Images - prevent page breaks and size appropriately */
+    img {
+        max-width: 4in !important;
+        max-height: 3in !important;
+        page-break-inside: avoid;
+    }
+    
+    /* Hide decorative images in print */
+    .photo-lighthouse,
+    .photo-lighthouse-nocd,
+    .photo-logo,
+    .photo-up,
+    .cc {
+        display: none !important; /* Hide decorative images */
+    }
+    
+    /* Keep content images but size them appropriately */
+    .photo-at-right,
+    .photo-left {
+        display: block;
+        float: none;
+        margin: 6pt auto;
+        max-width: 3in;
+    }
+    
+    /* Footnotes - compact */
+    div.footpara {
+        font-size: 9pt !important;
+    }
+    
+    div.footdef {
+        margin: 4pt 0 !important;
+    }
+    
+    /* Links - show URLs in print */
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        font-style: italic;
+    }
+    
+    /* Don't show URLs for internal links */
+    a[href^="#"]::after {
+        content: "";
+    }
+    
+    /* Ensure proper text rendering */
+    * {
+        background: transparent !important;
+        color: black !important;
+        text-shadow: none !important;
+        filter: none !important;
+        -ms-filter: none !important;
+    }
+    
+    /* Preserve background colors for Protocol/Option boxes only */
+    div.cl5 h3,
+    div.cl7 div.outline-text-3,
+    div.cl7 div.outline-text-4,
+    div.optn-txt div.outline-text-4,
+    div.optn-txt.outline-5 div.outline-text-5 {
+        background: inherit !important; /* This preserves the blue/gray we set above */
+    }
+}
