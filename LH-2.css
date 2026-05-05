@@ -382,6 +382,7 @@ div.toc-local a:hover {
 
 nav div#text-table-of-contents a,
 nav div#text-table-of-contents i,
+nav div#text-table-of-contents b,
 nav div#text-table-of-contents li {
     font-size: .9em !important;
 }
