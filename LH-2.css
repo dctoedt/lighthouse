@@ -413,6 +413,7 @@ div.chap span.section-number-2,
 div.intro span.section-number-2, 
 div.cl5 span.section-number-3,
 div.cl7 span.section-number-3,
+div.pr-top span.section-number-3,
 span.section-number-4  {
     font-size: .9em;
     font-weight: normal;
@@ -482,6 +483,13 @@ div.pr-top {
     border: 2px gray solid;
     padding: 2em;
 }
+
+div.pr-top h3:before {
+    content: "Clause ";
+    font-weight: normal;
+    font-size: .9em;
+}
+
 
 div.pr-top .outline-text-4 {
     margin-top: 1em;
