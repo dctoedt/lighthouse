@@ -60,6 +60,8 @@ span.sh {
 }
 
 
+
+
 /* ========================================================================
    STICKY SIDEBAR NAVIGATION
    ======================================================================== */
@@ -228,6 +230,13 @@ p, li {
 }
 
 .org-center { text-align: center; }
+
+.header-rule {
+    border: none;
+    border-top: 1px solid #ccc;
+    width: 55%;
+    margin: 0.9em auto 1.1em auto;
+}
 
 h1, h2, h3, h4, h5, h6 {
     font-family: Georgia, "Times New Roman", serif;
@@ -1068,11 +1077,11 @@ img {
 }
 
 .cc {
-    width: 150px;
+    width: 120px;
     margin-top: 0.5rem;
     display: block;
     float: right;
-    margin-right: -5px;
+    margin-right: -40px;
     padding: 0 0 0.5rem 1rem;
 }
 
@@ -1082,8 +1091,8 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -21rem;
-    width: 8%;
+    margin-top: -17rem;
+    width: 6%;
 }
 
 .photo-lighthouse-nocd {
