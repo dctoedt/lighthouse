@@ -234,14 +234,6 @@ h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
 }
 
-/* Thin rule separating the centered header zone from the body */
-.header-rule {
-    border: none;
-    border-top: 1px solid #ccc;
-    width: 55%;
-    margin: 0.9em auto 1.1em auto;
-}
-
 h1 {
     font-size: 1.8em;
     line-height: 1.6em;
@@ -1076,7 +1068,7 @@ img {
 }
 
 .cc {
-    width: 100px;
+    width: 150px;
     margin-top: 0.5rem;
     display: block;
     float: right;
@@ -1090,7 +1082,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -13rem;
+    margin-top: -21rem;
     width: 8%;
 }
 

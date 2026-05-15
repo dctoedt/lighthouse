@@ -4,8 +4,6 @@
  *
  * Replaces lighthouse-mobile.js for the no-sidebar layout introduced in LH-2.css.
  * No external dependencies.
-*
-* New function to inject lighthouse picture
  *
  * Usage in org-mode file header:
  *   #+HTML_HEAD: <script src="lighthouse-2.js" defer></script>
@@ -137,14 +135,4 @@
     init();
   }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const hdr = document.querySelector('header');
-    if (hdr) {
-        const img = document.createElement('img');
-        img.src = './img/!Cape-Henry-Lighthouse-Carol-M-Highsmith-LOC.png';
-        img.alt = 'Cape Henry Lighthouse, Carol M. Highsmith (Library of Congress)';
-        img.className = 'photo-lighthouse';
-        hdr.appendChild(img);
-    }
-});
 })();
