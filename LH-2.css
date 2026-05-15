@@ -787,8 +787,10 @@ html.js-ready div.addl-body:not(.addl-open) {
    button and content span sit naturally in running text. */
 html.js-ready cite {
     display: inline !important;
+/*
     margin: 0 !important;
     padding: 0 !important;
+*/
     background-color: transparent !important;
     border: none !important;
 }
@@ -798,8 +800,11 @@ html.js-ready cite {
    with the surrounding text rather than using the default aside indentation. */
 html.js-ready aside {
     display: block !important;
+/*
     margin: 0 !important;
     padding: 0 !important;
+*/
+    margin-top: -1em;
     background-color: transparent !important;
     border: none !important;
 }
