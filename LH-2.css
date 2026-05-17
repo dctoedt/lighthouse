@@ -950,10 +950,11 @@ aside {
 
 
 aside {
-    margin: .5em 0 1rem 8rem;
+    margin: .5em 0 1rem 10rem;
     padding: 0.75em;
     background-color: #fcfcfc;
 }
+
 
 /*cite {
     margin: 0em 0 1rem 2rem;
