@@ -224,32 +224,19 @@
   }
 
   function initAsideToggles() {
+    /* <aside> elements render their content directly — no per-aside toggle.
+       We wrap the content in an aside-content span (open by default) so that
+       the global "hide all notes" control can reach it.
+       IMPORTANT: move live child nodes rather than copying via innerHTML, so
+       that event listeners attached by initCiteToggles are preserved. */
     document.querySelectorAll("aside").forEach(function (aside) {
       var content = document.createElement("span");
-      content.className = "aside-content";
-      content.innerHTML = aside.innerHTML;
-
-      var toggle = document.createElement("span");
-      toggle.className = "aside-toggle";
-      toggle.textContent = "Hide note";
-      toggle.setAttribute("role", "button");
-      toggle.setAttribute("tabindex", "0");
-      toggle.setAttribute("aria-expanded", "true");
-
-      function doToggle() {
-        var isOpen = content.classList.toggle("open");
-        toggle.textContent = isOpen ? "Hide note" : "Show note";
-        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      content.className = "aside-content open";
+      /* Move every existing child node into the wrapper span */
+      while (aside.firstChild) {
+        content.appendChild(aside.firstChild);
       }
-      toggle.addEventListener("click", doToggle);
-      toggle.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); doToggle(); }
-      });
-
-      aside.innerHTML = "";
-      content.classList.add("open");
       aside.appendChild(content);
-      aside.appendChild(toggle);
     });
   }
 
@@ -456,12 +443,140 @@
     });
   }
 
+  /* ------------------------------------------------------------------ *
+   * HIDE ALL NOTES — injects a global toggle into the .hlt bar
+   *
+   * Targets every note-type the page uses:
+   *   • aside-content spans  (inside <aside>)
+   *   • addl-body divs        (Field Notes)
+   *   • cmtry body divs       (commentary outline-text-* inside .cmtry)
+   *
+   * The control is appended to the first .hlt element found; if none
+   * exists it is prepended to #content.
+   * ------------------------------------------------------------------ */
+  function initHideAllNotes() {
+
+    /* Collect all note bodies that should respond to the global toggle.
+       Called fresh each time so late-initialised bodies are included. */
+    function allNoteBodies() {
+      var bodies = [];
+      /* aside-content spans */
+      document.querySelectorAll(".aside-content").forEach(function (el) {
+        bodies.push({ type: "aside", el: el });
+      });
+      /* addl-body divs — skip any that have no corresponding addl-toggle
+         (edge case: empty field-note sections) */
+      document.querySelectorAll("div.addl-body").forEach(function (el) {
+        bodies.push({ type: "addl", el: el });
+      });
+      /* cmtry outline-text divs */
+      document.querySelectorAll(
+        "div.cmtry div.outline-text-5, div.cmtry div.outline-text-6, div.cmtry div.outline-text-7"
+      ).forEach(function (el) {
+        bodies.push({ type: "cmtry", el: el });
+      });
+      return bodies;
+    }
+
+    function allVisible(bodies) {
+      return bodies.every(function (b) {
+        if (b.type === "aside") { return b.el.classList.contains("open"); }
+        if (b.type === "addl")  { return b.el.style.display !== "none"; }
+        if (b.type === "cmtry") { return b.el.style.display !== "none"; }
+        return true;
+      });
+    }
+
+    /* Sync the addl-toggle buttons so their per-note labels stay accurate */
+    function syncAddlToggles(showing) {
+      document.querySelectorAll("[data-addl-toggle='true']").forEach(function (t) {
+        t.textContent = showing ? "[ hide note ]" : "[ show note ]";
+        t.setAttribute("aria-expanded", showing ? "true" : "false");
+      });
+      document.querySelectorAll("[data-cmtry-toggle='true']").forEach(function (t) {
+        t.textContent = showing ? "Hide note" : "Show note";
+        t.setAttribute("aria-expanded", showing ? "true" : "false");
+      });
+      /* Section expanders ([ expand/collapse notes ]) */
+      document.querySelectorAll(".section-expander").forEach(function (se) {
+        se.textContent = showing ? "[ collapse notes ]" : "[ expand notes ]";
+      });
+    }
+
+    function setAllNotes(show) {
+      allNoteBodies().forEach(function (b) {
+        if (b.type === "aside") {
+          if (show) { b.el.classList.add("open"); }
+          else      { b.el.classList.remove("open"); }
+        } else {
+          b.el.style.display = show ? "" : "none";
+        }
+      });
+      syncAddlToggles(show);
+    }
+
+    function updateLabel() {
+      var bodies = allNoteBodies();
+      if (bodies.length === 0) { return; }
+      var showing = allVisible(bodies);
+      globalToggle.textContent = showing ? "[ hide all notes ]" : "[ show all notes ]";
+      globalToggle.setAttribute("aria-expanded", showing ? "true" : "false");
+    }
+
+    var globalToggle = document.createElement("span");
+    globalToggle.id = "global-notes-toggle";
+    globalToggle.setAttribute("role", "button");
+    globalToggle.setAttribute("tabindex", "0");
+
+    function doToggle() {
+      var showing = allVisible(allNoteBodies());
+      setAllNotes(!showing);
+      updateLabel();
+    }
+    globalToggle.addEventListener("click", doToggle);
+    globalToggle.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); doToggle(); }
+    });
+
+    /* Insert into .hlt bar if present; otherwise prepend to #content */
+    var hlt = document.querySelector(".hlt");
+    if (hlt) {
+      /* Add a separator then the toggle link */
+      var sep = document.createTextNode(" | ");
+      hlt.appendChild(sep);
+      hlt.appendChild(globalToggle);
+    } else {
+      var wrapper = document.createElement("div");
+      wrapper.style.cssText = "margin-bottom:1em;font-size:0.85rem;";
+      wrapper.appendChild(globalToggle);
+      var content = document.getElementById("content");
+      if (content) { content.insertBefore(wrapper, content.firstChild); }
+      else { document.body.insertBefore(wrapper, document.body.firstChild); }
+    }
+
+    updateLabel();
+
+    /* Re-check label whenever any individual note toggle fires */
+    document.addEventListener("click", function (e) {
+      var t = e.target;
+      if (
+        t.classList.contains("aside-toggle") ||
+        t.classList.contains("addl-toggle")  ||
+        t.classList.contains("section-expander")
+      ) {
+        /* defer so the toggle's own handler runs first */
+        setTimeout(updateLabel, 0);
+      }
+    });
+  }
+
   function initCiteAll() {
     initCiteToggles();
     initAsideToggles();
     initCmtryToggles();
     initAddlToggles();
     initSectionExpanders();
+    initHideAllNotes();   /* global toggle — must run after all others */
   }
 
 
