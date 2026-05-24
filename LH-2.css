@@ -33,9 +33,8 @@
     text-align: center;
     font-size: 1.3em;
     hyphens: auto !important;
-    margin-bottom: 1em;
+    margin: -.5em 0 0 0;
     line-height: 1.5em;
-    margin-right: 0em;
 }
 
 
@@ -486,10 +485,6 @@ div.cl7 ul {
     margin-top: 0;
 }
 
-div.cl7 ol li {
-    list-display-type: none;
-}
-
 div.cl7 ol li ol {
     margin-left: 1rem;
 }
@@ -812,7 +807,7 @@ html.js-ready aside {
     padding: 0 !important;
 */
     margin-top: -1em;
-    background-color: transparent !important;
+/*    background-color: transparent !important; */
     border: none !important;
 }
 
@@ -868,15 +863,13 @@ html.js-ready aside {
 }
 
 /* Hidden state: cite-content / aside-content not yet toggled open */
-.cite-content,
-.aside-content {
+.cite-content {
     display: none;
     font-style: normal;
 }
 
 /* Revealed state */
-.cite-content.open,
-.aside-content.open {
+.cite-content.open {
     font-family: Georgia, "Times New Roman", serif;
     display: inline-block;
     background-color: #fcfcfc;
@@ -948,7 +941,7 @@ cite, aside {
 aside {
   display: block;
   /* Visual styling */
-  font-size: .9em;
+  font-size: .88em;
   line-height: 1.4;
   font-style: normal; /* Override browser default italic */
   color: #666;
@@ -969,12 +962,9 @@ aside {
   }
 */
 
-
-
 aside {
-    margin: .5em 0 1rem 10rem;
-    padding: 0.75em;
-    background-color: #fcfcfc;
+    margin: 2rem 5em 2em 5em;
+    padding-top: .75em;
 }
 
 
@@ -982,11 +972,6 @@ aside {
     margin: 0em 0 1rem 2rem;
 }
 */
-
-.cl7 aside {
-    background-color: #fcfcfc;
-    padding: .5em 1em;
-}
 
 /*
 aside cite {
@@ -1119,7 +1104,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -17rem;
+    margin-top: -22rem;
     width: 6%;
 }
 

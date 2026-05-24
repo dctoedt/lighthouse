@@ -572,7 +572,7 @@
 
   function initCiteAll() {
     initCiteToggles();
-    initAsideToggles();
+/*    initAsideToggles(); */
     initCmtryToggles();
     initAddlToggles();
     initSectionExpanders();
