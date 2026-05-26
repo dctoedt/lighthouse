@@ -1157,8 +1157,7 @@ img {
 .photo-dct {
     display: block;
     float: right;
-    width: 160px;
-    margin-right: -2rem;
+    width: 180px;
     padding-left: 20px;
     position: relative;
 }
