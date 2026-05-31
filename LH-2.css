@@ -27,6 +27,10 @@
 }
 */
 
+red {
+    color: brown;
+    text-transform: uppercase;
+}
 
 .subtitle {
     text-wrap: balance;
@@ -1104,7 +1108,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -20rem;
+    margin-top: -24rem;
     width: 10%;
 }
 
