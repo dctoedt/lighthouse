@@ -500,7 +500,7 @@ div.pr-top {
 }
 
 div.pr-top h3:before {
-    content: "Clause ";
+    content: "Rule ";
     font-weight: normal;
     font-size: .9em;
 }
@@ -1108,7 +1108,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -24rem;
+    margin-top: -12rem;
     width: 10%;
 }
 
