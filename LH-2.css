@@ -29,7 +29,8 @@
 
 red {
     color: brown;
-    text-transform: uppercase;
+/*    text-transform: uppercase; */
+    font-style: italic;
 }
 
 .subtitle {
@@ -37,7 +38,7 @@ red {
     text-align: center;
     font-size: 1.3em;
     hyphens: auto !important;
-    margin: -.5em 3em 0 3em;
+    margin: -.5em 2em 0 2em;
     line-height: 1.5em;
 }
 
