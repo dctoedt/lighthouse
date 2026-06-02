@@ -1,0 +1,109 @@
+#+startup: noindent hidestars num
+
+#+MACRO: VCS (eval (let ((mode (or (cadr (assoc "VOICE_MODE" (org-collect-keywords '("VOICE_MODE")))) "present"))) (if (string= mode "future") $2 $1)))
+#+MACRO: VCS 
+# === IMPORTANT: SET THE VOICE_MODE VARIABLE TO PRESENT OR FUTURE 
+#+VOICE_MODE: future
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./LH-2.css"> 
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./cite-toggle.css">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./toc-collapse.css">
+#+HTML_HEAD: <script src="lighthouse-all.js" defer></script>
+#+HTML_HEAD: <a id="top"></a>
+#+OPTIONS: ^:{} html-style:nil  toc:nil H:6 num:4  d:nil author:t
+#+HTML_HEAD: <link rel="preconnect" href="https://fonts.googleapis.com">
+#+HTML_HEAD: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+#+HTML_HEAD: <link rel="icon" href="./img/Friday-sticky-note-ChatGPT-2026-06-02-1821.jpg">
+#+EXCLUDE_TAGS: OMIT SPEC NOEXPORT
+
+
+  # =========== IDEAS FOR TITLES FROM CLAUDE:   Passage Planning, Standing Orders, Underway Watch, Coming Alongside, Making Fast, Closing Out the Log
+
+#+TITLE: On Contracts: The Friday Protocols
+#+SUBTITLE: A shared playbook with clauses for cooperative, resilient business dealings: Practical protocols
+#+SUBTITLE: distilled from hundreds of contracts — and court cases.   
+#+SUBTITLE: Written for law students, lawyers, and their AI tools.
+
+# #+ATTR_HTML: :alt Image of one day's calendar page with red top border and white background with "FRI" as the lettering :title Friday calendar page   :class photo-calpage
+# [[./img/Friday-calendar-page-ChatGPT-2026-06-02-1739.jpg]]
+
+
+# #+ATTR_HTML: :alt A lighthouse photo by Carol M. Highsmith (Library of Congress) :title A lighthouse photo by Carol M. Highsmith (Library of Congress)  :class photo-lighthouse
+# [[./img/!Cape-Henry-Lighthouse-Carol-M-Highsmith-LOC.png]]
+
+#+begin_center
+<red>  *[In-progress draft — last saved {{{DATE-ISO}}}]* </red>
+#+end_center
+
+#+ATTR_HTML: :alt Creative Commons symbol for BY (attribution required) SA (share-alike) :href # :title Creative Commons 4.0 BY SA   :class cc
+[[./img/by-sa.png]]
+
+<small> By [[#bio][DC Toedt]] ([[#bio][about]]), professor of practice, University of Houston Law Center; former BigLaw partner and public-company general counsel; member of the State Bars of Texas and California. *See the copyright, Creative Commons, and trademark statement* at [[#copr-cc-tm]].  </small>
+
+*LAW STUDENTS:* This {{{BK}}} will put you on course to planning and drafting pragmatic, court-savvy contracts. Its {{{NAME-FULL}}} have been: \\
+\bull  worded for easy reading by newcomers to contracts — and to improve AI performance; \\
+\bull  enhanced with real-world practice notes.
+
+*LAWYERS:* Use this {{{BK}}} as a guide for the junior people you supervise — and for your AI tools. Consider saving time by incorporating selected {{{NAME-FULL}}} by reference into your contracts.
+
+*CLIENTS:* Time is short. You’re a builder, not a grabber — a partner, not a predator. *Ask your lawyer* if there's any reason you couldn't just "sign" an email term sheet built on a {{{NAME}}} contract (e.g., the {{{NAME}}} NDA), to help you move faster, cut legal spend, and build trust, not traps.
+
+#+begin_comment
+<<AsIsBox>>
+*LAWYERS:* The {{{NAME-FULL}}} can serve: \\
+\bull as a resource for your contract-drafting and {{{NBH}}}review work; \\
+\bull as a guide for junior people you supervise; and \\
+\bull as aids for your AI assistants (the {{{NAME}}} {{{NOUN}}}s are specifically worded and formatted with an eye to improving AI reliability).
+
+*OR:* Consider drafting an email contract that simply adopts (and fine-tunes?) a specific {{{NAME}}} agreement, e.g., the {{{NAME}}} NDA, see [LINK TK].
+# *Or:* Feel free to "steal" language from these lawsuit-aware {{{NOUN}}}s and their accompanying notes. <span class="v" style="font-weight: bold;">EXAMPLE</span> — *get signed sooner:*   A vendor emails a customer: "We'd love to show you our product roadmap, but it's confidential — can we just use the {{{NAME}}} NDA?" Customer: "Sure, if we add /[optional clause]/." Vendor: "Done!" The parties' lawyers can confirm that *this email exchange, by itself, is likely a sensible, binding NDA.* [TO COME: LINK TO NDA PROTOCOL]
+#+end_comment
+
+
+#+begin_asis
+*IMPORTANT:* This {{{BK}}} offers general guidance about common contract practices; it's provided *AS IS, WITH ALL FAULTS* — your mileage may vary, so don't rely on it as a substitute for specific legal advice from an attorney licensed in your jurisdiction. (/I'm/ not /your/ lawyer unless you and I have entered into a specific [[https://www.oncontracts.com/engage/][written engagement agreement]].) *Don't reach out to me with any confidential- or privileged information*, because that'd likely kill any attorney-client privilege you might have in the information. (See {{{NOUN-C}}} [[#k-bound-NLA]] for more.)
+#+end_asis
+
+
+* Macros                                                           :NOEXPORT:
+  :PROPERTIES:
+  :CUSTOM_ID: mac-title
+  :UNNUMBERED: notoc
+  :END:
+
+# Macros (needed for standalone export - duplicates what's in _Macros.org)
+#+MACRO: actor *$1:*
+#+MACRO: name Fri&shy;day
+#+MACRO: name-full Fri&shy;day Pro&shy;to&shy;cols
+#+MACRO: nbh @@html:&#x2011;@@
+#+MACRO: url fridayprotocols.org
+#+MACRO: br @@html:<br/>@@@@latex:\linebreak @@
+#+MACRO: br2 @@html:<br/><br/>@@@@latex:\linebreak\linebreak @@
+#+MACRO: bk book
+#+MACRO: noun protocol
+#+MACRO: nouns protocols
+#+MACRO: noun-c Protocol
+#+MACRO: noun-cs Protocols
+#+MACRO: fr suite
+#+MACRO: fr-c Suite
+#+MACRO: pkg Suite
+#+MACRO: pr 
+#+MACRO: pr-c 
+#+MACRO: Clause
+#+MACRO: cls Protocol
+#+MACRO: r  {{{NOUN-C}}}
+#+MACRO: rule {{{NOUN-C}}}
+#+MACRO: date-iso (eval (format-time-string "%Y-%m-%dT%H:%MZ" (current-time) t))
+#+MACRO: date-iso-small <small> {{{DATE-ISO}}} </small>
+
+
+
+#+begin_comment
+(setq-default line-spacing 0.3)
+Non-breaking hyphen: ‑
+
+ @@html: <button id="toggle-asides-btn" onclick="toggleAsides()" style="padding: 8px 16px; margin: 10px 0; cursor: pointer;">Hide notes</button>@@      [[#toc-chap][Contents]]     @@html: <a href="#"> Top </a>@@
+#+end_comment
+
+
