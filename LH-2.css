@@ -1113,6 +1113,18 @@ img {
     width: 8%;
 }
 
+/* Photo positioning classes */
+.photo-calpage {
+    display: block;
+    float: right;
+    margin-right: -40px;
+    padding: 0 0 0.5rem 0.5rem;
+    margin-top: -16rem;
+    width: 12%;
+}
+
+
+
 .photo-lighthouse-nocd {
     display: block;
     float: right;
