@@ -967,6 +967,7 @@ aside {
   }
 */
 
+
 aside {
     margin: 2rem 5em 2em 5em;
     padding-top: 1.5em;
@@ -1017,6 +1018,11 @@ li cite:first-child {
   padding-left: 20px;
 }
 */
+
+div.ol-left ol {
+    margin-left: -2em;
+}
+
 /* Tablet: Stack citations below on narrower screens */
 @media (max-width: 1024px) {
   cite {
