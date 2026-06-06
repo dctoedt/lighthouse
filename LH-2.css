@@ -501,7 +501,7 @@ div.pr-top {
 }
 
 div.pr-top h3:before {
-    content: "Clause "; 
+    content: "Rule "; 
     font-weight: normal;
     font-size: .9em;
 }
@@ -514,6 +514,11 @@ div.pr-top .outline-text-4 {
     padding: 0.5em 0.5em 0.5em 1em;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 1em;
+}
+
+p-h-b {
+    font-variant: small-caps;
+    font-weight: bold;
 }
 
 /* Suppress the Protocol blue background inside addl sections.

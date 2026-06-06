@@ -1,0 +1,102 @@
+#+startup: noindent hidestars num
+
+#+MACRO: VCS (eval (let ((mode (or (cadr (assoc "VOICE_MODE" (org-collect-keywords '("VOICE_MODE")))) "present"))) (if (string= mode "future") $2 $1)))
+#+MACRO: VCS 
+# === IMPORTANT: SET THE VOICE_MODE VARIABLE TO PRESENT OR FUTURE 
+#+VOICE_MODE: future
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./LH-2.css"> 
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./cite-toggle.css">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./toc-collapse.css">
+
+# Be sure the <script> goes after the "icon" call - otherwise the "defer" in the script will keep the icon from updating
+#+HTML_HEAD: <link rel="icon" href="./img/Friday-sticky-note-ChatGPT-2026-06-02-1821.jpg">
+#+HTML_HEAD: <script src="lighthouse-all.js" defer></script>
+
+#+HTML_HEAD: <a id="top"></a>
+#+OPTIONS: ^:{} html-style:nil  toc:nil H:6 num:4  d:nil author:t
+#+HTML_HEAD: <link rel="preconnect" href="https://fonts.googleapis.com">
+#+HTML_HEAD: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+#+EXCLUDE_TAGS: OMIT SPEC NOEXPORT
+
+
+  # =========== IDEAS FOR TITLES FROM CLAUDE:   Passage Planning, Standing Orders, Underway Watch, Coming Alongside, Making Fast, Closing Out the Log
+
+#+TITLE: Harbor Charts and Dragon Maps: \\
+#+TITLE: Notes on Cooperative Contract Practice
+#+SUBTITLE: Lightweight rules of order for business transactions: Distilled from court cases, legislative actions, regulatory developments, and law{{{NBH}}}firm practice notes. For law students, lawyers, and their AI tools.
+
+# #+ATTR_HTML: :alt Image of one day's calendar page with red top border and white background with "FRI" as the lettering :title Friday calendar page   :class photo-calpage
+# [[./img/Friday-calendar-page-ChatGPT-2026-06-02-1739.jpg]]
+
+
+# #+ATTR_HTML: :alt A lighthouse photo by Carol M. Highsmith (Library of Congress) :title A lighthouse photo by Carol M. Highsmith (Library of Congress)  :class photo-lighthouse
+# [[./img/!Cape-Henry-Lighthouse-Carol-M-Highsmith-LOC.png]]
+
+#+begin_center
+<red>  *[In-progress draft — last saved {{{DATE-ISO}}}]* </red>
+#+end_center
+
+#+ATTR_HTML: :alt Creative Commons symbol for BY (attribution required) SA (share-alike) :href # :title Creative Commons 4.0 BY SA   :class cc
+[[./img/by-sa.png]]
+
+<small> By [[#bio][DC Toedt]] ([[#bio][about]]), professor of practice, University of Houston Law Center; former BigLaw partner and public-company general counsel; member of the State Bars of Texas and California. *See the copyright, Creative Commons, and trademark statement* at [[#copr-cc-tm]].  </small>
+
+*LAW STUDENTS:* This {{{BK}}} will help you learn to draft pragmatic, court-savvy contracts. The {{{NAME}}}™ {{{NOUNS}}} have been: \\
+\bull  worded for easy reading by clients — and to improve AI performance; \\
+\bull  enhanced with real-world practice notes.
+
+*LAWYERS:* Use this {{{BK}}} as a guide for the junior people you supervise — and for your AI tools. Consider saving time by incorporating selected {{{NAME}}} {{{NOUNS}}} by reference into short-form contracts.
+
+*CLIENTS:* <p-h-b>Time is short</p-h-b> — *ask your lawyer* /if there's any reason/ [[https://www.oncontracts.com][you couldn't]] just e-sign an email term sheet built on a {{{NAME-FULL}}} contract (such as the {{{NAME}}} NDA or MSA), to help you move faster, cut legal spend, and build trust, not traps.
+
+**ask your lawyer** *if there's any reason* [you couldn't](https://www.oncontracts.com) just
+
+
+#+begin_asis
+*IMPORTANT:* The {{{NAME-FULL}}} contract {{{BK}}} offers general guidance about common contract practices; it's provided *AS IS, WITH ALL FAULTS* — your mileage may vary, so don't rely on it as a substitute for specific legal advice from an attorney licensed in your jurisdiction. (/I'm/ not /your/ lawyer unless you and I have entered into a specific [[https://www.oncontracts.com/engage/][written engagement agreement]].) *Don't reach out to me with any confidential- or privileged information*, because that'd likely kill any attorney-client privilege you might have in the information. (See {{{NOUN-C}}} [[#k-bound-NLA]] for more.)
+#+end_asis
+
+
+* Macros                                                           :NOEXPORT:
+  :PROPERTIES:
+  :CUSTOM_ID: mac-title
+  :UNNUMBERED: notoc
+  :END:
+
+# Macros (needed for standalone export - duplicates what's in _Macros.org)
+#+MACRO: actor *$1:*
+#+MACRO: name Harbor
+#+MACRO: name-full Harbor Charts
+#+MACRO: nbh @@html:&#x2011;@@
+#+MACRO: url notes.oncontracts.com
+#+MACRO: br @@html:<br/>@@@@latex:\linebreak @@
+#+MACRO: br2 @@html:<br/><br/>@@@@latex:\linebreak\linebreak @@
+#+MACRO: bk handbook
+#+MACRO: noun clause
+#+MACRO: nouns {{{NOUN}}}s
+#+MACRO: noun-c Clause
+#+MACRO: noun-cs {{{NOUN-C}}}s
+#+MACRO: fr suite
+#+MACRO: fr-c Suite
+#+MACRO: pkg Suite
+#+MACRO: pr 
+#+MACRO: pr-c 
+#+MACRO: Clause
+#+MACRO: cls 
+#+MACRO: r  {{{NOUN-C}}}
+#+MACRO: rule {{{NOUN-C}}}
+#+MACRO: date-iso (eval (format-time-string "%Y-%m-%dT%H:%MZ" (current-time) t))
+#+MACRO: date-iso-small <small> {{{DATE-ISO}}} </small>
+
+
+
+#+begin_comment
+(setq-default line-spacing 0.3)
+Non-breaking hyphen: ‑
+
+ @@html: <button id="toggle-asides-btn" onclick="toggleAsides()" style="padding: 8px 16px; margin: 10px 0; cursor: pointer;">Hide notes</button>@@      [[#toc-chap][Contents]]     @@html: <a href="#"> Top </a>@@
+#+end_comment
+
+
