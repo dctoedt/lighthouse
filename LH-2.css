@@ -1135,6 +1135,17 @@ img {
 }
 
 /* Photo positioning classes */
+.photo-CVN65 {
+    display: block;
+    float: right;
+    margin-right: -40px;
+    padding: 0 0 0.5rem 0.5rem;
+    margin-top: -13rem;
+    width: 20%;
+}
+
+
+
 .photo-dragon {
     display: block;
     float: right;
