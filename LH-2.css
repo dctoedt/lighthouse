@@ -36,7 +36,8 @@ red {
 .subtitle {
     font-size: 1.3em;
     hyphens: auto !important;
-    margin: -.5em 5em 0 0;
+    text-align: center;
+    margin: 0 5em 0 2em;
     line-height: 1.5em;
 }
 
@@ -247,7 +248,9 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: 1.8em;
-    line-height: 1.6em;
+    text-align: center;
+    margin: 0 5em .5em 2em;
+    line-height: 1.3em;
 }
 
 h2 {
@@ -1137,8 +1140,8 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -18rem;
-    width: 18%;
+    margin-top: -13rem;
+    width: 20%;
 }
 
 
