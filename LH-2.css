@@ -1365,8 +1365,7 @@ div.footpara p {
     color: #444;
 }
 
-div.footpara div.alt p,
-div.footpara div.bordered p {
+div.footpara div.alt p {
     margin: 0;
 }
 
