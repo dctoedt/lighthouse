@@ -501,7 +501,7 @@ div.pr-top {
 }
 
 div.pr-top h3:before {
-    content: "Clause "; 
+    content: "Protocol "; 
     font-weight: normal;
     font-size: .9em;
 }
@@ -1140,8 +1140,8 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -10rem;
-    width: 20%;
+    margin-top: -12.5rem;
+    width: 18%;
 }
 
 
