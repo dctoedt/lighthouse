@@ -538,11 +538,13 @@ div.pr-top h4 {
     margin-top: 3em;
 }
 
+/*
 div.pr-top h4:before {
-    content: "Practice "; 
+   content: "Practice ";  
     font-weight: normal;
     font-size: .9em;
 }
+*/
 
 div.pr-top .outline-text-4 ul {
     list-style: none;
