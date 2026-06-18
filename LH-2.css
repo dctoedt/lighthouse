@@ -808,7 +808,7 @@ html.js-ready cite {
     margin: 0 !important;
     padding: 0 !important;
 */
-    background-color: transparent !important;
+    background-color: inherited !important;
     border: none !important;
 }
 
@@ -887,8 +887,9 @@ html.js-ready aside {
 .cite-content.open {
     font-family: Georgia, "Times New Roman", serif;
     display: inline-block;
-    background-color: #fcfcfc;
+    background-color: transparent;
 /*
+    background-color: #fcfcfc;
     font-size: .8em; 
     padding: .5em .2em .5em 1em;
     margin-top: .5em;
@@ -963,6 +964,10 @@ aside {
   
   /* Prevent orphaned citations */
   page-break-inside: avoid;
+}
+
+blockquote cite {
+    background: inherited;
 }
 
 /* Position */
