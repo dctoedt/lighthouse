@@ -34,7 +34,7 @@ red {
 }
 
 .subtitle {
-    font-size: 1.3em;
+    font-size: 1.25em;
     hyphens: auto !important;
     line-height: 1.5em;
     margin-right: 9em;
@@ -1151,7 +1151,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -15.5rem;
+    margin-top: -12.5rem;
     width: 25%;
 }
 
