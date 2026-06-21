@@ -37,7 +37,7 @@ red {
     font-size: 1.3em;
     hyphens: auto !important;
     line-height: 1.5em;
-    margin-right: 10em;
+    margin-right: 8em;
 }
 
 
@@ -157,7 +157,7 @@ span.sh {
 }
 
 div.chap-rule [role="doc-toc"] ul li:before {
-    content: "Rule ";
+    content: "Clause ";
 }
 
 div.pr-top [role="doc-toc"] ul li:before {
@@ -512,7 +512,7 @@ div.pr-top {
 }
 
 div.pr-top h3:before {
-    content: "Rule ";  
+    content: "Clause ";  
     font-weight: normal;
     font-size: .9em;
 }
@@ -1110,9 +1110,12 @@ cite a, cite i, aside a, aside i {
 
 blockquote {
     font-style: normal;
-    margin: 0rem 2em 0 2em;
-    padding: .5em 1em;
+    margin: 0rem 2em;
+    padding: 0em 1em;
+/*
     background-color: #e9e9e9; 
+*/
+    border-left: 4px solid #d9d9d9;
 }
 
 .cl7 blockquote {
@@ -1165,7 +1168,7 @@ img {
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
     margin-top: -8.5rem;
-    width: 25%;
+    width: 22%;
 }
 
 
