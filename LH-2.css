@@ -191,7 +191,7 @@ div#outline-container-toc-chap-det h2 {
 body {
     font-family: Georgia, "Times New Roman", serif;
     font-size: 20px;
-    line-height: 1.5em;
+    line-height: 1.6em;
     hyphens: auto;
     max-width: 900px;
     padding: 40px;
@@ -284,6 +284,7 @@ h2 {
 h3 {
     font-size: 1.2em;
     margin-top: 2.5em;
+    line-height: 1.5;
 }
 
 
@@ -1051,6 +1052,12 @@ li cite:first-child {
 div.ol-left ol {
     margin-left: -2em;
 }
+
+div.ol-left ol li ul li {
+    margin: 1em 0;
+    list-style-type: circle;
+}
+
 
 /* Tablet: Stack citations below on narrower screens */
 @media (max-width: 1024px) {
