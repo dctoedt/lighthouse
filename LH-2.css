@@ -34,10 +34,10 @@ red {
 }
 
 .subtitle {
-    font-size: 1.25em;
+    font-size: 1.3em;
     hyphens: auto !important;
     line-height: 1.5em;
-    margin-right: 9em;
+    margin-right: 11em;
 }
 
 
@@ -156,6 +156,16 @@ span.sh {
     margin-top: 1em;
 }
 
+div.chap-rule [role="doc-toc"] ul li:before {
+    content: "Rule ";
+}
+
+div.pr-top [role="doc-toc"] ul li:before {
+    content: "";
+}
+
+
+
 [role="doc-toc"] ul li ul {
     margin: 0em 1em 1em 1em;
 }
@@ -258,6 +268,7 @@ h2 {
 }
 
 .chap h2::before,
+.chap-rule h2::before,
 .intro h2::before {
     content: "Chapter ";
     font-weight: normal;
@@ -428,6 +439,7 @@ div.cl9 h3:before {
 
 
 div.chap span.section-number-2, 
+div.chap-rule span.section-number-2, 
 div.intro span.section-number-2, 
 div.cl5 span.section-number-3,
 div.cl7 span.section-number-3,
@@ -438,6 +450,7 @@ span.section-number-4  {
 }
 
 div.chap span.section-number-2:after, 
+div.chap-rule span.section-number-2:after, 
 div.intro span.section-number-2:after, 
 span.section-number-3:after,
 span.section-number-4:after,
@@ -499,7 +512,7 @@ div.pr-top {
 }
 
 div.pr-top h3:before {
-/*    content: "Plan ";  */
+    content: "Rule ";  
     font-weight: normal;
     font-size: .9em;
 }
@@ -1314,6 +1327,7 @@ img {
    ======================================================================== */
 
 .chap,
+.chap-rule,
 .intro {
     page-break-before: always;
 }
@@ -1716,6 +1730,7 @@ div.footdef {
     
     /* Only break before explicitly marked chapters */
     .chap,
+    .chap-rule,
     .intro {
         page-break-before: always;
     }
