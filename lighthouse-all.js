@@ -241,43 +241,8 @@
   }
 
   function initCmtryToggles() {
-    document.querySelectorAll("div.cmtry").forEach(function (cmtry) {
-      var heading = cmtry.querySelector("h5, h6");
-      if (!heading) { return; }
-      var body = cmtry.querySelector(
-        "div.outline-text-5, div.outline-text-6, div.outline-text-7"
-      );
-      if (!body) { return; }
-
-      var toggle = document.createElement("span");
-      toggle.className = "aside-toggle cmtry-toggle";
-      toggle.textContent = "Hide note";
-      toggle.setAttribute("role", "button");
-      toggle.setAttribute("tabindex", "0");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("data-cmtry-toggle", "true");
-
-      function doToggle() {
-        var isOpen = toggle.getAttribute("aria-expanded") === "true";
-        if (isOpen) {
-          body.style.display = "none";
-          toggle.textContent = "Show note";
-          toggle.setAttribute("aria-expanded", "false");
-        } else {
-          body.style.display = "";
-          toggle.textContent = "Hide note";
-          toggle.setAttribute("aria-expanded", "true");
-        }
-      }
-      toggle.addEventListener("click", doToggle);
-      toggle.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); doToggle(); }
-      });
-
-      toggle.textContent = "Hide note";
-      toggle.setAttribute("aria-expanded", "true");
-      heading.replaceWith(toggle);
-    });
+    /* No per-note toggle buttons for .cmtry sections.
+       Headings remain visible; body content is always shown. */
   }
 
   function initAddlToggles() {
@@ -576,7 +541,6 @@
     initCmtryToggles();
     initAddlToggles();
     initSectionExpanders();
-    initHideAllNotes();   /* global toggle — must run after all others */
   }
 
 

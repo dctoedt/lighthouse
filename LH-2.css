@@ -156,14 +156,15 @@ span.sh {
     margin-top: 1em;
 }
 
-div.chap-rule [role="doc-toc"] ul li:before {
+/
+dv.chap-rule [role="doc-toc"] ul li:before {
     content: "Clause ";
 }
 
 div.pr-top [role="doc-toc"] ul li:before {
     content: "";
 }
-
+*/
 
 
 [role="doc-toc"] ul li ul {
@@ -430,6 +431,7 @@ div.cl5 h3 {
     font-size: 1.3em;
 }
 
+/*
 
 div.cl7 h5:before,
 div.cl9 h3:before {
@@ -437,7 +439,7 @@ div.cl9 h3:before {
     font-weight: normal;
     font-size: .9em;
 }
-
+*/
 
 div.chap span.section-number-2, 
 div.chap-rule span.section-number-2, 
@@ -512,12 +514,13 @@ div.pr-top {
     padding: 2em;
 }
 
+/*
 div.pr-top h3:before {
     content: "Clause ";  
     font-weight: normal;
     font-size: .9em;
 }
-
+*/
 
 div.pr-top .outline-text-4 {
     margin-top: 1em;
@@ -684,8 +687,8 @@ div.addl div.outline-text-3 p {
 
 
 .cmtry h6, .cmtry h7 {
-    display: none;
 /*
+    display: none;
     font-size: .9em;
     color: #666;
     margin: .2em 0 0.5em 0;
