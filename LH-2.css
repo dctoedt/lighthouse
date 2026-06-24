@@ -531,6 +531,15 @@ div.pr-top .outline-text-4 {
     font-size: 1em;
 }
 
+div.pr-top .outline-text-4 ol {
+    margin-left: -2em;
+}
+
+
+div.pr-top .outline-text-4 ol li ol {
+    margin-left: 0;
+}
+
 p-h-b {
     font-variant: small-caps;
     font-weight: bold;
@@ -689,11 +698,12 @@ div.addl div.outline-text-3 p {
 .cmtry h6, .cmtry h7 {
 /*
     display: none;
-    font-size: .9em;
     color: #666;
-    margin: .2em 0 0.5em 0;
-    font-weight: normal;
 */
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: .8em;
+    margin: .2em 0 0.5em 0;
+    font-weight: bold;
 }
 /*
 .cmtry h6:after {
