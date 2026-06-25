@@ -540,6 +540,27 @@ div.pr-top .outline-text-4 ol li ol {
     margin-left: 0;
 }
 
+dt {
+    margin-top: 0em;
+}
+
+dd {
+    margin-top: .5em;
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+
+dd ol li {
+    color: black;
+    margin-top: .5em;
+    margin-bottom: 1em;
+}
+
+dd p {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
 p-h-b {
     font-variant: small-caps;
     font-weight: bold;
