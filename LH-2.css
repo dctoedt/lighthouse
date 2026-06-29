@@ -156,15 +156,14 @@ span.sh {
     margin-top: 1em;
 }
 
-/
-dv.chap-rule [role="doc-toc"] ul li:before {
+
+div.chap-rule [role="doc-toc"] ul li:before {
     content: "Clause ";
 }
 
 div.pr-top [role="doc-toc"] ul li:before {
     content: "";
 }
-*/
 
 
 [role="doc-toc"] ul li ul {
@@ -461,6 +460,11 @@ span.section-number-4:after {
     content: "    ";
 }
 
+/*
+div.pr-top span.section-number-4 {
+    color: #AAA;
+}
+*/
 
 div.cl7 {
     border-top: 3px black solid;
@@ -514,13 +518,11 @@ div.pr-top {
     padding: 2em;
 }
 
-/*
 div.pr-top h3:before {
     content: "Clause ";  
     font-weight: normal;
     font-size: .9em;
 }
-*/
 
 div.pr-top .outline-text-4 {
     margin-top: 1em;
@@ -529,15 +531,6 @@ div.pr-top .outline-text-4 {
     padding: 0.5em 0.5em 0.5em 1em;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 1em;
-}
-
-div.pr-top .outline-text-4 ol {
-    margin-left: -2em;
-}
-
-
-div.pr-top .outline-text-4 ol li ol {
-    margin-left: 0;
 }
 
 dt {
@@ -557,7 +550,7 @@ dd ol li {
 }
 
 dd p {
-    margin-top: .5em;
+    margin-top: 1em;
     margin-bottom: .5em;
 }
 
@@ -1208,7 +1201,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -6.5rem;
+    margin-top: -9rem;
     width: 30%;
 }
 
