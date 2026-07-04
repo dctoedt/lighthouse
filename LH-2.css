@@ -519,8 +519,10 @@ div.cl7 ol li ol {
 
 div.pr-top {
     margin-top: 5em;
+/*
     border: 2px gray solid;
     padding: 2em;
+*/
 }
 
 /*
@@ -698,10 +700,10 @@ span.section-number-5 {
    FIELD NOTES / ADDITIONAL NOTES
    ======================================================================== */
 
-div.addl div.outline-text-3 p {
-/*
-    font-family: Georgia, "Times New Roman", serif;
-*/
+div.addl div.outline-text-3 p,
+div.addl div.outline-text-4 p,
+div.addl div.outline-text-3 li,
+div.addl div.outline-text-4 li {
     font-family: serif;
     font-size: 1em;
 }
@@ -1212,9 +1214,9 @@ img {
     display: block;
     float: right;
     margin-right: -40px;
-    padding: 0 0 0.5rem 0.5rem;
+    padding: 0 0 0.5rem .5rem;
     margin-top: -9rem;
-    width: 30%;
+    width: 28%;
 }
 
 
