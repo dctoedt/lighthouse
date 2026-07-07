@@ -157,6 +157,7 @@ span.sh {
 }
 
 
+/*
 div.chap-rule [role="doc-toc"] ul li:before {
     content: "Rule ";
 }
@@ -164,7 +165,7 @@ div.chap-rule [role="doc-toc"] ul li:before {
 div.pr-top [role="doc-toc"] ul li:before {
     content: "";
 }
-
+*/
 
 [role="doc-toc"] ul li ul {
     margin: 0em 1em 1em 1em;
@@ -251,7 +252,7 @@ p, li {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: Georgia, serif;
     text-wrap: balance;
 }
 
@@ -699,7 +700,7 @@ div.addl div.outline-text-3 p,
 div.addl div.outline-text-4 p,
 div.addl div.outline-text-3 li,
 div.addl div.outline-text-4 li {
-    font-family: serif;
+    font-family: Georgia, serif;
     font-size: 1em;
 }
 
@@ -711,7 +712,7 @@ div.addl div.outline-text-4 li {
 
 /* Style for commentary sections (typically h5 or h6 level) */
 .cmtry {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: Georgia, serif;
     margin: .5em .5em 1em .5em;
     background-color: #fcfcfc;
     padding: .1em .75em;
@@ -723,7 +724,7 @@ div.addl div.outline-text-4 li {
     display: none;
     color: #666;
 */
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-family: sans-serif;
     font-size: .8em;
     margin: .2em 0 0.5em 0;
     font-weight: bold;
@@ -853,22 +854,24 @@ html.js-ready div.addl-body:not(.addl-open) {
 
 /* JS-enabled: neutralize the cite wrapper box so the inline toggle
    button and content span sit naturally in running text. */
-html.js-ready cite {
-    display: inline !important;
+cite {
+    display: block !important;
 /*
     margin: 0 !important;
     padding: 0 !important;
 */
     background-color: inherited !important;
     border: none !important;
-    font-family: sans-serif;
-    font-size: .8em;
-    line-height: 1.2em;
+    font-family: sans-serif !important;
+    font-size: .8em !important;
+    line-height: 1.5em;
+    margin: .75em 0 1.5em 3em !important;
 }
 
 /* JS-enabled: aside stays as a visible block container; the toggle button
    and content span live inside it. Reset margins/padding so it sits flush
    with the surrounding text rather than using the default aside indentation. */
+aside,
 html.js-ready aside {
     display: block !important;
 /*
@@ -878,76 +881,6 @@ html.js-ready aside {
     margin-top: -1em;
 /*    background-color: transparent !important; */
     border: none !important;
-}
-
-/* The toggle button for cite and cmtry (aside no longer gets a per-note button) */
-.cite-toggle,
-.aside-toggle {
-    display: inline;
-    cursor: pointer;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 0.8em;
-    font-style: normal;
-    color: #1a6bbd;
-    border: 1px solid #9fc5e8;
-    border-radius: 3px;
-    padding: 0.1em 0.45em;
-    margin: 0 0.25em;
-    white-space: nowrap;
-    user-select: none;
-    vertical-align: baseline;
-}
-
-/* .aside-toggle is still used by cmtry; neutral background */
-.aside-toggle {
-    background-color: #fcfcfc;
-}
-
-.cite-toggle {
-    background-color: #eaf3fc;
-}
-
-.cite-toggle:hover,
-.aside-toggle:hover {
-    background-color: #d0e7ff;
-}
-
-.cite-toggle:active,
-.aside-toggle:active {
-    background-color: #b8d8f8;
-}
-
-/* Global "hide all notes / show all notes" link in the .hlt bar */
-#global-notes-toggle {
-    cursor: pointer;
-    color: #2980B9;
-    font-weight: bold;
-    white-space: nowrap;
-    user-select: none;
-    margin: 0 0.5rem;
-}
-
-#global-notes-toggle:hover {
-    text-decoration: underline;
-}
-
-/* Hidden state: cite-content / aside-content not yet toggled open */
-.cite-content {
-    display: none;
-    font-style: normal;
-}
-
-/* Revealed state */
-.cite-content.open {
-    display: inline-block;
-    background-color: transparent;
-    line-height: 1.2em;
-/*
-    background-color: #fcfcfc;
-    font-size: .8em; 
-    padding: .5em .2em .5em 1em;
-    margin-top: .5em;
-*/
 }
 
 
@@ -1019,10 +952,12 @@ aside {
   page-break-inside: avoid;
 }
 
+/*
 blockquote cite {
     background: inherited;
+    margin-top: 5em;
 }
-
+*/
 /* Position */
 /*
   cite {
@@ -1037,7 +972,7 @@ blockquote cite {
 
 
 aside {
-    margin: 2rem 5em 2em 5em;
+    margin: -1rem 5em 2em 5em;
     padding-top: 1.5em;
 }
 
@@ -1145,7 +1080,7 @@ aside cite {
 }
 
 cite, aside {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: Georgia, serif;
     font-style: normal;
 }
 
@@ -1419,7 +1354,7 @@ div.gray-shaded {
 
 
 div.footpara p, div.footpara li {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: Georgia, serif;
 }
 
 sup:has(a.footnum),
