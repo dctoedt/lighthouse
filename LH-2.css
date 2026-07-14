@@ -524,13 +524,11 @@ div.pr-top {
 */
 }
 
-/*
 div.pr-top h3:before {
-    content: "Pattern Clause ";  
+    content: "Clause ";  
     font-weight: normal;
     font-size: .9em;
 }
-*/
 
 div.pr-top .outline-text-4 {
     margin-top: 1em;
