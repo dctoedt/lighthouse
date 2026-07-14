@@ -51,8 +51,8 @@
       nlaNotice = document.createElement("div");
       nlaNotice.id = "nla-notice";
       nlaNotice.innerHTML =
-        'Not a substitute for legal advice '
-        + '(<a href="#k-bound-NLA">see&nbsp;2.1.10</a>)';
+        'INCOMPLETE DRAFT — not a substitute for legal advice '
+        + '(<a href="#k-bound-NLA">see&nbsp;2.1.14</a>)';
       document.body.insertBefore(nlaNotice, document.body.firstChild);
     }
 

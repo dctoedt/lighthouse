@@ -524,11 +524,14 @@ div.pr-top {
 */
 }
 
+/*
+
 div.pr-top h3:before {
     content: "Protool ";  
     font-weight: normal;
     font-size: .9em;
 }
+*/
 
 div.pr-top .outline-text-4 {
     margin-top: 1em;
