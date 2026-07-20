@@ -300,10 +300,6 @@ h5 {
     margin: 2em 0 0.5em 0;
 }
 
-.cl7 h4 {
-    margin-top: 1em;
-}
-
 h4, h5 {
     font-weight: bold;
 }
@@ -424,30 +420,9 @@ nav div#text-table-of-contents li {
    RULE TEXT (blue background, Arial font)
    ======================================================================== */
 
-div.cl5 h3 {
-    background-color: #e6f1ff;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    padding: 1rem;
-    margin: 5rem -1rem 1rem -1rem;
-    line-height: 2rem;
-    font-size: 1.3em;
-}
-
-/*
-
-div.cl7 h5:before,
-div.cl9 h3:before {
-    content: "Protocol "; 
-    font-weight: normal;
-    font-size: .9em;
-}
-*/
-
 div.chap span.section-number-2, 
 div.chap-rule span.section-number-2, 
 div.intro span.section-number-2, 
-div.cl5 span.section-number-3,
-div.cl7 span.section-number-3,
 div.pr-top span.section-number-3,
 span.section-number-4  {
     font-size: .9em;
@@ -469,68 +444,10 @@ div.pr-top span.section-number-4 {
 }
 */
 
-div.cl7 {
-    border-top: 3px black solid;
-    border-bottom: 3px black solid;
-}
-
-div.cl7 div.outline-text-3,
-div.cl7.outline-4 {
-    margin-top: 4em;
-    line-height: 1.8em;
-    background-color: #e6f1ff;
-    padding: 0.5em 0.5em 0.1em 1em;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 1em;
-}
-
-div.cl9 .outline-text-4 {
-    margin-top: 1em;
-    line-height: 1.8em;
-    background-color: #e6f1ff;
-    padding: 0.5em 0.5em 0.1em 1em;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 1em;
-}
-
-div.cl9 h3 {
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 1.2em;
-    margin-top: 1em;
-}
-
-
-div.cl7 h4,
-div.cl9 h4 {
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 1em;
-}
-
-div.cl7 ol,
-div.cl7 ul {
-    margin-top: 0;
-}
-
-div.cl7 ol li ol {
-    margin-left: 1rem;
-}
 
 div.pr-top {
     margin-top: 5em;
-/*
-    border: 2px gray solid;
-    padding: 2em;
-*/
 }
-
-/*
-
-div.pr-top h3:before {
-    content: "Protool ";  
-    font-weight: normal;
-    font-size: .9em;
-}
-*/
 
 div.pr-top .outline-text-4 {
     margin-top: 1em;
@@ -588,7 +505,7 @@ div.pr-top h4 {
 }
 
 div.pr-top h3:before {
-    content: "Rule ";  
+    content: "Protocol ";  
     font-weight: normal;
     font-size: .9em;
 }
@@ -816,6 +733,13 @@ ol li ol li {
     margin-top: .5em;
     margin-bottom: .75em;
 }
+
+
+div.pr-top div.outline-text-4 ol li {
+    list-style-type: decimal;
+}
+
+
 
 ul li ul {
     margin-top: .5em;
@@ -1142,7 +1066,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem .5rem;
-    margin-top: -12rem;
+    margin-top: -5rem;
     width: 28%;
 }
 
