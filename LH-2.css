@@ -739,6 +739,9 @@ div.pr-top div.outline-text-4 ol li {
     list-style-type: decimal;
 }
 
+div.pr-sub div.outline-text-4 ol li {
+    list-style-type: lower-alpha;
+}
 
 
 ul li ul {
@@ -1066,7 +1069,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem .5rem;
-    margin-top: -5rem;
+    margin-top: -14rem;
     width: 28%;
 }
 
