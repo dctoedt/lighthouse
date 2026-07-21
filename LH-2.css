@@ -505,7 +505,7 @@ div.pr-top h4 {
 }
 
 div.pr-top h3:before {
-    content: "Protocol ";  
+    content: "Rule ";  
     font-weight: normal;
     font-size: .9em;
 }
