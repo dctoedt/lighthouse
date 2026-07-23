@@ -505,7 +505,7 @@ div.pr-top h4 {
 }
 
 div.pr-top h3:before {
-    content: "Model Clause ";  
+    content: "Clause ";  
     font-weight: normal;
     font-size: .9em;
 }
@@ -770,6 +770,7 @@ ul li ul {
    Hiding is done by removing addl-open (body falls back to this rule only
    when the class is absent, but since we use explicit style.display in JS,
    this rule primarily guards against flash-of-content before JS runs). */
+
 html.js-ready div.addl-body {
     display: block;
 }
@@ -781,13 +782,14 @@ html.js-ready div.addl-body:not(.addl-open) {
 /* JS-enabled: neutralize the cite wrapper box so the inline toggle
    button and content span sit naturally in running text. */
 cite {
-    display: block !important;
+    display: block !important; 
     background-color: inherited !important;
     border: none !important;
     font-family: sans-serif !important;
     font-size: .8em !important;
     line-height: 1.5em;
-    margin: .75em 10% 1.5em 10% !important;
+    margin: 0.5em 0 0 2em !important;
+/*    margin: .75em 10% 1.5em 10% !important; */
 }
 
 /* JS-enabled: aside stays as a visible block container; the toggle button
@@ -899,7 +901,8 @@ aside {
 }
 
 
-/*cite {
+/*
+cite {
     margin: 0em 0 1rem 2rem;
 }
 */
