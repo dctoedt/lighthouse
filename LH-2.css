@@ -37,6 +37,7 @@ red {
     hyphens: auto !important;
     line-height: 1.5em;
     margin-right: 10em;
+    text-wrap: balance;
 }
 
 
@@ -504,10 +505,15 @@ div.pr-top h4 {
     margin-top: 3em;
 }
 
-div.pr-top h3:before {
-    content: "Clause ";  
+div.pr-top span.section-number-3:before {
+    content: "Harbor Rule ";  
     font-weight: normal;
     font-size: .9em;
+}
+
+div.pr-top span.section-number-3:after {
+    content: "     ";  
+    white-space: pre;
 }
 
 div.pr-top .outline-text-3 ul {
@@ -1072,7 +1078,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem .5rem;
-    margin-top: -14rem;
+    margin-top: -9rem;
     width: 28%;
 }
 
