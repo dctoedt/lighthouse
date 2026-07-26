@@ -506,15 +506,17 @@ div.pr-top h4 {
 }
 
 div.pr-top span.section-number-3:before {
-    content: "Harbor Rule ";  
+    content: "Clause ";  
     font-weight: normal;
     font-size: .9em;
 }
 
+/*
 div.pr-top span.section-number-3:after {
     content: "     ";  
     white-space: pre;
 }
+*/
 
 div.pr-top .outline-text-3 ul {
     list-style: none;
