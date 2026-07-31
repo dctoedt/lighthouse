@@ -526,8 +526,9 @@ div.pr-top h4 {
     margin-top: 3em;
 }
 
-div.pr-top span.section-number-3:before {
-    content: "Harbor Rule ";  
+div.pr-top span.section-number-3:before,
+div.pr-alt span.section-number-3:before {
+    content: "Clause ";  
     font-weight: normal;
     font-size: .9em;
 }
@@ -768,13 +769,18 @@ div.pr-top div.outline-text-4 ol li {
     list-style-type: decimal;
 }
 
-div.pr-sub div.outline-text-4 ol li {
+div.pr-sub div.outline-text-4 ol li,
+div.pr-alt div.outline-text-5 ol li {
     list-style-type: lower-alpha;
 }
 
 
 ul li ul {
     margin-top: .5em;
+}
+
+div.olnum ol li {
+    list-style-type: decimal !important;
 }
 
 /* ========================================================================
