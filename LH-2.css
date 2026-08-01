@@ -520,11 +520,17 @@ div.pr-top h3 {
     margin-top: 0em;
 }
 
-div.pr-top h4 {
+div.pr-top h4,
+div.pr-alt h5 {
     font-family: sans-serif;
     font-size: 1em;
     margin-top: 3em;
 }
+
+div.pr-alt div.outline-5 h5 {
+    font-weight: bold;
+}
+
 
 div.pr-top span.section-number-3:before,
 div.pr-alt span.section-number-3:before {
