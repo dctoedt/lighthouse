@@ -677,7 +677,8 @@ div.addl div.outline-text-4 li {
     display: none;
     color: #666;
 */
-    font-family: sans-serif;
+    font-size: 1.2rem;
+    font-family: serif;
     margin: .2em 0 0.5em 0;
     font-weight: bold;
 }
@@ -699,7 +700,6 @@ div.addl div.outline-text-4 li {
 
 .cmtry p, .cmtry li {
     color: #555;
-    font-size: 0.9em;
 }
 
 /* Alternative: if cmtry is applied directly to divs */
@@ -829,7 +829,7 @@ cite {
     font-family: sans-serif !important;
     font-size: .8em !important;
     line-height: 1.5em;
-    margin: 1em 0 0 2em !important;
+    margin: 2em 0 0 2em !important;
 /*    margin: .75em 10% 1.5em 10% !important; */
 }
 
@@ -843,7 +843,9 @@ html.js-ready aside {
     margin: 0 !important;
     padding: 0 !important;
 */
+    padding: 0px 10px;
     margin-top: -1em;
+    background-color: #fcfcfc;
 /*    background-color: transparent !important; */
     border: none !important;
 }
@@ -937,8 +939,8 @@ blockquote cite {
 
 
 aside {
-    margin: -1rem 5em 2em 5em;
-    padding-top: 1.5em;
+    margin: 1em 5em 2em 5em;
+    padding: 10px 20px;
 }
 
 
