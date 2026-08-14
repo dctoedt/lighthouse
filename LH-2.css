@@ -567,6 +567,13 @@ table td {
     padding: .5em .75em;
     line-height: 1.5em;
 }
+
+.no-border-table, 
+.no-border-table td, 
+.no-border-table th { 
+    border: none !important;
+ }
+
 /* ========================================================================
    OPTION TEXT (gray background, Arial font)
    ======================================================================== */
@@ -997,7 +1004,8 @@ div.ol-left ol {
 
 div.ol-left ol li ul li {
     margin: 1em 0;
-    list-style-type: circle;
+    list-style-position: outside;
+    list-style-type: disc;
 }
 
 
