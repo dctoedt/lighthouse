@@ -264,7 +264,7 @@ h1 {
 
 h2 {
     margin: 3em 0 0.5em 0;
-    font-size: 1.5em;
+    font-size: 1.8em;
     line-height: 140%;
 }
 
@@ -471,10 +471,11 @@ div.pr-top .outline-text-4,
 div.pr-alt .outline-text-5  {
     margin-top: 1em;
     line-height: 1.8em;
-    background-color: #e6f1ff;
+    background-color: #e6f1ff; 
+    font-family: sans-serif;
     padding: 0.5em 0.5em 0.5em 1em;
     font-family: sans-serif;
-    font-size: 1em;
+    font-size: 1.1em;
 }
 
 dt {
@@ -515,33 +516,45 @@ div.pr-sub div.addl-body .outline-text-5 {
     margin-top: 0;
 }
 
-div.pr-top h3 {
+div.pr-top h3,
+div.pr-top div.outline-4 h4 {
     font-family: sans-serif;
-    margin: 0 -1em 0 -1em;
+    font-weight: bold;
     background-color: #e6f1ff;
-    padding: .5em 1em;
+    padding:  1em;
 }
 
+div.pr-top h3 {
+    font-size: 1.5em;
+}
+
+
+div.pr-top div.outline-4 h4 {
+    font-size: 1.1em;
+    margin: 2em 0 -2.5em 0;
+}
+
+/*
 div.pr-top h4,
 div.pr-alt h5 {
     font-family: sans-serif;
     font-size: 1em;
     margin-top: 3em;
 }
+*/
 
 div.pr-alt div.outline-5 h5 {
     font-weight: bold;
 }
 
-
+/*
 div.pr-top span.section-number-3:before,
 div.pr-alt span.section-number-3:before {
-    content: "Clause ";  
+    content: "Harbor Rule ";  
     font-weight: normal;
     font-size: .9em;
 }
 
-/*
 div.pr-top span.section-number-3:after {
     content: "     ";  
     white-space: pre;
@@ -830,15 +843,22 @@ html.js-ready div.addl-body:not(.addl-open) {
 
 /* JS-enabled: neutralize the cite wrapper box so the inline toggle
    button and content span sit naturally in running text. */
+
 cite {
+/*
     display: block !important; 
+*/
+    display: inline !important;
     background-color: inherited !important;
     border: none !important;
     font-family: sans-serif !important;
     font-size: .8em !important;
+    margin: 0 !important;
+/*
     line-height: 1.5em;
     margin: .5em 0 0 4em !important;
-/*    margin: .75em 10% 1.5em 10% !important; */
+    margin: .75em 10% 1.5em 10% !important; 
+*/
 }
 
 /* JS-enabled: aside stays as a visible block container; the toggle button
