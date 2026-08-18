@@ -338,19 +338,6 @@ h6 {
     font-weight: normal;
 }
 
-.addl {
-    background-color: #fcfcfc;
-    padding: 0;
-    margin: 0;
-}
-
-.addl h4 {
-    font-size: 1.1em;
-}
-
-.addl h5 {
-    font-size: 1em;
-}
 
 
 /* ========================================================================
@@ -678,6 +665,33 @@ div.addl div.outline-text-4 li {
     font-size: 1em;
 }
 
+.addl,
+.addl h4,
+div.cmtry.outline-4,
+div.cmtry h4 {
+    background-color: #fcfcfc !important;
+    padding: 0;
+}
+
+.addl {
+    margin-left: 1em;
+}
+
+.addl h4, .addl-top h4, div.cmtry h4 {
+    margin: 0 0 -1em -1em !important;
+}
+
+.addl h4 {
+    font-size: 1.1em;
+}
+
+.addl-top h4 {
+    font-size: 1em !important;
+}
+
+.addl h5 {
+    font-size: 1em;
+}
 
 
 /* ========================================================================
@@ -687,7 +701,7 @@ div.addl div.outline-text-4 li {
 /* Style for commentary sections (typically h5 or h6 level) */
 .cmtry {
     font-family: Georgia, serif;
-    margin: .5em .5em 1em .5em;
+    margin: .5em .5em 1em 0em;
     background-color: #fcfcfc;
     padding: .1em .75em;
 }
