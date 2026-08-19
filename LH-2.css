@@ -815,6 +815,14 @@ div.pr-alt div.outline-text-5 ol li {
     list-style-type: lower-alpha;
 }
 
+div.ul-compressed ul {
+    margin-top: -.5em;
+    margin-left: -1em;
+}
+
+div.ul-compressed ul li {
+    margin-bottom: 0;
+}
 
 ul li ul {
     margin-top: .5em;
