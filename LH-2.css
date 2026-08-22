@@ -44,6 +44,11 @@ red {
     font-size: 1em !important;
 }
 
+div.byline {
+    font-size: 1.3em;
+    font-family: sans-serif;
+}
+
 div.asis {
     margin: 2rem -1rem 1rem -1rem;
     padding: 0rem 1rem 0 1rem;
@@ -661,7 +666,8 @@ div.addl div.outline-text-4 p,
 div.addl div.outline-text-3 li,
 div.addl div.outline-text-4 li {
     font-family: Georgia, serif;
-    font-size: 1em;
+    font-size: .9em;
+    line-height: 1.4em;
 }
 
 .addl,
@@ -1132,7 +1138,7 @@ img {
 }
 
 .cc {
-    width: 120px;
+    width: 180px;
     margin-top: 0.5rem;
     display: block;
     float: right;
@@ -1165,7 +1171,7 @@ img {
     display: block;
     float: right;
     margin-right: -40px;
-    padding: 0 0 0.5rem .5rem;
+    padding: 0 0 0.5rem 2.5rem;
     width: 28%;
 }
 
