@@ -817,6 +817,7 @@ div.pr-alt div.outline-text-5 ol li {
 div.ul-compressed ul {
     margin-top: -.5em;
     margin-left: -1em;
+    hyphens: none;
 }
 
 div.ul-compressed ul li {
@@ -1165,7 +1166,7 @@ img {
     float: right;
     margin-right: -40px;
     padding: 0 0 0.5rem .5rem;
-    width: 24%;
+    width: 28%;
 }
 
 
