@@ -810,8 +810,22 @@ ol li ol li {
 }
 
 
-div.pr-top div.outline-text-4 ol li {
+div.pr-top div.outline-text-4 ol,
+div.pr-top div.outline-text-5 ol li {
+    margin-top: -.25em;
+}
+div.pr-top div.outline-text-4 ol li,
+div.pr-top div.outline-text-5 ol li {
+    list-style-position: outside;
     list-style-type: decimal;
+    margin-top: .75em;
+    margin-bottom: .75em;
+}
+
+div.pr-top div.outline-text-4 ol li ul li,
+div.pr-top div.outline-text-5 ol li ul li {
+    list-style-position: outside;
+    list-style-type: disc;
 }
 
 div.pr-sub div.outline-text-4 ol li,
