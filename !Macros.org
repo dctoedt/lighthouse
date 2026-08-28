@@ -1,0 +1,1407 @@
+* Macros                                                           :NOEXPORT:
+  :PROPERTIES:
+  :CUSTOM_ID: Macros
+  :END:
+
+
+** Additional macros from LH-2026-02-10.org
+#+begin_comment
+#+MACRO: bk playbook
+#+MACRO: byline By [[#bio][DC Toedt]]
+#+MACRO: date-iso (eval (format-time-string "%Y-%m-%dT%H:%MZ" (current-time) t))
+#+MACRO: date-iso-small <small> {{{DATE-ISO}}} </small>
+#+MACRO: name Lighthouse
+#+MACRO: name-full  Lighthouse Rules
+# #+MACRO: noun clause
+# #+MACRO: noun-c Clause
+
+
+#+MACRO: pr 
+#+MACRO: pr-c 
+#+MACRO: r  {{{NOUN-C}}}
+#+end_comment
+
+** Macros from main file (organized)
+
+These macros were moved from the main file for centralization and reuse.
+
+*** Core terminology
+#+MACRO: noun-p {{{NOUN}}}s
+#+MACRO: noun-c-p {{{NOUN-C}}}s
+#+MACRO: nouns {{{NOUN}}}s
+#+MACRO: nouncs {{{NOUN-C}}}s
+#+MACRO: noun-cs  {{{NOUN-C}}}s
+#+MACRO: rr {{{RULE}}}
+
+#+MACRO: gouge-for 
+#+MACRO: gouge-see 
+# #+MACRO: gouge-for *Read this in conjunction with [[#$1][{{{RULE}}} ]][[#$1]].*
+# #+MACRO: gouge-see *Gouge: [[#$1]].*
+#+MACRO: gp {{{NOUN-C}}}
+#+MACRO: ag protocol
+#+MACRO: ag-c Protocol
+
+
+#+MACRO: ncs {{{NAME}}} {{{NOUN-P}}}
+#+MACRO: namebk {{{NAME}}} {{{NOUN-C}}} {{{BK}}}
+#+MACRO: namek {{{NAME}}}
+#+MACRO: namebk-is {{{NAMEBK}}} is
+#+MACRO: namebk-it-is it's
+#+MACRO: namebk-obj-them them
+
+*** Contract and agreement references
+#+MACRO: adk [[#adopt-nomen][the Con&shy;tract]]
+#+MACRO: adk-c [[#adopt-nomen][The Con&shy;tract]]
+#+MACRO: adk-cap [[#adopt-nomen][The Con&shy;tract]]
+#+MACRO: ak a con&shy;tract
+#+MACRO: ak-cap A con&shy;tract
+#+MACRO: cont When {{{THS}}} is agreed to, the parties follow it whenever
+#+MACRO: opt-when When this Opt-in provision is part of {{{THEK}}}
+#+MACRO: thek the Con&shy;tract
+#+MACRO: thek-1 the Con&shy;tract
+#+MACRO: thek-allcaps THE CON&shy;TRACT
+#+MACRO: thek-cap The Con&shy;tract
+#+MACRO: ths this {{{NOUN-C}}}
+#+MACRO: ths-cat this {{{NOUN-C}}}
+#+MACRO: ths-cat-cap This {{{NOUN-C}}}
+#+MACRO: ths-a this {{{AG-C}}}
+#+MACRO: ths-a-c This {{{AG-C}}}
+#+MACRO: ths-c this {{{NOUN-C)}}}
+#+MACRO: ths-c-cap This {{{NOUN-C}}}
+#+MACRO: ths-cap This {{{NOUN-C}}}
+#+MACRO: ths-d this Definition
+#+MACRO: ths-d-cap This Definition
+#+MACRO: ths-g this Guardrail
+#+MACRO: ths-i this Item
+#+MACRO: ths-i-cap This Item
+#+MACRO: ths-o this {{{OPT}}}
+#+MACRO: ths-o-c This {{{OPT}}}
+#+MACRO: ths-o-cap This {{{OPT}}}
+#+MACRO: ths-p this {{{NOUN}}}
+#+MACRO: ths-p-cap This {{{NOUN-C}}}
+#+MACRO: ths-r this {{{NOUN-C}}}
+#+MACRO: ths-r-cap This {{{NOUN-C}}}
+#+MACRO: ths-rel When would {{{THS}}} be relevant?
+#+MACRO: ths-when When {{{THS}}} is agreed to in writing:
+
+*** Party and pronoun references
+
+#+MACRO: dir-to-you In {{{ths}}}, "you" refers to each party; all directives and reminders in {{{ths}}} are addressed separately to each party.
+#+MACRO: ep EACH PARTY
+#+MACRO: ap ALL PARTIES
+#+MACRO: epc Each party ("EP")
+#+MACRO: weall In {{{THS}}}, "*we*" (and "us," "our," etc.) refers to each party to {{{THEK}}}.
+#+MACRO: weyou In {{{THS}}}, "*we*" and "*you*" (as well as "us," "our," "you," "your," etc.) refer each pair of parties to {{{THEK}}}.
+
+
+*** Grammar helpers (present descriptive tense)
+
+#+MACRO: are are
+#+MACRO: areto must
+#+MACRO: arenotto must not
+#+MACRO: arenot aren't
+#+MACRO: arent aren't
+#+MACRO: cant can't
+#+MACRO: ddnt didn't
+#+MACRO: dnt don't
+#+MACRO: dnt-c Don't
+#+MACRO: dnt-cap Don't
+#+MACRO: dnt-ac DON'T
+#+MACRO: ds does
+#+MACRO: dsn doesn't
+#+MACRO: dsnt doesn't
+#+MACRO: hdnt hadn't
+#+MACRO: hadnot hadn't
+#+MACRO: hsn hasn't
+#+MACRO: hsnt hasn't
+#+MACRO: hasnot hasn't
+#+MACRO: hasnt hasn't
+#+MACRO: is is
+#+MACRO: isn isn't
+#+MACRO: isnt isn't
+#+MACRO: isnotto must not
+#+MACRO: isto must
+#+MACRO: itis it's
+#+MACRO: its it's
+#+MACRO: thatis that's
+#+MACRO: thts that's
+#+MACRO: thats that's
+#+MACRO: thats-c That's
+#+MACRO: thatis-c That's
+#+MACRO: theres there's
+#+MACRO: thereis there's
+#+MACRO: theyd they'd
+#+MACRO: theyre they're
+#+MACRO: theyre-c They're
+#+MACRO: theyll they'll
+#+MACRO: TRTS treats
+#+MACRO: TRTP treat
+#+MACRO: wsnt wassn't
+#+MACRO: wdn wouldn't
+#+MACRO: wdnt wouldn't
+#+MACRO: wdv would've
+#+MACRO: must 
+#+MACRO: mustn don't
+#+MACRO: mustn-p don't
+#+MACRO: mustn-s doesn't
+#+MACRO: will will
+#+MACRO: wnt won't
+#+MACRO: wont won't
+#+MACRO: yd you'd
+#+MACRO: yr your
+#+MACRO: yr-c Your
+#+MACRO: yr-cap Your
+#+MACRO: yre you're
+#+MACRO: yre-c You're
+#+MACRO: yre-cap You're
+
+*** Grammar helpers (imperative, no contractions)                    :OMIT:NOEXPORT
+
+#+MACRO: are are
+#+MACRO: areto must
+#+MACRO: arenotto must not
+#+MACRO: arent are not
+#+MACRO: arenot are not
+#+MACRO: cant cannot
+#+MACRO: ddnt did nott
+#+MACRO: dnt do not
+#+MACRO: dnt-c Do not
+#+MACRO: dnt-cap Do not
+#+MACRO: dnt-ac DO NOT
+#+MACRO: ds does
+#+MACRO: dsn does not
+#+MACRO: dsnt does not
+#+MACRO: hdnt had not
+#+MACRO: hadnot had not
+#+MACRO: hsn has not
+#+MACRO: hsnt has not
+#+MACRO: hasnot has not
+#+MACRO: hasnt has not
+#+MACRO: is is
+#+MACRO: isn is not
+#+MACRO: isnt is not
+#+MACRO: isnotto must not
+#+MACRO: isto must
+#+MACRO: itis it is
+#+MACRO: its its
+#+MACRO: thatis that iss
+#+MACRO: thts that is
+#+MACRO: thats that is
+#+MACRO: thats-c That is
+#+MACRO: theres there is
+#+MACRO: thereis there is
+#+MACRO: theyd they would
+#+MACRO: theyll they will
+#+MACRO: theyre they are
+#+MACRO: theyre-c They are
+#+MACRO: TRTS treats
+#+MACRO: TRTP treat
+#+MACRO: wsnt was not
+#+MACRO: wdn would not
+#+MACRO: wdnt would not
+#+MACRO: wdv would have
+#+MACRO: must 
+#+MACRO: must-s $1s
+#+MACRO: mustn does not
+#+MACRO: mustn-p do not
+#+MACRO: mustn-s does not
+#+MACRO: will will
+#+MACRO: wnt will not
+#+MACRO: wont will not
+#+MACRO: yd you would
+#+MACRO: yr your
+#+MACRO: yr-c Your
+#+MACRO: yr-cap Your
+#+MACRO: yre you are
+#+MACRO: yre-c You are
+#+MACRO: yre-cap You are
+
+
+*** Formatting and display
+
+#+MACRO: BRSP {{{BR}}}     
+#+MACRO: br2 @@html:<br/><br/>@@@@latex:\linebreak\linebreak @@
+#+MACRO: e2e <span class="h">Each party:   </span> <br/>
+#+MACRO: ee <span class="h">Each party:   </span>
+#+MACRO: ft /$1 says to $2:/ <br/>
+#+MACRO: h <span class="h">$1:</span> <br/>
+#+MACRO: hc <span class="h">$1:   </span>
+#+MACRO: hq <span class="h">$1</span>
+#+MACRO: hw <span class="h"> If {{{THS}}} is agreed to, when would it apply? </span>
+#+MACRO: optx <p class="optx">{{{PROPERTY(TX)}}}</p>
+#+MACRO: optx2 <p class="optx">{{{PROPERTY(TX2)}}}</p>
+#+MACRO: txt <p class="refr">{{{PROPERTY(TX)}}}</p>
+#+MACRO: txt2 <p class="refr">{{{PROPERTY(TX2)}}}</p>
+
+*** Date and time
+
+#+MACRO: date-UTC (eval (format-time-string "%b %d, %Y %H:%M UTC" (current-time) t))
+#+MACRO: date-long (eval (format-time-string "%b %d\, %Y %H:%M"))
+
+*** Cross-references and navigation
+
+#+MACRO: F1 [[#$1][🔗]]
+#+MACRO: FN [[#$1][🔗]]
+#+MACRO: item item
+#+MACRO: item-cap Item
+#+MACRO: items items
+#+MACRO: items-cap Items
+#+MACRO: optn [{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1]])
+#+MACRO: optn-full [{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1]])
+#+MACRO: rdlist [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1]])
+#+MACRO: rule-full [[#$1][ {{{NOUN-C}}} ]][[#$1]][[#$1][: /{{{PROPERTY(ITEM,#$1)}}}/]]
+#+MACRO: rule-full-cap {{{RULE-FULL}}}
+#+MACRO: s *{{{PROPERTY(ITEM,#$1)}}}:* {{{PROPERTY(S,#$1)}}} {{{DET($1)}}}
+
+*** Letter counters (requires Elisp function)
+# For upper case, change "nil" to "t" in the L macro just below; for lower case, change it back
+# For upper case, change "nil" to "t" in the U macro just below; for lower case, change it back
+
+#+MACRO: L (eval (letter-counter nil))
+#+MACRO: LC-RS (eval (reset-letter-counter))
+#+MACRO: LPS {{{L}}}. 
+# #+MACRO: LPSR {{{LC-RS}}}{{{L}}}. 
+#+MACRO: L1 {{{LC-RS}}}{{{L}}}. 
+#+MACRO: LN {{{L}}}. 
+#+MACRO: U (eval (letter-counter t))
+# #+MACRO: U1 {{{UPSR}}} ;; THIS IS FOR LETTERED COMMENTS
+#  #+MACRO: UN {{{UPS}}}  ;; DITTO
+
+#+MACRO: c1 {{{N(,1)}}}. 
+#+MACRO: cn {{{N}}}.  
+#+MACRO: cs1   1. 
+#+MACRO: csn   2. 
+
+
+#+MACRO: u1 {{{N(,1)}}}.
+#+MACRO: un {{{N}}}.
+
+#+MACRO: x1 {{{N(,1)}}}. 
+#+MACRO: xn {{{N}}}. 
+
+#+MACRO: H1 {{{N(,1)}}}.  
+#+MACRO: HN {{{N}}}.  
+
+ #+MACRO: UPS {{{U}}}.&nbsp;
+#+MACRO: UPSR {{{LC-RS}}}{{{UPS}}}
+
+*** UI elements and instructions
+
+#+MACRO: bio <small> /About the author:/ Professor of practice at the University of Houston Law Center; member, State Bars of Texas and California. Former BigLaw litigation-firm partner. Former public-company general counsel. My German-origin last name is pronouced "Tate." I go by "D.C." because of my Roman numeral.  ([[http://www.OnContracts.com/About][More]]) </small>
+#+MACRO: bk-rd /Students: See the background reading at [[#$1]]./
+#+MACRO: bkgd Background
+#+MACRO: blue The text of {{{THS}}}, and that any options, notes, etc., is [[#blue][color-coded]] as stated at {{{RULE}}} [[#blue]]. 
+#+MACRO: hlc cheat-sheet clause
+#+MACRO: inst Students: See the instructions at [[#rdg-instr]].
+#+MACRO: intro Who might want {{{THS}}}, and why?
+#+MACRO: navclick TO NAVIGATE, click (repeatedly) on the headings at left. <br/> <br/>
+
+*** Protocol and clause text
+
+#+MACRO: clause  {{{NOUN-C}}} text
+#+MACRO: clause2  {{{NOUN-C}}} text
+#+MACRO: pr-txt Protocol text
+
+*** Definitions
+
+#+MACRO: coc (Option:)
+
+*** Specialized and domain-specific
+
+#+MACRO: RKPR Rec&shy;ord&shy;keep&shy;er
+#+MACRO: RKPR-C REC&shy;ORD&shy;KEEP&shy;ER
+#+MACRO: coop [[#coop-defn][cooperate]]
+#+MACRO: coop-c [[#coop-defn][Cooperate]]
+#+MACRO: rkpr Recordkeeper
+#+MACRO: rules-os laws
+#+MACRO: up-hdg (eval (save-excursion (org-up-heading-safe) (org-get-heading t t t t)))
+
+
+** Existing macros (from original _Macros.org)
+
+                                                           :NOEXPORT:
+  :PROPERTIES:
+  :CUSTOM_ID: Macros
+  :END:
+
+** Date macros - spring 2025
+
+#+MACRO: DATE-Q5 Mon. Apr. 29
+#+MACRO: DATE-FINAL Wed. May 7, 7:00 to 8:00 p.m.
+
+#+MACRO: week01 {{{Day01}}}
+#+MACRO: Day01 Mon. Jan. 13
+#+MACRO: Day02 Wed. Jan. 15
+
+#+MACRO: week02 {{{Day03}}}
+#+MACRO: Day03 Mon. Jan. 27
+
+#+MACRO: week03 {{{Day04}}}
+#+MACRO: Day04 Mon. Jan. 27
+#+MACRO: Day05 Wed. Jan. 29
+
+#+MACRO: week04 {{{Day06}}}
+#+MACRO: Day06 Mon. Feb. 03
+#+MACRO: Day07 Wed. Feb. 05
+
+#+MACRO: week05 {{{Day08}}}
+#+MACRO: Day08 Mon. Feb. 10
+#+MACRO: Day09 Wed. Feb. 12
+
+#+MACRO: week06 {{{Day10}}}
+#+MACRO: Day10 Mon. Feb. 17
+#+MACRO: Day11 Wed. Feb. 19
+
+#+MACRO: week07 {{{Day12}}}
+#+MACRO: Day12 Mon. Feb. 24
+#+MACRO: Day13 Wed. Feb. 26
+
+#+MACRO: week08 {{{Day14}}}
+#+MACRO: Day14 Mon. Mar 03
+#+MACRO: Day15 Wed. Mar 05
+
+#+MACRO: week09 {{{Day16}}}
+#+MACRO: Day16 Mon. Mar 17
+#+MACRO: Day17 Wed. Mar 19
+
+#+MACRO: week10 {{{Day18}}}
+#+MACRO: Day18 Mon. Mar 24
+#+MACRO: Day19 Wed. Mar 26
+
+#+MACRO: week11 {{{Day20}}}
+#+MACRO: Day20 Mon. Mar. 21
+#+MACRO: Day21 Wed. Apr. 02
+
+#+MACRO: week12 {{{Day22}}}
+#+MACRO: Day22 Mon. Apr. 07
+#+MACRO: Day23 Wed. Apr. 09
+
+#+MACRO: week13 {{{Day24}}}
+#+MACRO: Day24 Mon. Apr. 14
+#+MACRO: Day25 Wed. Apr. 16
+
+#+MACRO: week14 {{{Day26}}}
+#+MACRO: Day26 Mon. Apr. 21
+#+MACRO: Day27 Wed. Apr. 23
+#+MACRO: Day28 NONE
+
+
+#+MACRO: un 
+
+** Macros - parties
+
+#+MACRO: a Alfa
+#+MACRO: a-cap Alfa
+#+MACRO: ac Alfa
+#+MACRO: a1 [[#a-b-phold][Alfa]]
+#+MACRO: b Bravo
+#+MACRO: b-cap Bravo
+#+MACRO: bc Bravo
+#+MACRO: b1 [[#a-b-phold][Bravo]]
+#+MACRO: C Charlie
+
+** Macros - colors
+# From https://github.com/fniessen/org-macros:
+#+MACRO: color @@html:<span style="color: $1">$2</span>@@@@latex:\textcolor{$1}{$2}@@@@odt:<text:span text:style-name="$1">$2</text:span>@@
+#+MACRO: hl {{{highlight(#FFFF00,$1)}}}
+#+MACRO: highlight @@html:<span style="background-color: $1;">$2</span>@@
+#+MACRO: image \includegraphics{$1}
+
+#+MACRO: u (@@html:<b>@@$1@@html:</b>@@)
+
+** Macros - rules
+
+#+MACRO: gr 
+#+MACRO: msd Required:
+#+MACRO: myd Allowed:
+#+MACRO: mnd Prohibited:
+#+MACRO: ovr /Override:/
+#+MACRO: req If asked: 
+#+MACRO: ctf Certification
+#+MACRO: df Definition
+#+MACRO: p 
+#+MACRO: ths-pr this {{{NOUN}}}
+#+MACRO: prt 
+#+MACRO: prc 
+#+MACRO: ths-prc this Procedure
+#+MACRO: ths-prc-c This Procedure
+#+MACRO: prh Prohibition
+#+MACRO: lm Limitation
+#+MACRO: lms Limitations
+#+MACRO: prq Prerequisite:
+#+MACRO: rq 
+# #+MACRO: rs Restriction
+#+MACRO: ia If agreed: 
+
+
+** Macros - the Contract
+
+# #+MACRO: read <p class="cl-intro">Reading: § [[#$1]].</p>
+# #+MACRO: rule-ref /See {{{RULE}}} [[#$1]]./
+
+# #+MACRO: key @@html:<span class="key">&#x1F511;</span>@@
+
+# #+MACRO: lane @@html:<span style="font-variant: small-caps";>Rule Riders™</span>@@
+
+# #+MACRO: default The following sections set out additional details and "default" values (i.e., values that apply if not otherwise agreed)
+
+# #+MACRO: DO $1 ("you") does the following
+# #+MACRO: DO2 $1 (each: "you") does the following
+
+# #+MACRO: DR the Deal Rider
+# #+MACRO: DR-CAP The Deal Rider
+# #+MACRO: ak a contract, term sheet, or other agreement intended to be binding (the "*Contract*")
+# #+MACRO: ak-adopt an parties' agreement explicitly or implicitly adopts the Tango Terms (a "/Contract/") without being more specific about which provisions are adopted
+# #+MACRO: ak-cap This Agreement
+# #+MACRO: ak-nohyph This Agreement
+
+#+MACRO: bc Why this might matter
+# #+MACRO: bt this Rider
+# #+MACRO: bt-cap This Rider
+# #+MACRO: thek-lists-this {{{THEK}}} explicitly or implicitly adopts {{{THIS}}}, for example (without limitation) by listing it as one of the Tango Term¯provisions that applies
+#+MACRO: thisk {{{THEK}}}
+#+MACRO: thisk-cap {{{THEK-CAP}}}
+#+MACRO: thisk-allcaps THE CONTRACT
+
+** Macros - custom numbering
+#+begin_comment
+
+# FROM CHATGPT:
+
+(defvar org-n-label-table nil
+  "Hash table of labels to numbers for {{{N(label)}}} references.")
+
+(defun org-n-init-labels ()
+  (setq org-n-label-table (make-hash-table :test #'equal))
+  (setq org-n-counter 0))
+
+(defun org-n-macro (&optional label)
+  "Assigns a number to a label and returns a span with an ID for linking.
+If LABEL is nil, tries to find :CUSTOM_ID: property at current heading."
+  (let* ((label (or (and (stringp label)
+                         (not (string= label ""))
+                         (car (split-string label "," t "[ \t\n\r]+")))
+                    (org-entry-get nil "CUSTOM_ID")))
+         (n (or (gethash label org-n-label-table)
+                (puthash label (number-to-string (cl-incf org-n-counter))
+                         org-n-label-table))))
+    (if label
+        (format "<span id=\"%s\">%s</span>" label n)
+      (format "??(no label)"))))
+
+(defun org-ref-macro (label)
+  "Macro that creates a hyperlink to the numbered label."
+  (let ((n (gethash label org-n-label-table)))
+    (if n
+        (format "<a href=\"#%s\">%s</a>" label n)
+      (format "??(%s)" label))))
+
+(defun org-n-html-export-setup (_backend)
+  "Prepare label tracking before export."
+  (when (eq _backend 'html)
+    (org-n-init-labels)))
+
+(add-hook 'org-export-before-processing-hook #'org-n-html-export-setup)
+
+
+#+MACRO: NX (eval (org-n-macro $1))
+#+MACRO: NP {{{NX($1)}}}. 
+#+MACRO: NS § {{{NX($1)}}}     
+#+MACRO: RX (eval (org-ref-macro $1))
+#+MACRO: RS § {{{RX($1)}}}
+#+end_comment
+
+** Macros - cross-references
+
+# #+MACRO: bkgd @@html:<span style="font-size: 80%;">@@{{{BRACKL}}}[[#$1]]{{{BRACKR}}}@@html:</span>@@
+
+#+MACRO: date (eval (format-time-string "%b %d\, %Y"))
+
+
+#+MACRO: wks Worksheet
+#+MACRO: wks-the the Worksheet above
+#+MACRO: wks-the-cap The Worksheet above
+#+MACRO: wks-intro When {{{THS}}} is listed in a signed agreement ("*{{{THEK}}}*"), this {{{WKS}}} -- with any express revisions --- and the accompanying {{{RULE-THE}}} below are incorporated by reference into {{{THEK}}} with the effect stated in {{{RULE(k-defn)}}}.
+
+#+MACRO: wit (see the configuration worksheet below at [[$1][item ]][[$1]])
+#+MACRO: it [[$1][section ]][[$1]]
+#+MACRO: it-cap [[$1][Section ]][[$1]]
+#+MACRO: it2 [[$2][Section ]][[#$1]].[[$2]]
+
+#+MACRO: what {{{PROPERTY(CATEGORY)}}}¯
+#+MACRO: this this Agreement
+#+MACRO: this-cap This Agreement
+#+MACRO: this-a this Appendix
+#+MACRO: this-a-cap This Appendix
+#+MACRO: this-d this Definition
+#+MACRO: this-d-cap This Definition
+#+MACRO: this-opt this Opt-In provision
+#+MACRO: this-o-cap This Option
+#+MACRO: this-o this Opt-In provision
+#+MACRO: this-opt-cap This Opt-in provision
+#+MACRO: this-pc this Procedure
+#+MACRO: this-pc-cap This Procedure
+#+MACRO: this-pl this Rider
+#+MACRO: this-pl-cap This Rider
+#+MACRO: this-pr this Rider
+#+MACRO: this-pr-cap This Rider
+#+MACRO: this-p this Plan
+#+MACRO: this-p-cap This Plan
+#+MACRO: this-r this Plan
+#+MACRO: this-r-cap This Plan
+#+MACRO: this-w this Rider
+#+MACRO: this-w-cap This Rider
+
+
+#+MACRO: thisbk the Aligned
+#+MACRO: thisbk-cap The Aligned
+
+#+MACRO: the-this The {{{PROPERTY(CATEGORY)}}}
+#+MACRO: these this {{{PROPERTY(CATEGORY)}}}
+#+MACRO: these-cap This {{{PROPERTY(CATEGORY)}}}
+
+#+MACRO:  hidden <span class="hdn-hdg">(now hidden)</span>
+
+
+# #+MACRO: icr-ref (To speed up the other side's legal review, drafters can consider incorporating the following language by reference as described in {{{CLS(icr)}}}.)
+
+#+MACRO: icr-ref 
+
+#+MACRO: icr-above (To speed up the other side's legal review, drafters can consider incorporating the above language by reference as described in {{{CLS(icr)}}}.)
+
+# #+MACRO: incorp {{{THIS-CAP}}} is part of {{{THEK}}} if and as so set forth in {{{RULE-FULL(incorp-rule)}}}, together with any specific terms and/or modifications stated in {{{THEK}}} 
+
+#+MACRO: incorp When this Protocol is adopted or otherwise agreed to, in a term sheet or other contract ("*{{{THEK}}}*"), the following {{{NAME}}} transaction {{{NOUN-P}}} are incorporated by reference into {{{THEK}}}, with the effect stated in {{{NAME}}} {{{RULE}}} [[#incorp-ref]] (incorporation by reference)
+
+#+MACRO: incorp-cmt This provides an easy way for contract drafters to specify inclusion of {{{THIS}}}.
+
+
+
+#+MACRO: consid [[#consid][consider]]
+#+MACRO: consid-c [[#consid][Consider]]
+
+#+MACRO: consider Drafters can also consider incorporating one or more of {{{GET-TITLE-LINK($1)}}} (which are not part of {{{THEK}}} unless clearly so stated there).
+
+
+
+** Macros - counters
+
+# ======== counter reset =======
+#+MACRO: cr <br>     {{{n(counter,1)}}}
+
+# ======== counter increment
+# #+MACRO: c <br>     {{{n(counter)}}}
+
+** Macros - adoption
+
+#+MACRO: act Action:
+#+MACRO: eff Effect:
+#+MACRO: means What it means:
+
+
+#+MACRO: appl {{{Ths-cap}}} is binding only if the parties agree to it.
+
+#+MACRO: appl-when /See the {{{PROPERTY(ITEM,#k-bound)}}} ([[#k-bound]]) for when {{{ths}}} would apply./
+
+#+MACRO: apply-only Reminder: {{{THIS-CAP}}} applies in an agreement ("/{{{THEK}}}/") only to the extent described in {{{RULE(lh-appl)}}}
+
+#+MACRO: addl-note-xref /See also the additional notes at Appendix [[#$1]]./
+
+#+macro: adopt The "{{{PROPERTY(ITEM,#k-bound)}}}" {{{NOUN}}} ([[#k-bound]]) is incorporated by reference into {{{ths}}}
+
+#+macro: adopt-b When you draft a contract, consider copying and revising the following language to suit your client's specific situation:
+
+#+macro: adopt-a Contract drafters can consider copying and revising the above language to suit their clients' specific situations.
+
+#+MACRO: adopt-how How could this specific {{{PROPERTY(CATEGORY)}}} be added to a contract
+
+#+MACRO: adopt-intro None of the Options below will apply unless {{{thek}}} clearly adopts the specific Option in question.  
+
+#+MACRO: adopt-apply {{{book-clause-title-the($1)}}} is incorporated by reference
+#+MACRO: adopt-apply-cap {{{book-clause-title-the-cap($1)}}} is incorporated by reference
+# #+MACRO: adopt-iaw in accordance with {{{book-clause-title-the($1)}}}, which is incorporated by reference
+
+#+MACRO: adopt-sub {{{ADOPT-INTRO}}} --- such language won't be part of {{{THEK}}}, though, unless clearly stated
+#+MACRO: adopt-add counsel could add express language to {{{THEK}}} along substantially the following lines
+#+MACRO: adopt-add-cap Counsel could add express language to {{{THEK}}} along substantially the following lines
+
+#+MACRO: alt <span class="cmt-in">&lt;Alternative: [[#$1][§ ]][[#$1]]&gt;</span>
+
+# #+MACRO: bboxy @@html:<span class="bboxy">&#x2611;</span>@@@@latex:BBOXY @@
+#+MACRO: bboxy [x]
+#+MACRO: bboxi @@html:<span class="bboxi">&#x1F4D6;</span>@@@@latex:\Square @@
+# #+MACRO: bboxn @@html:<span class="bboxn">&#x2610;</span>@@@@latex:BBOXN @@
+#+MACRO: bboxn [  ]
+
+#+MACRO: rd-opt-a @@html:<span class="bbox">&#x25C9;</span>   <i>[Option A:]</i>   @@@@latex:BBOXN @@
+#+MACRO: rd-opt-b @@html:<span class="bbox">&#x1F518;</span>   <i>[Option B:]</i>   @@@@latex:BBOXN @@
+#+MACRO: rd-opt-c @@html:<span class="bbox">&#x1F518;</span>   <i>[Option C:]</i>   @@@@latex:BBOXN @@
+#+MACRO: rd-opt-d @@html:<span class="bbox">&#x1F518;</span>   <i>[Option D:]</i>   @@@@latex:BBOXN @@
+
+#+MACRO: rdio-a @@html:<span class="bbox">&#x25C9;</span>@@
+#+MACRO: rdio-b @@html:<span class="bbox">&#x1F518;</span>@@
+#+MACRO: rdio-c @@html:<span class="bbox">&#x1F518;</span>@@
+#+MACRO: rdio-d @@html:<span class="bbox">&#x1F518;</span>@@
+
+
+
+#+MACRO: opt-a @@html:<span class="bbox">&#x25C9;</span>   <i>[Option A:]</i>   @@@@latex:BBOXN @@
+#+MACRO: opt-ac OPTION
+#+MACRO: opt-b @@html:<span class="bbox">&#x1F518;</span>   <i>[Option B:]</i>   @@@@latex:BBOXN @@
+#+MACRO: opt-c @@html:<span class="bbox">&#x1F518;</span>   <i>[Option C:]</i>   @@@@latex:BBOXN @@
+#+MACRO: opt-d @@html:<span class="bbox">&#x1F518;</span>   <i>[Option D:]</i>   @@@@latex:BBOXN @@
+
+
+# #+MACRO: bboxn @@html:<span class="bboxn">&#x1F6AB;</span> @@@@latex:\Square @@
+# #+MACRO: bboxn (Option:)
+
+#+MACRO: bbox-intro /Note to drafter: Edit the configuration settings below to fit your client's situation. In the "default" settings below, a green checkmark {{{BBOXY}}} signifies a provision that applies unless {{{THEK}}} clearly says otherwise; a red {{{BBOXN}}} signifies the reverse./
+
+# #+MACRO: bboxn   {{{CHKN}}}  
+# #+MACRO: bboxy @@html:<span class="bboxy">&#x25B6;</span> @@@@latex:\XBox @@
+# #+MACRO: bboxy [R:]
+#+MACRO: bboxy @@html:<span class="bboxy">&#x2612;</span>@@@@latex:BBOXY@@
+# #+MACRO: bboxy    {{{CHKY}}}  
+#+MACRO: bboxq @@html:<span class="bboxy">&#x2753;</span>@@
+#+MACRO: blankline @@html:<hr style="width: 10em; margin-left: 0; text-align: left;">@@
+
+
+
+#+MACRO: br @@html:<br/>@@@@latex:\linebreak @@
+#+MACRO: brsp @@html:<br/>@@ \nbsp{} \nbsp{}
+#+MACRO: brs @@html:<br/>@@ \nbsp{} \nbsp{} ({{{n(sub)}}})   
+#+MACRO: brsn @@html:<br/>@@ \nbsp{} \nbsp{} ({{{n(sub,1)}}})   
+#+MACRO: brs-n @@html:<br/>@@ \nbsp{} \nbsp{} ({{{n(sub)}}})
+#+MACRO: brs-1 @@html:<br/>@@ \nbsp{} \nbsp{} ({{{n(sub,1)}}})
+#+MACRO: bull \bull\nbsp{}
+#+MACRO: lbr @@html:<br/>@@@@latex:\linebreak @@
+#+MACRO: lbr2 @@html:<br/><br/>@@
+# #+MACRO: br2 
+#+MACRO: brackl [
+#+MACRO: brackl2 [[
+#+MACRO: brackr ]
+#+MACRO: brackr2 ]]
+
+
+#+MACRO: links (Links are for general information, but the linked material(s) are not part of {{{THS}}}.)
+
+#+MACRO: care Why might a client care about this?
+
+#+MACRO: cau @@html:<span class="wn">&#x26A0;</span>@@
+#+MACRO: k @@html:<span class="k">&#x1F511;</span>@@
+#+MACRO: i @@html:<span class="i">&#x24D8;</span>@@
+
+#+MACRO: escal-hdg Escalation of disagreements
+
+#+MACRO: exp See also the expense-invoicing restriction in {{{RULE}}} [[#inv-exp-no]].
+
+
+
+
+#+MACRO: chap Chapter [[#$1]]
+#+MACRO: chapter 
+#+MACRO: chap-full Chapter [[#$1]]: {{{PROPERTY(ITEM,#$1)}}}
+
+#+MACRO: chap-rev  [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1][Chapter ]][[#$1]])
+#+MACRO: chap-this this Chapter
+#+MACRO: chap-this-cap This Chapter
+#+MACRO: chap-opt-intro The provisions of this chapter apply in an agreement ("/{{{THEK}}}/") only to the extent (if any) that {{{THEK}}} clearly says so
+#+MACRO: chap-rule-intro When an agreement ("/{{{THEK}}}/") adopts this chapter, the ground rules below are incorporated by reference into {{{THEK}}}
+
+
+#+MACRO: chky @@html:<span class="bboxy">&#x221A</span>@@
+# #+MACRO: chk-y @@html:<span class="cbxy">&#x2705</span>@@
+# #+MACRO: chk-n @@html:<span class="cbxy">&#x274C</span>@@
+#+MACRO: chk-y @@html:<span class="cbxy">&#x2713</span>@@
+#+MACRO: chk-n @@html:<span class="cbxy">&#x2718</span>@@
+#+MACRO: br-chk-y <br/>[ x ]
+#+MACRO: br-chk-n <br/>[    ]
+#+MACRO: chkn {{{CHK-N}}}
+
+#+MACRO: chkhdg /See {{{TC(chk-rule)}}} for the meanings of checkmarks {{{CHK-Y}}} and cross-offs {{{CHK-N}}}./
+
+#+MACRO: chklst Drafters might want to consider the following:
+
+#+MACRO: chk-int The {{{NOUN}}} text is in the numbered, bold-faced subheadings below, with blue background shading; the accompanying text is my commentary.
+
+
+#+MACRO: cleark  [[#clear-agrd][clearly agree]]
+#+MACRO: clearkd  [[#clear-agrd][clearly agreed]]
+#+MACRO: clearks  [[#clear-agrd][clearly agrees]]
+
+#+MACRO: click-hamb *Click the hamburger icon at top left (or go to the [[#toc-chap-inline][Chapter list]]) {{{BR}}}to see the table of contents for this Part*
+#+MACRO: click-sop /Click on a heading to go to the model {{{NOUN-C}}}/
+
+#+MACRO: cls-intro If {{{THS}}} is adopted in {{{THEK}}}:
+
+
+#+MACRO: cls-ref /Be sure also to read the in-line notes at {{{Cls}}} [[#$1]] ({{{PROPERTY(ITEM,#$1)}}})/
+#+MACRO: addl-ref /See also the additional notes at [[#$1]]./
+
+#+MACRO: cls-start #+LATEX: \begin{cls}
+#+MACRO: cls-end #+LATEX: \end{cls}
+
+ #+MACRO: cmt ([[#$1]])
+#+MACRO: cmt2  <span class="lk">[[#$1]], [[#$2]]</span>
+
+#+MACRO: d Definition
+
+#+MACRO: det  <span class="cr">([[#$1][Details: ]][[#$1]])</span>
+ #+MACRO: cmt-c \thinsp{}<span class="cr">[[#$1]]</span>
+#+MACRO: cmtry <span class="m"> See the discussion at [[#$1]].  </span>
+
+#+MACRO: copy Or, to speed up the other side's legal review, a drafter could consider incorporating by reference as described in {{{CLS(icr)}}}.
+
+#+MACRO: dfn "*$1*"
+#+MACRO: defn "*$1*"
+#+MACRO: defn-c "*$1*,"
+#+MACRO: defn-p "*$1*."
+#+MACRO: dfn-c "*$1*,"
+#+MACRO: dfn-p "*$1*."
+
+#+MACRO: eg {{{XREF-DEFN(for example,examples-usage)}}}
+#+MACRO: egc {{{XREF-DEFN(For example,examples-usage)}}}
+#+MACRO: egn EXAMPLE {{{n(egnum)}}}:
+#+MACRO: em @@html:<em>$1</em>@@@@latex:\emph{$1}@@
+#+MACRO: endnotes @@latex:\theendnotes@@@@latex:\setcounter{endnote}{0}@@
+#+MACRO: ex 
+
+
+
+#+MACRO: fc <div class="fc">$1</div>
+
+#+MACRO: fil @@html:<span class="ilfn">@@[[#$1]]@@html:</span>@@
+
+
+#+MACRO: foad For the avoidance of doubt: {{{CMT-IN(foavd)}}}
+
+#+MACRO: follow When parties follow this Practice, here is how they deal with each other:
+
+#+MACRO: free-to free to
+
+#+MACRO: fw-intro When parties cite this protocol in an agreement ("/{{{THEK}}}/"), the following {{{LH}}} clauses are incorporated by reference into {{{THEK}}}:
+
+#+MACRO: fw-title  {{{PROPERTY(ITEM,#$1)}}}  ([[#$1]])
+
+#+MACRo: fw-when The following {{{LH}}} clauses are incorporated by reference into {{{THEK}}}
+
+
+#+MACRO: fw-the the [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] protocol ([[#$1]])
+#+MACRO: fw-the-cap The [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] protocol ([[#$1]])
+
+#+MACRO: get-title-ann {{{PROPERTY(ITEM,#$1)}}} 
+
+#+MACRO: get-title {{{PROPERTY(ITEM,#$1)}}}
+#+MACRO: get-title-ck •  /{{{PROPERTY(ITEM,#$1)}}}/ (See [[#$1][§ ]][[#$1]].)
+#+MACRO: get-title-link @@html:<span class="gtl">@@[[#$1][{{{PROPERTY(ITEM,#$1)}}}]]@@html:</span>@@
+#+MACRO: gtl  [[#$1][{{{PROPERTY(ITEM,#$1)}}}]]  ([[#$1]])
+#+MACRO: get-title-link-num {{{PROPERTY(ITEM,#$1)}}} ([[#$1]])
+#+MACRO: get-title-link-the  the [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] {{{NOUN}}} ([[#$1]])
+#+MACRO: get-title-link-the-cap  The [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] {{{NOUN}}} ([[#$1]])
+#+MACRO: get-title-link-plain {{{PROPERTY(ITEM,#$1)}}}  {{{NOTES($1)}}}
+
+#+MACRO: get-title-link-http {{{LH}}} [[#$1][{{{PROPERTY(ITEM,#$1)}}}]]  {{{NOTES($1)}}}
+#+MACRO: get-title-link-http-the the {{{LH}}} [[#$1][{{{PROPERTY(ITEM,#$1)}}}]]  {{{NOTES($1)}}}
+#+MACRO: get-title-link-http-the-cap The {{{LH}}} [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] {{{NOTES($1)}}}
+
+#+MACRO: gp-ws The sections below are grouped together for convenient review.
+#+MACRO: gp-gr The sections below, which are often uncontroversial, are grouped together for convenient review.
+#+MACRO: gp-opt None of the sections below applies in {{{THEK}}} unless {{{THEK}}} specifically says so.
+
+
+
+#+MACRO: gwb [the electronic whiteboard]
+
+#+MACRO: l1 [[#$1][{{{N1}}}]]
+#+MACRO: ln [[#$1][{{{N}}}]]
+#+MACRO: link [[#$1][&#x1F517;]]
+#+MACRO: more @@html:<small>@@[[#$1][(more)]]@@html:</small>@@
+
+#+MACRO: l List
+
+#+MACRO: lhp-the the Fairway {{{PROPERTY(ITEM,#$1)}}} ([[#$1])
+#+MACRO: lhp-the-cap The Fairway {{{PROPERTY(ITEM,#$1)}}} ([[#$1])
+
+
+#+MACRO: mod Rider Package [[#$1]]:  {{{PROPERTY(ITEM,#$1)}}}
+
+#+MACRO: mod-intro When parties cite this clause package in an agreement ("/{{{THEK}}}/"), the following {{{LH}}} clauses are incorporated by reference into {{{THEK}}}
+#+MACRO: mod-title  {{{PROPERTY(ITEM,#$1)}}}  ([[#$1]])
+
+#+MACRO: mod-the the [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] clause list ([[#$1]])
+#+MACRO: mod-the-cap The [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] clause list ([[#$1]])
+
+
+#+MACRO: module-app {{{LH-THE-CAP}}} in this chapter (other than any optional terms) will apply in any contract ("/{{{THEK}}}/") that adopts either (i) this chapter itself, or (ii) {{{LH-THE}}} without specifying particular provisions to incorporate. (Commentary and supplemental notes are for general guidance and are not part of {{{THEK}}}.)
+
+# #+MACRO: model Ask your lawyer about using the following language to incorporate {{{THIS}}} into your contract:  <span class="model">"{{{PROPERTY(INVS)}}}." </span>
+
+#+MACRO: mc Actions
+#+MACRO: mcs Model clauses
+
+
+#+MACRO: na @@html:<span class="na">@@{{{BRACKL}}}N/A: $1{{{BRACKR}}}@@html:</span>@@
+
+#+MACRO: ncd 
+
+#+MACRO: neg-intro The following terms apply unless {{{thek}}} clearly specifies otherwise.
+
+# ======== Non-breaking hyphen and soft hyphens in HTML
+#+MACRO: nbh @@html:&#x2011;@@
+#+MACRO: shy @@html:&shy;@@
+
+#+MACRO: nicknames {{{PROPERTY(ROLES)}}}
+
+#+MACRO: nocd {{{TC($1)}}}
+
+#+MACRO: nolegal *Caution:* Don't rely on the Duo clauses or commentary as a substitute for licensed legal advice.
+
+#+MACRO: note [[$1][Note ]][[$1]]
+
+#+MACRO: notes-tbl The notes [a], [b], etc., following the table below are part of {{{THS}}}.
+
+#+MACRO: notes ([[#$1]])
+# #+MACRO: notes @@html:<small>(see @@[[#$1][§ ]][[#$1]])@@html:</small>@@
+# #+MACRO: notes @@html:<small>@@[[#$1][(Notes)]]@@html:</small>@@
+#+MACRO: notes2 @@html:<small>@@[[#$1][(Notes: $2)]]@@html:</small>@@
+
+#+MACRO: nt /(notes)/
+
+#+MACRO: nts [TK - XREF TO NOTES]
+
+# #+MACRO: num1 <span class="n">{{{N(,1)}}}.  </span>
+# #+MACRO: num <span class="n">{{{N}}}.  </span>
+#+MACRO: num1 {{{N(,1)}}}.  
+#+MACRO: num {{{N}}}.  
+#+MACRO: br1 {{{BR}}}       ({{{N(,1)}}}) 
+#+MACRO: brn {{{BR}}}       ({{{N}}}) 
+
+
+# ALPHABETICAL SUBDIVS (a), (b), etc.
+
+#+PROPERTY: ALPHA_COUNTER 0
+
+
+#+MACRO: acount (eval (let* ((counter (string-to-number (or (org-entry-get nil "ALPHA_COUNTER" t) 0))) (new-counter (1+ counter)) (letter (char-to-string (+ ?a (mod (1- new-counter) 26))))) (org-entry-put nil "ALPHA_COUNTER" (number-to-string new-counter)) letter))
+
+#+MACRO: resettacount (eval (org-entry-put nil "ALPHA_COUNTER" "0") "")
+
+#+MACRO: sub-a {{{resettacount}}} {{{sub}}}
+
+#+MACRO: sub ({{{acount}}})  
+
+
+#+MACRO: numref [[#$1]]    
+
+#+MACRO: rb [[#rdblk][roadblock clause]]
+
+# #+MACRO: rdg [[#$1][{{{PROPERTY(ITEM,#$1)}}} ]]([[#$1]])
+
+#+MACRO: rdg [FILL IN]
+
+#+MACRO: rdg-addl For additional commentary, see [[#$1][{{{PROPERTY(ITEM,#$1)}}} ]]([[#$1]]).
+
+
+
+#+MACRO: rdglist {{{PROPERTY(ITEM,#$1)}}} ([[#$1]])
+
+# #+MACRO: rwe <span class="h">Example:</span>
+#+MACRO: rwe EXAMPLE:
+#+MACRO: ce COUNTEREXAMPLE:
+
+
+#+MACRO: opt-appl None of the following Options will apply in {{{THEK}}} except as expressly adopted by {{{THEK}}}; see {{{RULE}}} [[#r-rpm-adpt]] for details.
+
+#+MACRO: opt-sub Election [[$1]]
+#+MACRO: opt Option
+#+MACRO: opt-in-rqd /Reminder: Specific opt-in required; see § [[#opt-appl]]/
+
+#+MACRO: opt-full {{{PROPERTY(ITEM,#$1)}}} ([[#$1]])
+#+MACRO: optappl This {{{OPT}}} provision applies only if {{{THEK}}} umambiguously says so
+
+#+MACRO: optchk Optional checklist: What else might I want to consider here? :: Consider specifying the following things (possibly among others) in {{{THEK}}}:
+
+#+MACRO: optchkshort Optional checklist: What else might I want to consider here? :: 
+
+#+MACRO: opthdg Option: {{{AK-CAP}}} may provide, in effect, as follows (but none of the following terms will apply unless {{{THEK}}} unambiguously does so):
+
+#+MACRO: chk-intro /This is only a summary of some important business points; be sure to read the entire provision./
+
+#+MACRO: opt-intro No Option below is part of {{{THEK}}} unless {{{THEK}}} specifically says so for that Option.
+
+# #+MACRO: optin <span class="opt">(Opt-in required)</span>
+#+MACRO: optin Option
+
+#+MACRO: opt-in Sections with headings beginning with "Option:" are *not* part of {{{THEK}}} unless expressly agreed to in {{{THEK}}}.
+
+#+MACRO: k-inc When {{{ths-a}}} is adopted in a contract, the following {{{NAME}}} provisions are incorporated by reference:
+#+MACRO: k-opt The following {{{NAME}}} provisions will *not* be part of {{{theK}}} except to the extent — if any — that {{{theK}}} clearly says so.
+
+#+MACRO: optnote The following terms apply only to the extent clearly so stated in {{{THEK}}}. /[Suggestion for drafters: Copy and paste from the options below as desired.]/
+
+#+MACRO: optlang The following optional language could be copied and pasted into {{{THEK}}}
+
+#+MACRO: optout <span class="opt">(Opt-out)</span>
+
+#+MACRO: optsee /Note to drafters: See also the optional terms at {{{SEC($1)}}}, which are not incorporated by reference into {{{THEK}}} unless it clearly says so./
+
+#+MACRO: other {{{BR}}} {{{BBOXN}}} Other: /[Describe in detail in {{{THEK}}}]/
+
+#+MACRO: override {{{BBOXN}}} /Override language:/
+#+MACRO: as-stated as stated in the override provisions of {{{SEC($1)}}}
+
+
+
+#+MACRO: scene Situation:
+#+MACRO: scene-all Situation: All of the following are true:— 
+#+MACRO: scene-both Situation: Both of the following are true:— 
+#+MACRO: plan Plan:
+#+MACRO: plan-unl {{{PLAN}}} Unless {{{theK}}} clearly says otherwise:—
+#+MACRO: prac Practice:
+#+MACRO: prereq Prerequisite:
+#+MACRO: prereqs Prerequisites:
+#+MACRO: if If:
+#+MACRO: butif But if:
+#+MACRO: and And: 
+#+MACRO: or Or: 
+#+MACRO: then Then:
+#+MACRO: but But:
+
+#+MACRO: if-override {{{BBOXN}}} /Override provisions:/ If {{{THEK}}} includes the above override language (or a substantially-similar term), then the following override provisions will apply:
+
+#+MACRO: pl Plan
+
+#+MACRO: patch /Model patch language: {{{SEC(patch-lang)}}}/
+
+#+MACRO: pen @@html:<span class="pencil">&#x270E;</span>@@
+
+#+MACRO: plan-adopt {{{TCFULL($1)}}} is agreed to with the following terms unless {{{THEK}}} clearly states otherwise:
+
+#+MACRO: poop &#128169;
+
+#+MACRO: pref See the Preface in the footnote
+
+#+MACRO: pro {{{PROPERTY(ITEM,#$1)}}}
+
+
+#+MACRO: protext {{{PROPERTY(CATEGORY)}}} text:
+
+
+
+#+MACRO: defend defend, in accordance with {{{RULE}}} [[#defend-defn]], $1 and $1's [[#r-prot-grp][Protected Group]]
+
+#+MACRO: defend-c Defend, in accordance with {{{RULE}}} [[#defend-defn]], $1 and $1's [[#r-prot-grp][Protected Group]]
+
+#+MACRO: protect [[#r-defend-defn][defends]] and [[#r-indem-defn][indemnifies]] $1 and $1's [[#r-prot-grp][Protected Group]]
+
+#+MACRO: protect-you will [[#r-defend-defn][defend]] and [[#r-indem-defn][indemnify]] you and your [[#r-prot-grp][Protected Group]]
+
+#+MACRO: protect-c [[#r-defend-defn][Defend]] and [[#r-indem-defn][indemnify]] $1 and $1's [[#r-prot-grp][Protected Group]]
+
+#+MACRO: protects {{{PROTECT-S($1)}}}
+
+#+MACRO: protect-s [[#r-defend-defn][defends]] and [[#r-indem-defn][indemnifies]] $1 and $1's [[#r-prot-grp][Protected Group]]
+ 
+#+MACRO: protect-s-c [[#r-defend-defn][Defends]] and [[#r-indem-defn][indemnifies]] $1 and $1's [[#r-prot-grp][Protected Group]]
+
+#+MACRO: protect-ccap [[#r-defend-defn][Defend]] and [[#r-indem-defn][indemnify]] $1 and $1's [[#r-prot-grp][Protected Group]]
+
+
+# #+MACRO: proto-intro <p class="Proto-Intro">Only gray-shaded text and associated headings are part of an agreement ("{{{THEK}}}") adopting {{{THIS}}}; other material is non-binding explanation and commentary.<br/>
+
+
+
+#+MACRO: prot-grp   {{{XREF-DEFN(Protected Group,r-prot-grp)}}}
+
+#+MACRO: op Option
+#+MACRO: opc the other party ("OP")
+
+#+MACRO: pt (Up to {{{NOUN-C}}} text)
+#+MACRO: pty <span class="pty">$1: </span>
+#+MACRO: eado Do the following
+#+MACRO: ptcomply {{{THS-CAP}}} is for the parties playing the respective roles indicated below under {{{THEK}}}; the relevant party is sometimes referred to here as "/you/."
+#+MACRO: ptis you are
+#+MACRO: pts your
+#+MACRO: ptsc Your
+#+MACRO: ptc You
+#+MACRO: ptcis You are
+#+MACRO: pte Each party (each, a "* Signatory*")
+#+MACRO: pto the other party
+#+MACRO: ptos the other party's
+#+MACRO: ptoc The other party
+#+MACRO: ptocs The other party's
+
+
+#+MACRO: q Q:
+
+#+MACRO: sf As a short-form clause, drafters could consider including the following in {{{THEK}}}: 
+
+
+
+#+MACRO: star-cls @@html:<span class="star-cls">&#9733;</span>@@
+#+MACRO: star-opt @@html:<span class="star-opt">&#9733;</span>@@
+
+#+MACRO: subdiv-r ({{{N(,1)}}})
+#+MACRO: subdiv ({{{N}}})
+#+MACRO: sugg-use-hdg The following hypothetical example shows one way to list {{{THIS}}} in a term sheet
+#+MACRO: sugg-use \bull {{{PROPERTY(ITEM,#$1)}}} ([[#$1]])
+
+#+MACRO: suppnotes The supplemental notes in this section are provided for general guidance and are not part of {{{THEK}}}.
+
+#+MACRO: suppl-intro @@html:<div class="cls-intro">@@When a contract, referred to as "{{{THEK}}}," adopts the Tango Terms, a given Clause will be part of {{{THEK}}} when, under {{{THEK}}}, one or more parties do the things indicated in that Clause such as, e.g., $1.@@html:</div>@@
+
+
+#+MACRO: protocol-intro 
+
+#+MACRO: ak-adopt if {{{AK}}} explicitly or implicitly adopts the Tango Terms without being more specific about which provisions are adopted
+#+MACRO: rel-when-applies /Relevance:/ If {{{THIS}}} is agreed to, including without limitation by being listed in {{{AK}}}, it applies
+#+MACRO: rel-when-agreed /Relevance:/ If {{{THIS}}} is agreed to, including without limitation by being listed in {{{AK}}}
+
+# #+MACRO: like-k (Like all {{{NAME}}} provisions, {{{ths}}} is binding only if adopted in {{{theK}}}.)
+#+MACRO: like-k 
+
+
+#+MACRO: whenk If {{{THS}}} is agreed to, when would it apply?
+#+MACRO: when-pr When a term sheet or other contract ("{{{THEK}}}") adopts this Protocol, the following {{{NAME}}} terms are incorporated by reference into {{{THEK}}}. (Numbers in parentheses refer to sections in the {{{NAME}}} {{{BK}}}.)
+
+#+MACRO: trig  {{{RR}}} [[#k-bound]] (explaining the use of different fonts, etc.)  is incorporated into {{{ths}}} by reference.
+#+MACRO: trig-if @Parties: Follow {{{ths}}} 
+#+MACRO: trig-intro The following table of contents provides an overview of {{{ths}}}.
+#+MACRO: trig-appl If {{{THS}}} is agreed to, it will apply
+#+MACRO: trig-sig When {{{THS}}} is agreed to, it signifies that under {{{THEK}}}
+#+MACRO: trig-when @Parties: Follow {{{ths}}} whenever
+#+MACRO: trig-k When {{{THS}}} is agreed to
+
+#+MACRO: url [[https://www.commondraft.org][www.CommonDraft.org]]
+
+#+MACRO: see-adopt-rule /See {{{RULE}}} [[#k-bound]] for how {{{ths}}} becomes part of {{{theK}}}./
+#+MACRO: if-adopt Applicability if agreed to
+#+MACRO: ifk-when If {{{THS}}} is agreed to, when would it apply?
+#+MACRO: ifk If {{{THS}}} itself is agreed to in {{{THEK}}}
+#+MACRO: ifkthen How it works: The following takes place
+#+MACRO: ifkdo How it works: 
+#+MACRO: whensec This section governs whenever
+#+MACRO: secif This section governs if
+#+MACRO: ifsec {{{SECIF}}}
+#+MACRO: secwhen {{{WHENSEC}}}
+
+
+#+MACRO: represent {{{XREF-DEFN(represent,r-rep-defn)}}}
+#+MACRO: represents {{{XREF-DEFN(represents,r-rep-defn)}}}
+
+#+MACRO: rider-intro /Drafters could adopt this {{{PROPERTY(ITEM)}}} in a contract to incorporate all of the following {{{NOUN-P}}} by reference. For convenient reference, the {{{NOUN-P}}} are listed in alphabetical order./
+
+
+# #+MACRO: rider *{{{PROPERTY(RIDERHDG,#$1)}}}* {{{PROPERTY(RIDER,#$1)}}} {{{GET-TITLE-LINK($1)}}}
+#+MACRO: rider [[#$1][Clause ]][[#$1]], [[#$1][{{{PROPERTY(ITEM,#$1)}}}]]
+
+# ====== KEEP THIS #+MACRO: rider-intro /Comment: Be sure to read the [[#tango-contracts-by-email][instructions for use]] ({{{SEC(tango-contracts-by-email)}}}) and the summary of which Tango Terms apply ({{{SEC(tango-which)}}})./
+
+
+# #+MACRO: r Takeaway clause
+#+MACRO: rl {{{NOUN-C}}}
+#+MACRO: rl1 *Memo {{{n(rule,1)}}}* -
+
+#+MACRO: rider-intro In the following list of Tango Terms provisions: (1) *Only those provisions with checked checkboxes* {{{BBOXY}}} are part of the parties' agreement ("{{{THEK}}}") Contract --- in legalese, those provisions are "incorporated by reference" into {{{THEK}}}; (2) provisions with unchecked checkboxes {{{BBOXN}}} or question marks {{{BBOXQ}}} are listed for convenience and are not part of {{{THEK}}} unless it clearly says so.
+
+#+MACRO: rider-opt Drafters can also consider clearly specifying that their agreement also includes one or more of the following (which are *not* part of {{{THIS}}}):
+
+#+MACRO: rdblk Roadblock: {{{CMT-IN(rdblk)}}}
+
+#+MACRO: cfg Configuration
+#+MACRO: cfg-es Configuration & executive summary
+#+MACRO: es {{{THS-CAP}}} is binding only if the parties agree to it.
+
+#+MACRO: cfg-full [[#$1][Configuration ]][[#$1]]: [[#$1][{{{PROPERTY(ITEM,#$1)}}}]]
+#+MACRO: rn Clause {{{N}}}
+
+
+#+MACRO: rule-me Who is "you" in {{{THS}}}?   :: When {{{THS}}} is is agreed to, it applies to each party --- each referred to here as {{{DEFN(you)}}} for easier reading --- as indicated below.
+
+#+MACRO: rule-ref 
+
+#+MACRO: rule-num +  {{{PROPERTY(ITEM,#$1)}}}  :: {{{PROPERTY(SUM,#$1)}}} @@html:<small>@@(Full text: [[#$1]])@@html:</small>@@ 
+
+#+MACRO: rule-dt When will {{{THS}}} apply?  :: {{{RULE-APPL}}}
+
+#+MACRO: rule-appl Applicability of {{{THS}}} :: When {{{THS}}} is agreed to, it will govern
+
+#+MACRO: appl-rule | {{{PROPERTY(ITEM,#$1)}}} | Clause @@html:<small>@@ (full text: [[#$1]])@@html:</small>@@  |
+#+MACRO: appl-opt | {{{PROPERTY(ITEM,#$1)}}} | Option @@html:<small>@@ (full text: [[#$1]])@@html:</small>@@  |
+#+MACRO: appl-sit | {{{PROPERTY(ITEM,#$1)}}} | Situational rule @@html:<small>@@ (full text: [[#$1]])@@html:</small>@@  |
+#+MACRO: rule-sum | {{{PROPERTY(ITEM,#$1)}}} ([[#$1]]) | {{{PROPERTY(CATEGORY,#$1)}}}: {{{PROPERTY(SUM,#$1)}}} [[#$1][@@html:<small>(full text)</small>@@]] |
+#+MACRO: rule-txt {{{PROPERTY(ITEM,#$1)}}} 
+
+#+MACRO: rule-intro When {{{THS}}} is adopted, the following {{{NAME}}} clauses are automatically part of {{{THEK}}} (numbers in parentheses are the section numbers of the full text of the clauses).
+
+#+MACRO: rin *Reading list:* After the bordered Rule text below, see also the following /(not part of this Rule)/:
+
+#+MACRO: r-title-o-l @@html:<span class="cref-title">@@[[#$1][{{{PROPERTY(ITEM,#$1)}}}]]:@@html:</span>@@  @@html:<small>@@([[#$1]])@@html:</small>@@
+
+#+MACRO: r-title-l @@html:<span class="cref-title">@@[[#$1][{{{PROPERTY(ITEM,#$1)}}}]]@@html:</span>@@: @@html:<span class="cref">@@[[#$1][{{{PROPERTY(ITEM,#$1-sf)}}}]]@@html:</span>@@ @@html:<small>@@([[#$1]])@@html:</small>@@
+
+#+MACRO: r-l @@html:<span class="r">@@[[#$1][{{{PROPERTY(ITEM,#$1)}}}]]@@html:</span>@@ @@html:<small>@@([[#$1]])@@html:</small>@@
+
+#+MACRO: rule-full-incorp-the {{{LH}}} [[#$1]], [[#$1][{{{PROPERTY(ITEM,#$1)}}}]], is incorporated by reference
+#+MACRO: rule-rev  {{{PROPERTY(ITEM,#$1)}}} ([[#$1][LCA ]][[#$1]])
+#+MACRO: rule-chap [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1][Chapter ]][[#$1]])
+
+#+MACRO: opt-full {{{PROPERTY(ITEM,#$1)}}} ([[#$1]])
+
+#+MACRO: rule-cmt-link /See the additional notes following {{{THIS}}} at [[#$1][\sect ]][[#$1]]./
+#+MACRO: rule-chklst-link /See the additional notes following {{{THIS}}} at [[#$1][\sect ]][[#$1]]./
+#+MACRO: rule-both-link /See the checklist at at [[#$1][\sect ]][[#$1]] and the additional commentary at [[#$2][\sect ]][[#$2]]./
+
+#+MACRO: rule-opt The following terms (with yellow background) apply in {{{THEK}}} only if {{{THEK}}} clearly so indicates --- for example, /by listing the title/ of a particular provision. (Omitting such an optional term is not an implied agreement to the contrary.)
+#+MACRO: rule-sit The following rules with blue background apply only to the extent that the corresponding situations arise under {{{THEK}}}, whether or not {{{THEK}}} expressly adopts them. (Any terms with yellow background apply only if {{{THEK}}} clearly so indicates.)
+#+MACRO: rule-std The following rules (with blue background) apply in any contract that adopts the {{{LH}}}, whether by incorporation by reference or otherwise. (Any terms with yellow background apply only if {{{THEK}}} clearly so indicates.)
+
+#+MACRO: thr-cap 
+#+MACRO: thr the {{{NOUN-C}}}
+#+MACRO: therule the [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1]])
+#+MACRO: therule-cap The [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1]])
+
+# #+MACRO: sample Sample language for including just {{{THIS}}}: "The {{{PROPERTY(ITEM)}}} section of the Tango Terms manual will apply."
+#+MACRO: sample
+
+#+MACRO: stdconfig-ref *Baseline terms:* In the following table of contents, asterisks in the clause titles denote (the only) clauses that are included in the baseline terms of this Clause. 
+
+#+MACRO: sched {{{THEK}}}
+#+MACRO: sched-cap {{{THEK-CAP}}}
+
+
+#+MACRO: sd [[$1][subdivision ]][[$1]]
+#+MACRO: sdc [[$1][Subdivision ]][[$1]]
+#+MACRO: sec § [[#$1]]
+#+MACRO: secc Section [[#$1]]
+#+MACRO: settings The following Duo clauses will apply in {{{THEK}}} if not clearly agreed otherwise in writing; *in {{{THEK}}}, the parties should specify any desired changes*
+
+
+#+MACRO: sit-intro @@html:<div class="cls-intro">@@The following terms will obligate the parties only to the extent that {{{THEK}}} calls for transactions or operations of the relevant type.@@html:</div>@@
+
+
+#+MACRO: small-start @@html:<small>@@@@latex:\small{@@
+#+MACRO: small-end @@html:</small>@@@@latex:}@@
+
+
+#+MACRO: SPAN @@html:<span class="$1">@@$2@@html:</span>@@
+#+MACRO: stdintro See {{{GET-TITLE-LINK(intro-tango)}}} for an explanation of when the following terms will apply in {{{thek}}}.
+
+#+MACRO: tc-cap [[#$1]]
+# ==== USE THIS IN PRODUCTION:  #+MACRO: tcfull [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1]])
+# ==== USE THIS IN PRODUCTION:  #+MACRO: tcfull-cap [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1]])
+#+MACRO: tcfull [TEMPPP]
+#+MACRO: tcfull-cap [TEMPPP]
+# #+MACRO: tcfull-the {{{TCFULL($1)}}}
+# #+MACRO: tcfull-the-cap  {{{TCFULL($1)}}}
+# #+MACRO: tcfull [[#$1][{{{PROPERTY(ITEM,#$1)}}}]]  ([[#$1]])
+#+MACRO: tc  § [[#$1]]
+#+MACRO: tcsupp  [[#$1]]
+#+MACRO: tcsupp-cap  [[#$1]]
+#+MACRO: tcfull-the the {{{TCFULL($1)}}}
+#+MACRO: tcfull-the-cap The {{{TCFULL($1)}}}
+#+MACRO: tcidx [[#$1][{{{PROPERTY(ITEM,#$1)}}}]]  [[#$1]] (Commentary: [[#$2]])
+#+MACRO: tcopt [[#$1][Option ]][[#$1]]
+#+MACRO: tcref-the the [[#$1][{{{PROPERTY(ITEM,#$1)}}}]]
+#+MACRO: tcref-the-cap The [[#$1][{{{PROPERTY(ITEM,#$1)}}}]]
+#+MACRO: tcreffull Tango ref.: [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1]])
+#+MACRO: tc-xref /Cross-reference: {{{TC($1)}}} and its footnotes./
+
+#+MACRO: term-eff /Term:/ The term of {{{THEK}}} begins on its effective date
+
+#+MACRO: toc-bold To speed up parties' legal review: In this chapter's table of contents below, (1) the {{{NAME}}} {{{NOUN-C}}} headings *in bold* represent {{{NOUN-CS}}} that would be automatically incorporated by reference in any contract that adopted "the {{{NAME-FULL}}}"; and (2) other headings, not in bold, represent {{{NOUN-CS}}} that parties might want to incorporate by reference, but they'd have to clearly say so in the contract. See § [[#gen-prov-adopt-all]] for more details.
+
+#+MACRO: toclst <div class="KLP-CMT"><h6>Commentary</h6><p>Contract drafters can use the above table of contents as an issues checklist.</p></div>
+
+#+MACRO: top <div class="top"><a href="#" title="Top of document">TOP</a></div>
+
+#+MACRO: tsintro The terms in the Term Sheet section of {{{THIS}}} will apply unless {{{THEK}}} clearly provides otherwise.
+
+#+MACRO: unodir &#91;Brackets&#93; indicate an item that the parties may modify by unambiguously saying so in {{{THEK}}}.
+
+#+MACRO: unok unless clearly agreed otherwise in writing
+
+# #+MACRO: vbl  <span class="vbl">&#91;$1&#93;</span>
+# #+MACRO: vbl  @@html:<span class="vbl">@@@@latex:\textcolor{gray}{@@$1@@html:</span>@@@@latex:}@@
+
+#+MACRO: fill  @@html:<span class="fill">@@@@latex:\textcolor{red}{@@[fill in $1]@@html:</span>@@@@latex:}@@
+#+MACRO: vbl  <span class="v">$1</span>
+#+MACRO: v <span class="v">$1</span>
+#+MACRO: vb <span class="v">$1</span>
+
+# #+MACRO: vbl  @@html:<span class="vbl">@@@@latex:\colorbox{shadecolor}{@@$1@@html:</span>@@@@latex:}@@
+
+
+#+MACRO: version 2021-B
+#+MACRO: versionlink https://www.tangoterms.org (archived at the Harvard Law Library's LINK and at the Internet Archive at LINK)
+
+#+MACRO: warn <svg height="21" viewBox="0 0 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><path d="m9.5.5 9 16h-18z" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><path d="m9.5 10.5v-5" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="13.5" fill="#2a2e3b" r="1"/></g></svg>
+
+#+MACRO: WB virtual whiteboard  (@@html: <a href="https://docs.google.com/document/d/1xQsB5QJwGy76UaxSfAGDgvGDH1LcT_sihvLiN88i3rM/edit?usp=sharing" target="_blank">6:00 p.m. section</a> |  <a href="https://docs.google.com/document/d/1UHyNgl9E-GHqLnOmZgq1chT9SBPaAY3oBwBwFLa4F5Q/edit?usp=sharing" target="_blank">7:30 p.m. section</a> @@)
+
+
+#+MACRO: also-chap [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] (Chapter [[#$1]])
+
+
+# #+MACRO: xref-defn $1 (see [[#$2][Section ]][[#$2]])
+# #+MACRO: xref-defn $1 (as defined at {{{TC($2)}}})
+#+MACRO: xref-defn [[#$2][$1]]
+
+#+MACRO: each-act *Actions for each party ("you"):*
+#+MACRO: each In {{{THS}}}, {{{DEFN(you)}}} refers to each party, which agrees to do as stated in {{{THS}}} in connection with {{{THEK}}}.
+#+MACRO: you In {{{THS}}}, {{{DEFN(you)}}} refers to: {{{VBL($1)}}}
+#+MACRO: youdefn Terminology: "You" :: In {{{THS}}}, "you" refers to each party
+#+MACRO: youdefnol In {{{THS}}}, "you" refers to each party
+
+#+MACRO: youdefn-hdg /"You":/ Here, the term "/you/" refers to each party unless {{{thek}}} clearly states otherwise.
+
+#+MACRO: follow-when *Who follows {{{THIS}}}, and when?*
+
+
+#+MACRO: para [[$1][paragraph ]][[$1]]
+#+MACRO: para-cap [[$1][Paragraph ]][[$1]]
+
+#+MACRO: paren Small parenthetical links and footnotes are to other {{{NAME-FULL}}} and/or to commentary.
+#+MACRO: sugg The following are suggestions, not requirements:
+
+
+#+MACRO: addl Additional notes
+#+MACRO: st-rdg-addl /Students: Be sure to read the additional notes at [[#$1]]./
+#+MACRO: st-rdg-rule /Students: Be sure to read {{{RULE}}} [[#$1]]./
+
+#+MACRO: pref-start @@latex:\begin{pref}@@@@html:<div class="preface">@@ /Preface:/
+#+MACRO: pref-end @@latex:\end{pref}@@@@html:</div>@@
+
+#+MACRO: proto-ref /This section accompanies the [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] (§ [[#$1]])./
+
+# #+MACRO: get-title-link GET-TITLE-LINK
+# #+MACRO: get-title-link GTL($1)
+
+
+#+MACRO: shd /See [[#shld]] for the meaning of "should."/
+
+# #+MACRO: short <aside> *Short version:* "{{{PROPERTY(SHORT)}}}" </aside>
+
+#+MACRO: ref-k OC [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1][§ ]][[#$1]])
+
+#+MACRO: refcls *Reference clause:* @@html:<div class="duo-k">@@ {{{PROPERTY(SUM)}}}@@html:</div>@@
+#+MACRO: sh $1:
+# #+MACRO: sh @@html:<div style="margin-left: 5em; margin-right: 5em;">@@ *{{{PROPERTY(SH-HDG,#$1)}}}:*        {{{PROPERTY(SUM,#$1)}}}  @@html:</div>@@
+#+MACRO: short-mlang @@html:<div class="duo-k">@@{{{PROPERTY(SH)}}}@@html:</div>@@
+#+MACRO: sh-addl ¶ The Tango Terms {{{GET-TITLE-LINK($1)}}} is incorporated by reference.
+#+MACRO: sh-new *{{{PROPERTY(ITEM,#$1)}}}:* {{{PROPERTY(SH,#$1)}}}. [[#$1][({{{PROPERTY(MORE,#$1)}}})]]
+#+MACRO: sh-proto @@html:<span style="font-size: small;">@@(Details & commentary: Tango Terms {{{GET-TITLE-LINK($1)}}})@@html:</span>@@
+# #+MACRO: sh-cmt *{{{PROPERTY(SH-HDG,#$1)}}}:* {{{PROPERTY(SH,#$1)}}}. [[#$1][(Commentary)]]
+#+MACRO: sh-cmt [[#$1][(Commentary)]]
+#+MACRO: sh-cmtry [[#$1][(Commentary)]]
+#+MACRO: sh-hdg *{{{PROPERTY(SH-HDG,#$1)}}}:* {{{PROPERTY(SH,#$1)}}}. 
+#+MACRO: sh-hdg-more *{{{PROPERTY(SH-HDG,#$1)}}}:* {{{PROPERTY(SH,#$1)}}}. (Tango Terms: {{{GET-TITLE-LINK($1)}}}.)
+#+MACRO: sh-hdg-cmt *{{{PROPERTY(SH-HDG,#$1)}}}:* {{{PROPERTY(SH,#$1)}}}. [[#$1][(Commentary)]]
+#+MACRO: sh-new-hdg *{{{PROPERTY(SH-HDG,#$1)}}}:* {{{PROPERTY(SH,#$1)}}}. [[#$1][({{{PROPERTY(MORE,#$1)}}})]]
+
+
+# #+MACRO: short-mlang To use {{{THIS}}} in your contract, ask your lawyer about adding the following language to the contract: @@html:<blockquote>@@ {{{PROPERTY(SHORT,#$1)}}} as stated in Symmetry clause [[#$1]], {{{PROPERTY(ITEM,#$1)}}}. @@html:</blockquote>@@
+#+MACRO: short-inline  {{{PROPERTY(SHORT,#$1)}}} as stated in [[#$1][Section ]][[#$1]], {{{PROPERTY(ITEM,#$1)}}}
+#+MACRO: short-incorp  Dealings [[#$1][Section ]][[#$1]], {{{PROPERTY(ITEM,#$1)}}}, is incorporated into this Agreement by reference.
+
+# ========= HTML & CSS FOR WARNING TRIANGLE =====
+#+MACRO: wn @@html:<span class="wn">&#x26A0;</span>@@
+# #+MACRO: wnt {{{WN}}} /indicates a potential trouble spot/
+#+MACRO: wn 
+#+MACRO: wnt 
+
+#+MACRO: proto-intro To adopt {{{THIS}}}, drafters can consider the following language (or selectively copy and paste particular individual clauses below into a contract as desired), then state any desired variations in their agreement:
+
+
+
+
+# ========================
+
+#+MACRO: cat  {{{PROPERTY(CATEGORY)}}}
+
+#+MACRO: catxt  {{{PROPERTY(CATEGORY)}}} text
+
+# #+MACRO: cmt-link @@html:<div class="bkgd">@@ For non-binding commentary and practice notes, see {{{SEC($1)}}}.  @@html:</div>@@
+#+MACRO: cmt-link
+ 
+#+MACRO: cmt-ref-top @@html:<div class="bkgd">@@ For commentary, see {{{SEC($1)}}}.  @@html:</div>@@
+
+#+MACRO: cmt-ref Further reading: See {{{SEC($1)}}}.
+
+#+MACRO: cmt-show @@html:<button onclick="ShowCmtry('@@$1@@html:')">@@Show commentary@@html:</button>@@ @@html:<button onclick="HideCmtry('@@$1@@html:')">@@Hide commentary@@html:</button>@@
+
+#+MACRO: toggle-asides @@html:<button id="toggle-asides" type="button">Hide inline comments</button>@@ @@html:<button id="showAsides" onclick="ShowAsides()">Show asides</button>@@
+
+#+MACRO: show-hide-asides-button @@html:<button id="hideAsides" onclick="HideAsides()">Hide asides</button>@@ @@html:<button id="showAsides" onclick="ShowAsides()">Show asides</button>@@
+
+
+#+MACRO: cmt-show-hide--button @@html:<button id="hideButton" onclick="HideAllCmtry()">Hide all commentary</button>@@ @@html:<button id="showButton" onclick="ShowAllCmtry()">Show all commentary</button>@@
+
+# #+MACRO: fn 
+#+MACRO: fnstart /Click the following footnote to see all of {{{THS}}}'s footnotes together:/
+#  /Links are (mostly) to my comments and/or to other {{{NOUN}}}s./
+#+MACRO: fna /For additional notes relating to {{{THS}}}, see [[#$1]]./
+# /Links are (mostly) to my comments and/or to other {{{NOUN}}}s; for additional notes relating to {{{THS}}}, see [[#$1]]./
+
+
+#+MACRO: cat-intro The following rules will apply only when specifically listed in {{{THEK}}} or when referenced by another rule that is so listed.
+
+#+MACRO: if-opt  IF: This Opt-In provision is clearly agreed to in {{{THEK}}} or otherwise in writing; 
+
+
+#+MACRO: rule-ref This discussion is a companion to {{{RULE($1)}}}; any "Item" numbers in this section refer to the numbered subdivisions of that provision.
+
+#+MACRO: rule-the @@html:<span class="rule-the">Definition text</span>@@
+
+# #+MACRO: for-rule /For {{{NOUN-C}}} [[#$1]]./
+# #+MACRO: for-rule [[#$1][Up]]
+#+MACRO: for-rule 
+
+# #+MACRO: see-note *Students: Be sure to read the field note at [[#$1]].*
+# #+MACRO: see-notes *Students: Be sure to read the field notes at [[#$1]].*
+#+MACRO: see-note 
+#+MACRO: see-notes 
+#+MACRO: see-cls /Supplemental notes for {{{RULE}}} [[#r-$1]]./
+#+MACRO: see-wks The configuration worksheet for {{{THS}}} (above) is incorporated by reference, together with any revisions clearly and unambiguously agreed to in writing.
+
+#+MACRO: lk [[$2][$1]]
+
+#+MACRO: defn-the @@html:<span class="rule-the">Definition text</span>@@
+
+#+MACRO: sum *{{{PROPERTY(SUMTITLE,#$1)}}}:* {{{PROPERTY(SUM,#$1)}}} (Long form: [[#$1]].)
+#+MACRO: sum-optn {{{PROPERTY(ITEM,#$1)}}} (Text: [[#$1]].)
+
+# Setting up a letter counter for org-mode to duplication {{{N}}} but with letters
+# Built by ChatGPT on Feb. 20, 2025 (with some back and forth on my part)
+# #+MACRO: L (eval (letter-counter nil))
+# #+MACRO: LPS {{{L}}}. 
+# #+MACRO: LPSR {{{LC-RS}}}{{{L}}}. 
+# #+MACRO: U (eval (letter-counter t))
+# #+MACRO: UPS {{{U}}}. 
+# #+MACRO: UPSR {{{LC-RS}}}{{{U}}}. 
+# #+MACRO: LC-RS (eval (reset-letter-counter))
+# # For the above to work, need the following in emacs init:
+
+#+HTML_HEAD: <script defer src="target-blank.js"></script>
+
+#+begin_comment
+(defvar my-letter-counter 0
+  "Counter for the letter macro in Org-mode.")
+
+(defun letter-counter (&optional uppercase)
+  "Return the next letter in the sequence.
+If UPPERCASE is non-nil, return uppercase letters."
+  (let* ((base (if uppercase ?A ?a))
+         (letter (char-to-string (+ base my-letter-counter))))
+    (setq my-letter-counter (1+ my-letter-counter))
+    letter))
+
+(defun reset-letter-counter ()
+  "Reset the letter counter to zero."
+  (setq my-letter-counter 0)
+  "")
+
+
+
+#+end_comment
+

@@ -294,7 +294,6 @@ h4, h5 {
 }
 
 h5 {
-
     font-family: sans-serif;
     font-size: .9em;
     font-weight: bold;
@@ -305,7 +304,6 @@ h5 i, h5 em {
 }
 
 div.pr-alt .outline-5 h5 {
-
     font-family: sans-serif;
     font-size: 1.1em;
     font-weight: normal;
@@ -477,12 +475,17 @@ div.pr-sub div.addl-body .outline-text-5 {
     margin-top: 0;
 }
 
+
 div.pr-top h3 {
-    font-family: sans-serif;
     font-size: 1.5em;
+    font-family: sans-serif;
     font-weight: bold;
     background-color: #e6f1ff;
     padding: 1em;
+}
+
+div.pr-top div.outline-text-4 {
+    margin-bottom: -2em;
 }
 
 div.pr-top div.outline-4 h4 {
@@ -491,16 +494,14 @@ div.pr-top div.outline-4 h4 {
     background-color: #e6f1ff;
     position: relative;
     padding: 1em 1em 1em 6em;
-    font-size: 1.1em;
-    margin: 2em 0 -1em 0;
 }
 
 div.pr-top div.outline-4 h4 .section-number-4 {
     position: absolute;
     left: 1em;
     width: 4.5em;
+    font-size: .9em;
 }
-
 
 div.pr-alt div.outline-5 h5 {
     font-weight: bold;
