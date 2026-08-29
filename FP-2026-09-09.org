@@ -1057,7 +1057,7 @@ That phrasing also means that, if the parties had any prior communications about
 
 See the discussion of exhibits, schedules, etc., beginning at § [[#ent-k-exhib]].
 
-*** Legal terms in one party's purchase order, order confirmation, etc., {{{DNT}}} count — that is, {{{THEYRE}}} REJECTED by the other party.
+*** Additional- or different terms in one party's purchase order, order confirmation, etc., {{{DNT}}} count.
   :PROPERTIES:
   :CUSTOM_ID: r-ent-reject
   :END:
@@ -1070,32 +1070,19 @@ See the discussion of exhibits, schedules, etc., beginning at § [[#ent-k-exhib
   :UNNUMBERED: notoc
   :END:
 
-{{{H1}}} This section addresses the situation where (as one example) /under {{{theK}}}/, a customer sends a vendor a purchase order whose fine print states generically that the purchase order's terms take precedence over any other transaction document.  Chances are that the purchase order includes additional or different terms and conditions, perhaps onerous. This section makes it clear that those additional terms and conditions won't apply.
+{{{H1}}} That is: Those additional{{{NBH}}} or different terms are *REJECTED* by the other party.
+
+{{{HN}}} Background: This section addresses the situation where (as one example) /under {{{theK}}}/, a customer sends a vendor a purchase order whose fine print states generically that the purchase order's terms take precedence over any other transaction document.  Chances are that the purchase order includes additional or different terms and conditions, perhaps onerous. This section makes it clear that those additional terms and conditions won't apply.
 
 (And the same would be true if the vendor sent the customer an order confirmation or invoice with legal terms.)
 
-{{{HN}}} Source: This § [[#k-ovrd-po]]  is a more-flexible variation of [[http://www.law.cornell.edu/ucc/2/2-209.html][section 2-209(2)]] of the (U.S.) Uniform Commercial Code. That section — in a different context — imposes a separate-signature requirement: "(2) A signed agreement which excludes modification or rescission except by a signed writing cannot be otherwise modified or rescinded, but except as between merchants such a requirement on a form supplied by the merchant /must be separately signed by the other party/." (Emphasis added.) 
+{{{HN}}} Language source: This § [[#k-ovrd-po]]  is a more-flexible variation of [[http://www.law.cornell.edu/ucc/2/2-209.html][section 2-209(2)]] of the (U.S.) Uniform Commercial Code. That section — in a different context — imposes a separate-signature requirement: "(2) A signed agreement which excludes modification or rescission except by a signed writing cannot be otherwise modified or rescinded, but except as between merchants such a requirement on a form supplied by the merchant /must be separately signed by the other party/." (Emphasis added.) 
 
 {{{HN}}} *Students:* Be sure to read the notes to {{{RULE}}} [[#r-purch-ord]] concerning how corporate sales transactions commonly take place.
 
 {{{HN}}} The word *REJECTED* has in mind the so-called "Battle of the Forms," discussed at § [[#nl-battle-forms]], which happens under the Uniform Commercial Code when a customer and a supplier exchange salvos of paper with mutually-exclusive terms and conditions in the fine print. Without rejection language, one party's fine-print terms might become binding on the other party.
 
-*** Transaction-specific details in another document are OK /if/ those details are clearly agreed.
-  :PROPERTIES:
-  :CUSTOM_ID: r-ent-rej-det
-  :END:
-
-***** Note                                                              :CMT:
-  :PROPERTIES:
-  :HTML_CONTAINER_CLASS: cmtry
-  :UNNUMBERED: notoc
-  :END:
-
-This addresses the situation where the circumstances clearly indicate that {{{A}}} and {{{B}}} have agreed about transaction-specific details in a purchase order, invoice, etc., under {{{THEK}}} — such as, [[#r-eg-defn][e.g.]], a description of goods; quantity; price; delivery date; etc.
-
-This exception gives parties flexibility in using purchase orders, etc., to specify business details for a transaction while still maintaining the "legal" terms and conditions of {{{theK}}}. That can help assuage any concern, on {{{B}}}'s part, that {{{A}}} might later try to retroactively "retrade the deal" by asserting in hindsight that the fine print in {{{A}}}'s PO or sale confirmation overrode {{{theK}}}.
-
-*** Legal terms in one party's online terms of service are likewise REJECTED — apart from reasonable user rules.
+*** Ditto for a party's online terms of service (apart from any reasonable user rules).
   :PROPERTIES:
   :CUSTOM_ID: r-ent-rej-tos
   :END:
@@ -1113,6 +1100,21 @@ This section addresses the situation where, in connection with {{{THEK}}}, one o
 {Such online terms of service can play a role in parties' dealings — whether intentionally or not.[fn:DequeBStack])
 
 [fn:DequeBStack]  {{{RWE}}} Two companies, Deque and Browserstack competed in the Web-accessibility software field, with Browserstack being the latecomer. When Browserstack wanted to get into the market, over 100 employees of its employees signed up for access to the Deque software — then Browserstack released a competing offering. (Deque sued Browserstack for breach of Deque's online terms of service but was "poured out" on summary judgment because of its litigation missteps.) <cite> See [[https://scholar.google.com/scholar_case?case=283432789098351329][Deque Systems Inc. v. Browserstack, Inc.]], 177 F.4th 585, 589 (4th Cir. 2026) (affirming summary judgment against plaintiff because of repeated failure to disclose damages calculations). </cite>
+
+*** But: Transaction-specific details in another document are OK /if/ those details are clearly agreed.
+  :PROPERTIES:
+  :CUSTOM_ID: r-ent-rej-det
+  :END:
+
+***** Note                                                              :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
+
+This addresses the situation where the circumstances clearly indicate that {{{A}}} and {{{B}}} have agreed about transaction-specific details in a purchase order, invoice, etc., under {{{THEK}}} — such as, [[#r-eg-defn][e.g.]], a description of goods; quantity; price; delivery date; etc.
+
+This exception gives parties flexibility in using purchase orders, etc., to specify business details for a transaction while still maintaining the "legal" terms and conditions of {{{theK}}}. That can help assuage any concern, on {{{B}}}'s part, that {{{A}}} might later try to retroactively "retrade the deal" by asserting in hindsight that the fine print in {{{A}}}'s PO or sale confirmation overrode {{{theK}}}.
 
 *** {{{ADDL}}}                                                         :ADDL:
   :PROPERTIES:
@@ -1405,7 +1407,7 @@ Same facts as § [[#q-ent-k-fraud-dism]], plus: Before signing the contract, Bo
 
 {{{SEE-ADOPT-RULE}}}
 
-*** Anything incorporated by reference is deemed included as though reproduced
+*** Anything incorporated by reference is the same as if reproduced verbatim.
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -1643,7 +1645,7 @@ Contents:
 
 #+TOC: headlines 1 local
 
-*** The parties have only /contract/ obligations under {{{theK}}} (unless {{{theK}}} clearly says otherwise).
+*** The parties have only /contract/ obligations under {{{theK}}} — unless it clearly says otherwise.
   :PROPERTIES:
   :CUSTOM_ID: r-indep-k-only
   :END:
@@ -1951,13 +1953,15 @@ The law establishes penalties for violations of these rights, including statutor
 
 {{{SEE-ADOPT-RULE}}}
 
-*** Definition
-
-In the {{{NAME-FULL}}}, the term {{{dfn(party)}}} (whether or not capitalized) refers only to those individuals and organizations that are signatory parties to {{{ADK}}} /unless/ the context clearly requires otherwise.
-
-*** Note                                                                :ADDL:
+*** "Party" refers to the individuals and/or organizations that sign {{{theK}}} — unless the context clearly requires otherwise.
   :PROPERTIES:
-  :HTML_CONTAINER_CLASS: addl
+  :UNNUMBERED: t
+  :END:
+
+***** Note                                                              :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
   :END:
 
 {{{H1}}} {{{Ths-cap}}} is provided for clarity; it ties in with {{{RULE}}} [[#r-third-ben]] (third party beneficiaries).
@@ -1965,6 +1969,8 @@ In the {{{NAME-FULL}}}, the term {{{dfn(party)}}} (whether or not capitalized) r
 {{{HN}}} The term "party" is intentionally left uncapitalized, so that it's capitalization-neutral. That's because a drafter might forget to capitalize the term — in which case a court might have to decide whether "party" meant something different than "Party." 
 
 (The inconsistent-capitalization problem has actually arisen in more than one lawsuit, as discussed at § [[#cap-consist]].)
+
+{{{HN}}} It doesn't matter whether /party/ is capitalized. 
 
 {{{HN}}} This section takes into account that /by law/, one or more third parties might be entitled to benefit from — or might be bound by (e.g, by an arbitration agreement; see § [[#nl-ArbNonSig]] —  a contract provision.
 
@@ -1976,36 +1982,51 @@ In the {{{NAME-FULL}}}, the term {{{dfn(party)}}} (whether or not capitalized) r
   :HTML_CONTAINER_CLASS: pr-top
   :END:
 
+Background: American law allows third parties to assert rights as "third-party beneficiaries" of a contract — *if* the signatory parties *intended* for that to be the case; see generally, e.g., [[https://en.wikipedia.org/wiki/Third-party_beneficiary][Third-Party Beneficiary]] (Wikipedia.org). For that reason, it's useful to be clear about the parties intent. 
+
 {{{SEE-ADOPT-RULE}}}
 
-*** Non-party rights: None if not clearly specified
-
-In entering into {{{ADK}}}, the parties to {{{theK}}} {{{DNT}}} intend for any individual or organization (each, a "person") to benefit under {{{thek}}}, /except for/ the following:
-
-1. the parties that enter into {{{theK}}} — generally by signing {{{theK}}}, but that might not always be the case if the law {{{DSNT}}} require signature;
-
-2. /(for purposes of being protected by the disclaimers and limitations of {{{theK}}}:)/ each party's respective officers, directors, shareholders, managers, members employees, consultants, and agents — if any — when they act in those capacities;
-
-3. any expressly-named beneficiaries, to the extent clearly stated; and
-
-4. "incidental beneficiaries" to the limited extent allowed by law, if any.
-
-*** Notes                                                              :ADDL:
+*** Third parties {{{ARENT}}} intended to benefit under {{{theK}}} except: (i) if clearly specified otherwise, or (ii) incidentally.
   :PROPERTIES:
-  :HTML_CONTAINER_CLASS: addl
+  :CUSTOM_ID: third-ben-no
   :END:
 
-{{{H1}}} American law allows third parties to assert rights as "third-party beneficiaries" of a contract — *if* the signatory parties *intended* for that to be the case; see generally, e.g., [[https://en.wikipedia.org/wiki/Third-party_beneficiary][Third-Party Beneficiary]] (Wikipedia.org). For that reason, it's useful to be clear about the parties intent. 
+***** Note                                                          :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
 
-"*Incidental*" third-party beneficiaries under a contract are different from "*intended*" third-party beneficiaries — the former can't expect to be able to sue successfully a signatory party for breach of the contract.
+"Incidental" third-party beneficiaries under a contract are different from "intended" third-party beneficiaries — the former can't expect to be able to sue successfully a signatory party for breach of the contract.
 
 # https://www.lubrizol.com/
 # #+ATTR_HTML: :alt Lubrizol logo :title Lubrizol logo :class photowidth20 photo-at-right
 # [[./img/Lubrizol_Logo.jpg]]
 
-{{{RWE}}} The Seventh Circuit affirmed a summary judgment in favor of an additive supplier that had been sued by a /distributor's/ end-customer — i.e., by the supplier's /customer's/ customer. The court noted that the /end/-customer was _not_ an intended third-party beneficiary of the contract between the supplier and the distributor; "[o]therwise a consumer would be a third-party beneficiary of *any* sales contract between a supplier of a good and a distributor of the good to the consumer." <cite> [[https://scholar.google.com/scholar_case?case=10646748651050966676][Am. Comm'l Lines, LLC v. Lubrizol Corp.]], 817 F.3d 548, 551 (7th Cir. 2016) (Posner, J., affirming summary judgment) (emphasis and extra paragraphing added). </cite>
+{{{RWE}}} The Seventh Circuit affirmed a summary judgment in favor of an additive supplier that had been sued by a /distributor's/ end-customer — i.e., by the supplier's /customer's/ customer. The court noted that the /end/-customer was _not_ an /intended/ third-party beneficiary of the contract between the supplier and the distributor; "[o]therwise a consumer would be a third-party beneficiary of *any* sales contract between a supplier of a good and a distributor of the good to the consumer." <cite> [[https://scholar.google.com/scholar_case?case=10646748651050966676][Am. Comm'l Lines, LLC v. Lubrizol Corp.]], 817 F.3d 548, 551 (7th Cir. 2016) (Posner, J., affirming summary judgment) (emphasis added). </cite>
 
-{{{HN}}} *Caution:* Inconsistency about third-party beneficiaries can lead to litigation. {{{RWE}}} In the aftermath of a sale of eight hospitals, an affiliate of the seller claimed to be an intended beneficiary of an indemnity provision in the parties' contract; the Delaware chancery court denied the buyer's motion to dismiss the indemnity claim on grounds that the contract in question was ambiguous whether the indemnity provision was negated by a disclaimer of third-party beneficiaries. <cite> See [[https://scholar.google.com/scholar_case?case=10497042845433982467][CHS/Community Health Sys., Inc. v. Steward Health Care Sys. LLC]], No. 2019-0165 (Del. Ch. Aug. 21, 2020). (Hat tip: [[https://privateequity.weil.com/glenn-west-musings/no-third-party-beneficiary-clauses-and-the-ever-evolving-contractual-arms-race/][Glenn D. West]].) </cite>
+
+*** But: The parties' personnel /are/ intended to benefit from disclaimers and limitations in {{{theK}}}.
+  :PROPERTIES:
+  :CUSTOM_ID: third-ben-pty-staff
+  :END:
+
+***** Note                                                              :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
+
+"Personnel" is used here broadly, because this § [[#third-ben-pty-staff]] is intended to protect each party's respective officers, directors, shareholders, managers, members employees, consultants, and agents — if any — when they act in those capacities.
+(Relatedly, see {{{GET-TITLE-LINK-NUM(r-empl-non-recourse)}}} (§ [[#r-empl-non-recourse]]).
+
+
+*** {{{ADDL}}}                                                         :ADDL:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: addl
+  :END:
+
+{{{H1}}} *Caution:* Inconsistency about third-party beneficiaries can lead to litigation. {{{RWE}}} In the aftermath of a sale of eight hospitals, an affiliate of the seller claimed to be an intended beneficiary of an indemnity provision in the parties' contract; the Delaware chancery court denied the buyer's motion to dismiss the indemnity claim on grounds that the contract in question was ambiguous whether the indemnity provision was negated by a disclaimer of third-party beneficiaries. <cite> See [[https://scholar.google.com/scholar_case?case=10497042845433982467][CHS/Community Health Sys., Inc. v. Steward Health Care Sys. LLC]], No. 2019-0165 (Del. Ch. Aug. 21, 2020). (Hat tip: [[https://privateequity.weil.com/glenn-west-musings/no-third-party-beneficiary-clauses-and-the-ever-evolving-contractual-arms-race/][Glenn D. West]].) </cite>
 
 {{{HN}}} A contract *might provide* that third-party benefits are *not assignable* (see § [[#AssmtThirdPtyBenefitsNotAssignable]]).
 
@@ -2015,7 +2036,7 @@ In entering into {{{ADK}}}, the parties to {{{theK}}} {{{DNT}}} intend for any i
 
 {{{HN}}} A contract between "{{{A}}}" and "Bob" might require that {{{A}}}'s /subcontractors/ enter into written agreements with {{{A}}} that explicit name {{{B}}} as a third-party beneficiary (see § [[#chan-subk]]).
 
-* Signatures
+* Signatures {{{NOUN-CS}}}
   :PROPERTIES:
   :CUSTOM_ID: sigs-top
   :HTML_CONTAINER_CLASS: chap
@@ -2038,44 +2059,49 @@ Contents:
 
 #+TOC: headlines 1 local
 
-*** Opportunity to get legal advice: Yes
+*** Each party has had enough opportunity to consider {{{theK}}} and consult legal counsel.
   :PROPERTIES:
   :CUSTOM_ID: sigs-legal-ready
-  :HTML_CONTAINER_CLASS: pr-sub
   :END:
 
-{{{SIT}}} {{{A1}}} signs {{{ADK}}} (or any related document) and sends it to {{{B1}}}, whether for countersignature or otherwise.
-
-{{{EFF}}}
-
-{{{C1}}} {{{A}}} is [[#cnfrm-defn][confirming]] to {{{B}}} that {{{A}}} has had enough time:
-
-{{{CS1}}} to read the document;
-
-{{{CSN}}} to ask for any desired clarification;
-
-{{{CSN}}} to consult {{{A}}}'s own own legal counsel and/or other advisers; and
-
-{{{CSN}}} if necessary, to engage legal counsel or other adviser.
-
-{{{CN}}} {{{A}}} is also [[#cnfrm-defn][confirming]] that, deciding whether or not to sign the document in question, {{{A}}} is not relying — and that {{{A}}} {{{WNT}}} rely — on legal advice from any legal counsel or other adviser to {{{B}}}. 
-
-{{{CN}}} Each legal counsel or other adviser to {{{B}}} is an intended [[#r-third-ben][third-party beneficiary]] of {{{A}}}'s confirmation in subdivision 2 above.
-
-*** Notes                                                              :ADDL:
+***** Note                                                              :CMT:
   :PROPERTIES:
-  :HTML_CONTAINER_CLASS: addl
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
   :END:
 
-{{{H1}}} {{{B}}} shouldn't have to wonder whether {{{A}}} might later successfully try to undo some or all of {{{TheK}}} by claiming lack of time, undue pressure, etc.
+This means that when  {{{A1}}} signs {{{theK}}} and sends it to {{{B1}}}, whether for countersignature or otherwise, {{{A}}} is [[#cnfrm-defn][confirming]] to {{{B}}} that {{{A}}} has had enough time:
 
-{{{HN}}} Subdivision 2: It's been known to happen that a party will sign a contract without getting its own legal advice — and then when things turn sour, the party files a malpractice lawsuit against /another party's/ lawyers, to the effect of (for example), /wait, I thought you were/ *my* /lawyer too, but you had a conflict of interest and didn't disclose that to me/. 
+- to read the document;
+
+- to ask for any desired clarification;
+
+- to consult {{{A}}}'s own own legal counsel and/or other advisers; and
+
+- if necessary, to /engage/ legal counsel or other adviser.
+
+{{{B}}} shouldn't have to wonder whether {{{A}}} might later successfully try to undo some or all of {{{TheK}}} by claiming lack of time, undue pressure, etc.
+
+*** No party is relying — and no party /will/ rely — on legal advice from any legal counsel or other adviser to another party.
+  :PROPERTIES:
+  :CUSTOM_ID: sigs-legal-ready-legal
+  :END:
+
+***** Note                                                              :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
+
+{{{H1}}} Each legal counsel or other adviser to the above-mentioned other party is obviously an intended [[#r-third-ben][third-party beneficiary]] of {{{A}}}'s confirmation.
+
+{{{HN}}} Background: It's been known to happen that a party will sign a contract without getting its own legal advice — and then when things turn sour, the party files a malpractice lawsuit against /another party's/ lawyers, to the effect of (for example), /wait, I thought you were/ *my* /lawyer too, but you had a conflict of interest and didn't disclose that to me/. 
 
 It's true that the law /might/ protect one party's attorney from claims of that sort by a non-client. <cite> See generally, e.g., [[https://scholar.google.com/scholar_case?case=8420975646347182543][Haynes and Boone, LLP v. NFTD, LLC]], 631 S.W.3d 65, 79-80 (Tex. 2021) (reversing court of appeals: when an attorney is acting /as an attorney/, "the attorney-immunity defense applies in all adversarial contexts in which an attorney must zealously and loyally represent his or her client," including corporate deal-making).</cite>
 
 Even so, language such as that of {{{ths}}} can be [[#nl-ch-ins][cheap insurance]], helping discourage parties from bringing such claims in the first place and helping lawyers get such claims thrown out early.
 
-{{{HN}}} Subdivision 2 doesn't mean that {{{A}}} isn't entitled to rely on /factual/ representations made by {{{B}}}'s advisers, legal or otherwise. Whether {{{A}}} would be allowed to do that would depend on the circumstances (including any other relevant statements in {{{theK}}}) and the applicable law.
+{{{HN}}} This § [[#sigs-legal-ready-legal]] doesn't mean that {{{A}}} isn't entitled to rely on /factual/ representations made by {{{B}}}'s advisers, legal or otherwise. Whether {{{A}}} would be allowed to do that would depend on the circumstances (including any other relevant statements in {{{theK}}}) and the applicable law.
 
 # Tangentially: An Arizona supreme court case involved a patent-license agreement. Over the years, the relationship soured between the patent owner and the licensee. The patent's owner sued, not the licensee, but the licensee's /law firm/, on various theories, claiming in part that the law firm had also represented the patent owner at one time. See [[https://cases.justia.com/arizona/supreme-court/2025-cv-24-0048-pr.pdf][McAlister v. Loeb & Loeb, LLP]], No. CV-24-0048-PR (Ariz. Jul. 17, 2025). The law firm disputed the plaintiff's prior-representation claim, the details of which aren't important here; the firm got nearly the whole case thrown out on summary judgment and the rest of it by the supreme court.)] 
 
@@ -2095,14 +2121,10 @@ Contents:
 
 #+TOC: headlines 1 local
 
-*** Signer's /personal/ commitment
+*** Any individual signing {{{theK}}} on behalf of another party is personally representing that (so far as she's aware), she has the necessary signature authority.
   :PROPERTIES:
   :CUSTOM_ID: sig-pers-repr-auth
   :END:
-
-{{{SCENE}}} An individual (a {{{dfn(Signer)}}}) signs {{{ADK}}} or any related document, purportedly on behalf of {{{A1}}}.
-
-{{{EFF}}} By signing, the Signer is /personally/ [[#r-rep-defn][representing]] (see {{{RULE}}} [[#r-rep-defn]]) to {{{B1}}} that — so far as the Signer is aware — the Signer actually has authority to sign on behalf of {{{A}}}.
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -2110,15 +2132,19 @@ Contents:
   :UNNUMBERED: notoc
   :END:
 
-Note the use of "so far as Signer is aware" instead of "to Signer's knowledge," for reasons discussed at § [[#rep-to-my-knowl]].
+{{{H1}}} Here we use the pronouns "she" and "her" to signal gender neutrality. (To avoid momentary confusion that would  /dis/-serve the reader, it's best to use the pronouns "they" and "their" for plural cases only — see § [[#they-sing]] for more.)
 
-*** If Signer /didn't/ have signature authority
+{{{HN}}} Note the use of "so far as she's aware" instead of "to her knowledge." This is for reasons discussed at § [[#rep-to-my-knowl]].
 
-{{{SCENE}}} The Signer turns out not to have had the signature authority that the Signer represented under § [[#sig-pers-repr-auth]].
+*** But: The signer's personal liability under {{{ths}}} is limited to  {{{v(USD $1\,000)}}} (unless the signer knew she /didn't/ have signature authority).
 
-{{{EFF}}} The Signer's resulting liability to {{{B}}} for that (possible) misrepresentation is limited to {{{v(USD $1\,000)}}};
+***** Note                                                              :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
 
-{{{BUT}}} This limitation of liability {{{DSNT}}} apply if {{{B}}} shows — by clear and convincing evidence — that the Signer knew that the Signer's representation under § [[#sig-pers-repr-auth]] was incorrect at the time of the Signer's signature.
+A signer might make an honest mistake about whether she had the signature authority that she represents under {{{ths}}}. So let's limit the signer's potential personal exposure. (See also {{{GET-TITLE-LINK-NUM(r-empl-non-recourse)}}} (§ [[#r-empl-non-recourse]]).)
 
 *** {{{ADDL}}}                                                         :ADDL:
   :PROPERTIES:
@@ -2284,18 +2310,10 @@ Contents:
 #+TOC: headlines 1 local
 
 
-*** No undisclosed changes to agreed final version
+*** Each party signing an agreed final version of a document certifies that it {{{DDNT}}} make undisclosed changes to that version.
   :PROPERTIES:
   :CUSTOM_ID: sig-integ-pr
   :END:
-
-{{{SCENE}}}
-
-{{{A1}}} signs a document — for example, a version of {{{thek}}} — and sends the document to {{{B1}}} for countersignature; 
-
-{{{AND}}} The circumstances clearly indicate that {{{A}}} and {{{B}}} had agreed on a /final/ version of the document that both would sign.
-
-{{{EFF}}} By signing and sending the document to {{{B}}}, {{{A}}} is [[#r-rep-defn][representing]] to {{{B}}} that the signed version {{{A}}} is sending is identical to the agreed final version, /unless/ at the same time, {{{A}}} /explicitly/ and /prominently/ calls {{{B}}}'s attention — in writing — to the fact that {{{A}}} made changes to that version.
 
 
 *** Notes                                                            :ADDL:
@@ -2313,9 +2331,15 @@ Contents:
   :CUSTOM_ID: sig-integ-trust
   :END:
 
-A second-signing party might want /some/ specific assurance that the first-signing party hadn't surreptitiously altered the agreed version(s); {{{ths}}} helps to guard against such fraud.
+Consider this scenario:
 
-(For "significant" contracts, of course it might still make sense to re-read the to-be-signed copy anyway, one last time, or at least to spot-check it.)
+1. {{{A1}}} signs a document — for example, the agreed final draft of {{{thek}}} — and sends it to {{{B1}}} for countersignature.
+
+2. The circumstances clearly indicate that {{{A}}} and {{{B}}} had agreed on a /final/ version of the document that both would sign.
+
+{{{B}}} might want /some/ specific assurance that {{{A}}} hadn't surreptitiously altered the agreed version(s); {{{ths}}} helps to guard against such fraud.
+
+(For "significant" contracts, of course it might still make sense for {{{B}}} to re-read the to-be-signed copy anyway, one last time, or at least to spot-check it.)
 
 Granted, once a final version of a signature document has been agreed to, the overwhelming majority of lawyers and clients would never be so underhanded as to try to sneak in surreptitious changes. Doing so could damage a lawyer's reputation and possibly even lead to disciplinary action — and the client's /business/ relationship with the other party might well be poisoned by surreptitious changes to an agreed final version of a document.
 
@@ -2428,14 +2452,7 @@ Contents:
 
 #+TOC: headlines 1 local
 
-*** Documents covered by {{{ths}}}
-  :PROPERTIES:
-  :CUSTOM_ID: sigs-doc-defn
-  :END:
-
-/Definition:/ In {{{ths}}}, the term "document" refers to information that is: 
-   1. inscribed on paper (or some other tangible medium), and/or
-   2. stored in an electronic or other medium and retrievable in perceivable form. 
+*** Everything in {{{ths}}} can be varied by agreement.
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -2443,26 +2460,37 @@ Contents:
   :UNNUMBERED: notoc
   :END:
 
-This is a paraphrase of the definition of "record" in § [[https://www.law.cornell.edu/ucc/1/1-201#Record][1-201(b)(31)]] of the Uniform Commercial Code. 
+This lets us avoid repeating "unless otherwise agreed" over and over.
 
-*** Signature methods; electronic signatures
+*** Applicable law might impose restrictions on signatures.
+
+***** Note                                                              :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
+
+We'll see some examples below, e.g., in the notes to § [[#k-sig-elec]] (electronic signatures).
+
+*** {{{Ths-cap}}} covers any kind of "record" — paper, electronic, or otherwise — and "document" has the same meaning as "record."
+  :PROPERTIES:
+  :CUSTOM_ID: sigs-doc-defn
+  :END:
+
+***** Note                                                          :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
+
+"Record" is a term that the Uniform Commercial Code often uses for documents of various kinds; see generally the definition of the term at UCC § [[https://www.law.cornell.edu/ucc/1/1-201#Record][1-201(b)(31)]]: "'Record' means information that is inscribed on a tangible medium or that is stored in an electronic or other medium and is retrievable in perceivable form."
+
+*** Signing can be done electronically.
   :PROPERTIES:
   :CUSTOM_ID: k-sig-elec
   :END:
 
-Unless otherwise agreed, {{{A}}} signs the Document using any reasonable instrument such as, for example —
-
-  1. pen and ink (or even pencil) on paper;
-
-  2. a computer mouse;
-
-  3. a stylus or finger on a tablet computer or other touchpad; and/or
-
-  4. by typing characters on a keyboard,
-
-unless the law clearly says otherwise.
-
-***** Note                                                              :CMT:
+***** Note                                                          :CMT:
   :PROPERTIES:
   :HTML_CONTAINER_CLASS: cmtry
   :UNNUMBERED: notoc
@@ -2488,46 +2516,33 @@ unless the law clearly says otherwise.
 
 *UK law* allows electronic signatures as well — see [UK] Law Commission, Electronic Execution of Documents (2019), at [[https://perma.cc/UCQ7-U94M]].
 
-*** Permissible names when signing
+*** Any non-deceptive name can be used when signing.
   :PROPERTIES:
   :CUSTOM_ID: sigs-names
   :END:
 
-Unless otherwise agreed, {{{A}}} uses any desired (non-deceptive) name for the signature, including but not limited to:
-
-   1. initials in lieu of given names (for individuals);
-
-   2. a trade or assumed name, or 
-
-   3. a word, mark, or symbol,
-
-unless the law says otherwise.
-
-
-***** Note                                                              :CMT:
+***** Note                                                          :CMT:
   :PROPERTIES:
   :HTML_CONTAINER_CLASS: cmtry
   :UNNUMBERED: notoc
   :END:
 
-{{{H1}}} This is adapted from [[https://www.law.cornell.edu/ucc/3/3-401][§ 3-401]] of the Uniform Commercial Code. 
+{{{H1}}} Some people (like me) sign their names with initials in lieu of first{{{NBH}}} and middle names.
 
-{{{HN}}} Subdivision 1 comes from my own practice of signing my name with my initials (and last name) in lieu of my first{{{NBH}}} and middle names.
+{{{HN}}} Some signatures might be done with a trade{{{NAME}}} or assumed name, or with some word, mark, or symbol. (This comes from [[https://www.law.cornell.edu/ucc/3/3-401][§ 3-401]] of the Uniform Commercial Code.)
 
-*** Allowed: Delivery of just signed signature page
+*** Just signed signature pages can be delivered.
   :PROPERTIES:
   :CUSTOM_ID: sig-pg-deliv
   :END:
 
-Unless otherwise agreed, {{{A}}} is free to send just the signed signature page, with the same effect as if {{{A}}} had sent {{{B}}} the entire signed document, unless {{{B}}} objects within a reasonable time.
-
 ***** Note                                                              :CMT:
   :PROPERTIES:
   :HTML_CONTAINER_CLASS: cmtry
   :UNNUMBERED: notoc
   :END:
 
-Nowadays it's quite common for contracting parties, without leaving their offices, to sign signature pages and then exchange scanned PDFs, of the signed signature pages only, as email attachments.
+{{{H1}}} Nowadays it's quite common for contracting parties, without leaving their offices, to sign signature pages and then exchange scanned PDFs, of the signed signature pages only, as email attachments.
 
 Here's a hypothetical example email from {{{A}}} to {{{B}}} for a signed confidentiality agreement, or "NDA" (between companies, this might be done by the companies' lawyers):
 
@@ -2547,41 +2562,22 @@ Regards,
 
 See § [[#sigs-version]] below and its comments for an explanation of the version number.
 
-The term "the above version number" is used to follow the [[#dont-repeat][D.R.Y. Guideline]] (§ [[#dont-repeat]]).
+{{{HN}}} In the hypothetical email above, the term "the above version number" is used to follow the [[#dont-repeat][D.R.Y. Guideline]] (§ [[#dont-repeat]]).
 
-*** Signature by email, text message, etc.
-  :PROPERTIES:
-  :CUSTOM_ID: eml-eg
-  :END:
+{{{HN}}} *Pro tip:* It's a good idea to combine • the PDF of the unsigned agreement, and • the PDFs of the signed signature pages, into a single "record copy" PDF. *Then:* Email the combined, record-copy PDF to all concerned; that email will serve as a paper trail to help establish the authenticity of the record copy.
 
-Unless otherwise agreed, {{{A}}} "signs" {{{theK}}} by indicating assent in an email, text message, or other writing (each, a "signature writing") that:
-
-1. is sent to {{{B1}}}; and
-
-2. clearly indicates what document is being signed by the signature writing.
-
-***** Note                                                              :CMT:
-  :PROPERTIES:
-  :HTML_CONTAINER_CLASS: cmtry
-  :UNNUMBERED: notoc
-  :END:
-
-"Signing" a contract by email can be especially useful when the  parties are mainly interested in having /something/ in writing but don't want to spend a lot of time or legal fees on it. (See the real-world example at § [[#eml-k-eg]].)
-
-***  Version confirmation
+***  Separately-delivered signature pages should clearly indicate the document version.
   :PROPERTIES:
   :CUSTOM_ID: sigs-version
   :END:
 
-When a signed document has gone through multiple drafts, preferably the signature page clearly indicates the specific draft to which the signature page belongs. 
-
-***** Note                                                              :CMT:
+***** Note                                                          :CMT:
   :PROPERTIES:
   :HTML_CONTAINER_CLASS: cmtry
   :UNNUMBERED: notoc
   :END:
 
-{{{H1}}} This is included in the {{{NOUN}}} (instead of in the notes) as an attention-getter for drafters.
+{{{H1}}} This is included in the {{{NOUN-C}}} (instead of in the notes) as an attention-getter for drafters.
 
 {{{HN}}} *Caution:* Are all signed signature pages "final"? It's very common for parties in separate locations to manually sign separate copies of a paper contracts and then to email a PDF image (or, old-school, to FAX) just their signed signature pages to each other. If only the signed signature pages of a contract will be exchanged, the parties should make sure it's clear that everyone is signing the same version of the document — otherwise, the contract might not be binding.
 
@@ -2595,18 +2591,10 @@ When a signed document has gone through multiple drafts, preferably the signatur
 
 An example is shown in the hypothetical email exchange in the note to § [[#sig-pg-deliv]] above.
 
-*** Delivery of signed document "into escrow"
+*** Signatures can be by email, text message, or other messaging.
   :PROPERTIES:
-  :CUSTOM_ID: sigs-escrow
+  :CUSTOM_ID: eml-eg
   :END:
-
-{{{SCENE}}}
-
-1. {{{A1}}} signs {{{theK}}} or related document and sends it or one or more signature pages (the "*Escrow Deposit*") to {{{B1}}} or {{{B}}}'s representative; and
-
-2. The circumstances indicate that {{{A}}} and {{{B}}} agreed that {{{B}}} or {{{B}}}'s representative would hold the Escrow Deposit in escrow until one or more specified escrow-release events has occurred.
-
-{{{EFF}}} The Escrow Deposit {{{HSNT}}} been delivered to {{{B}}} until all of the specified escrow-release events are complete.
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -2614,13 +2602,28 @@ An example is shown in the hypothetical email exchange in the note to § [[#sig
   :UNNUMBERED: notoc
   :END:
 
-{{{H1}}} Many contracts are signed electronically by geographically-separated parties. For that reason, signature pages are sometimes delivered "into [[#nl-escrow-nts][escrow]]," to be held by attorneys until specified events occur, such as payment. <cite> See [[https://scholar.google.com/scholar_case?case=236944223696885868][37celsius Capital Partners, L.P. v. Intel Corp.]], 163 F.4th 421, 426 (7th Cir. 2025) (affirming summary judgment in favor of Intel) (signature pages for agreement to sell Intel subsiciary held in escrow until buyer 37celsius came up with purchase price — which ended up not happening). </cite>
+"Signing" a contract by email can be especially useful when the  parties are mainly interested in having /something/ in writing but don't want to spend a lot of time or legal fees on it. (See the real-world example at § [[#eml-k-eg]].)
 
-Signature-page escrow typically involves an attorney for {{{A}}} sending {{{A}}}'s signed signature page to an attorney for {{{B}}}, who then holds the signed page it "in escrow" pending some specified event, such as {{{A}}}'s receipt of payment or of {{{B}}}'s own signed signature page. <cite> For more information, see, e.g., Anshu Pasricha and Thomas B. Romer, [[https://businesslawtoday.org/2022/02/mac-digital-documentation-protocol-best-practices-to-effect-esignings-closings-ma/][The MAC Digital Documentation Protocol: Best Practices to Effect eSignings and Closings for M&A]] (BusinessLawToday.org 2022) (a project of the ABA Business Law Section Mergers & Acquisitions Committee, Technology in M&A Subcommittee) (scan down to "Principle 3"). </cite>
+*** Signatures can be delivered "into escrow."
+  :PROPERTIES:
+  :CUSTOM_ID: sigs-escrow
+  :END:
 
-Fairly-elaborate signature escrow provisions such as [[https://www.sec.gov/Archives/edgar/data/1403431/000095013708003369/c15909a7exv10w41.htm][this one]] can be found at the [[https://www.lawinsider.com/dictionary/signature-page-escrow-agreement][LawInsider.com site]] — although these are likely to be overkill in many situations.
+***** Note                                                              :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
 
-{{{RWE}}} Here's an actual (anonymized) "signatures into escrow" email from a corporate acquisition deal in which I represented the seller:
+{{{H1}}} The business context: Consider this hypothetical example —
+
+1. {{{A1}}} signs {{{theK}}} and sends the signed signature page to {{{B1}}}'s lawyer. 
+
+2. The circumstances indicate that {{{A}}} and {{{B}}} agreed that {{{B}}}'s lawyer would hold {{{A}}}'s signed signature page escrow until one or more specified escrow-release events has occurred. 
+
+In that situation, {{{A}}}'s signed signature page hasn't been "delivered" to {{{B}}} until all of the specified escrow-release events are complete.
+
+{{{RWE}}} Here's a real-world (anonymized) "signatures into escrow" email from a small corporate acquisition deal in which I represented the seller:
 
 #+begin_bordered
 D.C.,
@@ -2632,14 +2635,18 @@ Attached are [Buyer's] signature pages to be held in escrow pending their expres
 
 In this particular case, Buyer's counsel later released Buyer's signature pages from escrow with an /oral/ statement, saying so on a Zoom call. (To be on the safe side, I confirmed the release in an email to Buyer's counsel.)  Buyer then sent the wire transfer for the purchase price.
 
+{{{HN}}} This isn't an uncommon situation, because many contracts are signed electronically by geographically-separated parties. For that reason, signature pages are sometimes delivered "into [[#nl-escrow-nts][escrow]]," to be held by attorneys until specified events occur, such as payment. <cite> See [[https://scholar.google.com/scholar_case?case=236944223696885868][37celsius Capital Partners, L.P. v. Intel Corp.]], 163 F.4th 421, 426 (7th Cir. 2025) (affirming summary judgment in favor of Intel) (signature pages for agreement to sell Intel subsiciary held in escrow until buyer 37celsius came up with purchase price — which ended up not happening). </cite>
+
+{{{HN}}} Signature-page escrow typically involves an attorney for {{{A}}} sending {{{A}}}'s signed signature page to an attorney for {{{B}}}, who then holds the signed page it "in escrow" pending some specified event, such as {{{A}}}'s receipt of payment or of {{{B}}}'s own signed signature page. <cite> For more information, see, e.g., Anshu Pasricha and Thomas B. Romer, [[https://businesslawtoday.org/2022/02/mac-digital-documentation-protocol-best-practices-to-effect-esignings-closings-ma/][The MAC Digital Documentation Protocol: Best Practices to Effect eSignings and Closings for M&A]] (BusinessLawToday.org 2022) (a project of the ABA Business Law Section Mergers & Acquisitions Committee, Technology in M&A Subcommittee) (scan down to "Principle 3"). </cite>
+
+{{{HN}}} Fairly-elaborate signature escrow provisions such as [[https://www.sec.gov/Archives/edgar/data/1403431/000095013708003369/c15909a7exv10w41.htm][this one]] can be found at the [[https://www.lawinsider.com/dictionary/signature-page-escrow-agreement][LawInsider.com site]] — although these are likely to be overkill in many situations.
+
 {{{HN}}} At the end, the wording, "specified escrow-release events are /complete/" (emphasis added) is meant to roadblock assertions that the mere /start/ of such an event would suffice.
 
-*** Signed counterpart copies: Each is an "original"
+*** Each signed counterpart copy is an "original" — together they all comprise one document.
   :PROPERTIES:
   :CUSTOM_ID: sigs-counter
   :END:
-
-Each signed counterpart of a document is treated, for all purposes, as an original of a single integrated document.
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -2650,7 +2657,7 @@ Each signed counterpart of a document is treated, for all purposes, as an origi
 Counterpart clauses like this one are pretty-commonly used in contracts, so that each party gets its own, fully-signed "original" of a contract — see the examples at [[https://www.lawinsider.com/clause/counterparts-electronic-signatures][LawInsider]].
 
 
-*** Notes: Initialing pages?                                           :ADDL:
+*** {{{ADDL}}}: Initialing pages?                                    :ADDL:
   :PROPERTIES:
   :CUSTOM_ID: initials-top
   :HTML_CONTAINER_CLASS: addl
@@ -2714,16 +2721,6 @@ Contents:
 
 #+TOC: headlines 1 local
 
-**** Post-signing: Combine all signed pages into one document?
-  :PROPERTIES:
-  :CUSTOM_ID: sigs-signed-pages-combine
-  :END:
-
-It's a good idea to combine • the PDF of the unsigned agreement, and • the PDFs of the signed signature pages, into a single "record copy" PDF.
-
-Then email the combined, record-copy PDF to all concerned: The email will serve as a paper trail to help establish the authenticity of the record copy.
-
-
 **** Set a deadline for signature?
   :PROPERTIES:
   :CUSTOM_ID: sigs-dl-cmt
@@ -2758,7 +2755,7 @@ Here's a checklist of selected signature-related items for contract drafters and
 See § [[#notary-top]].
 
 
-* Governance
+* Governance {{{NOUN-CS}}}
   :PROPERTIES:
   :CUSTOM_ID: gov-gen
   :HTML_CONTAINER_CLASS: chap
@@ -2782,27 +2779,64 @@ Contents:
 
 #+TOC: headlines 1 local
 
-*** Writing, title, & signature
+*** An amendment {{{WNT}}} be binding on a party that didn't sign it.
   :PROPERTIES:
-  :CUSTOM_ID: amend-writ-rqd
+  :CUSTOM_ID: amend-sign-bound
   :END:
-
-# /Q: What would it take to modify {{{theK}}}?/
-
-Unless {{{theK}}} clearly provides otherwise, a purported amendment to {{{theK}}} isn't binding if not set forth in a written amendment that:
-
-1. clearly states each modification to {{{theK}}};
-
-2. includes a suitable title (or other prominent feature), such that a reasonable reader would immediately see that the written amendment was intended to change {{{theK}}}; and
-
-3. has been signed by the party sought to be bound.
-
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
   :HTML_CONTAINER_CLASS: cmtry
   :UNNUMBERED: notoc
   :END:
+
+{{{H1}}} It's usually better if /all/ parties sign an amendment document. But as the Seventh Circuit once noted: "The critical signature /[in an amendment]/ is that of the party against whom the contract is being enforced, and *that* signature was present." <cite> [[https://scholar.google.com/scholar_case?case=15575839468377502446][Hess v. Kanoski & Assoc.]], 668 F.3d 446, 453 (7th Cir. 2012) (emphasis added). </cite>
+
+{{{HN}}}  Relatedly: Under the (U.S.) Uniform Commercial Code's statute of frauds provision in [[https://www.law.cornell.edu/ucc/2/2-201][UCC § 2-201]], a written contract (for the sale of goods) must be signed "by the party against whom enforcement is sought ...."
+
+{{{HN}}} Here's a potential [[https://en.wiktionary.org/wiki/footgun][footgun]]: If a contract /states/ that amendments must be signed by /all/ parties, then a missing signature could render the entire amendment unenforceable, even if the omission was inadvertent. This was the result in more than one court case, illustrating the *R.O.O.F.* Principle — Root Out Opportunities for Failure:
+
+\bull  {{{RWE}}} A tenant's lease explicitly required both the tenant /and/ the landlord to sign any proposed amendments of the lease — but the "[[https://en.wikipedia.org/wiki/Estoppel_certificate][estoppel certificate]]" in question had been signed by the tenant only, so the lease was not modified to be more favorable to the (new) landlord.  <cite> See [[https://scholar.google.com/scholar_case?case=754975440907404740][Expo Properties, LLC v. Experient, Inc.]], 956 F.3d 217, 224 (4th Cir. 2020) (affirming summary judgment: estoppel certificate signed by tenant did not modify lease). </cite>
+
+\bull  {{{RWE}}} JPMorgan Chase lent money to a borrower. The loan agreement specifically said that both parties were required to sign any modification. The borrower claimed that the loan agreement had been modified — but the court said that the modification was ineffective because JPMorgan Chase never did countersign it. <cite> See [[https://scholar.google.com/scholar_case?case=2438804884742026716][Taylor v. JPMorgan Chase Bank, NA]], 958 F.3d 556 (7th Cir. 2020) (affirming summary judgment). </cite>
+
+{{{HN}}} Tangentially: A contract between {{{A1}}} and {{{B1}}} might explicitly limit who's allowed to sign amendments on behalf of {{{A}}}. Such a limitation would put {{{B}}} on notice that other individuals /don't/ have authority to sign amendments for {{{A}}}, even if the doctrine of "apparent authority" might suggest otherwise. See § [[#nl-app-auth]] for more discussion.
+
+{{{HN}}} For tips on drafting amendment signature blocks, see § [[#r-sig-mech]] and especially § [[#sig-blocks-cmt]] — the format would likely be exactly the same as for the contract itself.
+
+*** Any purported amendment to {{{theK}}} must be clearly stated in writing, with an informative title.
+  :CUSTOM_ID: amend-writ-rqd
+  :END:
+
+***** Note                                                              :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
+
+{{{H1}}} An informative title is one that would immediately signal a reasonable reader that the document was intended to change {{{theK}}}. No party should be able to argue later, "If you had just /read/ that long document we sent you — /and that you signed/ — then you'd have seen that it amended {{{theK}}}." People don't have time for that nonsense, which has led to costly litigation.   <cite> See, e.g., [[https://scholar.google.com/scholar_case?case=754975440907404740][Expo Properties, LLC v. Experient, Inc.]], 956 F.3d 217, 224 (4th Cir. 2020) (affirming summary judgment: estoppel certificate signed by tenant did not modify lease). </cite>
+
+{{{HN}}} *Pro tip:* In drafting an amendment's title, strongly consider including a *series number* and *date* — and perhaps even include a (brief) mention of the amendment's *purpose* — to leave a paper trail, reduce the chances of confusion, and make it easier for a reader to find the amendment when skimming a list of document titles.
+
+EXAMPLES:
+
+#+begin_alt
+{{{CHK-N}}}     Amendment
+
+{{{CHK-Y}}}     Amendment No. 1 to Asset Purchase Agreement (Increase of Purchase Price)
+#+end_alt
+
+If making further amendments *to Amendment No. 1 itself*, consider:
+
+#+begin_alt
+{{{CHK-N}}}     Amendment No. 1 to Amendment 1 to Asset Purchase Agreement
+
+{{{CHK-Y}}}     Amendment No. 1.1 to Asset Purchase Agreement
+
+#+end_alt
+
+This can be  especially important to consider when multiple amendments have occurred. {{{RWE}}} The members of one limited-liability company ("LLC") agreed to amend the LLC's operating agreement when its managing member resigned — that amendment was the /ninth/ one. <cite> See [[https://scholar.google.com/scholar_case?case=8126733645927116877][Paul v. Rockport Group, LLC]], No. 2018-0907-JTL (Del. Ch. Jan. 9, 2024) (granting summary judgment in favor of plaintiff, the LLC's former managing member). </cite>
+
 
 {{{H1}}} "Unless {{{theK}}} clearly provides otherwise": Note that {{{theK}}} /could/ allow an amendment document to become binding on a particular party even without that party's signature — see, e.g., amendments by notice under {{{RULE}}} [[#r-amend-unil]].
 
@@ -2900,51 +2934,6 @@ Moreover: Under the general law an agreement to /amend/ a contract is likely to
   :CUSTOM_ID: amend-clear-title-why
   :END:
 
-A clear title to the Amendment Document helps each party to quickly recognize what it's being asked to sign; no party should be able to argue later, "If you had just /read/ that long document we sent you — /and that you signed/ — then you'd have seen that it amended {{{theK}}}." People don't have time for that nonsense, which has led to costly litigation.   <cite> See, e.g., [[https://scholar.google.com/scholar_case?case=754975440907404740][Expo Properties, LLC v. Experient, Inc.]], 956 F.3d 217, 224 (4th Cir. 2020) (affirming summary judgment: estoppel certificate signed by tenant did not modify lease). </cite>
-
-*Pro tip:* In drafting an amendment's title, strongly consider including a *series number* and *date* — and perhaps even include a (brief) mention of the amendment's *purpose* — to leave a paper trail, reduce the chances of confusion, and make it easier for a reader to find the amendment when skimming a list of document titles.
-
-EXAMPLES:
-
-#+begin_alt
-{{{CHK-N}}}     Amendment
-
-{{{CHK-Y}}}     Amendment No. 1 to Asset Purchase Agreement (Increase of Purchase Price)
-#+end_alt
-
-If making further amendments *to Amendment No. 1 itself*, consider:
-
-#+begin_alt
-{{{CHK-N}}}     Amendment No. 1 to Amendment 1 to Asset Purchase Agreement
-
-{{{CHK-Y}}}     Amendment No. 1.1 to Asset Purchase Agreement
-
-#+end_alt
-
-*This is especially important to consider when multiple amendments have occurred.* {{{RWE}}} The members of one limited-liability company ("LLC") agreed to amend the LLC's operating agreement when its managing member resigned — that amendment was the /ninth/ one. <cite> See [[https://scholar.google.com/scholar_case?case=8126733645927116877][Paul v. Rockport Group, LLC]], No. 2018-0907-JTL (Del. Ch. Jan. 9, 2024) (granting summary judgment in favor of plaintiff, the LLC's former managing member). </cite>
-
-**** Just the bound party signing the amendment document is standard
-  :PROPERTIES:
-  :CUSTOM_ID: amend-sigs-who-why
-  :END:
-
-{{{H1}}} It's usually better if all parties sign an amendment document. But as the Seventh Circuit once noted: "The critical signature /[in an amendment]/ is that of the party against whom the contract is being enforced, and *that* signature was present." <cite> [[https://scholar.google.com/scholar_case?case=15575839468377502446][Hess v. Kanoski & Assoc.]], 668 F.3d 446, 453 (7th Cir. 2012) (emphasis added). </cite>
-
-{{{HN}}}  Relatedly: Under the (U.S.) Uniform Commercial Code's statute of frauds provision in [[https://www.law.cornell.edu/ucc/2/2-201][UCC § 2-201]], a written contract (for the sale of goods) must be signed "by the party against whom enforcement is sought ...."
-
-{{{HN}}} Here's a potential [[https://en.wiktionary.org/wiki/footgun][footgun]]: If a contract /states/ that amendments must be signed by /all/ parties, then a missing signature could render the entire amendment unenforceable, even if the omission was inadvertent. This was the result in more than one court case, illustrating the *R.O.O.F.* Principle — Root Out Opportunities for Failure:
-
-\bull  {{{RWE}}} A tenant's lease explicitly required both the tenant /and/ the landlord to sign any proposed amendments of the lease — but the "[[https://en.wikipedia.org/wiki/Estoppel_certificate][estoppel certificate]]" in question had been signed by the tenant only, so the lease was not modified to be more favorable to the (new) landlord.  <cite> See [[https://scholar.google.com/scholar_case?case=754975440907404740][Expo Properties, LLC v. Experient, Inc.]], 956 F.3d 217, 224 (4th Cir. 2020) (affirming summary judgment: estoppel certificate signed by tenant did not modify lease). </cite>
-
-\bull  {{{RWE}}} JPMorgan Chase lent money to a borrower. The loan agreement specifically said that both parties were required to sign any modification. The borrower claimed that the loan agreement had been modified — but the court said that the modification was ineffective because JPMorgan Chase never did countersign it. <cite> See [[https://scholar.google.com/scholar_case?case=2438804884742026716][Taylor v. JPMorgan Chase Bank, NA]], 958 F.3d 556 (7th Cir. 2020) (affirming summary judgment). </cite>
-
-{{{HN}}} Tangentially: A contract between {{{A}}} and {{{B}}} might explicitly limit who's allowed to sign amendments on behalf of {{{A}}}. Such a limitation would put {{{B}}} on notice that other individuals /don't/ have authority to sign amendments for {{{A}}}, even if the doctrine of "apparent authority" might suggest otherwise. See § [[#nl-app-auth]] for more discussion.
-
-{{{HN}}} For tips on drafting amendment signature blocks, see § [[#r-sig-mech]] and especially § [[#sig-blocks-cmt]] — the format would likely be exactly the same as for the contract itself.
-
-{{{HN}}} In some contracts, one party might have the right to amend the contract unilaterally by notice to the other party; this is addressed at {{{RULE}}} [[#r-amend-unil]].
-
-{{{HN}}} See also {{{RR}}} [[#r-sig-integ-top]] (signature-document integrity).
 
 **** Pro tip: For extensive changes, do an "amended and restated agreement"?
   :PROPERTIES:
@@ -16309,13 +16298,12 @@ Earlier, the First Circuit had noted:
 #+end_quote
 <cite> [[https://scholar.google.com/scholar_case?case=10864691870596323390][Rivera v. Centro Medico de Turabo, Inc.]], 575 F.3d 10, 18 (1st Cir. 2009) (affirming dismissal of action based on forum-selection clause; cleaned up, bracketed material and extra paragraphing added), /in part quoting/ [[https://scholar.google.com/scholar_case?case=10750800618470571369][Bremen]], 407 U.S. 1, 10, 15 (1972). See also, e.g., [[https://scholar.google.com/scholar_case?case=][Lakeside Surfaces, Inc. v. Cambria Company, LLC]], 16 F.4th 209 (6th Cir. 2021) (reversing and remanding dismissal of Michigan-filed lawsuit: Michigan Franchise Investment Law trumped forum-selection clause that specified Minnesota choice-of-forum clause). </cite>
 
-
-
 # https://global.canon/en/corporate/logo/
 # #+ATTR_HTML: :alt Canon logo :title Canon logo :class photowidth15 photo-at-right
 # [[./img/Canon-logo.png]]
 
 Likewise, /state/ courts in the U.S. generally honor forum-selection provisions; for example, Virginia's supreme court explained that a forum-selection provision would be enforced "unless the party challenging enforcement establishes that /such provisions/ are unfair or unreasonable, or are affected by fraud or unequal bargaining power." <cite> [[http://www.leagle.com/xmlResult.aspx?xmldoc=19901201397SE2d804_11178.xml&docbase=CSLWAR2-1986-2006][Paul Business Systems, Inc. v. Canon U.S.A., Inc.]], 97 S.E.2d 804, 807-08 (Va. 1990) (affirming dismissal of complaint) (emphasis added, extensive citations and internal quotation marks omitted). </cite>
+
 
 **** *Caution:*  Don't say "the courts /of/" a jurisdiction               :CMT:
   :PROPERTIES:
@@ -16797,6 +16785,12 @@ But let's just say it's ... unusual to assert that /California's/ or /Texas's/ l
 **** Texas business courts - like Delaware's chancery court?
 
 In September 2024, a new form of Texas state court, limited to business cases and with appeals heard by a new court of appeals in Austin, opened for business. <cite> See generally, e.g., the Vinson & Elkins memo [[https://www.velaw.com/series/texas-business-courts/][Everything You Need to Know About Texas’s Business Courts]]. </cite>
+
+**** A court might simply deny a motion to transfer anyway
+
+When X Corporation (formerly Twitter) sued Media Matters ("MM") over an allegedly-false article, it did so in the Northern District of Texas. MM moved to transfer under 28 U.S.C. § 1404 and § 1406, citing among other things a forum-selection clause (in what contract, the Fifth Circuit's opinion doesn't say; the district-court opinion didn't seem to be readily available online).  
+
+The district court denied MM's motion to transfer, citing MM's purportedly untimely filing of the motion. The Fifth Circuit granted the petition for mandamus and "ORDER[ED]" the district court (all caps in the original) to vacate its denial and reconsider the motion to transfer, taking into account the "eight factors" required for a venue analysis. <cite> See [[https://cases.justia.com/federal/appellate-courts/ca5/25-10630/25-10630-2026-08-21.pdf][In re Media Matters for Am.]], No. 25-10630, slip op. (5th Cir. Aug. 21, 2026) (partially granting Media Matters's petition for mandamus; formatting edited), /withdrawing/ 143 F.4th 631. </cite>
 
 *** Student exercises                                                :OMIT:
   :PROPERTIES:
@@ -45640,7 +45634,7 @@ Not including a sunset for contractual rights and obligations can lead to litiga
 
 ** They: In a contract, use for plural nouns only (at least for now)y
   :PROPERTIES:
-  :CUSTOM_ID: they
+  :CUSTOM_ID: they-sing
   :END:
 
 In contracts, don't use "they" as a gender-neutral *singular* pronoun — if necessary, repeat the noun in question.

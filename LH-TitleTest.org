@@ -1,61 +1,57 @@
-#+startup: noindent hidestars num
+#+INCLUDE: "./Harbor-Startup.org" 
+#+TITLE: Contracts at Work: A Lawyer's Notebook
+#+SUBTITLE: With *the {{{NAME-FULL}}}*: Shared, plain-language ground rules for getting productive business deals done.
 
-#+MACRO: VCS (eval (let ((mode (or (cadr (assoc "VOICE_MODE" (org-collect-keywords '("VOICE_MODE")))) "present"))) (if (string= mode "future") $2 $1)))
-#+MACRO: VCS 
-# === IMPORTANT: SET THE VOICE_MODE VARIABLE TO PRESENT OR FUTURE 
-#+VOICE_MODE: future
+For parties that want to negotiate the business deal, not the boilerplate — to build trust, not traps.
 
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./LH-2.css"> 
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./cite-toggle.css">
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./toc-collapse.css">
+#+begin_byline
+By Dell C. ("D.C.") Toedt III [[#bio][(about)]]
+#+end_byline
 
-# Be sure the <script> goes after the "icon" call - otherwise the "defer" in the script will keep the icon from updating
-#+HTML_HEAD: <link rel="icon" href="./img/Friday-sticky-note-ChatGPT-2026-06-02-1821.jpg">
-#+HTML_HEAD: <script src="lighthouse-all.js" defer></script>
+Professor of practice, University of Houston Law Center.  
 
-#+HTML_HEAD: <a id="top"></a>
-#+OPTIONS: ^:{} html-style:nil  toc:nil H:6 num:4  d:nil author:t
-#+HTML_HEAD: <link rel="preconnect" href="https://fonts.googleapis.com">
-#+HTML_HEAD: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-#+HTML_HEAD: <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-#+EXCLUDE_TAGS: OMIT SPEC NOEXPORT
+[[#toc-chap-inline][CHAPTER LIST]]     [[#toc-det][Detailed table of contents]] \\
+Or: Click on the hamburger icon <span style="background-color: #1e6a9e; color: white; padding: 0px 3px 3px 3px; margin-right: 1px;"> &#x2630;</span> at top left.
 
-
-  # =========== IDEAS FOR TITLES FROM CLAUDE:   Passage Planning, Standing Orders, Underway Watch, Coming Alongside, Making Fast, Closing Out the Log
-
-#+TITLE: Harbor Charts and Dragon Maps: \\
-#+TITLE: Notes on Cooperative Contract Practice
-#+SUBTITLE: Lightweight rules of order for business transactions: Distilled from court cases, legislative actions, regulatory developments, and law{{{NBH}}}firm practice notes. For law students, lawyers, and their AI tools.
-
-# #+ATTR_HTML: :alt Image of one day's calendar page with red top border and white background with "FRI" as the lettering :title Friday calendar page   :class photo-calpage
-# [[./img/Friday-calendar-page-ChatGPT-2026-06-02-1739.jpg]]
-
-
-# #+ATTR_HTML: :alt A lighthouse photo by Carol M. Highsmith (Library of Congress) :title A lighthouse photo by Carol M. Highsmith (Library of Congress)  :class photo-lighthouse
-# [[./img/!Cape-Henry-Lighthouse-Carol-M-Highsmith-LOC.png]]
-
-#+begin_center
-<red>  *[In-progress draft — last saved {{{DATE-ISO}}}]* </red>
-#+end_center
 
 #+ATTR_HTML: :alt Creative Commons symbol for BY (attribution required) SA (share-alike) :href # :title Creative Commons 4.0 BY SA   :class cc
 [[./img/by-sa.png]]
 
-<small> By [[#bio][DC Toedt]] ([[#bio][about]]), professor of practice, University of Houston Law Center; former BigLaw partner and public-company general counsel; member of the State Bars of Texas and California. *See the copyright, Creative Commons, and trademark statement* at [[#copr-cc-tm]].  </small>
+*Creative Commons license*: BY SA — see § [[#copr-cc-tm]].
 
-*LAW STUDENTS:* This {{{BK}}} will help you learn to draft pragmatic, court-savvy contracts. The {{{NAME}}}™ {{{NOUNS}}} have been: \\
-\bull  worded for easy reading by clients — and to improve AI performance; \\
-\bull  enhanced with real-world practice notes.
+<red>  *[A WORK IN PROGRESS, last saved {{{DATE-ISO}}}]* </red> 
 
-*LAWYERS:* Use this {{{BK}}} as a guide for the junior people you supervise — and for your AI tools. Consider saving time by incorporating selected {{{NAME}}} {{{NOUNS}}} by reference into short-form contracts.
+[[https://www.merriam-webster.com/dictionary/fairway][fairway]] <small>noun</small> \\
+*1  a*  :  a navigable part of a river, bay, or harbor      <cite> ([[https://www.merriam-webster.com/dictionary/fairway][Merriam-Webster]]) </cite>
 
-*CLIENTS:* <p-h-b>Time is short</p-h-b> — *ask your lawyer* /if there's any reason/ [[https://www.oncontracts.com][you couldn't]] just e-sign an email term sheet built on a {{{NAME-FULL}}} contract (such as the {{{NAME}}} NDA or MSA), to help you move faster, cut legal spend, and build trust, not traps.
+#+ATTR_HTML: :alt Description: Aerial photo of Golden Gate Bridge and San Francisco skyline with aircraft carrier USS Enterprise having just passed under the bridge entering the harbor.  :title Aerial photo of Golden Gate Bridge and San Francisco skyline with aircraft carrier USS Enterprise having just passed under the bridge entering the harbor. :class photo-CVN65
+[[./img/USS-Enterprise-CVN-65-returning-to-SF-GG-and-Bay-Bridges-USN-photo.jpeg]]
 
-**ask your lawyer** *if there's any reason* [you couldn't](https://www.oncontracts.com) just
+When all of the parties to a contract are willing to "stay in the fairway," their lawyers can quickly turn a short deal-terms document into a signable contract by adopting the {{{NAME-FULL}}} — or just selected {{{NOUNS}}} — as the detailed terms and conditions for the deal.
+#+begin_ul-compressed
+- Court-savvy: Incorporating pragmatic lessons extracted from hundreds of litigated cases.
+- Negotiation-friendly: Built on an evenhanded approach praised by lawyers for multiple big companies in real-world transactions.
+- Readable: Phrased and formatted to help humans and their AI assistants.
+- Explained: Extensive annotations explain the thinking behind each {{{NOUN}}}.
+#+end_ul-compressed
+
+
+*Students:* This {{{BK}}} will show you ways to help your clients get business done faster — and help you to make a good impression on your partners or other supervising attorneys.
+
+#+begin_ul-compressed
+*Lawyers:* 
+- For a conventional contract, use the {{{NAME}}} {{{NOUNS}}} and playbooks as drafting checklists.
+- Explain things to your clients by sending them links to specific {{{NOUNS}}} and their notes.
+
+*Clients:* *Ask your lawyer* whether adopting the {{{NAME-FULL}}} can help you —
+- get deals to signature sooner;
+- cut contracting transaction costs;
+- help build solid business relationships.
+#+end_ul-compressed
 
 
 #+begin_asis
-*IMPORTANT:* The {{{NAME-FULL}}} contract {{{BK}}} offers general guidance about common contract practices; it's provided *AS IS, WITH ALL FAULTS* — your mileage may vary, so don't rely on it as a substitute for specific legal advice from an attorney licensed in your jurisdiction. (/I'm/ not /your/ lawyer unless you and I have entered into a specific [[https://www.oncontracts.com/engage/][written engagement agreement]].) *Don't reach out to me with any confidential- or privileged information*, because that'd likely kill any attorney-client privilege you might have in the information. (See {{{NOUN-C}}} [[#k-bound-NLA]] for more.)
+*IMPORTANT:* This {{{BK}}} offers general guidance about common contract practices; it's provided *AS IS, WITH ALL FAULTS* — your mileage may vary, so don't rely on it as a substitute for specific legal advice from an attorney licensed in your jurisdiction. (/I'm/ not /your/ lawyer unless you and I have entered into a specific [[https://www.oncontracts.com/engage/][written engagement agreement]].) *Don't reach out to me with any confidential- or privileged information*, because that'd likely kill any attorney-client privilege you might have in the information. (See § [[#k-bound-NLA]] for more.)
 #+end_asis
 
 
@@ -67,36 +63,56 @@
 
 # Macros (needed for standalone export - duplicates what's in _Macros.org)
 #+MACRO: actor *$1:*
-#+MACRO: name Harbor
-#+MACRO: name-full Harbor Charts
+#+MACRO: name Fairway
+#+MACRO: name-full Fairway Protocol
 #+MACRO: nbh @@html:&#x2011;@@
-#+MACRO: url notes.oncontracts.com
+#+MACRO: url harborrules.org
 #+MACRO: br @@html:<br/>@@@@latex:\linebreak @@
 #+MACRO: br2 @@html:<br/><br/>@@@@latex:\linebreak\linebreak @@
-#+MACRO: bk handbook
-#+MACRO: noun clause
+#+MACRO: bk book
+#+MACRO: noun rule
 #+MACRO: nouns {{{NOUN}}}s
-#+MACRO: noun-c Clause
+#+MACRO: noun-c Rule
 #+MACRO: noun-cs {{{NOUN-C}}}s
 #+MACRO: fr suite
 #+MACRO: fr-c Suite
 #+MACRO: pkg Suite
-#+MACRO: pr 
-#+MACRO: pr-c 
+#+MACRO: pr Protocol
+#+MACRO: pr-c Protocol
+#+MACRO: prac {{{NOUN}}}
+#+MACRO: prac-c {{{NOUN-C}}}
+#+MACRO: pracs {{{NOUNS}}}
+#+MACRO: prac-cs {{{NOUN}}}s
+#+MACRO: practice [[#$1][Rule ]]§ [[#$1]]
+#+MACRO: k-master When a contract ("*{{{TheK}}}*") adopts this {{{PROPERTY(ITEM)}}}, the parties are agreeing to the following {{{NAME-FULL}}} provisions, which are incorporated by reference into {{{theK}}}:
 #+MACRO: Clause
+#+MACRO: cls-x 
 #+MACRO: cls 
 #+MACRO: r  {{{NOUN-C}}}
 #+MACRO: rule {{{NOUN-C}}}
+#+MACRO: rr {{{NOUN-C}}}
 #+MACRO: date-iso (eval (format-time-string "%Y-%m-%dT%H:%MZ" (current-time) t))
 #+MACRO: date-iso-small <small> {{{DATE-ISO}}} </small>
 
+#+MACRO: sit {{{SCENE}}}
+#+MACRO: chk CHECKLIST:
+#+MACRO: ckl CHECKLIST:
+#+MACRO: prereq /Prerequisite(s):/
+ #+MACRO: why /Goal:/
+#+MACRO: rqmt /Requirement:/
+#+MACRO: who /Who:/
+#+MACRO: note /Note:/ 
+#+MACRO: eg /Example (without limitation):/
+#+MACRO: egs /Examples (without limitation):/ 
+#+MACRO: def /Definition:/
+#+MACRO: except /Exception:/ 
 
 
 #+begin_comment
 (setq-default line-spacing 0.3)
 Non-breaking hyphen: ‑
 
- @@html: <button id="toggle-asides-btn" onclick="toggleAsides()" style="padding: 8px 16px; margin: 10px 0; cursor: pointer;">Hide notes</button>@@      [[#toc-chap][Contents]]     @@html: <a href="#"> Top </a>@@
+ @@html: <button id="toggle-asides-btn" onclick="toggleAsides()" style="padding: 8px 16px; margin: 10px 0; cursor: pointer;">Hide notes</button>@@      § [[#toc-chap][Contents]]     @@html: <a href="#"> Top </a>@@
 #+end_comment
 
 

@@ -485,7 +485,7 @@ div.pr-top h3 {
 }
 
 div.pr-top div.outline-text-4 {
-    margin-bottom: -2em;
+    margin-bottom: 0;
 }
 
 div.pr-top div.outline-4 h4 {
@@ -510,6 +510,20 @@ div.pr-alt div.outline-5 h5 {
 
 div.pr-top .outline-text-3 ul {
     list-style: none;
+}
+
+div.pr-top .outline-text-4:empty {
+    margin: 0;
+    padding: 0;
+}
+
+div.pr-top div.outline-4 > div.cmtry {
+    margin-top: -1em;
+    padding-top: 0;
+}
+
+div.pr-top div.outline-4 > div.cmtry > h6 {
+    margin-top: 0;
 }
 
 /* ===========
