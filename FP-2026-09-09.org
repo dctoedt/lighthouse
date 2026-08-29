@@ -2771,17 +2771,21 @@ Contents:
   :HTML_CONTAINER_CLASS: pr-top
   :END:
 
-An /amendment/ of a contract is in essence a /permanent modification/ of the contract's terms and conditions — but it's possible that what's needed is simply a one-time variance from the contract's rights or obligations (see § [[#nl-amend-vs-waiver]] for more explanation). So, parties considering an "amendment" to {{{theK}}} should consider whether what they really want is simply one party's *waiver* (see {{{RULE}}} [[#r-waiv-defn]]) of a particular right or obligation.
+Addressing changed circumstances is one of the most-frequent points of dispute in contract dealings, according to an international survey of contract professionals.[fn:WorldCCChgCirc] One way to reduce the chances of dispute is for the contract to require written confirmation of any changes to the parties' agreed rights and obligations.
+
+Nomenclature: An /amendment/ of a contract is generally a /permanent modification/ of the contract's terms and conditions. It's also possible that what's desired is simply a *waiver* (see {{{RULE}}} [[#r-waiv-defn]]) of a particular right or obligation; see the note to § [[#amend-writ-rqd]] for more explanation.
 
 {{{SEE-ADOPT-RULE}}}
 
 Contents:
 
-#+TOC: headlines 1 local
+#+TOC: headlines 2 local
 
-*** An amendment {{{ISNT}}} binding on a party that didn't sign it (unless {{{theK}}} clearly says otherwise).
+[fn:WorldCCChgCirc] See World Commerce and Contracting, [[https://www.worldcc.com/Portals/IACCM/Reports/Most-Negotiated-Terms-2024.pdf#page=5.35][Most Negotiated Terms 2024]] at 5. 
+
+*** {{{TheK-cap}}} can vary the requirements of {{{ths}}} — but only by explicitly saying so.
   :PROPERTIES:
-  :CUSTOM_ID: amend-sign-bound
+  :CUSTOM_ID: amend-writ-var
   :END:
 
 ***** Note                                                              :CMT:
@@ -2790,23 +2794,10 @@ Contents:
   :UNNUMBERED: notoc
   :END:
 
-{{{H1}}} It's usually better if /all/ parties sign an amendment document. But as the Seventh Circuit once noted: "The critical signature /[in an amendment]/ is that of the party against whom the contract is being enforced, and *that* signature was present." <cite> [[https://scholar.google.com/scholar_case?case=15575839468377502446][Hess v. Kanoski & Assoc.]], 668 F.3d 446, 453 (7th Cir. 2012) (emphasis added). </cite>
+This allows for the fact that some contracts include /unilateral/ amendment provisions such as that of {{{GET-RULE-LINK(r-amend-unil)}}}.
 
-{{{HN}}} The "unless" part allows for the fact that some contracts include unilateral amendment provisions such as that of {{{GET-RULE-LINK(r-amend-unil)}}}.
-
-{{{HN}}}  Relatedly: Under the (U.S.) Uniform Commercial Code's statute of frauds provision in [[https://www.law.cornell.edu/ucc/2/2-201][UCC § 2-201]], a written contract (for the sale of goods) must be signed "by the party against whom enforcement is sought ...."
-
-{{{HN}}} Here's a potential [[https://en.wiktionary.org/wiki/footgun][footgun]]: If a contract /states/ that amendments must be signed by /all/ parties, then a missing signature could render the entire amendment unenforceable, even if the omission was inadvertent. This was the result in more than one court case, illustrating the *R.O.O.F.* Principle — Root Out Opportunities for Failure:
-
-\bull  {{{RWE}}} A tenant's lease explicitly required both the tenant /and/ the landlord to sign any proposed amendments of the lease — but the "[[https://en.wikipedia.org/wiki/Estoppel_certificate][estoppel certificate]]" in question had been signed by the tenant only, so the lease was not modified to be more favorable to the (new) landlord.  <cite> See [[https://scholar.google.com/scholar_case?case=754975440907404740][Expo Properties, LLC v. Experient, Inc.]], 956 F.3d 217, 224 (4th Cir. 2020) (affirming summary judgment: estoppel certificate signed by tenant did not modify lease). </cite>
-
-\bull  {{{RWE}}} JPMorgan Chase lent money to a borrower. The loan agreement specifically said that both parties were required to sign any modification. The borrower claimed that the loan agreement had been modified — but the court said that the modification was ineffective because JPMorgan Chase never did countersign it. <cite> See [[https://scholar.google.com/scholar_case?case=2438804884742026716][Taylor v. JPMorgan Chase Bank, NA]], 958 F.3d 556 (7th Cir. 2020) (affirming summary judgment). </cite>
-
-{{{HN}}} *Pro tip:* For notes on drafting amendment signature blocks, see § [[#r-sig-mech]] and especially § [[#sig-blocks-cmt]] — the format would likely be exactly the same as for the contract itself.
-
-{{{HN}}} Tangentially: A contract between {{{A1}}} and {{{B1}}} might explicitly limit who's allowed to sign amendments on behalf of {{{A}}}. Such a limitation would put {{{B}}} on notice that other individuals /don't/ have authority to sign amendments for {{{A}}}, even if the doctrine of "apparent authority" might suggest otherwise. See § [[#nl-app-auth]] for more discussion.
-
-*** Any purported amendment to {{{theK}}} must be clearly stated in writing, with an informative title.
+*** Amendments of {{{theK}}} must be clearly stated in writing — a purported oral amendment has zero efffect.
+  :PROPERTIES:
   :CUSTOM_ID: amend-writ-rqd
   :END:
 
@@ -2816,7 +2807,34 @@ Contents:
   :UNNUMBERED: notoc
   :END:
 
-{{{H1}}} An informative title is one that would immediately signal a reasonable reader that the document was intended to change {{{theK}}}. No party should be able to argue later, "If you had just /read/ that long document we sent you — /and that you signed/ — then you'd have seen that it amended {{{theK}}}." People don't have time for that nonsense, which has led to costly litigation.   <cite> See, e.g., [[https://scholar.google.com/scholar_case?case=754975440907404740][Expo Properties, LLC v. Experient, Inc.]], 956 F.3d 217, 224 (4th Cir. 2020) (affirming summary judgment: estoppel certificate signed by tenant did not modify lease). </cite>
+{{{H1}}} According to Black's Law Dictionary (the canonical English-language legal dictionary), an /amendment/ is "[a] formal and usu. /[usually]/ minor revision or addition proposed or made to a statute, constitution, pleading, order, or other instrument ...."
+
+Here's a hypothetical example: Imagine a contract between Alice, who owns and operates a landscaping service, and Bob, who owns and operates a Downton Abbey-style estate as a museum. Suppose that the contract calls for Alice to take care of the estate's lawn; Alice's obligations include mowing the lawn each week, raking leaves in the autumn, etc. <cite> [[https://en.wikipedia.org/wiki/Alice_and_Bob][Alice and Bob]] are placeholder names commonly used in the tech world. </cite>
+
+Now suppose that on one particular day, Bob comes outside to talk to Alice when Alice and her crew arrives to mow the lawn. 
+
+- If Bob says, "Hi Alice — I don't need the lawn mowed this week." That's known as a *waiver*, by Bob, of Alice's obligation for that occasion. (See also {{{GET-RULE-LINK-THE(r-waiv-defn)}}}.)
+
+- Or, Bob might say, "never mind, Alice, I don't need you to mow the lawn /ever/, because my teen-aged son and his friend want to do the mowing from now on — so let's talk about changing the contract to reduce what you have to do *and also* reduce what I pay you."  If Alice agrees, that's known as an *amendment* of their contract. (It's also an example of how /services/ contracts should include provisions for "change management.")
+
+{{{HN}}} Here we rule out /oral/ amendments because we want to reduce the chances of costly litigation to sort out conflicting memories and {{{NBH}}}testimony. This is an extremely common drafting practice to try to avoid "he said, she said" disputes in the future, when people's memories might be, ahem, less than reliable.
+
+{{{HN}}} NOTE: Under the general law an agreement to /amend/ a contract is likely to be deemed a contract it its own right — in which case the amendment agreement might have to be in writing under the [[#stat-frauds][Statute of Frauds]] (see § [[#stat-frauds]]). (The amendment agreement likely would also have to meet the usual requirements of offer, acceptance, consideration, capacity, etc.)
+
+*** Any purported amendment to {{{theK}}} must be immediately recognizable as such.
+  :PROPERTIES:
+  :CUSTOM_ID: amend-writ-recog
+  :END:
+
+***** Note                                                          :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
+
+{{{H1}}} The best way for an amendment to be recognizable as such is of course to bear an informative title — one that would immediately signal a reasonable reader that the document was intended to change {{{theK}}}. 
+
+No party should be able to argue later, "If you had just /read/ that long document we sent you — /and that you signed/ — then you'd have seen that it amended {{{theK}}}." People don't have time for that nonsense, which has led to costly litigation.   <cite> See, e.g., [[https://scholar.google.com/scholar_case?case=754975440907404740][Expo Properties, LLC v. Experient, Inc.]], 956 F.3d 217, 224 (4th Cir. 2020) (affirming summary judgment: estoppel certificate signed by tenant did not modify lease). </cite>
 
 {{{HN}}} *Pro tip:* In drafting an amendment's title, strongly consider including a *series number* and *date* — and perhaps even include a (brief) mention of the amendment's *purpose* — to leave a paper trail, reduce the chances of confusion, and make it easier for a reader to find the amendment when skimming a list of document titles.
 
@@ -2839,17 +2857,10 @@ If making further amendments *to Amendment No. 1 itself*, consider:
 
 This can be  especially important to consider when multiple amendments have occurred. {{{RWE}}} The members of one limited-liability company ("LLC") agreed to amend the LLC's operating agreement when its managing member resigned — that amendment was the /ninth/ one. <cite> See [[https://scholar.google.com/scholar_case?case=8126733645927116877][Paul v. Rockport Group, LLC]], No. 2018-0907-JTL (Del. Ch. Jan. 9, 2024) (granting summary judgment in favor of plaintiff, the LLC's former managing member). </cite>
 
-
-{{{H1}}} "Unless {{{theK}}} clearly provides otherwise": Note that {{{theK}}} /could/ allow an amendment document to become binding on a particular party even without that party's signature — see, e.g., amendments by notice under {{{RULE}}} [[#r-amend-unil]].
-
-{{{HN}}} Subdivision 2.b and 2.c: See especially the notes at § [[#amend-clear-title-why]] (why require a suitable title) and § [[#amend-sigs-who-why]] (why require signature by just the bound party).
-
-*** Oral amendments: Not effective
+*** An amendment {{{ISNT}}} binding on a non-signing party (unless {{{theK}}} clearly says otherwise).
   :PROPERTIES:
-  :CUSTOM_ID: amend-oral-no
+  :CUSTOM_ID: amend-sign-bound
   :END:
-
-For the avoidance of doubt: A purported /oral/ amendment to {{{theK}}} has no effect, even if the purported amendment was in fact /orally/ agreed to by representatives of the parties.
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -2857,23 +2868,26 @@ For the avoidance of doubt: A purported /oral/ amendment to {{{theK}}} has no e
   :UNNUMBERED: notoc
   :END:
 
-We rule out /oral/ amendments to reduce the chances of costly litigation to sort out conflicting memories and {{{NBH}}}testimony.
+{{{H1}}}  This allows for the fact that some contracts include /unilateral/ amendment provisions such as that of {{{GET-RULE-LINK(r-amend-unil)}}}.
 
-*** Enhanced proof requirement for claims of waiver of {{{ths}}}
+{{{HN}}} It's usually better if /all/ parties sign an amendment document. But as the Seventh Circuit once noted: "The critical signature /[in an amendment]/ is that of the party against whom the contract is being enforced, and *that* signature was present." <cite> [[https://scholar.google.com/scholar_case?case=15575839468377502446][Hess v. Kanoski & Assoc.]], 668 F.3d 446, 453 (7th Cir. 2012) (emphasis added). </cite>
 
-# /Q: What if the law allows {{{A}}} to say, "{{{B}}} *orally waived* this writing requirement"?/
+{{{HN}}}  Relatedly: Under the (U.S.) Uniform Commercial Code's statute of frauds provision in [[https://www.law.cornell.edu/ucc/2/2-201][UCC § 2-201]], a written contract (for the sale of goods) must be signed "by the party against whom enforcement is sought ...."
 
-{{{SCENE}}}  Applicable law allows {{{A1}}} to assert, to a tribunal, that {{{B1}}} waived {{{ths}}} — and therefore that an alleged /nonwritten/ amendment is supposedly effective, /even though {{{theK}}} says otherwise/;
+{{{HN}}} Here's a potential [[https://en.wiktionary.org/wiki/footgun][footgun]]: If a contract /states/ that amendments must be signed by /all/ parties, then a missing signature could render the entire amendment unenforceable, even if the omission was inadvertent. This was the result in more than one court case, illustrating the *R.O.O.F.* Principle — Root Out Opportunities for Failure:
 
-{{{PLAN}}}
+\bull  {{{RWE}}} A tenant's lease explicitly required both the tenant /and/ the landlord to sign any proposed amendments of the lease — but the "[[https://en.wikipedia.org/wiki/Estoppel_certificate][estoppel certificate]]" in question had been signed by the tenant only, so the lease was not modified to be more favorable to the (new) landlord.  <cite> See [[https://scholar.google.com/scholar_case?case=754975440907404740][Expo Properties, LLC v. Experient, Inc.]], 956 F.3d 217, 224 (4th Cir. 2020) (affirming summary judgment: estoppel certificate signed by tenant did not modify lease). </cite>
 
-{{{C1}}} {{{A}}} {{{DSNT}}} make such an assertion without providing the tribunal with enhanced proof as required by Delaware law.
+\bull  {{{RWE}}} JPMorgan Chase lent money to a borrower. The loan agreement specifically said that both parties were required to sign any modification. The borrower claimed that the loan agreement had been modified — but the court said that the modification was ineffective because JPMorgan Chase never did countersign it. <cite> See [[https://scholar.google.com/scholar_case?case=2438804884742026716][Taylor v. JPMorgan Chase Bank, NA]], 958 F.3d 556 (7th Cir. 2020) (affirming summary judgment). </cite>
 
-{{{CN}}} {{{A}}} provides {{{B}}} — at the same time as {{{A}}} first makes the assertion — with all evidence relevant to the assertion {{{THTS}}} then in {{{A}}}'s possession, custody, or control.
+{{{HN}}} *Pro tip:* For notes on drafting amendment signature blocks, see § [[#r-sig-mech]] and especially § [[#sig-blocks-cmt]] — the format would likely be exactly the same as for the contract itself.
 
-{{{CN}}} If {{{A}}} later comes into possession, custody, or control of any other such relevant evidence, *then* {{{A}}} immediately provides {{{B}}} with such other such evidence.
+{{{HN}}} *Caution:* A contract between {{{A1}}} and {{{B1}}} might explicitly limit who's allowed to sign amendments on behalf of {{{A}}}. Such a limitation would put {{{B}}} on notice that other individuals /don't/ have authority to sign amendments for {{{A}}}, even if the doctrine of "apparent authority" might suggest otherwise. See § [[#nl-app-auth]] for more discussion.
 
-{{{CN}}} Applicable law will govern whether and when {{{B}}} must provide discovery to {{{A}}} concerning {{{A}}}'s assertion.
+*** Enhanced proof, per Delaware law, is required for any claim that a party waived {{{ths}}}.
+  :PROPERTIES:
+  :CUSTOM_ID: amend-enh-prf
+  :END:
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -2881,13 +2895,9 @@ We rule out /oral/ amendments to reduce the chances of costly litigation to sort
   :UNNUMBERED: notoc
   :END:
 
-{{{H1}}} This is discussed in more detail at § [[#amend-writ-enf]]. 
+In some jurisdictions, applicable law allows {{{A1}}} to assert, to a tribunal, that {{{B1}}} waived {{{ths}}} — and therefore that an alleged /nonwritten/ amendment is supposedly effective, /even though {{{theK}}} says otherwise/.  This is discussed in more detail in the notes to {{{GET-RULE-LINK-THE(r-wrt-rqmt-chall)}}}.
 
-{{{HN}}} Subdivision 1: Concerning the issue-specific choice of Delaware law, see the discussion at § [[#GovLawIssue]].  (This is intended as an issue-specific [[#r-GovLaw][choice of law]]; see § [[#r-GovLaw][choice of law]].)
 
-{{{HN}}} Subdivision 2 and 3 are intended to increase the likelihood of settlement by roadblocking "hide the ball" discovery games by {{{B}}}.
-
-{{{HN}}} Subdivision 4 is meant to roadblock any argument by {{{A}}} that {{{B}}} should likewise have accelerated-discovery obligations: Here, only {{{A}}} has such obligations, because (by hypothesis) {{{A}}} is the one seeking to overturn {{{theK}}}'s protocol for amendment.
 
 *** {{{ADDL}}}                                                         :ADDL:
   :PROPERTIES:
@@ -2898,44 +2908,6 @@ We rule out /oral/ amendments to reduce the chances of costly litigation to sort
 Contents:
 
 #+TOC: headlines 1 local
-
-
-**** Background: Amendments vs. waivers
-  :PROPERTIES:
-  :CUSTOM_ID: nl-amend-vs-waiver
-  :END:
-
-According to Black's Law Dictionary (the canonical English-language legal dictionary), an /amendment/ is "[a] formal and usu. /[usually]/ minor revision or addition proposed or made to a statute, constitution, pleading, order, or other instrument ...."
-
-Here's a hypothetical example: Imagine a contract between {{{A}}}, who owns and operates a landscaping service, and {{{B}}}, who owns and operates a Downton Abbey-style estate as a museum. Suppose that the contract calls for {{{A}}} to take care of the estate's lawn; {{{A}}}'s obligations include mowing the lawn each week, raking leaves in the autumn, etc.
-
-Now suppose that on one particular day, {{{B}}} comes outside to talk to {{{A}}} when {{{A}}} and her crew arrives to mow the lawn. 
-
-- If {{{B}}} says, "Hi {{{A}}} — I don't need the lawn mowed this week." That's known as a *waiver*, by {{{B}}}, of {{{A}}}'s obligation for that occasion.
-
-- Or, {{{B}}} might say, "never mind, {{{A}}}, I don't need you to mow the lawn /ever/, because my teen-aged son and his friend want to do the mowing from now on — so let's talk about changing the contract to reduce what you have to do *and also* reduce what I pay you." 
-
-If {{{A}}} agrees, that's known as an *amendment* of their contract. (It's also an example of how /services/ contracts should include provisions for "change management.")
-
-
-**** /Written/ amendments help avoid conflicting memories
-  :PROPERTIES:
-  :CUSTOM_ID: amend-writ-why
-  :END:
-
-It's extremely common for contracts to require amendments to be in writing, to try to avoid "he said, she said" disputes in the future, when people's memories might be, ahem, less than reliable. According to an international survey of contract professionals, addressing changed circumstances is one of the most-frequent points of dispute in contract dealings.  <cite> See World Commerce and Contracting, [[https://www.worldcc.com/Portals/IACCM/Reports/Most-Negotiated-Terms-2024.pdf#page=5.35][Most Negotiated Terms 2024]] at 5. </cite> 
-
-With that in mind, {{{Ths}}} helps make sure the parties have clearly communicated with each other, and are on the same page, about alleged modifications of {{{theK}}} itself. 
-
-Moreover: Under the general law an agreement to /amend/ a contract is likely to be deemed a contract it its own right — in which case the amendment agreement might have to be in writing under the [[#stat-frauds][Statute of Frauds]] (see § [[#stat-frauds]]). (The amendment agreement likely would also have to meet the usual requirements of offer, acceptance, consideration, capacity, etc.)
-
-(See also {{{RULE}}} [[#r-waiv-defn]] concerning waivers of specific rights and/or obligations under {{{theK}}}.)
-
-**** A clear title helps avoid "surprise!" amendments
-  :PROPERTIES:
-  :CUSTOM_ID: amend-clear-title-why
-  :END:
-
 
 **** Pro tip: For extensive changes, do an "amended and restated agreement"?
   :PROPERTIES:
@@ -3060,12 +3032,10 @@ Contents:
 
 # Tags: #Oblig #Comms
 
-*** Scheduling: Whenever reasonably requested
+*** Schedule and conduct a catch-up call whenever any party reasonably asks for one.
   :PROPERTIES:
   :CUSTOM_ID: r-calls-freq
   :END:
-
-The parties conduct a catch-up call whenever either party reasonably asks the other party for a call.
 
 ***** Note                                                          :CMT:
   :PROPERTIES:
@@ -3075,17 +3045,31 @@ The parties conduct a catch-up call whenever either party reasonably asks the ot
 
 {{{H1}}} Purpose: To help keep {{{theK}}} on course and spot possible dangers ahead — that's often done more effectively together.
 
-{{{HN}}} The "whenever any party to {{{theK}}} reasonably asks" limitation would automatically impose a natural limit: \bull In a one-off transaction, there might never be reasonable grounds to invoke {{{ths}}}; \bull in an ongoing relationship, {{{ths}}} provides a built-in channel for structured communication.
+{{{HN}}} The "whenever any party to {{{theK}}} reasonably asks" limitation would automatically impose a natural limit: 
 
-*** Method: Video conference (backup: phone)
+- In a one-off transaction, there might never be reasonable grounds to invoke {{{ths}}}; 
+
+- in an ongoing relationship, {{{ths}}} provides a built-in channel for structured communication.
+
+*** Requesting party: Check on mutually-convenient times and set up the call.
+  :PROPERTIES:
+  :CUSTOM_ID: r-calls-org
+  :END:
+
+***** Note                                                              :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
+
+{{{H1}}} The requesting party should of course choose a platform {{{THATS}}} reasonably available to the other party — e.g., Zoom or Microsoft Teams, both of which are widely used.
+
+{{{HN}}} As a professional courtesy, it's best if the requesting party also sends out calendar invites (with Zoom{{{NBH}}} or Teams links) to participants.
+
+*** Video conferencing is best for catch-up calls.
   :PROPERTIES:
   :CUSTOM_ID: r-calls-vid
   :END:
-
-Unless otherwise agreed: The parties conduct their catch-up calls:
-
-1. by video conference; or
-2. by phone if if a /video/ conference {{{ISNT}}} practicable on a particular occasion.
 
 ***** Note                                                          :CMT:
   :PROPERTIES:
@@ -3095,69 +3079,42 @@ Unless otherwise agreed: The parties conduct their catch-up calls:
 
 # Tag: #Comms.Video
 
-{{{H1}}} Purpose: 
+{{{H1}}} It's useful to be able to see each other face-to-face.
 
-- to see each other face-to-face;
+{{{HN}}} On video calls, parties can take advantage (if desired) of video-conferencing features such as screensharing, virtual whiteboards, and perhaps even AI transcriptions and/or summaries. 
 
-- to take advantage (if desired) of video-conferencing features such as screensharing, virtual whiteboards, and perhaps even AI transcriptions and/or summaries.
+(Online screensharing for "whiteboarding" is reportedly a key business practice at AI chipmaker Nvidia. <cite> See, e.g., Amanda Liang and Willis Ke, [[https://www.digitimes.com/news/a20241212PD205/nvidia-jensen-huang-management-ceo.html][Jensen Huang breaks bureaucracy at Nvidia with whiteboard and flat management strategies]] (Digitimes.com 2024).</cite>)
 
-{{{HN}}} Online screensharing for "whiteboarding" is reportedly a key business practice at AI chipmaker Nvidia. <cite> See, e.g., Amanda Liang and Willis Ke, [[https://www.digitimes.com/news/a20241212PD205/nvidia-jensen-huang-management-ceo.html][Jensen Huang breaks bureaucracy at Nvidia with whiteboard and flat management strategies]] (Digitimes.com 2024). </cite>
-
-*** Call organizer: The requesting party
-  :PROPERTIES:
-  :CUSTOM_ID: r-calls-org
-  :END:
-
-Unless otherwise agreed: When {{{A}}} asks for a catch-up call with {{{B}}}, {{{B}}} {{{ISNT}}} obligated to participate in the call unless {{{A}}}:
-
-1. checks with {{{B}}} about a mutually-convenient time;
-
-2. chooses a platform {{{THATS}}} reasonably available to {{{B}}} — e.g., Zoom, Teams, etc.; and
-
-3. sets up the call.
-
-
-***** Note                                                          :CMT:
-  :PROPERTIES:
-  :HTML_CONTAINER_CLASS: cmtry
-  :UNNUMBERED: notoc
-  :END:
-
-As a small professional courtesy, {{{A}}} should consider sending out calendar invites (with Zoom{{{NBH}}} or Teams links) to {{{B}}}'s appropriate people.
-
-*** Agenda: SPUR (as starting point)
+*** Use the SPUR Agenda as a starting point.
   :PROPERTIES:
   :CUSTOM_ID: r-calls-spur
   :END:
 
-Unless otherwise agreed: The parties use the "SPUR" agenda as a starting point, as follows:
-
-1. Status — good and bad; progress and problems; things done and left undone; 
-
-2. Plans — including contingency plans where relevant; 
-
-3. Unknowns — especially including (but not limited to) any untested assumptions; and
-
-4. Risks — both upside{{{NBH}}} and downside.
-
-***** Note                                                          :CMT:
+***** Note                                                              :CMT:
   :PROPERTIES:
   :HTML_CONTAINER_CLASS: cmtry
   :UNNUMBERED: notoc
   :END:
 
-{{{H1}}} This SPUR agenda can help remind participants of particular issues that might need discussion.
+{{{H1}}} The SPUR Agenda:
+
+- Status — good and bad; progress and problems; things done and left undone; 
+
+- Plans — including contingency plans where relevant; 
+
+- Unknowns — especially including (but not limited to) any untested assumptions; and
+
+- Risks — both upside{{{NBH}}} and downside.
+
+This SPUR agenda can help remind participants of particular issues that might need discussion.
 
 {{{HN}}} Reminder: It often makes sense to circulate, in advance, (i) proposed agenda items, and (ii) copies of relevant documents.
 
-*** Documentation of commitments
+*** Confirm in writing any agreed, binding commitments.
   :PROPERTIES:
   :CUSTOM_ID: r-calls-bind
   :END:
 
-For any agreed commitment or waiver {{{THATS}}} intended to be binding: the parties follow {{{RR}}} [[#r-amend-defn]] (amendments) and {{{RR}}} [[#r-waiv-defn]] (waivers), whichever is applicable.
-
-
 ***** Note                                                          :CMT:
   :PROPERTIES:
   :HTML_CONTAINER_CLASS: cmtry
@@ -3166,17 +3123,17 @@ For any agreed commitment or waiver {{{THATS}}} intended to be binding: the part
 
 # Tag: #PaperTrail
 
-{{{H1}}} Purpose: To reduce the chance of conflicting memories about what was purportedly agreed to.
+{{{H1}}} Let's reduce the chance of conflicting memories about what was purportedly agreed to, by following {{{RULE}}} [[#r-amend-defn]] (amendments) and {{{RULE}}} [[#r-waiv-defn]] (waivers), whichever is applicable.
 
-{{{HN}}} *Reminder:* An /oral/ agreement reached during a catch-up call — and supported with sufficient evidence — could be binding as long as that agreement met the requirements of {{{RR}}} [[#r-amend-defn]] (amendments) and the [[#stat-frauds][Statute of Frauds]] (see § [[#stat-frauds]]).
+{{{HN}}} *Reminder:* An /oral/ agreement reached during a catch-up call — and supported with sufficient evidence — could be binding, as long as that agreement met the requirements of the above {{{NOUN-CS}}} and, if applicable, the [[#stat-frauds][Statute of Frauds]] (see § [[#stat-frauds]]).
 
-*** Recaps: Encouraged
+
+
+*** Each party: Consider circulating a written readout of the call.
   :PROPERTIES:
   :CUSTOM_ID: r-calls-rdout
   :END:
 
-Each party is free (and encouraged) to circulate a written recap with that party's view of what happened on the call.
-
 ***** Note                                                          :CMT:
   :PROPERTIES:
   :HTML_CONTAINER_CLASS: cmtry
@@ -3185,16 +3142,18 @@ Each party is free (and encouraged) to circulate a written recap with that party
 
 # Tag: #PaperTrail
 
-{{{H1}}} Purpose: To reduce the chance of future misunderstandings.
+{{{H1}}} To provide a convenient paper trail and to-do list — and to reduce the chance of future misunderstandings — it's usually a good idea for at least one party to circulate a [[https://www.merriam-webster.com/dictionary/readout][readout]] that summarizes /that party's perspective/ of what happened on the call.
 
-{{{HN}}} A recap preferably should list:
+(In governmental affairs, a readout is is one party's brief, unilateral, written summary of a call or meeting — see, e.g., a White House [[https://www.whitehouse.gov/briefing-room/statements-releases/2023/11/15/readout-of-president-joe-bidens-meeting-with-president-xi-jinping-of-the-peoples-republic-of-china-2/][readout]] of a meeting between the presidents of the U.S. and China.)
 
-- significant points discussed, and
-- any decisions made.
+{{{HN}}} Preferably, a readout should list:
 
-These can be useful for follow-up and/or future reference — and, possibly, to help future readers (e.g., litigation counsel) to reconstruct a timeline of events.
+- who attended the call (during what portions, if not the entire time);
+- significant points discussed;
+- any decisions made;
+- start{{{NBH}}} and stop times.
 
-{{{HN}}} In governmental affairs, one term for a recap is "[[https://www.merriam-webster.com/dictionary/readout][readout]]," namely one party's brief, unilateral, written summary of a call or meeting — see, e.g., the White House "[[https://www.whitehouse.gov/briefing-room/statements-releases/2023/11/15/readout-of-president-joe-bidens-meeting-with-president-xi-jinping-of-the-peoples-republic-of-china-2/][readout]]" of a meeting between the presidents of the U.S. and China.
+These can be useful for follow-up and/or future reference — and, perhaps, to help future readers (e.g., litigation counsel) to reconstruct a timeline of events.
 
 {{{HN}}} Using screensharing, a joint recap (or even formal meeting minutes) could be drafted jointly in real time and then circulated to all concerned.
 
@@ -3202,12 +3161,12 @@ These can be useful for follow-up and/or future reference — and, possibly, to
 
 {{{HN}}} Some video platforms can use artificial intelligence ("AI") to automatically generate a recap or even a transcript of a video conference. *Caution:* Any party using such a capability doing this should check the video-conferencing platform's terms of service and privacy policy to see whether that could: \bull destroy trade-secret rights; \bull waive attorney-client privilege, or \bull illegally disclose personal information, e.g., personal health information or financial information.
 
-{{{HN}}} An emailed recap could be along the lines of the following: 
+{{{HN}}} An emailed readout could be along the lines of the following — note the numbered paragraphs for convenient referencing later: 
 
 #+begin_bordered
-[Subject line:] {{{B}}}'s recap of phone call of [DATE] about [SUBJECT]
+[Subject line:] Bob's readout of phone call of [DATE] about [SUBJECT]
 
-Hi {{{A}}}; it was great talking to you on the Zoom call just now. Confirming part of our discussion: 
+Hi Alice — it was great talking to you on the Zoom call just now. Confirming part of our discussion: 
 
 1. We discussed /[blah blah blah]/ .... 
 
@@ -3220,22 +3179,22 @@ Please let me know if there's anything else we need to discuss about this.
 Regards, Bob
 #+end_bordered
 
-{{{HN}}} Make the recap's email subject line earn its keep: /Any/ email should have an /informative/ subject line, for easier spotting while scanning an email folder. For a call summary, the subject line might be something along the lines of: "[PARTY NAME] readout of phone call of [DATE] about [SUBJECT]," as illustrated above.
+{{{HN}}} Make the readout's email subject line earn its keep: /Any/ email should have an /informative/ subject line, for easier spotting while scanning an email folder. For a call summary, the subject line might be something along the lines of: "[PARTY NAME] readout of phone call of [DATE] about [SUBJECT]," as illustrated above.
 
-{{{HN}}} A party's unilateral recap /might/ have evidentiary significance, for example if it qualified as a "[[https://www.law.cornell.edu/wex/business_records_exception][business record]]" and thus as an exception to the rule excluding hearsay, such as [[https://www.law.cornell.edu/rules/fre/rule_803][Fed. R. Evid. 803(6)]].  
+{{{HN}}} A party's unilateral readout /might/ have evidentiary significance, for example if it qualified as a "[[https://www.law.cornell.edu/wex/business_records_exception][business record]]" and thus as an exception to the rule excluding hearsay, such as [[https://www.law.cornell.edu/rules/fre/rule_803][Fed. R. Evid. 803(6)]].  
 
-A court, however, would normally take into account the /timeliness/ of any given recap — and of any proposals for correction and/or additions — in assessing the recap's evidentiary value.
+A court, however, would normally take into account the /timeliness/ of any given readout — and of any proposals for correction and/or additions — in assessing the readout's evidentiary value.
 
-{{{HN}}} If you have an issue with another party's recap, then consider promptly responding in writing to leave a contemporaneous record of your position. (But try to avoid letter-writing wars — they're often unproductive and increase each side's legal costs.)
+{{{HN}}} If you have an issue with another party's readout, then consider promptly responding in writing to leave a contemporaneous record of your position. (But try to avoid letter-writing wars — they're often unproductive and increase each side's legal costs.)
 
-For example, {{{A}}} might respond to {{{B}}}'s recap above with something like the following:
+For example, Alice might respond to Bob's readout above with something like the following:
 
 #+begin_bordered
-Hi {{{B}}} — thanks for your emailed recap of our Zoom call on [DATE]. For the record, there are /[a couple of points | several points]/ where we have a different view. We can discuss those differences on another occasion.
+Hi Bob — thanks for your emailed readout of our Zoom call on [DATE]. For the record, on your point 3, we have a different view, namely /[blah blah blah]/.  We can discuss this on another occasion.
 
 Regards,
 
-{{{A}}}
+Alice
 #+end_bordered
 
 ** Consent Requests {{{NOUN-C}}}                                           :CLS:
@@ -3244,58 +3203,47 @@ Regards,
   :HTML_CONTAINER_CLASS: pr-top
   :END:
 
-{{{Ths-cap}}} addresses the situation where a reviewer wants the right to approve or consent to an action by or for a proposer — as in, the contract would provide that the proposer must not take the action without the reviewing party's prior written consent.
+{{{Ths-cap}}} addresses the situation where a reviewer wants the right to approve or consent to an action by or for a proposer — as in, {{{theK}}} (or the law) requires the proposer to get the reviewer's consent before taking the action.
 
 
 Contents:
 
 #+TOC: headlines 1 local
 
-*** Parties: Proposer; Reviewer
+*** {{{Ths-cap}}} applies when a Proposer asks for a Reviewer's consent to an Action.
   :PROPERTIES:
   :CUSTOM_ID: cons-req-appl
   :END:
 
-/Definitions:/ 
-
-1. {{{dfn(Proposer)}}}: A party that another party for approval of, or consent to, a particular action (an {{{dfn(Action)}}}).
-
-2. {{{dfn(Reviewer)}}}: A party being asked for such consent.
-
-
 ***** Note                                                              :CMT:
   :PROPERTIES:
   :HTML_CONTAINER_CLASS: cmtry
   :UNNUMBERED: notoc
   :END:
 
-{{{Ths-cap}}} is intentionally phrased to cover situations in which the Proposer might not be the one /taking/ the Action but is simply asking for the Reviewer's consent. 
+{{{H1}}} /Definitions:/ 
 
-*** Option to defer the consent decision
+-  {{{dfn(Proposer)}}}: A party that another party for approval of, or consent to, a particular action (an {{{dfn(Action)}}}).
+
+- {{{dfn(Reviewer)}}}: A party being asked for such consent.
+
+{{{HN}}} {{{Ths-cap}}} is intentionally phrased to cover situations in which the Proposer might not be the one /taking/ the Action but is simply asking for the Reviewer's consent. 
+
+*** The Reviewer can defer a consent decision — to a reasonable extent.
   :PROPERTIES:
   :CUSTOM_ID: cons-req-dfr
   :END:
-
-The Reviewer is {{{free-to}}} defer a decision on the Proposer's request for consent — unless: 
-
-1. doing so would be [[#rsnbl-top][unreasonable]] under the circumstances; and/or
-
-2. {{{theK}}} clearly says otherwise.
-
-
-***** Note                                                              :CMT:
+***** Note                                                          :CMT:
   :PROPERTIES:
   :HTML_CONTAINER_CLASS: cmtry
   :UNNUMBERED: notoc
   :END:
 
-{{{H1}}} Purpose: Sometimes it might be reasonable for a Reviewer to want more information before deciding whether to consent to a proposed Action
+{{{H1}}} Sometimes it might be reasonable for a Reviewer to want more information before deciding whether to consent to a proposed Action
 
-{{{HN}}} Granted, this "deferral is OK" language is vague enough to be potentially problematic. But it'd give the Proposer of the Action an incentive to cooperate with the Reviewer. {{{RWE}}} The Eleventh Circuit upheld a patent owner's refusal to consent to a licensee's assignment of an exclusive license agreement, in part because the patent owner had asked the licensee for documentation about the proposed assignment transaction, but the licensee didn't comply with the request. <cite> See [[https://scholar.google.com/scholar_case?case=12210349750278162391][MDS (Canada) Inc. v. Rad Source Tech., Inc.]], 720 F.3d 833, 850 (11th Cir. 2013), /affirming in part/ [[https://scholar.google.com/scholar_case?case=17538798103636253268][822 F. Supp. 2d 1263]] (S.D. Fla. 2011). </cite>
+{{{HN}}} Granted, this language is vague enough to be potentially problematic. But it'd give the Proposer of the Action an incentive to cooperate with the Reviewer. {{{RWE}}} The Eleventh Circuit upheld a patent owner's refusal to consent to a licensee's assignment of an exclusive license agreement, in part because the patent owner had asked the licensee for documentation about the proposed assignment transaction, but the licensee didn't comply with the request. <cite> See [[https://scholar.google.com/scholar_case?case=12210349750278162391][MDS (Canada) Inc. v. Rad Source Tech., Inc.]], 720 F.3d 833, 850 (11th Cir. 2013), /affirming in part/ [[https://scholar.google.com/scholar_case?case=17538798103636253268][822 F. Supp. 2d 1263]] (S.D. Fla. 2011). </cite>
 
-*** Status updates
-
-The Reviewer [[#may-should][considers]] keeping the Proposer timely advised of the status of the Reviewer's consideration of the consent request.
+*** Reviewer: [[#may-should][Consider]] keeping the Proposer timely advised of the status of your review.
 
 ***** Note                                                          :CMT:
   :PROPERTIES:
@@ -3307,22 +3255,20 @@ The Reviewer [[#may-should][considers]] keeping the Proposer timely advised of t
 
 {{{HN}}} Some parties might want to negotiate to make it a contractual requirement — or conversely, to rule out being a binding obligation.
 
-*** Escalation of certain disagreements
+*** Each party: Escalate any dispute whether any agreed reasonableness standard relating to {{{Ths}}} has been met.
 
-{{{SCENE}}}
+***** Note                                                              :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
 
-{{{C1}}} {{{TheK-cap}}} — or the law — imposes any kind of reasonableness standard concerning a consent request issue; and
+See {{{RULE}}} [[#r-escal-int]] (internal escalation) and its commentary.
 
-{{{CN}}} the Proposer and the Revewer disagree whether that standard has been met.
-
-{{{ACT}}} The Proposer and the Requester escalate that disagreement, as stated in {{{RR}}} [[#r-escal-ext]], if either of them so requests.
-
-*** Consent: Not a green light to act
+*** The Reviewer's consent {{{ISNT}}} a green light for the Action.
   :PROPERTIES:
   :CUSTOM_ID: cons-ne-green
   :END:
-
-The Reviewer's consent to a proposed Action {{{DSNT}}} mean that the Reviewer affirmatively /approved/ or /authorized/ the action — the consent means only that the Reviewer agrees not to seek to block the Action.
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -3332,13 +3278,7 @@ The Reviewer's consent to a proposed Action {{{DSNT}}} mean that the Reviewer af
 
 This has in mind that the law, or another contract, might separately prohibit or limit the Action — if that's the case, then th Reviewer wouldn't want to be in a position of having supposedly "authorized" the Action. See also § [[#may-ne-green]]  ("may" not a green light).
 
-*** Consent: Not a substitute for advice
-
-The Proposer {{{DSNT}}} rely on the presence or absence of the Reviewer's consent — nor on whatever steps (if any) that the Reviewer took in assessing the request —  as a substitute: 
-
-1. for the Proposer's own judgment, nor 
-
-2. for input from the Proposer's own licensed attorney and/or other professional advisor. 
+*** Each party: Don't rely on the other party (nor on its advisers) as a substitute for your own judgment (or advice) about the Action.
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -3348,11 +3288,9 @@ The Proposer {{{DSNT}}} rely on the presence or absence of the Reviewer's consen
 
 See the extended discussions at {{{RR}}} [[#r-sig-mech]] (opportunity to consult counsel) and § [[#r-rel-discl]] (reliance waiver). 
 
-*** Consent /request/: Not a concession of need
+*** A consent /request/ {{{ISNT}}} a concession that consent is /necessary/.
 
-The Proposer's request for consent to an Action {{{ISNT}}} a concession, nor does it imply, that the Reviewer's consent is or was /required/. 
-
-***** Note                                                              :CMT:
+***** Note                                                          :CMT:
   :PROPERTIES:
   :HTML_CONTAINER_CLASS: cmtry
   :UNNUMBERED: notoc
@@ -3362,18 +3300,17 @@ The Proposer's request for consent to an Action {{{ISNT}}} a concession, nor doe
 
 {{{HN}}} *Caution:* Note that in the particular case of assignment of {{{thek}}}, the non-assigning party's consent to assignment _might_ be required by law, as discussed at § [[#assmt-cons-rdg]]. 
 
-*** No /implied/ restrictions on withholding consent
+*** Any restrictions on the Reviewer's right to withhold consent must be unmistakably stated in {{{theK}}}.
 
-The Reviewer {{{ISNT}}} restricted in its right to withhold, delay, or condition consent to a  proposed Action unless {{{thek}}} clearly states otherwise.
-
-
-***** Note                                                              :CMT:
+***** Note                                                          :CMT:
   :PROPERTIES:
   :HTML_CONTAINER_CLASS: cmtry
   :UNNUMBERED: notoc
   :END:
 
-{{{H1}}} Here are a few common types of explicit limitations — and permissions — concerning granting or refusing consent:
+{{{H1}}} Putting it another way: There are no /implied/ restrictions on the Reviewer's right to withhold consent. 
+
+{{{HN}}} Here are a few common types of explicit limitations — and permissions — concerning granting or refusing consent:
 
 #+begin_bordered
 /[Reviewer's name]/ may not unreasonably withheld, delay, or condition its consent to /[Action]/. 
@@ -3393,11 +3330,7 @@ It is conclusively deemed unreasonable and arbitrary for /[Reviewer's name]/ to 
 
 {{{HN}}} See also § [[#cons-law]] concerning possible restrictions imposed /by law/ on refusing to grant consent.
  
-*** Silence ≠ consent
-
-{{{SCENE}}} The Reviewer does not respond to a Proposer request for consent to an Action.
-
-{{{EFF}}} The Reviewer's non-response {{{DSNT}}} mean that the Reviewer /implicitly/ consented to the Action unless {{{thek}}} clearly says so.
+*** Proposer: {{{DNT-C}}} treat the Reviewer's silence as consent.
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -3405,11 +3338,10 @@ It is conclusively deemed unreasonable and arbitrary for /[Reviewer's name]/ to 
   :UNNUMBERED: notoc
   :END:
 
-Purpose: This is one of those areas where bright lines are usually a good thing.
+This is one of those areas where bright lines are usually a good thing: If the Reviewer doesn't respond to a Proposer request for consent to an Action, it doesn't mean that the Reviewer /implicitly/ consented to the Action (unless {{{thek}}} clearly says so).
 
-*** Explanation of consent refusal
 
- The Reviewer [[#may-should][considers]] explaining to the Proposer, in reasonable detail, the Reviewer's then-current reasons for not consenting.
+*** Reviewer: If you don't give consent, [[#may-should][consider]] explaining to the Proposer, in reasonable detail.
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -3525,18 +3457,7 @@ Contents:
 
 #+TOC: headlines 1 local
 
-*** Applicability of {{{ths}}}
-
-{{{Ths-cap}}} applies whenever:
-    1. the parties disagree about some issue relating to {{{theK}}};
-    2. their respective working-level people {{{CANT}}} seem to resolve the disagreement on their own; and
-    3. either party so requests.
-
-*** Required escalation: One level (or higher if agreed)
-
-{{{C1}}} The parties escalate the disagreement one level "up" in their respective organizations.
-
-{{{CN}}} {{{BUT}}} {{{Ths-cap}}} {{{DSNT}}} require the parties to escalate the disagreement to their respective board of directors (or other highest governing body).
+*** Each party: Escalate working-level disagreements if either party asks.
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -3544,15 +3465,22 @@ Contents:
   :UNNUMBERED: notoc
   :END:
 
-It's unlikely that /too many/ demands for escalation would ever be a problem that requires addressing in {{{thek}}}. That's because [[https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf][The Boy Who Cried Wolf]] would lose credibility with the other party — and perhaps with his- or her own boss. <cite> Ronald J. Gilson, Charles F. Sabel & Robert E. Scott, [[http://law.stanford.edu/wp-content/uploads/sites/default/files/publication/258980/doc/slspublic/109ho-3-Gilson-Sabel-Scott.pdf][Contracting for Innovation: Vertical Disintegration and Interfirm Collaboration]], 109 Colum. L. Rev. 431, 470, 481 (2009), archived at [[https://perma.cc/TYY2-423D]]. </cite> 
+Escalation can be very helpful whenever the parties disagree about some issue relating to {{{theK}}}, but their respective working-level people {{{CANT}}} seem to resolve the disagreement on their own.
 
-*** Written position statements & document exchange
+*** Escalate one internal-management level — or higher if agreed.
 
-Each party [[#may-should][considers]]: 
 
-   1. providing the other party a written position statement about the matter being escalated; and
+***** Note                                                              :CMT:
+  :PROPERTIES:
+  :HTML_CONTAINER_CLASS: cmtry
+  :UNNUMBERED: notoc
+  :END:
 
-   2. agreeing with the other party to exchnge relevant documents — possibly under confidentiality restrictions such as {{{RULE}}} [[#r-conf-info-proto]] (confidential information). 
+{{{H1}}} "One internal management level" means that  {{{Ths}}} {{{DSNT}}} require the parties to escalate the disagreement to their respective board of directors (or other highest governing body).
+
+{{{HN}}} It's unlikely that /too many/ demands for escalation would ever be a problem that requires addressing in {{{thek}}}. That's because [[https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf][The Boy Who Cried Wolf]] would lose credibility with the other party — and perhaps with his- or her own boss. <cite> Ronald J. Gilson, Charles F. Sabel & Robert E. Scott, [[http://law.stanford.edu/wp-content/uploads/sites/default/files/publication/258980/doc/slspublic/109ho-3-Gilson-Sabel-Scott.pdf][Contracting for Innovation: Vertical Disintegration and Interfirm Collaboration]], 109 Colum. L. Rev. 431, 470, 481 (2009), archived at [[https://perma.cc/TYY2-423D]]. </cite> 
+
+***  [[#may-should][Consider]] exchanging written position statements & documents.
 
 ***** Note                                                              :CMT:
   :PROPERTIES:
@@ -3562,15 +3490,17 @@ Each party [[#may-should][considers]]:
 
 {{{H1}}} Purpose: To help give each side's management an unfiltered view of the situation — moreover, just the act of /producing/ written position statements could help everyone figure out what their positions /really/ are in the disagreement; that could help speed up resolution.  
 
+{{{HN}}} Document exchanges could be done under confidentiality restrictions such as {{{RULE}}} [[#r-conf-info-proto]] (confidential information). 
+
 A document exchange could help shed light on the dispute — and if litigation were to ensue, then each side would likely get access to many of The Other Side's relevant, [[#nl-atty-priv-c][non-privileged]] documents anyway. So: Why not just "get on with it" to save time and legal expense for all concerned.
 
 {{{HN}}} *Pro tip:* For greater security, the parties could agree to set up some kind of home-grown "virtual dataroom" site with restricted access, such as a Google Docs or Dropbox folder, in lieu of sending documents as email attachments.
 
 # {{{XN}}} *Escalate to a neutral adviser?* If escalation under {{{ths}}} doesn't resolve a disagreement, then the parties {{{VCS(consider,will consider)}}} whether to escalate further, to a neutral advisor under {{{RR}}} [[#r-escal-ext]], but neither party is required to do so.
 
-*** Restricted admissibility of discussions, per Rule 408
+*** Treat escalation communications as settlement discussions per Fed. Rule Evid. 408.
 
-Each party treats the other party's oral- and written comments (and other communications) in the escalation as having been made —
+This means that the other party's oral- and written comments (and other communications) in the escalation as having been made —
 
 1. in the course of settlement discussions,
 
@@ -3937,7 +3867,7 @@ Contents:
   :CUSTOM_ID: waiv-what
   :END:
 
-A "waiver" is a party's foregoing of a right, or the party's release of another party's obligation, for example under a contract. <cite> See generally Black's Law Dictionary (11th ed. 2019); see also the commentary at § [[#nl-amend-vs-waiver]] for an explanation of the difference between a /waiver/ and an /amendment/. </cite>
+A "waiver" is a party's foregoing of a right, or the party's release of another party's obligation, for example under a contract. <cite> See generally Black's Law Dictionary (11th ed. 2019); see also the commentary at § [[#amend-writ-rqd]] for an explanation of the difference between a /waiver/ and an /amendment/. </cite>
 
 
 **** *Caution:* Too-broad a waiver can cause problems
