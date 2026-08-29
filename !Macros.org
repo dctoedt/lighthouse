@@ -795,8 +795,11 @@ If LABEL is nil, tries to find :CUSTOM_ID: property at current heading."
 #+MACRO: get-title-ck •  /{{{PROPERTY(ITEM,#$1)}}}/ (See [[#$1][§ ]][[#$1]].)
 #+MACRO: get-title-link @@html:<span class="gtl">@@[[#$1][{{{PROPERTY(ITEM,#$1)}}}]]@@html:</span>@@
 #+MACRO: gtl  [[#$1][{{{PROPERTY(ITEM,#$1)}}}]]  ([[#$1]])
+#+MACRO: get-rule-link [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1]])
+#+MACRO: get-rule-link-the the [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1]])
 #+MACRO: get-title-link-num {{{PROPERTY(ITEM,#$1)}}} ([[#$1]])
-#+MACRO: get-title-link-the  the [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] {{{NOUN}}} ([[#$1]])
+#+MACRO: get-title-link-the the [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] {{{NOUN}}} ([[#$1]])
+#+MACRO: get-rule-link-the the [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] ([[#$1]])
 #+MACRO: get-title-link-the-cap  The [[#$1][{{{PROPERTY(ITEM,#$1)}}}]] {{{NOUN}}} ([[#$1]])
 #+MACRO: get-title-link-plain {{{PROPERTY(ITEM,#$1)}}}  {{{NOTES($1)}}}
 

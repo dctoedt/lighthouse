@@ -2779,7 +2779,7 @@ Contents:
 
 #+TOC: headlines 1 local
 
-*** An amendment {{{WNT}}} be binding on a party that didn't sign it.
+*** An amendment {{{ISNT}}} binding on a party that didn't sign it (unless {{{theK}}} clearly says otherwise).
   :PROPERTIES:
   :CUSTOM_ID: amend-sign-bound
   :END:
@@ -2792,6 +2792,8 @@ Contents:
 
 {{{H1}}} It's usually better if /all/ parties sign an amendment document. But as the Seventh Circuit once noted: "The critical signature /[in an amendment]/ is that of the party against whom the contract is being enforced, and *that* signature was present." <cite> [[https://scholar.google.com/scholar_case?case=15575839468377502446][Hess v. Kanoski & Assoc.]], 668 F.3d 446, 453 (7th Cir. 2012) (emphasis added). </cite>
 
+{{{HN}}} The "unless" part allows for the fact that some contracts include unilateral amendment provisions such as that of {{{GET-RULE-LINK(r-amend-unil)}}}.
+
 {{{HN}}}  Relatedly: Under the (U.S.) Uniform Commercial Code's statute of frauds provision in [[https://www.law.cornell.edu/ucc/2/2-201][UCC § 2-201]], a written contract (for the sale of goods) must be signed "by the party against whom enforcement is sought ...."
 
 {{{HN}}} Here's a potential [[https://en.wiktionary.org/wiki/footgun][footgun]]: If a contract /states/ that amendments must be signed by /all/ parties, then a missing signature could render the entire amendment unenforceable, even if the omission was inadvertent. This was the result in more than one court case, illustrating the *R.O.O.F.* Principle — Root Out Opportunities for Failure:
@@ -2800,9 +2802,9 @@ Contents:
 
 \bull  {{{RWE}}} JPMorgan Chase lent money to a borrower. The loan agreement specifically said that both parties were required to sign any modification. The borrower claimed that the loan agreement had been modified — but the court said that the modification was ineffective because JPMorgan Chase never did countersign it. <cite> See [[https://scholar.google.com/scholar_case?case=2438804884742026716][Taylor v. JPMorgan Chase Bank, NA]], 958 F.3d 556 (7th Cir. 2020) (affirming summary judgment). </cite>
 
-{{{HN}}} Tangentially: A contract between {{{A1}}} and {{{B1}}} might explicitly limit who's allowed to sign amendments on behalf of {{{A}}}. Such a limitation would put {{{B}}} on notice that other individuals /don't/ have authority to sign amendments for {{{A}}}, even if the doctrine of "apparent authority" might suggest otherwise. See § [[#nl-app-auth]] for more discussion.
+{{{HN}}} *Pro tip:* For notes on drafting amendment signature blocks, see § [[#r-sig-mech]] and especially § [[#sig-blocks-cmt]] — the format would likely be exactly the same as for the contract itself.
 
-{{{HN}}} For tips on drafting amendment signature blocks, see § [[#r-sig-mech]] and especially § [[#sig-blocks-cmt]] — the format would likely be exactly the same as for the contract itself.
+{{{HN}}} Tangentially: A contract between {{{A1}}} and {{{B1}}} might explicitly limit who's allowed to sign amendments on behalf of {{{A}}}. Such a limitation would put {{{B}}} on notice that other individuals /don't/ have authority to sign amendments for {{{A}}}, even if the doctrine of "apparent authority" might suggest otherwise. See § [[#nl-app-auth]] for more discussion.
 
 *** Any purported amendment to {{{theK}}} must be clearly stated in writing, with an informative title.
   :CUSTOM_ID: amend-writ-rqd
