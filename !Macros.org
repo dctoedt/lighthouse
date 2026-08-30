@@ -390,15 +390,15 @@ These macros were moved from the main file for centralization and reuse.
 
 ** Macros - parties
 
-#+MACRO: a Alfa
-#+MACRO: a-cap Alfa
-#+MACRO: ac Alfa
-#+MACRO: a1 [[#a-b-phold][Alfa]]
-#+MACRO: b Bravo
-#+MACRO: b-cap Bravo
-#+MACRO: bc Bravo
-#+MACRO: b1 [[#a-b-phold][Bravo]]
-#+MACRO: C Charlie
+#+MACRO: a Alice
+#+MACRO: a-cap Alice
+#+MACRO: ac Alice
+#+MACRO: a1 [[#a-b-phold][Alice]]
+#+MACRO: b Bob
+#+MACRO: b-cap Bob
+#+MACRO: bc Bob
+#+MACRO: b1 [[#a-b-phold][Bob]]
+#+MACRO: C Carol
 
 ** Macros - colors
 # From https://github.com/fniessen/org-macros:
@@ -1268,7 +1268,7 @@ If LABEL is nil, tries to find :CUSTOM_ID: property at current heading."
 #+MACRO: sugg The following are suggestions, not requirements:
 
 
-#+MACRO: addl Additional notes
+#+MACRO: addl Additional notes /(not part of the {{{NOUN-C}}})/
 #+MACRO: st-rdg-addl /Students: Be sure to read the additional notes at [[#$1]]./
 #+MACRO: st-rdg-rule /Students: Be sure to read {{{RULE}}} [[#$1]]./
 

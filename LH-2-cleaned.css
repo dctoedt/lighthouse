@@ -392,6 +392,12 @@ div.toc-local a:hover {
     color: #2980B9;
 }
 
+/*
+.pr-top > [class^="outline-text-"] > div[role="doc-toc"] a:not(:hover) {
+    color: inherit;
+}
+*/
+
 nav div#text-table-of-contents a,
 nav div#text-table-of-contents i,
 nav div#text-table-of-contents b,
@@ -484,13 +490,28 @@ div.pr-top h3 {
     padding: 1em;
 }
 
+div.rule-toc {
+    font-family: sans-serif;
+    background-color: #e6f1ff;
+    padding: 1em;
+}
+
+div.rule-toc a:not(:hover) {
+    color: inherit;
+}
+
+.rule-toc li {
+    padding-left: 4em;
+    text-indent: -4em;
+}
 div.pr-top div.outline-text-4 {
     margin-bottom: 0;
 }
 
 div.pr-top div.outline-4 h4 {
+    font-size: 1.1em;
     font-family: sans-serif;
-    font-weight: bold;
+    font-weight: normal;
     background-color: #e6f1ff;
     position: relative;
     padding: 1em 1em 1em 6em;
