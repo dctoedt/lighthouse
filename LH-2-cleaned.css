@@ -428,18 +428,12 @@ span.section-number-4:after {
 }
 
 
-div.pr-top,
-div.pr-alt {
-    margin-top: 5em;
-}
-
 
 div.pr-top .outline-text-4,
 div.pr-alt .outline-text-5  {
     margin-top: 1em;
     line-height: 1.8em;
-
-    font-family: sans-serif;
+    font-family: serif;
     padding: 0.5em 0.5em 0.5em 1em;
     font-size: 1.1em;
 }
@@ -486,7 +480,6 @@ div.pr-top h3 {
     font-size: 1.5em;
     font-family: sans-serif;
     font-weight: bold;
-    background-color: #e6f1ff;
     padding: 1em;
 }
 
@@ -494,6 +487,7 @@ div.rule-toc {
     font-family: sans-serif;
     background-color: #e6f1ff;
     padding: 1em;
+    border: 2px solid gray;
 }
 
 div.rule-toc a:not(:hover) {
@@ -512,7 +506,8 @@ div.pr-top div.outline-4 h4 {
     font-size: 1.1em;
     font-family: sans-serif;
     font-weight: normal;
-    background-color: #e6f1ff;
+    margin-top: 1em;
+    margin-bottom: -2em;
     position: relative;
     padding: 1em 1em 1em 6em;
 }
@@ -544,7 +539,16 @@ div.pr-top div.outline-4 > div.cmtry {
 }
 
 div.pr-top div.outline-4 > div.cmtry > h6 {
-    margin-top: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+
+    margin-top: -2em 0 0 0;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* ===========
