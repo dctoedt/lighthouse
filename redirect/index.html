@@ -1,1 +1,21 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting to Fairway Contract</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://fairwaycontract.org/">
+  <script>
+    // Preserve path, query string, and hash fragment when redirecting.
+    var dest = "https://fairwaycontract.org/" + window.location.hash;
+    window.location.replace(dest);
+  </script>
+</head>
+<body>
+  <p>This page has moved to <a id="dest-link" href="https://fairwaycontract.org/">fairwaycontract.org</a>.</p>
+  <script>
+    // Update the fallback link too, in case JS redirect is blocked.
+    document.getElementById("dest-link").href = "https://fairwaycontract.org/" + window.location.hash;
+  </script>
+</body>
+</html>
