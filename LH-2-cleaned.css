@@ -43,7 +43,7 @@ red {
 }
 
 div.byline {
-    font-size: 1.3em;
+    max-width: 75%;
 }
 
 div.asis {
