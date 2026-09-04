@@ -433,11 +433,12 @@ span.section-number-4:after {
 
 
 
-div.pr-top .outline-text-4,
-div.pr-alt .outline-text-5  {
+div.pr-top .outline-4,
+div.pr-alt .outline-5  {
     margin-top: 1em;
     line-height: 1.8em;
-    font-family: serif;
+    font-family: sans-serif;
+    font-size: 1.1em;
     padding: 0.5em 0.5em 0.5em 1em;
     font-size: 1.1em;
 }
@@ -489,7 +490,6 @@ div.pr-top h3 {
 
 div.rule-toc {
     font-family: sans-serif;
-    background-color: #e6f1ff;
     padding: 1em;
     border: 2px solid gray;
 }
@@ -502,6 +502,12 @@ div.rule-toc a:not(:hover) {
     padding-left: 4em;
     text-indent: -4em;
 }
+
+div.pr-top div.outline-4 {
+    background-color: #e6f1ff;
+    margin-bottom: 3em;
+}
+
 div.pr-top div.outline-text-4 {
     margin-bottom: 0;
 }
@@ -509,11 +515,25 @@ div.pr-top div.outline-text-4 {
 div.pr-top div.outline-4 h4 {
     font-size: 1.1em;
     font-family: sans-serif;
-    font-weight: normal;
     margin-top: 1em;
-    margin-bottom: -2em;
+    margin-bottom: -1em;
     position: relative;
     padding: 1em 1em 1em 6em;
+    font-weight: normal;
+}
+
+div.pr-top div.outline-5 {
+    margin-top: -3em;
+    margin-bottom: 3em;
+}
+
+div.pr-top div.outline-4 h5 {
+    font-size: 1.1em;
+    font-family: sans-serif;
+    margin-bottom: -2em;
+    padding: 1em 1em 1em 6em;
+    font-weight: normal;
+    font-style: italic;
 }
 
 div.pr-top div.outline-4 h4 .section-number-4 {
@@ -522,6 +542,7 @@ div.pr-top div.outline-4 h4 .section-number-4 {
     width: 4.5em;
     font-size: .9em;
 }
+
 
 div.pr-alt div.outline-5 h5 {
     font-weight: bold;
@@ -532,28 +553,27 @@ div.pr-top .outline-text-3 ul {
     list-style: none;
 }
 
+/*
 div.pr-top .outline-text-4:empty {
     margin: 0;
     padding: 0;
 }
+*/
 
-div.pr-top div.outline-4 > div.cmtry {
-    margin-top: -1em;
-    padding-top: 0;
-}
-
-div.pr-top div.outline-4 > div.cmtry > h6 {
+/* ===== HIDE "COMMENT" HEADING - from Claude (or ChatGPT) ======== 
+div.pr-top div.outline-4 > div.cmtry > h6,
+div.pr-top div.outline-5 > div.cmtry > h6 {
     position: absolute;
     width: 1px;
     height: 1px;
-
-    margin-top: -2em 0 0 0;
+margin: 0;
     padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
 }
+*/
 
 /* ===========
    TABLE TEXT
@@ -641,22 +661,25 @@ div.cmtry h4 {
    ======================================================================== */
 
 /* Style for commentary sections (typically h5 or h6 level) */
-.cmtry {
+div.cmtry {
     font-family: Georgia, serif;
-    margin: .5em .5em 1em 0em;
+    font-size: .8em;
+    margin: 2em 4em 3em 4em;
     background-color: #fcfcfc;
-    padding: .1em .75em;
+    padding: 1em 2em;
 }
 
 
 .cmtry h6, .cmtry h7 {
-
-    font-size: 1.2rem;
+    margin-top: 0em;
+    font-size: 1.2rem;	
     font-family: serif;
-    margin: .2em 0 0.5em 0;
     font-weight: bold;
 }
 
+div.cmtry > div.outline-6 {
+    
+}
 
 .cmtry .outline-text-5,
 .cmtry .outline-text-6,
