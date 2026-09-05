@@ -154,7 +154,6 @@ span.sh {
 }
 
 [role="doc-toc"] ul li {
-
     margin-top: 1em;
 }
 
@@ -436,6 +435,7 @@ span.section-number-4:after {
 div.pr-top .outline-4,
 div.pr-alt .outline-5  {
     margin-top: 1em;
+    margin-bottom: -3em;
     line-height: 1.8em;
     font-family: sans-serif;
     font-size: 1.1em;
@@ -503,7 +503,7 @@ div.rule-toc a:not(:hover) {
     text-indent: -4em;
 }
 
-div.pr-top div.outline-4 {
+div.pr-top.outline-3 {
     background-color: #e6f1ff;
     margin-bottom: 3em;
 }
@@ -513,7 +513,7 @@ div.pr-top div.outline-text-4 {
 }
 
 div.pr-top div.outline-4 h4 {
-    font-size: 1.1em;
+    font-size: 1em;
     font-family: sans-serif;
     margin-top: 1em;
     margin-bottom: -1em;
@@ -663,8 +663,8 @@ div.cmtry h4 {
 /* Style for commentary sections (typically h5 or h6 level) */
 div.cmtry {
     font-family: Georgia, serif;
-    font-size: .8em;
-    margin: 2em 4em 3em 4em;
+    font-size: 1em;
+    margin: 0em 1em 0em 1em;
     background-color: #fcfcfc;
     padding: 1em 2em;
 }
@@ -701,6 +701,11 @@ div.cmtry p {
     color: #555;
 }
 
+span.xr {
+    font-size: .6em;
+    background-color: #fcfcfc;
+    vertical-align: super;
+}
 /* ========================================================================
    SPECIAL BOXES AND BORDERS
    ======================================================================== */
