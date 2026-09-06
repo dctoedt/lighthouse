@@ -431,7 +431,6 @@ span.section-number-4:after {
 }
 
 
-
 div.pr-top .outline-4,
 div.pr-alt .outline-5  {
     margin-top: 1em;
@@ -442,6 +441,7 @@ div.pr-alt .outline-5  {
     padding: 0.5em 0.5em 0.5em 1em;
     font-size: 1.1em;
 }
+
 
 dt {
     margin-top: 0em;
@@ -485,6 +485,7 @@ div.pr-top h3 {
     font-size: 1.5em;
     font-family: sans-serif;
     font-weight: bold;
+    margin-bottom: -2.5em;
     padding: 1em;
 }
 
@@ -506,6 +507,7 @@ div.rule-toc a:not(:hover) {
 div.pr-top.outline-3 {
     background-color: #e6f1ff;
     margin-bottom: 6em;
+    padding-bottom: 5em;
 }
 
 div.pr-top div.outline-text-4 {
@@ -702,7 +704,7 @@ div.cmtry p {
 }
 
 span.xr {
-    font-size: .6em;
+    font-size: .7em;
     background-color: #fcfcfc;
     vertical-align: super;
 }
