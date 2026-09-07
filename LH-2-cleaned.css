@@ -707,6 +707,7 @@ span.xr {
     font-size: .7em;
     background-color: #fcfcfc;
     vertical-align: super;
+    margin-left: .25em;
 }
 /* ========================================================================
    SPECIAL BOXES AND BORDERS
@@ -1259,11 +1260,14 @@ div.footpara p, div.footpara li {
     font-family: Georgia, serif;
 }
 
-sup:has(a.footnum),
-sup:has(a.footref) {
-  vertical-align: baseline;
-  font-size: 80% !important;
-  position: static;
+sup:has(a.footref),
+sup:has(a.footnum) {
+    background-color: #fcfcfc;
+    font-size: .7em;
+    vertical-align: baseline;
+    position: relative;
+    top: -0.5em;      /* raises it visually; tweak -0.4em to -0.6em to taste */
+    line-height: 0;   /* belt-and-suspenders: zeroes its own contribution */
 }
 
 div.footpara, 
@@ -1283,8 +1287,12 @@ div.footdef {
     margin: 1.5rem 0 0 0;
 }
 
+.footref {
+    text-decoration: underline;
+}
+
 .footnum::before, .footref::before {
-    content: " [";
+    content: "[fn.";
 }
 
 .footnum::after, .footref::after {
