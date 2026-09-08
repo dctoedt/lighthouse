@@ -482,11 +482,11 @@ div.pr-sub div.addl-body .outline-text-5 {
 
 
 div.pr-top h3 {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-family: sans-serif;
     font-weight: bold;
-    margin-bottom: -2.5em;
     padding: 1em;
+    margin-bottom: -2em;
 }
 
 div.rule-toc {
@@ -505,9 +505,7 @@ div.rule-toc a:not(:hover) {
 }
 
 div.pr-top.outline-3 {
-    background-color: #e6f1ff;
-    margin-bottom: 6em;
-    padding-bottom: 5em;
+    padding-bottom: 2em;
 }
 
 div.pr-top div.outline-text-4 {
@@ -515,6 +513,7 @@ div.pr-top div.outline-text-4 {
 }
 
 div.pr-top div.outline-4 h4 {
+    background-color: #e6f1ff;
     font-size: 1em;
     font-family: sans-serif;
     margin-top: 1em;
@@ -709,6 +708,12 @@ span.xr {
     vertical-align: super;
     margin-left: .25em;
 }
+
+p.see-addl {
+    margin: 2em 0 -2em 5em;
+    font-style: italic;
+}
+
 /* ========================================================================
    SPECIAL BOXES AND BORDERS
    ======================================================================== */
