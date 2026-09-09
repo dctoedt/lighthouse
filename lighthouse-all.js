@@ -218,6 +218,50 @@
 
 
   /* ================================================================== *
+   * TOGGLE COMMENTS
+   * ================================================================== */
+
+(function () {
+  "use strict";
+
+  function initCommentToggles() {
+    var containers = document.querySelectorAll(".cmtry");
+
+    containers.forEach(function (container) {
+      var heading = container.querySelector(
+        ":scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6"
+      );
+      if (!heading) return;
+
+      // Make it keyboard-accessible too.
+      heading.setAttribute("role", "button");
+      heading.setAttribute("tabindex", "0");
+      heading.setAttribute("aria-expanded", "false");
+
+      function toggle() {
+        var open = container.classList.toggle("cmt-open");
+        heading.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      heading.addEventListener("click", toggle);
+      heading.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggle();
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCommentToggles);
+  } else {
+    initCommentToggles();
+  }
+})();
+
+
+  /* ================================================================== *
    * INIT  —  run everything on DOMContentLoaded
    * ================================================================== */
 

@@ -630,8 +630,7 @@ div.addl div.outline-text-4 li {
 
 .addl,
 .addl h4,
-div.cmtry.outline-4,
-div.cmtry h4 {
+div.cmtry.outline-text-4 {
     background-color: #fcfcfc !important;
     padding: 0;
 }
@@ -666,7 +665,6 @@ div.cmtry {
     font-family: Georgia, serif;
     font-size: 1em;
     margin: 0em 1em 0em 1em;
-    background-color: #fcfcfc;
     padding: 1em 2em;
 }
 
@@ -678,18 +676,17 @@ div.cmtry {
     font-weight: normal;
 }
 
-div.cmtry > div.outline-6 {
-    
-}
 
 .cmtry .outline-text-5,
 .cmtry .outline-text-6,
 .cmtry .outline-text-7 {
     color: #555;
+    font-size: .9em;
     font-style: normal;
     line-height: 1.4em;
     font-weight: normal;
     background-color: #fcfcfc;
+    padding: 0 0 0 10px;
 }
 
 .cmtry p, .cmtry li {
@@ -714,6 +711,40 @@ p.see-addl {
     font-style: italic;
 }
 
+/* ------------------------------------------------------------------ */
+/* Collapsible "Comment" entries                                       */
+/* Container div carries the class from :HTML_CONTAINER_CLASS: cmtry   */
+/* Heading ("Comment") stays visible; the outline-text-N body is       */
+/* hidden until the container gets .cmt-open (toggled by cmt-toggle.js)*/
+/* ------------------------------------------------------------------ */
+
+.cmtry > div[class^="outline-text-"] {
+  display: none;
+}
+
+.cmtry.cmt-open > div[class^="outline-text-"] {
+  display: block;
+}
+
+/* Make the heading read as clickable */
+.cmtry > :where(h1, h2, h3, h4, h5, h6) {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Optional disclosure triangle before the heading text.
+   Remove this block if you don't want the arrow. */
+.cmtry > :where(h1, h2, h3, h4, h5, h6)::before {
+  content: "\25B8";      /* ▸ */
+  display: inline-block;
+  width: 1em;
+  margin-right: 0.25em;
+  transition: transform 0.15s ease;
+}
+
+.cmtry.cmt-open > :where(h1, h2, h3, h4, h5, h6)::before {
+  transform: rotate(90deg);  /* ▸ rotates to look like ▾ */
+}
 /* ========================================================================
    SPECIAL BOXES AND BORDERS
    ======================================================================== */
