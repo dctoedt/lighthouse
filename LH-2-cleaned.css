@@ -244,7 +244,6 @@ p, li {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: Georgia, serif;
-    text-wrap: balance;
 }
 
 h1 {
@@ -273,7 +272,10 @@ h2 {
     content: "";
 }
 
+
+
 h3 {
+    font-family: Georgia, serif;
     font-size: 1.2em;
     margin-top: 2.5em;
     line-height: 1.5;
@@ -321,6 +323,7 @@ div.pr-alt .outline-5 h5 em {
 
 h6 {
     font-weight: normal;
+    margin-top: -3em;
 }
 
 
@@ -517,7 +520,7 @@ div.pr-top div.outline-4 h4 {
     font-size: 1em;
     font-family: sans-serif;
     margin-top: 1em;
-    margin-bottom: -1em;
+    margin-bottom: 1em;
     position: relative;
     padding: 1em 1em 1em 6em;
     font-weight: normal;
@@ -670,7 +673,7 @@ div.cmtry {
 
 
 .cmtry h6, .cmtry h7 {
-    margin-top: 0em;
+    margin-top: -1em;
     font-size: 1.2rem;	
     font-family: serif;
     font-weight: normal;
