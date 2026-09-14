@@ -269,8 +269,7 @@
     initLighthouse();    /* must run first — wires up drawer close logic */
     initTocCollapse();   /* must run after initLighthouse */
     initExternalLinks();
-/*    initCiteAll();       cite/aside/cmtry/addl/expander 
-*/
+    initCiteAll();      /* cite/aside/cmtry/addl/expander  */
     initTocTop();
   }
 
