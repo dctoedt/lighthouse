@@ -76,7 +76,7 @@ span.sh {
 }
 
 /* Navigation sidebar — slide-in drawer on all screen sizes */
-#table-of-contents {
+#lighthouse-toc {
     position: fixed;
     left: 0;
     top: 0;
@@ -93,11 +93,11 @@ span.sh {
     transition: transform 0.3s ease-in-out;
 }
 
-#table-of-contents.show {
+#lighthouse-toc.show {
     transform: translateX(0);
 }
 
-#table-of-contents h2 {
+#lighthouse-toc h2 {
     font-size: 1.1em;
     color: #2980B9;
     margin: 0 0 1rem 0;
@@ -109,19 +109,19 @@ span.sh {
     font-size: 0.9rem;
 }
 
-#text-table-of-contents > ul,
+#lighthouse-toc-inner > ul,
 [role="doc-toc"] ul {
     list-style: none;
     padding-left: 0;
     margin: 0;
 }
 
-#text-table-of-contents li {
+#lighthouse-toc-inner li {
     margin-bottom: .8rem;
     line-height: 1.4;
 }
 
-#text-table-of-contents a {
+#lighthouse-toc-inner a {
     color: #2980B9;
     text-decoration: none;
     display: block;
@@ -130,19 +130,19 @@ span.sh {
     transition: background-color 0.2s;
 }
 
-#text-table-of-contents a:hover {
+#lighthouse-toc-inner a:hover {
     background-color: #e6f1ff;
 }
 
 /* Add visual indicator for current section */
-#text-table-of-contents a:target,
-#text-table-of-contents a:focus {
+#lighthouse-toc-inner a:target,
+#lighthouse-toc-inner a:focus {
     background-color: #d0e7ff;
     font-weight: bold;
 }
 
 /* Adjust nested list indentation */
-#text-table-of-contents ul ul {
+#lighthouse-toc-inner ul ul {
     padding-left: 1rem;
 }
 
@@ -175,6 +175,19 @@ div#outline-container-toc-chap-det h2 {
     display: none;
 }
 
+
+
+/* Detailed in-document TOC: remains visible in normal flow. */
+.toc-det nav[role="doc-toc"] {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    transform: none;
+    box-shadow: none;
+    border-right: none;
+    padding: 0;
+}
 
 /* ========================================================================
    MAIN CONTENT - Shifted to make room for sidebar
@@ -363,7 +376,7 @@ div.toc-det .outline-text-2  [role="doc-toc"] ul li ul li {
     margin-bottom: 0.4em;
 }
 
-nav[role="doc-toc"]:not(#table-of-contents) h2 {
+nav[role="doc-toc"]:not(#lighthouse-toc) h2 {
     font-size: 1em;
     font-weight: bold;
     margin-top: 1rem;
@@ -404,10 +417,10 @@ div.toc-local a:hover {
 }
 */
 
-nav div#text-table-of-contents a,
-nav div#text-table-of-contents i,
-nav div#text-table-of-contents b,
-nav div#text-table-of-contents li {
+nav div#lighthouse-toc-inner a,
+nav#lighthouse-toc div#lighthouse-toc-inner i,
+nav#lighthouse-toc div#lighthouse-toc-inner b,
+nav div#lighthouse-toc-inner li {
     font-size: .9em !important;
 }
 
@@ -514,20 +527,25 @@ div.pr-top.outline-3 {
     padding-bottom: 2em;
 }
 
-/* Clause text: label above the operative-text field */
+/* Clause text: label above the operative-text field — but commenting out the text */
 div.pr-top div.outline-text-4 {
     background-color: #e6f1ff;
     position: relative;
-    margin: 3.2em 0 0 0;
+/*
+    margin: 3.2em 0 
+*/
+    margin: 0;
     padding: .55em .9em .4em .9em;
 }
 
+/*
 div.pr-top div.outline-text-4::before {
     content: "Clause\00a0 text:";
     position: absolute;
     left: 0;
     top: -2.45em;
 }
+*/
 
 div.pr-top div.outline-4 h4 {
     font-size: .9em;
@@ -912,13 +930,13 @@ html.js-ready div.addl-body:not(.addl-open) {
 
 cite {
 
-    display: inline !important;
+    display: block !important;
     background-color: inherit !important;
     border: none !important;
     font-family: sans-serif !important;
     font-size: .8em !important;
-    margin: 0 !important;
-
+    margin: .5em 0 0 0 !important;
+    text-indent: 2em;
 }
 
 
@@ -1561,7 +1579,7 @@ div.footdef {
         padding: 0.75rem;
     }
     
-    #table-of-contents {
+    #lighthouse-toc {
         width: 85%; /* Wider sidebar on very small screens */
         max-width: 300px;
     }
@@ -1588,7 +1606,7 @@ div.footdef {
     }
     
     /* Hide navigation elements */
-    #table-of-contents,
+    #lighthouse-toc,
     #outline-container-toc-chap,
     .hlt,
     #menu-toggle,
@@ -1786,4 +1804,29 @@ div.footdef {
     div.optn-txt.outline-5 div.outline-text-5 {
         background: inherit !important; /* This preserves the blue/gray we set above */
     }
+}
+
+
+/* Hamburger TOC disclosure controls: keep triangle attached to its heading. */
+#lighthouse-toc-inner li > .toc-toggle {
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.25em;
+    vertical-align: baseline;
+    cursor: pointer;
+}
+
+#lighthouse-toc-inner li > .toc-toggle + a {
+    display: inline;
+    padding-left: 0;
+}
+
+#lighthouse-toc-inner li > ul {
+    padding-left: 1.5rem;
+}
+
+
+/* Hamburger TOC collapse state. */
+#lighthouse-toc-inner ul.toc-collapsed {
+    display: none;
 }

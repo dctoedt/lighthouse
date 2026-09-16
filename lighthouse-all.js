@@ -1,13 +1,13 @@
 /* lighthouse-all.js
  * Combined script for Lighthouse HTML export.
- * Merges: lighthouse-2.js, toc-collapse.js, external-links.js,
- *         cite-toggle.js, and toc-top (scroll-to-top for TOC "↑ Top" link).
+ * Merges: lighthouse drawer, TOC collapse, external links,
+ *         comment toggles, and TOC-top behavior.
  *
  * Load order within this file matches the original defer-load order:
  *   1. lighthouse-2.js  (hamburger, overlay, NLA notice, drawer wiring)
  *   2. toc-collapse.js  (collapsible TOC entries)
  *   3. external-links.js
- *   4. cite-toggle.js   (cite / aside / cmtry / addl / section-expander toggles)
+ *   4. comment toggles
  *   5. toc-top          (intercepts #top TOC link; hides spurious body heading)
  *
  * Usage in org-mode file header — replace the four separate script tags with:
@@ -24,7 +24,7 @@
 
   function initLighthouse() {
 
-    /* ---- Hamburger toggle button (top-left) ------------------------- */
+/* ---- Hamburger toggle button (top-left) ------------------------- */
     var menuToggle = document.getElementById("menu-toggle");
     if (!menuToggle) {
       menuToggle = document.createElement("button");
@@ -78,8 +78,24 @@
     window.addEventListener("resize", positionNlaNotice);
 
     /* ---- Drawer open/close ----------------------------------------- */
-    var toc = document.getElementById("table-of-contents");
-    if (!toc) { return; }
+    /* Org generates the detailed whole-document TOC inside .toc-det.
+       Keep that TOC in the document, and clone it for the hamburger drawer. */
+    var detailedToc = document.querySelector(".toc-det nav[role='doc-toc']");
+    if (!detailedToc) { return; }
+
+    var toc = document.getElementById("lighthouse-toc");
+    if (!toc) {
+      toc = detailedToc.cloneNode(true);
+      toc.id = "lighthouse-toc";
+
+      /* Avoid duplicating Org's inner TOC id in the cloned drawer. */
+      var clonedInner = toc.querySelector("#text-table-of-contents");
+      if (clonedInner) { clonedInner.id = "lighthouse-toc-inner"; }
+
+      document.body.appendChild(toc);
+    }
+
+    menuToggle.setAttribute("aria-controls", "lighthouse-toc");
 
     function openDrawer() {
       toc.classList.add("show");
@@ -122,7 +138,7 @@
 
   function initTocCollapse() {
 
-    var tocInner = document.getElementById("text-table-of-contents");
+    var tocInner = document.getElementById("lighthouse-toc-inner");
     if (!tocInner) { return; }
 
     var parentItems = tocInner.querySelectorAll("li > ul");
@@ -137,7 +153,7 @@
       triangle.setAttribute("tabindex", "0");
       triangle.setAttribute("aria-expanded", "false");
       triangle.setAttribute("aria-label", "Expand section");
-      triangle.textContent = "▶";
+      triangle.textContent = "▸";
 
       childList.classList.add("toc-collapsed");
 
@@ -145,7 +161,7 @@
         e.stopPropagation();
         var isOpen = childList.classList.toggle("toc-collapsed");
         var nowOpen = !isOpen;
-        triangle.textContent = nowOpen ? "▼" : "▶";
+        triangle.textContent = nowOpen ? "▾" : "▸";
         triangle.setAttribute("aria-expanded", nowOpen ? "true" : "false");
         triangle.setAttribute("aria-label",    nowOpen ? "Collapse section" : "Expand section");
       }
@@ -197,7 +213,7 @@
 
   function initTocTop() {
     /* Intercept the TOC link pointing to #top and scroll to true page top. */
-    var tocLinks = document.querySelectorAll("#table-of-contents a");
+    var tocLinks = document.querySelectorAll("#lighthouse-toc a");
     for (var i = 0; i < tocLinks.length; i++) {
       if (tocLinks[i].getAttribute("href") === "#top") {
         tocLinks[i].addEventListener("click", function (e) {
@@ -269,7 +285,6 @@
     initLighthouse();    /* must run first — wires up drawer close logic */
     initTocCollapse();   /* must run after initLighthouse */
     initExternalLinks();
-    initCiteAll();      /* cite/aside/cmtry/addl/expander  */
     initTocTop();
   }
 
