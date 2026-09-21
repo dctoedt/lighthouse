@@ -41,6 +41,11 @@
     // Plain output: headings become paragraphs; bold/italic/size/font/class/id are dropped.
     // Only paragraphs, lists, tables and hyperlinks survive.
     plainFormatting: true,
+    // Addendum only (HTML / print / Word): keep bold, italic and the brown "variable" text
+    // (span.v on the site). The single-Clause copy stays plain.
+    addendumKeepFormatting: true,
+    variableClass: 'v',         // class of the brown text on the site
+    variableColor: 'brown',     // colour used for it in the Addendum
 
     // Visible-text renames applied to the copied text (not to link addresses). Case-sensitive
     // on purpose: lowercase "rule" (as in "overrule", "the general rule") is left alone.
@@ -87,7 +92,7 @@
     internalLinkBase: 'https://diamondlaneprotocol.org/',
     removeSelectors: [          // everything matching is deleted from the copy
       '[class~="cmtry"]',       // commentary (any element, incl. Org's outline-N cmtry containers)
-      '[role="doc-toc"]',       // the Rule's own mini table of contents
+      '[role="doc-toc"]',       // every table of contents, at any depth
       '.addl',                  // additional-material blocks (any element)
       '.copy-rule-btn',
       '[data-copy-rule]',
@@ -156,10 +161,10 @@
   // opts.addendum: keep the Clause's own number, no ADDENDUM prefix, keep heading tags.
   function clean(root, opts) {
     opts = opts || {};
-    // 1. the Rule's mini-ToC and its "Contents:" label
+    // 1. every table of contents (role="doc-toc") and its "Contents:" / "Table of contents:" label
     root.querySelectorAll('[role="doc-toc"]').forEach(function (toc) {
       var prev = toc.previousElementSibling;
-      if (prev && prev.tagName === 'P' && /^\s*Contents:?\s*$/i.test(prev.textContent)) remove(prev);
+      if (prev && prev.tagName === 'P' && /^\s*(table of )?contents:?\s*$/i.test(prev.textContent)) remove(prev);
     });
     // 2. delete unwanted elements (commentary etc.)
     root.querySelectorAll(CONFIG.removeSelectors.join(',')).forEach(remove);
@@ -189,8 +194,13 @@
     });
 
     // 5. plain formatting: no inline styling, no headings, no wrapper divs
+    var keepFmt = !!(opts.addendum && CONFIG.addendumKeepFormatting);
+    function isVar(el) { return el.tagName === 'SPAN' && el.classList.contains(CONFIG.variableClass); }
     if (CONFIG.plainFormatting) {
-      root.querySelectorAll(INLINE).forEach(unwrap);
+      root.querySelectorAll(INLINE).forEach(function (el) {
+        if (keepFmt && (/^(B|STRONG|I|EM)$/.test(el.tagName) || isVar(el))) return;
+        unwrap(el);
+      });
       if (!opts.addendum) root.querySelectorAll(HEADING).forEach(function (h) {
         var p = document.createElement('p');
         while (h.firstChild) p.appendChild(h.firstChild);
@@ -201,10 +211,11 @@
 
     // 6. strip id/class/style/etc.
     [root].concat([].slice.call(root.querySelectorAll('*'))).forEach(function (n) {
-      var keep = KEEP_ATTRS[n.tagName.toLowerCase()] || [];
+      var keep = KEEP_ATTRS[n.tagName.toLowerCase()] || [], keepV = keepFmt && isVar(n);
       [].slice.call(n.attributes).forEach(function (at) {
         if (keep.indexOf(at.name) === -1) n.removeAttribute(at.name);
       });
+      if (keepV) n.setAttribute('class', 'v');
     });
 
     // 7. text tidying: merge text nodes, drop soft hyphens, collapse whitespace, trim block edges
@@ -489,6 +500,7 @@
     'p{margin:.5em 0}' +
     '.src{margin:0 0 .9em;font-size:9.5pt;color:#333;overflow-wrap:anywhere}' +
     '.end{margin-top:2em}' +
+    '.v{color:' + CONFIG.variableColor + '}' +
     '.toc-label{margin-bottom:.2em}.toc{list-style:none;margin:0 0 1.2em;padding-left:1.2em}' +
     '.toc li{margin:.15em 0}.toc a{text-decoration:none}' +
     'a{color:inherit;text-decoration:underline}' +
@@ -592,20 +604,36 @@
     });
   }
 
-  function inlineRuns(D, node, out) {
+  function withFmt(fmt, more) {
+    var o = {}, k;
+    for (k in fmt) o[k] = fmt[k];
+    for (k in more) o[k] = more[k];
+    return o;
+  }
+
+  // fmt carries bold / italics / colour down into nested runs.
+  function inlineRuns(D, node, out, fmt) {
+    fmt = fmt || {};
     [].slice.call(node.childNodes).forEach(function (n) {
       if (n.nodeType === 3) {
-        if (n.nodeValue) out.push(new D.TextRun(n.nodeValue));
+        if (n.nodeValue) out.push(new D.TextRun(withFmt(fmt, { text: n.nodeValue })));
       } else if (n.nodeType === 1) {
-        if (n.tagName === 'A' && n.getAttribute('href')) {
+        var t = n.tagName;
+        if (t === 'A' && n.getAttribute('href')) {
           out.push(new D.ExternalHyperlink({
             link: n.getAttribute('href'),
-            children: [new D.TextRun({ text: n.textContent, style: 'Hyperlink' })]
+            children: inlineRuns(D, n, [], withFmt(fmt, { style: 'Hyperlink' }))
           }));
-        } else if (n.tagName === 'BR') {
+        } else if (t === 'BR') {
           out.push(new D.TextRun({ break: 1 }));
+        } else if (t === 'B' || t === 'STRONG') {
+          inlineRuns(D, n, out, withFmt(fmt, { bold: true }));
+        } else if (t === 'I' || t === 'EM') {
+          inlineRuns(D, n, out, withFmt(fmt, { italics: true }));
+        } else if (t === 'SPAN' && n.classList.contains('v')) {
+          inlineRuns(D, n, out, withFmt(fmt, { color: 'A52A2A' }));   // CSS "brown"
         } else {
-          inlineRuns(D, n, out);
+          inlineRuns(D, n, out, fmt);
         }
       }
     });
