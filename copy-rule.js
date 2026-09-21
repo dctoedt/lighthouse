@@ -507,7 +507,7 @@
     'p{margin:.5em 0}' +
     '.src{margin:0 0 .9em;font-size:9.5pt;color:#333;overflow-wrap:anywhere}' +
     '.end{margin-top:2em}' +
-    '.v{color:' + CONFIG.variableColor + '}' +
+    '.v{color:' + CONFIG.variableColor + '}#wordmsg{margin-left:.5em;font-size:13px}' +
     '.toc-label{margin-bottom:.2em}.toc{list-style:none;margin:0 0 1.2em;padding-left:1.2em}' +
     '.toc li{margin:.15em 0}.toc a{text-decoration:none}' +
     'a{color:inherit;text-decoration:underline}' +
@@ -565,7 +565,7 @@
         }).join('') + '</ul>';
     }
     var preface = prefaceHtml(roots.length, date);
-    var dl = 'Addendum-' + date + '.html';
+    var dl = 'Addendum-' + date + '.html', wf = 'Addendum-' + date + '.docx';
     // "Download HTML": saves this page without the toolbar and scripts.
     var script = '(function(){var b=document.getElementById("dl");if(!b)return;' +
       'b.addEventListener("click",function(){var c=document.documentElement.cloneNode(true);' +
@@ -573,13 +573,26 @@
       'var u=URL.createObjectURL(new Blob(["<!doctype html>"+c.outerHTML],{type:"text/html"}));' +
       'var a=document.createElement("a");a.href=u;a.download=b.getAttribute("data-file");' +
       'document.body.appendChild(a);a.click();document.body.removeChild(a);});})();';
+    // "Word (.docx)": asks the page that built this Addendum (window.opener) to create the file.
+    script += '(function(){var w=document.getElementById("word");if(!w)return;var m=document.getElementById("wordmsg");' +
+      'w.addEventListener("click",function(){var o;' +
+      'try{o=window.opener;if(!o||o.closed||!o.CopyRule||!o.CopyRule.wordFile)throw 0;}catch(e){' +
+      'm.textContent="Word export needs the page that built this Addendum to still be open (and to be the published site, not a local file).";return;}' +
+      'var t=w.textContent;w.disabled=true;w.textContent="Preparing\u2026";m.textContent="";' +
+      'o.CopyRule.wordFile(' + JSON.stringify(ids).replace(/</g, '\\u003c') + ',' + JSON.stringify(date) + ').then(function(b){' +
+      'var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=w.getAttribute("data-file");' +
+      'document.body.appendChild(a);a.click();document.body.removeChild(a);' +
+      '}).catch(function(e){m.textContent="Could not create the Word file: "+((e&&e.message)||e);})' +
+      '.then(function(){w.disabled=false;w.textContent=t;});});})();';
     return '<!doctype html>\n<html lang="en"><head><meta charset="utf-8">' +
       '<meta name="viewport" content="width=device-width,initial-scale=1">' +
       '<title>' + esc(CONFIG.addendumTitle + ' \u2014 ' + date) + '</title>' +
       '<style>' + DOC_CSS + '</style></head><body>' +
       '<div class="toolbar no-print" id="bar">' +
       '<button type="button" onclick="window.print()">Print / Save as PDF</button>' +
-      '<button type="button" id="dl" data-file="' + esc(dl) + '">Download HTML</button></div>' +
+      '<button type="button" id="dl" data-file="' + esc(dl) + '">Download HTML</button>' +
+      '<button type="button" id="word" data-file="' + esc(wf) + '">Word (.docx)</button>' +
+      '<span id="wordmsg" role="status"></span></div>' +
       '<main><h1>' + esc(CONFIG.addendumTitle) + '</h1><p class="preface">' + preface + '</p>' + toc +
       sections.join('\n') +
       (CONFIG.endMarker ? '<p class="end">' + esc(CONFIG.endMarker) + '</p>' : '') +
@@ -591,10 +604,10 @@
     if (!html) { setMsg('Add at least one Clause first.'); return; }
     var url = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
     var win = window.open(url, '_blank');
-    if (!win) setMsg('Your browser blocked the pop-up. <a href="' + url + '" target="_blank">Open the Addendum</a>');
+    if (!win) setMsg('Your browser blocked the pop-up. <a href="' + url + '" target="_blank" rel="opener">Open the Addendum</a>');
   }
 
-  /* ---------- Word (.docx) export (dormant: not attached to any button) ---------- */
+  /* ---------- Word (.docx) export ---------- */
 
   // Loads the docx library on first use (needs network unless you self-host CONFIG.docxLibUrl).
   function loadDocx() {
@@ -755,8 +768,8 @@
     return D.Packer.toBlob(doc);
   }
 
-  // DORMANT: no button calls this right now (the Word button was removed pending an Edge fix).
-  // Kept so the export can be re-attached later. Needs docx.iife.js (CONFIG.docxLibUrl) when used.
+  // Called (via window.opener) by the "Word (.docx)" button on the generated Addendum page.
+  // Needs docx.iife.js (CONFIG.docxLibUrl) on the site.
   function wordFile(ids, date) {
     var list = (ids || state.ids).filter(isClauseId);
     if (!list.length) return Promise.reject(new Error('no Clauses selected'));
