@@ -70,6 +70,12 @@
                 'each party certifies that it has not changed the text below ' +
                 'from the Diamond Lane version without redlining it.',
     contentsLabel: 'Clauses included:',   // list of the included Clauses under the preface ('' = no list)
+    // Addendum heading sizes. Clause titles are <h2> in the generated page (numbered sub-provision
+    // titles are <h3>, 12pt). Keep addendumTitleSize larger than clauseTitleSize.
+    addendumTitleSize: '22pt',
+    clauseTitleSize: '18pt',
+    // Font for the numbered sub-provision headings (<h3> in the generated page).
+    provisionHeadingFont: '"Helvetica Neue", Helvetica, Arial, sans-serif',
     sourceLabel: 'Source: ',    // printed before the source URL under each Clause heading
     pageBreakBetweenClauses: false,
     undoSeconds: 20,            // how long the "Undo" link stays after Clear
@@ -493,9 +499,10 @@
     '.toolbar{position:sticky;top:0;padding:.6em 1em;background:#f1f3f7;border-bottom:1px solid #c9ceda;font:14px system-ui,sans-serif}' +
     '.toolbar button{margin-right:.5em;padding:.35em .9em;font:inherit;cursor:pointer}' +
     'main{max-width:7in;margin:0 auto;padding:.6in}' +
-    'h1{font-size:18pt;margin:0 0 .6em}' +
-    'h2{font-size:14pt;margin:1.7em 0 .15em;break-after:avoid}' +
-    'h3{font-size:12pt;margin:1.1em 0 .3em;break-after:avoid}' +
+    'h1{font-size:' + CONFIG.addendumTitleSize + ';margin:0 0 .6em}' +
+    'h2{font-size:' + CONFIG.clauseTitleSize + ';margin:2.4em 0 .15em;break-after:avoid}' +
+    'h3{font-family:' + CONFIG.provisionHeadingFont + ';font-size:12pt;font-weight:normal;font-style:italic;margin:1.1em 0 .3em;break-after:avoid}' +
+    'h3 i,h3 em{font-style:normal}' +
     'h4,h5,h6{font-size:11pt;margin:1em 0 .3em;break-after:avoid}' +
     'p{margin:.5em 0}' +
     '.src{margin:0 0 .9em;font-size:9.5pt;color:#333;overflow-wrap:anywhere}' +
@@ -722,9 +729,10 @@
         };
       });
     }
-    function head(size) {
+    function pt2half(v) { return Math.round(parseFloat(v) * 2) || 28; }
+    function head(size, plain) {
       return {
-        run: { font: CONFIG.docxFont, bold: true, color: '000000', size: size },
+        run: { font: plain ? 'Arial' : CONFIG.docxFont, bold: !plain, italics: !!plain, color: '000000', size: size },
         paragraph: { keepNext: true, spacing: { before: 240, after: 80 } }
       };
     }
@@ -734,7 +742,7 @@
       styles: {
         default: {
           document: { run: { font: CONFIG.docxFont, size: 22 }, paragraph: { spacing: { after: 120 } } },
-          heading1: head(36), heading2: head(28), heading3: head(24),
+          heading1: head(pt2half(CONFIG.addendumTitleSize)), heading2: head(pt2half(CONFIG.clauseTitleSize)), heading3: head(24, true),
           heading4: head(22), heading5: head(22), heading6: head(22)
         }
       },
