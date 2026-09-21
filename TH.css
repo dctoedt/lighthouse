@@ -263,6 +263,7 @@ h1 {
     font-size: 1.6em;
     margin: 0 0em .5em 0;
     line-height: 1.5em;
+    text-wrap: balance;
 }
 
 h2 {
@@ -528,13 +529,10 @@ div.pr-top.outline-3 {
 }
 
 /* Clause text: label above the operative-text field — but commenting out the text */
-div.pr-top div.outline-text-4 {
+div.pr-top div.outline-4 {
     background-color: #e6f1ff;
     position: relative;
-/*
-    margin: 3.2em 0 
-*/
-    margin: 0;
+    margin: 3em 1em 0 1em; 
     padding: .55em .9em .4em .9em;
 }
 
@@ -550,10 +548,9 @@ div.pr-top div.outline-text-4::before {
 div.pr-top div.outline-4 h4 {
     font-size: .9em;
     font-family: sans-serif;
-    margin-top: 1em;
-    margin-bottom: -.5em;
+    margin-top: 0em;
+    margin-bottom: -1em;
     text-wrap: balance;
-
     /* Align the h4 heading with the clause/comment visual grid. */
     padding: 1em 0;
 }
@@ -664,11 +661,11 @@ div.addl div.outline-text-4 li {
     line-height: 1.4em;
 }
 
-.addl,
-.addl h4,
-div.cmtry.outline-text-4 {
+div.cmtry.outline-6 {
     background-color: #fcfcfc !important;
-    padding: 0;
+    margin: 1em;
+    font-size: .85em;
+    padding: 5px 10px;
 }
 
 .addl {
@@ -1109,6 +1106,72 @@ blockquote {
 
 }
 
+/* Copy Clause / Clause Only / Add to Addendum buttons and the Addendum panel — append to LH-2.css. Colors fall back to a neutral blue;
+   set --lh-blue / --lh-blue-fill on :root to match the site palette. */
+.copy-rule-btn,
+.copy-rule-toggle,
+.copy-rule-add {
+  margin-left: .7em;
+  padding: .1em .6em;
+  font: inherit;
+  font-size: .6em;
+  font-weight: normal;
+  line-height: 1.5;
+  vertical-align: middle;
+  color: var(--lh-blue, #1f4e8c);
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: .3em;
+  cursor: pointer;
+  opacity: .8;
+}
+.copy-rule-btn:hover,
+.copy-rule-btn:focus-visible,
+.copy-rule-toggle:hover,
+.copy-rule-toggle:focus-visible,
+.copy-rule-add:hover,
+.copy-rule-add:focus-visible { opacity: 1; background: var(--lh-blue-fill, #e8f0fb); }
+/* Label lives in CSS, not the DOM, so it adds no hits to browser find-in-page. */
+.copy-rule-btn::before { content: "Copy Clause"; }
+.copy-rule-btn[data-state="copied"]::before { content: "Copied \2713"; }
+.copy-rule-btn[data-state="error"]::before  { content: "Copy failed"; }
+.copy-rule-toggle,
+.copy-rule-add { margin-left: .4em; }
+.copy-rule-toggle::before { content: "Clause Only"; }
+.copy-rule-toggle[aria-pressed="true"]::before { content: "Show All"; }
+.copy-rule-add::before { content: "Add to Addendum"; }
+.copy-rule-add[aria-pressed="true"]::before { content: "Added \2713"; }
+
+/* Addendum list panel */
+.cr-panel {
+  position: fixed; right: 1em; bottom: 1em; z-index: 1000;
+  width: 22em; max-width: calc(100vw - 2em); max-height: 60vh; overflow: auto;
+  padding: .6em .8em;
+  font: 14px/1.35 system-ui, sans-serif;
+  color: #111; background: #fff;
+  border: 1px solid var(--lh-blue, #1f4e8c); border-radius: .5em;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .25);
+}
+.cr-panel[hidden] { display: none; }
+.cr-panel-head { font-weight: 600; margin-bottom: .3em; }
+.cr-panel-list { margin: 0 0 .6em; padding-left: 1.4em; }
+.cr-panel-list li { margin: .25em 0; }
+.cr-panel-ctl { white-space: nowrap; margin-left: .4em; }
+.cr-panel button {
+  font: inherit; padding: 0 .45em; cursor: pointer;
+  color: var(--lh-blue, #1f4e8c); background: transparent;
+  border: 1px solid currentColor; border-radius: .3em;
+}
+.cr-panel button:hover:not(:disabled), .cr-panel button:focus-visible { background: var(--lh-blue-fill, #e8f0fb); }
+.cr-panel button:disabled { opacity: .35; cursor: default; }
+.cr-panel-ctl button { margin-left: .2em; }
+.cr-panel-actions { display: flex; flex-wrap: wrap; gap: .4em; }
+.cr-panel-actions button { padding: .2em .7em; }
+.cr-panel-msg { margin: .5em 0 0; }
+.cr-panel-msg:empty { display: none; }
+@media print { .copy-rule-btn, .copy-rule-toggle, .copy-rule-add, .cr-panel { display: none; } }
+
+
 /* ========================================================================
    IMAGES
    ======================================================================== */
@@ -1153,7 +1216,7 @@ img {
     float: right;
     padding: 0 0 0.5rem 0.5rem;
     margin-top: -8rem;
-    width: 10%;
+    width: 8%;
 }
 
 
