@@ -1,15 +1,272 @@
-/*!
- * copy-rule.js — "Copy Rule" buttons for single-page org-mode HTML exports.
+/* diamond-lane.js — the site's one script (replaces lighthouse-all.js and copy-rule.js).
  *
- * Adds a button to the heading of every Rule (every container with class "pr-top").
- * Clicking it copies the Rule to the clipboard as PLAIN text (paragraphs + hyperlinks only)
- * in this order:  "ADDENDUM: <Rule title>", a certification legend, then the Rule's text.
- * Commentary (class "cmtry") and the Rule's mini table of contents are left out.
+ *   Part 1  Page furniture: hamburger menu, overlay, "incomplete draft" notice (centered over the
+ *           content column), collapsible drawer TOC, external links, #top handling.
+ *   Part 2  Clause tools: collapsible "Comment" blocks (with a "Show all comments" link in the
+ *           notice), "Add to Addendum" buttons + panel, Addendum builder (HTML / print / PDF),
+ *           shareable ?addendum= links, Word (.docx) export.
  *
- * Load with:  #+HTML_HEAD: <script src="copy-rule.js" defer></script>
- * Optional manual button (use a REAL id from your page):
- *   @@html:<button type="button" class="copy-rule-btn" data-copy-rule="k-adopt"></button>@@
+ * Pair it with diamond-lane.css. The Word export loads docx.iife.js (a separate library file)
+ * only when someone clicks "Word (.docx)" on a built Addendum.
+ *
+ * Org-mode setup file:
+ *   #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./diamond-lane.css">
+ *   #+HTML_HEAD: <script src="diamond-lane.js" defer></script>
  */
+
+/* ==================================================================== *
+ * PART 1 - PAGE FURNITURE
+ * ==================================================================== */
+(function () {
+
+  /* ================================================================== *
+   * 1. LIGHTHOUSE-2  —  hamburger, overlay, NLA notice, drawer
+   * ================================================================== */
+
+  function initLighthouse() {
+
+/* ---- Hamburger toggle button (top-left) ------------------------- */
+    var menuToggle = document.getElementById("menu-toggle");
+    if (!menuToggle) {
+      menuToggle = document.createElement("button");
+      menuToggle.id = "menu-toggle";
+      menuToggle.setAttribute("aria-label", "Open table of contents");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-controls", "table-of-contents");
+      menuToggle.innerHTML = "&#9776;";
+      document.body.insertBefore(menuToggle, document.body.firstChild);
+    }
+
+    /* ---- Overlay (dims page when drawer is open) -------------------- */
+    var overlay = document.getElementById("sidebar-overlay");
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.id = "sidebar-overlay";
+      overlay.setAttribute("aria-hidden", "true");
+      document.body.insertBefore(overlay, document.body.firstChild);
+    }
+
+    /* ---- "Not a substitute for legal advice" notice ---------------- */
+    var nlaNotice = document.getElementById("nla-notice");
+    if (!nlaNotice) {
+      nlaNotice = document.createElement("div");
+      nlaNotice.id = "nla-notice";
+      nlaNotice.innerHTML =
+        'INCOMPLETE DRAFT — not a substitute for legal advice '
+        + '(<a href="#k-bound-NLA">see&nbsp;2.1.14</a>)';
+      document.body.insertBefore(nlaNotice, document.body.firstChild);
+    }
+
+    var contentEl = document.getElementById("content");
+
+    /* Centre the notice over the content column (i.e. over the page title). It is position:fixed
+       (see #nla-notice in TH.css), so it stays in view while scrolling. It is kept clear of the
+       hamburger button on the left and of the fixed .hlt bar (if shown) on the right. Because it
+       is centred with translateX(-50%), a change in its width (copy-rule.js adds a link to it)
+       only needs another call, which copy-rule.js triggers with a resize event. */
+    function positionNlaNotice() {
+      if (!contentEl) { return; }
+      var rect   = contentEl.getBoundingClientRect();
+      var width  = nlaNotice.offsetWidth || 0;
+      var center = rect.left + rect.width / 2;
+      if (width) {
+        var hlt = document.querySelector(".hlt");
+        var limitRight = window.innerWidth - 8;
+        if (hlt && hlt.offsetWidth) {
+          limitRight = Math.min(limitRight, hlt.getBoundingClientRect().left - 8);
+        }
+        center = Math.min(center, limitRight - width / 2);
+        center = Math.max(center, 72 + width / 2);          /* clear of the hamburger button */
+      }
+      nlaNotice.style.left      = Math.round(center) + "px";
+      nlaNotice.style.right     = "auto";
+      nlaNotice.style.transform = "translateX(-50%)";
+    }
+
+    positionNlaNotice();
+    nlaNotice.style.visibility = "visible";
+    window.addEventListener("resize", positionNlaNotice);
+
+    /* ---- Drawer open/close ----------------------------------------- */
+    /* Org generates the detailed whole-document TOC inside .toc-det.
+       Keep that TOC in the document, and clone it for the hamburger drawer. */
+    var detailedToc = document.querySelector(".toc-det nav[role='doc-toc']");
+    if (!detailedToc) { return; }
+
+    var toc = document.getElementById("lighthouse-toc");
+    if (!toc) {
+      toc = detailedToc.cloneNode(true);
+      toc.id = "lighthouse-toc";
+
+      /* Avoid duplicating Org's inner TOC id in the cloned drawer. */
+      var clonedInner = toc.querySelector("#text-table-of-contents");
+      if (clonedInner) { clonedInner.id = "lighthouse-toc-inner"; }
+
+      document.body.appendChild(toc);
+    }
+
+    menuToggle.setAttribute("aria-controls", "lighthouse-toc");
+
+    function openDrawer() {
+      toc.classList.add("show");
+      overlay.classList.add("show");
+      menuToggle.setAttribute("aria-expanded", "true");
+      menuToggle.setAttribute("aria-label", "Close table of contents");
+    }
+
+    function closeDrawer() {
+      toc.classList.remove("show");
+      overlay.classList.remove("show");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open table of contents");
+    }
+
+    menuToggle.addEventListener("click", function () {
+      if (toc.classList.contains("show")) { closeDrawer(); } else { openDrawer(); }
+    });
+
+    overlay.addEventListener("click", closeDrawer);
+
+    toc.addEventListener("click", function (e) {
+      if (e.target.tagName === "A" && !e.defaultPrevented) {
+        closeDrawer();
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && toc.classList.contains("show")) {
+        closeDrawer();
+        menuToggle.focus();
+      }
+    });
+  }
+
+
+  /* ================================================================== *
+   * 2. TOC-COLLAPSE  —  collapsible drawer entries
+   * ================================================================== */
+
+  function initTocCollapse() {
+
+    var tocInner = document.getElementById("lighthouse-toc-inner");
+    if (!tocInner) { return; }
+
+    var parentItems = tocInner.querySelectorAll("li > ul");
+
+    parentItems.forEach(function (childList) {
+      var li   = childList.parentElement;
+      var link = li.querySelector(":scope > a");
+
+      var triangle = document.createElement("span");
+      triangle.className = "toc-toggle";
+      triangle.setAttribute("role", "button");
+      triangle.setAttribute("tabindex", "0");
+      triangle.setAttribute("aria-expanded", "false");
+      triangle.setAttribute("aria-label", "Expand section");
+      triangle.textContent = "▸";
+
+      childList.classList.add("toc-collapsed");
+
+      function doToggle(e) {
+        e.stopPropagation();
+        var isOpen = childList.classList.toggle("toc-collapsed");
+        var nowOpen = !isOpen;
+        triangle.textContent = nowOpen ? "▾" : "▸";
+        triangle.setAttribute("aria-expanded", nowOpen ? "true" : "false");
+        triangle.setAttribute("aria-label",    nowOpen ? "Collapse section" : "Expand section");
+      }
+
+      triangle.addEventListener("click", doToggle);
+      triangle.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); doToggle(e); }
+      });
+
+      if (link) {
+        link.addEventListener("click", function (e) {
+          if (childList.classList.contains("toc-collapsed")) {
+            e.preventDefault();
+            doToggle(e);
+          }
+        });
+      }
+
+      if (link) { li.insertBefore(triangle, link); } else { li.prepend(triangle); }
+    });
+  }
+
+
+  /* ================================================================== *
+   * 3. EXTERNAL-LINKS  —  open external links in new tab
+   * ================================================================== */
+
+  function initExternalLinks() {
+    var currentHost = window.location.hostname;
+    document.querySelectorAll("a[href]").forEach(function (a) {
+      var href = a.getAttribute("href");
+      if (!/^https?:\/\//i.test(href)) { return; }
+      try {
+        var linkHost = new URL(href).hostname;
+        if (linkHost && linkHost !== currentHost) {
+          a.setAttribute("target", "_blank");
+          a.setAttribute("rel", "noopener noreferrer");
+        }
+      } catch (e) { /* malformed URL — leave alone */ }
+    });
+  }
+
+
+
+  /* ================================================================== *
+   * 4. TOC-TOP  —  intercept #top TOC link; scroll to true top;
+   *                hide the spurious "↑ Top" body heading
+   * ================================================================== */
+
+  function initTocTop() {
+    /* Intercept the TOC link pointing to #top and scroll to true page top. */
+    var tocLinks = document.querySelectorAll("#lighthouse-toc a");
+    for (var i = 0; i < tocLinks.length; i++) {
+      if (tocLinks[i].getAttribute("href") === "#top") {
+        tocLinks[i].addEventListener("click", function (e) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "instant" });
+        });
+        break;
+      }
+    }
+
+    /* Hide the "↑ Top" heading that org-mode renders in the document body. */
+    var topHeading = document.getElementById("top");
+    if (topHeading) {
+      var wrapper = topHeading.closest("div[class^='outline-']");
+      if (wrapper) { wrapper.style.display = "none"; }
+    }
+  }
+
+
+  /* ================================================================== *
+   * INIT  —  run everything on DOMContentLoaded
+   * ================================================================== */
+
+  function init() {
+    initLighthouse();    /* must run first — wires up drawer close logic */
+    initTocCollapse();   /* must run after initLighthouse */
+    initExternalLinks();
+    initTocTop();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+})();
+
+/* ==================================================================== *
+ * PART 2 - CLAUSE TOOLS (comments, Addendum, Word export)
+ *
+ * Settings are in CONFIG just below. Class names starting cr- / copy-rule- are this part's own.
+ * ==================================================================== */
 (function () {
   'use strict';
 
@@ -59,9 +316,9 @@
     // what is copied or put in an Addendum.
     commentToggles: true,
     commentSelector: '.cmtry',
-    commentsCollapsedOnLoad: true,   // false = everything starts open (then also delete the hide rule in copy-rule.css)
+    commentsCollapsedOnLoad: true,   // false = everything starts open (then also delete the hide rule in diamond-lane.css)
     // "Show all comments" / "Hide all comments" is added as a link inside the yellow notice that
-    // lighthouse-all.js puts at the top of the page (element id below). On narrow screens, where the
+    // Part 1 of this file puts at the top of the page (element id below). On narrow screens, where the
     // site hides that notice, a plain button under the page title is used instead.
     globalToggle: true,
     noticeId: 'nla-notice',
@@ -106,8 +363,9 @@
       '[class~="cmtry"]',       // commentary (any element, incl. Org's outline-N cmtry containers)
       '[role="doc-toc"]',       // every table of contents, at any depth
       '.addl',                  // additional-material blocks (any element)
-      // Added to the live page by lighthouse-all.js (toggle buttons, wrappers) or annotations, never Clause text:
+      // Added by page scripts (toggle buttons, wrappers) or annotations, never Clause text:
       '.addl-body', '.addl-toggle',
+      '.see-addl',              // "(See also the additional notes at § …)" pointers
       '.section-expander', '.section-expander-wrapper',
       'cite', 'aside', '.cite-toggle', '.aside-toggle',
       '.copy-rule-btn',
@@ -833,7 +1091,7 @@
   var HEAD = 'cr-cmtry-head';         // on the heading of a .cmtry block (the clickable part)
   var allOpen = false;
 
-  // The hiding itself is a rule in copy-rule.css (a .cmtry block without .cr-open shows only its
+  // The hiding itself is a rule in diamond-lane.css (a .cmtry block without .cr-open shows only its
   // heading), so nothing flashes on load; this script only adds/removes .cr-open.
   function extrasSelector() { return CONFIG.commentSelector; }
 
@@ -934,7 +1192,7 @@
     syncGlobal();
   }
 
-  // lighthouse-all.js (loaded first, deferred) has already created the notice by the time this runs.
+  // Part 1 (above) has already created the notice by the time this runs.
   function placeGlobalToggle() {
     if (!CONFIG.globalToggle || !document.querySelector(CONFIG.commentSelector)) return;
     var n = document.getElementById(CONFIG.noticeId);
