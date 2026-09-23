@@ -661,8 +661,12 @@ div.addl div.outline-text-4 li {
     line-height: 1.4em;
 }
 
+div.cmtry,
 div.cmtry.outline-6 {
+/*
     background-color: #fcfcfc !important;
+*/
+    background-color: #e6f1ff;
     margin: 1em;
     font-size: .85em;
     padding: 5px 10px;
@@ -699,6 +703,11 @@ div.cmtry {
     font-size: 1em;
     margin: 2em 0 0 0;
     padding: 0 .9em;
+/*
+    background-color: #e6f1ff;
+*/
+    background-color: #e6f1ff;
+
 }
 
 
@@ -728,7 +737,9 @@ div.cmtry h6::after {
     font-style: normal;
     line-height: 1.4em;
     font-weight: normal;
+/*
     background-color: #fcfcfc;
+*/
 }
 
 .cmtry p, .cmtry li {
