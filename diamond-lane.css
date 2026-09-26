@@ -661,7 +661,6 @@ div.addl div.outline-text-4 li {
     line-height: 1.4em;
 }
 
-div.cmtry,
 div.cmtry.outline-6 {
 /*
     background-color: #fcfcfc !important;
@@ -761,7 +760,8 @@ span.xr {
 
 p.see-addl {
     margin: 2em 0 0 0;
-    font-style: italic;
+    font-size: 1.1em;
+    font-weight: bold;
 }
 
 /* Collapsible "Comment" entries: see CLAUSE TOOLS at the end of this file and Part 2 of
