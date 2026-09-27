@@ -284,11 +284,11 @@
     // {date} = the copier's local date as YYYY-MM-DD; {rule} = the Clause's section number,
     // e.g. "4.1"; {url} = link to that Clause on the published site. If the Clause has no number, legendNoNumberHtml is used instead. To restore emphasis, wrap text in <i>/<b>.
     legendHtml: 'Copied and pasted {date} from <a href="{url}">Clause {rule}</a> of the Diamond Lane Clauses at ' +
-                '<a href="https://diamondlaneprotocol.org">https://diamondlaneprotocol.org</a> \u2014 ' +
+                '<a href="https://diamondlaneclauses.org">https://diamondlaneclauses.org</a> \u2014 ' +
                 'each party certifies that it has not changed the text below ' +
                 'from the Diamond Lane version without redlining it.',
     legendNoNumberHtml: 'Copied and pasted {date} from the Diamond Lane Clauses at ' +
-                '<a href="https://diamondlaneprotocol.org">https://diamondlaneprotocol.org</a> \u2014 ' +
+                '<a href="https://diamondlaneclauses.org">https://diamondlaneclauses.org</a> \u2014 ' +
                 'each party certifies that it has not changed the text below ' +
                 'from the Diamond Lane version without redlining it.',
 
@@ -328,16 +328,35 @@
     addendumButton: true,
     addendumTitle: 'Diamond Lane Addendum',
     // {date} = generation date (YYYY-MM-DD); {count} = number of Clauses.
+    // "Build Full Document": every Clause on the page, top to bottom, no selection needed.
+    fullDocButtonLabel: 'Create record copy w/ all Clauses',
+    fullDocTitle: 'The Diamond Lane Clauses',
+    // {timestamp} = UTC date/time when built, e.g. "2026-09-21 21:47 UTC". {url} = the site link below.
+    fullDocSubtitleHtml: 'Downloaded {timestamp} from <a href="{url}">{url}</a>',
+    fullDocUrl: 'https://diamondlaneclauses.org',
+    fullDocFileBase: 'Diamond-Lane-Clauses',
+
     addendumPrefaceHtml: 'Generated {date} from the Diamond Lane Clauses at ' +
-                '<a href="https://diamondlaneprotocol.org">https://diamondlaneprotocol.org</a> \u2014 ' +
+                '<a href="https://diamondlaneclauses.org">https://diamondlaneclauses.org</a> \u2014 ' +
                 'each party certifies that it has not changed the text below ' +
                 'from the Diamond Lane version without redlining it.',
     contentsLabel: 'Clauses included:',   // list of the included Clauses under the preface ('' = no list)
-    // Addendum heading sizes. Clause titles are <h2> in the generated page (numbered sub-provision
-    // titles are <h3>, 12pt). Keep addendumTitleSize larger than clauseTitleSize.
+    // Build Full Document only: group Clauses under the chapter (<h2>) each one falls under on the
+    // live page, in document order. Each chapter starts on a new page, with its own title and a
+    // local table of contents (Clauses only, not their numbered sub-provisions).
+    groupIntoChapters: true,
+    chapterTitleHtml: 'Chapter {num}&nbsp;&nbsp;&nbsp;{title}',
+    chapterContentsLabel: 'Clauses in this chapter:',
+    // Full-Document main table of contents lists chapters, not individual Clauses.
+    fullDocContentsLabel: 'Chapters:',
+    // Headings are <h1> ADDENDUM/full-document title, <h2 class="chapter-title"> chapter (Build
+    // Full Document only), <h2 class="clause-title"> Clause title, <h3 class="section-heading">
+    // numbered sub-provisions. Keep these in descending order: addendumTitleSize > chapterTitleSize
+    // > clauseTitleSize > the section-heading size set on .section-heading below.
     addendumTitleSize: '20pt',
-    clauseTitleSize: '18pt',
-    // Font for the numbered sub-provision headings (<h3> in the generated page).
+    chapterTitleSize: '19pt',
+    clauseTitleSize: '15pt',
+    // Font for the numbered sub-provision headings (h3.section-heading in the generated page).
     provisionHeadingFont: '"Helvetica Neue", Helvetica, Arial, sans-serif',
     sourceLabel: 'Source: ',    // printed before the source URL under each Clause heading
     pageBreakBetweenClauses: false,
@@ -358,7 +377,7 @@
     stripSoftHyphens: true,     // remove U+00AD (&shy;) so Word text stays searchable
     // Internal links (href="#...") become absolute links into the published Protocol.
     // Set to '' to strip them to plain text instead.
-    internalLinkBase: 'https://diamondlaneprotocol.org/',
+    internalLinkBase: 'https://diamondlaneclauses.org/',
     removeSelectors: [          // everything matching is deleted from the copy
       '[class~="cmtry"]',       // commentary (any element, incl. Org's outline-N cmtry containers)
       '[role="doc-toc"]',       // every table of contents, at any depth
@@ -455,14 +474,17 @@
       title.insertBefore(document.createTextNode(CONFIG.titlePrefix), title.firstChild);
     }
 
-    // 4. links: keep them all; make internal ones absolute so they work outside the page
+    // 4. links: keep them all. A link to another Clause included in THIS document (opts.idToAnchor)
+    // points at that Clause's own anchor here; any other internal link becomes absolute so it still
+    // works outside the page.
     root.querySelectorAll('a').forEach(function (a) {
       var href = a.getAttribute('href');
-      if (!href) { if (a.textContent.trim()) unwrap(a); else remove(a); }
-      else if (href.charAt(0) === '#') {
-        if (CONFIG.internalLinkBase) a.setAttribute('href', CONFIG.internalLinkBase + href);
-        else unwrap(a);
-      }
+      if (!href) { if (a.textContent.trim()) unwrap(a); else remove(a); return; }
+      if (href.charAt(0) !== '#') return;
+      var anchor = opts.idToAnchor && opts.idToAnchor[href.slice(1)];
+      if (anchor) a.setAttribute('href', '#' + anchor);
+      else if (CONFIG.internalLinkBase) a.setAttribute('href', CONFIG.internalLinkBase + href);
+      else unwrap(a);
     });
 
     // 5. plain formatting: no inline styling, no headings, no wrapper divs
@@ -560,6 +582,27 @@
     return sp ? sp.textContent.replace(/[^0-9A-Za-z.\-]/g, '').replace(/\.+$/, '') : '';
   }
 
+  // Build Full Document: the chapter (one heading level up, e.g. <h2>) that a Clause's own
+  // heading (e.g. <h3>) sits under on the live page. Generic on purpose — it doesn't assume any
+  // class name, just Org's own nesting (the container a heading level up has that heading as its
+  // first child), so it keeps working if the site's container classes ever change.
+  function chapterHeadingFor(h) {
+    var want = 'H' + (+h.tagName.charAt(1) - 1), anc = h.parentElement;
+    while (anc) {
+      if (anc.firstElementChild && anc.firstElementChild.tagName === want) return anc.firstElementChild;
+      anc = anc.parentElement;
+    }
+    return null;
+  }
+
+  // A chapter heading's title text, with its own number ("6.") and any removed elements (comments,
+  // buttons) stripped — e.g. "Payments" from "6.  Payments".
+  function chapterTitleText(h) {
+    var t = displayTitle(h), num = ruleNumber(h);
+    if (num) t = t.replace(new RegExp('^' + num.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\.?\\s*'), '');
+    return t;
+  }
+
   function build(id) {
     var h = headingForId(id);
     if (!h) return null;
@@ -649,7 +692,7 @@
   }
 
   function clauseUrl(id) {
-    return (CONFIG.internalLinkBase || 'https://diamondlaneprotocol.org/') + '#' + encodeURIComponent(id);
+    return (CONFIG.internalLinkBase || 'https://diamondlaneclauses.org/') + '#' + encodeURIComponent(id);
   }
 
   function displayTitle(h) {
@@ -756,6 +799,7 @@
       msgHtml = 'List restored.';
     }
     else if (act === 'build') { openAddendum(); return; }
+    else if (act === 'buildall') { openFullDocument(); return; }
     else if (act === 'link') { copyLink(); return; }
     changed();
   }
@@ -766,9 +810,10 @@
     '.toolbar button{margin-right:.5em;padding:.35em .9em;font:inherit;cursor:pointer}' +
     'main{max-width:7in;margin:0 auto;padding:.6in}' +
     'h1{font-size:' + CONFIG.addendumTitleSize + ';margin:0 0 .6em}' +
-    'h2{font-size:' + CONFIG.clauseTitleSize + ';margin:2.4em 0 .15em;break-after:avoid}' +
-    'h3{font-family:' + CONFIG.provisionHeadingFont + ';font-size:12pt;font-weight:normal;font-style:italic;margin:1.1em 0 .3em;break-after:avoid}' +
-    'h3 i,h3 em{font-style:normal}' +
+    '.chapter-title{font-size:' + CONFIG.chapterTitleSize + ';margin:0 0 .5em;break-after:avoid}' +
+    '.clause-title{font-size:' + CONFIG.clauseTitleSize + ';margin:2.4em 0 .15em;break-after:avoid}' +
+    '.chapter .clause-title:first-of-type{margin-top:1.2em}' +
+    '.section-heading{font-family:' + CONFIG.provisionHeadingFont + ';font-size:12pt;font-weight:bold;font-style:normal;margin:1.1em 0 .3em;break-after:avoid}' +
     'h4,h5,h6{font-size:11pt;margin:1em 0 .3em;break-after:avoid}' +
     'p{margin:.5em 0}' +
     '.src{margin:0 0 .9em;font-size:9.5pt;color:#333;overflow-wrap:anywhere}' +
@@ -780,20 +825,27 @@
     '@page{margin:.9in}' +
     '@media print{.no-print{display:none!important}main{max-width:none;padding:0}}';
 
-  // One cleaned DOM tree per selected Clause: <h2> heading, "Source:" line, then the Clause text.
-  function compileSections(ids) {
+  // One cleaned DOM tree per selected Clause: <h2 class="clause-title"> heading, "Source:" line,
+  // then the Clause text (numbered sub-provisions get class="section-heading"). opts.idToAnchor,
+  // when given, rewrites "#..." links that target another included Clause to point at that
+  // Clause's own anchor within this document, instead of out to the published site.
+  function compileSections(ids, opts) {
+    opts = opts || {};
     var out = [];
     (ids || state.ids).forEach(function (id) {
       var h = headingForId(id);
       if (!h) return;
       var base = +h.tagName.charAt(1);
-      var root = clean(cloneRule(h), { addendum: true });
+      var root = clean(cloneRule(h), { addendum: true, idToAnchor: opts.idToAnchor });
       [].slice.call(root.childNodes).forEach(function (x) {
         if (x.nodeType === 3 && !x.nodeValue.trim()) remove(x);
       });
       // Clause heading becomes <h2>; sub-provision headings shift down with it.
       [].slice.call(root.querySelectorAll(HEADING)).forEach(function (x) {
-        var e = document.createElement('h' + Math.min(6, Math.max(2, +x.tagName.charAt(1) - base + 2)));
+        var offset = +x.tagName.charAt(1) - base;
+        var e = document.createElement('h' + Math.min(6, Math.max(2, offset + 2)));
+        if (offset === 0) e.className = 'clause-title';
+        else if (offset === 1) e.className = 'section-heading';
         while (x.firstChild) e.appendChild(x.firstChild);
         x.parentNode.replaceChild(e, x);
       });
@@ -816,22 +868,87 @@
     return CONFIG.addendumPrefaceHtml.replace(/\{date\}/g, date || today()).replace(/\{count\}/g, n);
   }
 
-  function buildAddendumHtml() {
-    var ids = state.ids.slice(), date = today(), roots = compileSections(ids), sections = [], toc = '';
-    if (!roots.length) return '';
-    roots.forEach(function (root, i) {
-      sections.push('<section class="clause" id="clause-' + (i + 1) + '"' +
-        (CONFIG.pageBreakBetweenClauses && i ? ' style="break-before:page"' : '') +
-        '>' + root.innerHTML + '</section>');
+  // "2026-09-21 21:47 UTC"
+  function utcStamp() {
+    var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; };
+    return d.getUTCFullYear() + '-' + p(d.getUTCMonth() + 1) + '-' + p(d.getUTCDate()) + ' ' +
+      p(d.getUTCHours()) + ':' + p(d.getUTCMinutes()) + ' UTC';
+  }
+
+  // Every Clause on the page, top to bottom (document order), regardless of the Addendum list.
+  function allClauseIds() {
+    return findRuleHeadings().map(function (h) { return h.id; });
+  }
+
+  // Groups ids into consecutive runs that share the same chapter heading (the live page's <h2>
+  // one level above the Clause's own heading). A run whose Clauses have no chapter (chapterEl null)
+  // is a group too, just one that gets no chapter title, local contents list, or page break.
+  // Groups ids into consecutive runs that share the same chapter heading (the live page's <h2>
+  // one level above the Clause's own heading). A run whose Clauses have no chapter (chEl null) is
+  // a group too, just one that gets no chapter title, local contents list, or forced page break.
+  function groupByChapter(ids) {
+    var groups = [], cur = null;
+    ids.forEach(function (id) {
+      var h = headingForId(id), chEl = h && chapterHeadingFor(h);
+      if (!cur || cur.chEl !== chEl) { cur = { chEl: chEl, ids: [] }; groups.push(cur); }
+      cur.ids.push(id);
     });
-    if (CONFIG.contentsLabel) {
-      toc = '<p class="toc-label">' + esc(CONFIG.contentsLabel) + '</p><ul class="toc">' +
-        roots.map(function (r, i) {
-          return '<li><a href="#clause-' + (i + 1) + '">' + esc(clauseTitle(r)) + '</a></li>';
-        }).join('') + '</ul>';
-    }
-    var preface = prefaceHtml(roots.length, date);
-    var dl = 'Addendum-' + date + '.html', wf = 'Addendum-' + date + '.docx';
+    return groups;
+  }
+
+  function buildAddendumHtml(opts) {
+    opts = opts || {};
+    var ids = (opts.ids || state.ids).slice(), date = today();
+    var title = opts.title || CONFIG.addendumTitle;
+    var preface = opts.prefaceHtml || prefaceHtml(ids.length, date);
+    var endMarker = 'endMarker' in opts ? opts.endMarker : CONFIG.endMarker;
+    var fileBase = opts.fileBase || 'Addendum';
+    var chaptered = !!(opts.fullDocument && CONFIG.groupIntoChapters);
+    if (!ids.length) return '';
+
+    // Anchor ids ("clause-N") are assigned up front, by position in the whole document, so a
+    // cross-reference to a later Clause can be rewritten before that Clause is even reached.
+    var idToAnchor = {};
+    ids.forEach(function (id, i) { idToAnchor[id] = 'clause-' + (i + 1); });
+    var linkMap = opts.fullDocument ? idToAnchor : null;
+
+    var groups = chaptered ? groupByChapter(ids) : [{ chEl: null, ids: ids }];
+    var sections = [], mainToc = [], n = 0;
+    groups.forEach(function (g) {
+      var roots = compileSections(g.ids, { idToAnchor: linkMap });
+      var clauses = roots.map(function (root) {
+        n++;
+        var html = '<section class="clause" id="clause-' + n + '"' +
+          (CONFIG.pageBreakBetweenClauses && n > 1 ? ' style="break-before:page"' : '') +
+          '>' + root.innerHTML + '</section>';
+        return { html: html, title: clauseTitle(root), anchor: 'clause-' + n };
+      });
+      if (g.chEl) {
+        var chNum = ruleNumber(g.chEl), chTitle = chapterTitleText(g.chEl);
+        var chAnchor = 'chapter-' + (mainToc.length + 1);
+        mainToc.push({ anchor: chAnchor, label: esc(chNum) + '. ' + esc(chTitle) });
+        var localToc = '<p class="toc-label">' + esc(CONFIG.chapterContentsLabel) + '</p><ul class="toc">' +
+          clauses.map(function (c) { return '<li><a href="#' + c.anchor + '">' + esc(c.title) + '</a></li>'; }).join('') +
+          '</ul>';
+        sections.push('<section class="chapter" id="' + chAnchor + '"' +
+          (mainToc.length > 1 ? ' style="break-before:page"' : '') + '>' +
+          '<h2 class="chapter-title">' + CONFIG.chapterTitleHtml.replace(/\{num\}/g, esc(chNum)).replace(/\{title\}/g, esc(chTitle)) + '</h2>' +
+          localToc + clauses.map(function (c) { return c.html; }).join('\n') + '</section>');
+      } else {
+        clauses.forEach(function (c) {
+          if (!chaptered) mainToc.push({ anchor: c.anchor, label: esc(c.title) });
+          sections.push(c.html);
+        });
+      }
+    });
+
+    var tocLabel = chaptered ? CONFIG.fullDocContentsLabel : CONFIG.contentsLabel;
+    var toc = (tocLabel && mainToc.length)
+      ? '<p class="toc-label">' + esc(tocLabel) + '</p><ul class="toc">' +
+        mainToc.map(function (t) { return '<li><a href="#' + t.anchor + '">' + t.label + '</a></li>'; }).join('') + '</ul>'
+      : '';
+    var dl = fileBase + '-' + date + '.html', wf = fileBase + '-' + date + '.docx';
+    var showWord = !opts.fullDocument;   // full document is print/PDF or HTML only, for now
     // "Download HTML": saves this page without the toolbar and scripts.
     var script = '(function(){var b=document.getElementById("dl");if(!b)return;' +
       'b.addEventListener("click",function(){var c=document.documentElement.cloneNode(true);' +
@@ -840,7 +957,7 @@
       'var a=document.createElement("a");a.href=u;a.download=b.getAttribute("data-file");' +
       'document.body.appendChild(a);a.click();document.body.removeChild(a);});})();';
     // "Word (.docx)": asks the page that built this Addendum (window.opener) to create the file.
-    script += '(function(){var w=document.getElementById("word");if(!w)return;var m=document.getElementById("wordmsg");' +
+    if (showWord) script += '(function(){var w=document.getElementById("word");if(!w)return;var m=document.getElementById("wordmsg");' +
       'w.addEventListener("click",function(){var o;' +
       'try{o=window.opener;if(!o||o.closed||!o.CopyRule||!o.CopyRule.wordFile)throw 0;}catch(e){' +
       'm.textContent="Word export needs the page that built this Addendum to still be open (and to be the published site, not a local file).";return;}' +
@@ -852,25 +969,45 @@
       '.then(function(){w.disabled=false;w.textContent=t;});});})();';
     return '<!doctype html>\n<html lang="en"><head><meta charset="utf-8">' +
       '<meta name="viewport" content="width=device-width,initial-scale=1">' +
-      '<title>' + esc(CONFIG.addendumTitle + ' \u2014 ' + date) + '</title>' +
+      '<title>' + esc(title + ' \u2014 ' + date) + '</title>' +
       '<style>' + DOC_CSS + '</style></head><body>' +
       '<div class="toolbar no-print" id="bar">' +
       '<button type="button" onclick="window.print()">Print / Save as PDF</button>' +
       '<button type="button" id="dl" data-file="' + esc(dl) + '">Download HTML</button>' +
-      '<button type="button" id="word" data-file="' + esc(wf) + '">Word (.docx)</button>' +
-      '<span id="wordmsg" role="status"></span></div>' +
-      '<main><h1>' + esc(CONFIG.addendumTitle) + '</h1><p class="preface">' + preface + '</p>' + toc +
+      (showWord ? '<button type="button" id="word" data-file="' + esc(wf) + '">Word (.docx)</button>' +
+      '<span id="wordmsg" role="status"></span>' : '') + '</div>' +
+      '<main><h1>' + esc(title) + '</h1><p class="preface">' + preface + '</p>' + toc +
       sections.join('\n') +
-      (CONFIG.endMarker ? '<p class="end">' + esc(CONFIG.endMarker) + '</p>' : '') +
+      (endMarker ? '<p class="end">' + esc(endMarker) + '</p>' : '') +
       '</main><script>' + script + '<' + '/script></body></html>';
   }
 
-  function openAddendum() {
-    var html = buildAddendumHtml();
-    if (!html) { setMsg('Add at least one Clause first.'); return; }
+  function openBuiltPage(html, emptyMsg, label) {
+    if (!html) { setMsg(emptyMsg); return; }
     var url = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
     var win = window.open(url, '_blank');
-    if (!win) setMsg('Your browser blocked the pop-up. <a href="' + url + '" target="_blank" rel="opener">Open the Addendum</a>');
+    if (!win) setMsg('Your browser blocked the pop-up. <a href="' + url + '" target="_blank" rel="opener">Open the ' + label + '</a>');
+  }
+
+  function openAddendum() {
+    openBuiltPage(buildAddendumHtml(), 'Add at least one Clause first.', 'Addendum');
+  }
+
+  // Every Clause on the page, top to bottom; no certification, since nothing was chosen or omitted.
+  // Grouped into chapters (CONFIG.groupIntoChapters) and, unlike a curated Addendum, its
+  // cross-references point at other Clauses within this same document rather than back to the site.
+  function openFullDocument() {
+    var ids = allClauseIds();
+    var html = buildAddendumHtml({
+      ids: ids,
+      fullDocument: true,
+      title: CONFIG.fullDocTitle,
+      prefaceHtml: CONFIG.fullDocSubtitleHtml.replace(/\{timestamp\}/g, utcStamp())
+        .replace(/\{url\}/g, esc(CONFIG.fullDocUrl)),
+      endMarker: '',
+      fileBase: CONFIG.fullDocFileBase
+    });
+    openBuiltPage(html, 'No Clauses were found on this page.', 'document');
   }
 
   /* ---------- Word (.docx) export ---------- */
@@ -984,7 +1121,7 @@
     if (!secs.length) return Promise.reject(new Error('no Clauses selected'));
     var ctx = { lists: 0, breakNext: false }, kids = [], pf = document.createElement('p');
 
-    kids.push(new D.Paragraph({ heading: D.HeadingLevel.HEADING_1, children: [new D.TextRun(CONFIG.addendumTitle)] }));
+    kids.push(new D.Paragraph({ heading: D.HeadingLevel.HEADING_1, children: [new D.TextRun(o.title || CONFIG.addendumTitle)] }));
     pf.innerHTML = prefaceHtml(secs.length, o.date);
     kids.push(new D.Paragraph({ children: inlineRuns(D, pf, []) }));
     if (CONFIG.contentsLabel) {
@@ -1016,8 +1153,8 @@
       };
     }
     var doc = new D.Document({
-      creator: 'diamondlaneprotocol.org',
-      title: CONFIG.addendumTitle,
+      creator: 'diamondlaneclauses.org',
+      title: o.title || CONFIG.addendumTitle,
       styles: {
         default: {
           document: { run: { font: CONFIG.docxFont, size: 22 }, paragraph: { spacing: { after: 120 } } },
@@ -1045,7 +1182,7 @@
   /* ---------- shareable selection link ---------- */
 
   function shareUrl() {
-    return (CONFIG.internalLinkBase || 'https://diamondlaneprotocol.org/') +
+    return (CONFIG.internalLinkBase || 'https://diamondlaneclauses.org/') +
       '?addendum=' + state.ids.map(encodeURIComponent).join(',');
   }
 
@@ -1061,7 +1198,7 @@
     );
   }
 
-  // Opening a link like  https://diamondlaneprotocol.org/?addendum=k-adopt,k-nomen  loads that list.
+  // Opening a link like  https://diamondlaneclauses.org/?addendum=k-adopt,k-nomen  loads that list.
   function applyLinkParam() {
     var raw = null;
     // 'appendix' is still accepted so links made before the rename keep working.
@@ -1192,7 +1329,25 @@
     syncGlobal();
   }
 
-  // Part 1 (above) has already created the notice by the time this runs.
+  // Standalone button, independent of the Addendum list: builds a document of every Clause on
+  // the page. Placed near the top of the content, so it's reachable without picking anything or
+  // scrolling down to the corner panels first.
+  function addFullDocPanel() {
+    if (document.querySelector('[data-cr-act="buildall"]') || !document.querySelector(CONFIG.ruleContainerSelector)) return;
+    var bar = document.createElement('div'), b = document.createElement('button');
+    bar.className = 'cr-fulldoc-bar';
+    b.type = 'button';
+    b.className = 'cr-fulldoc-btn';
+    b.setAttribute('data-cr-act', 'buildall');
+    b.textContent = CONFIG.fullDocButtonLabel;
+    bar.appendChild(b);
+    var host = document.getElementById('content') || document.body, title = null;
+    for (var c = host.firstElementChild; c; c = c.nextElementSibling) {
+      if (c.tagName === 'H1') { title = c; break; }
+    }
+    host.insertBefore(bar, title ? title.nextSibling : host.firstChild);
+  }
+
   function placeGlobalToggle() {
     if (!CONFIG.globalToggle || !document.querySelector(CONFIG.commentSelector)) return;
     var n = document.getElementById(CONFIG.noticeId);
@@ -1265,6 +1420,7 @@
     }
     placeGlobalToggle();
     if (CONFIG.addendumButton) {
+      addFullDocPanel();
       findRuleHeadings().forEach(function (h) {
         if (h.querySelector('[data-add-addendum]')) return;
         var a = document.createElement('button');

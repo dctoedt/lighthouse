@@ -393,9 +393,7 @@ div.toc-local {
 }
 
 
-.addl div.toc-local,
 .addl-body div.toc-local,
-.addl [role="doc-toc"],
 .addl-body [role="doc-toc"] {
     background-color: #fcfcfc !important;
     border-left-color: #9fc5e8;
@@ -486,9 +484,7 @@ p-h-b {
 }
 
 
-div.pr-top div.addl .outline-text-4,
 div.pr-top div.addl-body .outline-text-4,
-div.pr-alt div.addl .outline-text-5,
 div.pr-sub div.addl-body .outline-text-5 {
     background-color: #fcfcfc;
     padding: 0;
@@ -649,48 +645,77 @@ span.section-number-5 {
 
 
 /* ========================================================================
-   FIELD NOTES / ADDITIONAL NOTES
+   CLAUSE PORTALS: NOTES / ADDITIONAL READING
    ======================================================================== */
 
-div.addl div.outline-text-3 p,
-div.addl div.outline-text-4 p,
-div.addl div.outline-text-3 li,
-div.addl div.outline-text-4 li {
-    font-family: Georgia, serif;
-    font-size: .9em;
-    line-height: 1.4em;
-}
-
-div.cmtry.outline-6 {
 /*
-    background-color: #fcfcfc !important;
-*/
-    background-color: #e6f1ff;
-    margin: 1em;
-    font-size: .85em;
-    padding: 5px 10px;
+ * A .pr-top section supplies the blue Clause field, including the Clause's
+ * h4 headings.  An .addl section is therefore deliberately pulled back out
+ * to the page background: it is navigation associated with the Clause, not
+ * part of the Clause text.
+ */
+
+div.pr-top div.addl.outline-4 {
+    background-color: transparent;
+    margin: 1.6em 1em 0 1.5em;
+    padding: 0;
 }
 
-.addl {
-    margin-left: 1em;
-}
-
-.addl h4, .addl-top h4, div.cmtry h4 {
-    margin: 0 0 -1em -1em !important;
-}
-
-.addl h4 {
-    font-size: 1.1em;
-}
-
-.addl-top h4 {
-    font-size: 1em !important;
-}
-
-.addl h5 {
+/* "Notes (not part of this Clause)" / "Additional reading (...)" */
+div.pr-top div.addl.outline-4 > h4 {
+    margin: 0 0 .5em 0 !important;
+    padding: 0;
+    font-family: sans-serif;
     font-size: 1em;
+    font-weight: normal;
+    line-height: 1.4;
 }
 
+/* Portal material uses the normal page typography, not Clause typography. */
+div.pr-top div.addl.outline-4 > .outline-text-4 {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, serif;
+    font-size: 1em;
+    line-height: 1.6em;
+}
+
+/* Linked remote-section title, e.g. "Effective date:" */
+div.pr-top div.addl.outline-4 > .outline-text-4 > p:first-child {
+    margin: 0 0 .25em 0;
+}
+
+/* Remote TOC: navigation, not another shaded or bordered box. */
+div.pr-top div.addl.outline-4 div.toc-local,
+div.pr-top div.addl.outline-4 [role="doc-toc"] {
+    margin: 0 0 .5em 0;
+    padding: 0;
+    background: transparent !important;
+    border: 0 !important;
+}
+
+div.pr-top div.addl.outline-4 [role="doc-toc"] ul {
+    margin-top: .25em;
+    margin-bottom: 0;
+}
+
+div.pr-top div.addl.outline-4 [role="doc-toc"] ul li {
+    margin-top: .35em;
+    margin-bottom: .35em;
+}
+
+div.pr-top div.addl.outline-4 [role="doc-toc"] p {
+    font-family: serif;
+}
+
+
+div.addl.outline-4 [role="doc-toc"] a, 
+div.addl.outline-4 [role="doc-toc"] b,
+div.addl.outline-4 [role="doc-toc"] i {
+    font-family: serif;
+    color: #444;
+}
 
 /* ========================================================================
    COMMENTARY / NOTES (.cmtry class) - FIXED
@@ -702,11 +727,6 @@ div.cmtry {
     font-size: 1em;
     margin: 2em 0 0 0;
     padding: 0 .9em;
-/*
-    background-color: #e6f1ff;
-*/
-    background-color: #e6f1ff;
-
 }
 
 
@@ -736,9 +756,7 @@ div.cmtry h6::after {
     font-style: normal;
     line-height: 1.4em;
     font-weight: normal;
-/*
     background-color: #fcfcfc;
-*/
 }
 
 .cmtry p, .cmtry li {
@@ -760,8 +778,7 @@ span.xr {
 
 p.see-addl {
     margin: 2em 0 0 0;
-    font-size: 1.1em;
-    font-weight: bold;
+    font-style: italic;
 }
 
 /* Collapsible "Comment" entries: see CLAUSE TOOLS at the end of this file and Part 2 of
@@ -1892,6 +1909,15 @@ div.footdef {
 }
 .cr-global-toggle:hover, .cr-global-toggle:focus-visible { background: var(--lh-blue-fill, #e8f0fb); }
 
+/* "Create record copy w/ all Clauses" — standalone, not tied to the Addendum list/panel below */
+.cr-fulldoc-bar { margin: .6em 0 1em; }
+.cr-fulldoc-btn {
+  padding: .25em .8em; font: inherit; font-size: .9em; cursor: pointer;
+  color: var(--lh-blue, #1f4e8c); background: transparent;
+  border: 1px solid currentColor; border-radius: .3em;
+}
+.cr-fulldoc-btn:hover, .cr-fulldoc-btn:focus-visible { background: var(--lh-blue-fill, #e8f0fb); }
+
 /* Addendum list panel */
 .cr-panel {
   position: fixed; right: 1em; bottom: 1em; z-index: 1000;
@@ -1920,6 +1946,6 @@ div.footdef {
 .cr-panel-msg { margin: .5em 0 0; }
 .cr-panel-msg:empty { display: none; }
 @media print {
-  .copy-rule-btn, .copy-rule-add, .cr-global-bar, .cr-notice-extra, .cr-panel { display: none; }
+  .copy-rule-btn, .copy-rule-add, .cr-global-bar, .cr-fulldoc-bar, .cr-notice-extra, .cr-panel { display: none; }
   .cmtry:not(.cr-open) { display: none !important; }
 }
