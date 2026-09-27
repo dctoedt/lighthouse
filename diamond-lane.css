@@ -336,9 +336,10 @@ div.pr-alt .outline-5 h5 em {
     font-style: italic;
 }
 
-h6 {
-    font-weight: normal;
-    margin-top: -3em;
+div.pr-top h6 {
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 0em;
 }
 
 
@@ -448,7 +449,8 @@ span.section-number-4:after {
 
 
 div.pr-top .outline-4,
-div.pr-alt .outline-5 {
+div.pr-alt .outline-5,
+div.pr-sub .outline-5 {
     margin-bottom: -3em;
     line-height: 1.8em;
     font-family: sans-serif;
@@ -525,11 +527,22 @@ div.pr-top.outline-3 {
 }
 
 /* Clause text: label above the operative-text field — but commenting out the text */
-div.pr-top div.outline-4 {
+div.pr-top div.outline-4,
+div.pr-top.outline-5,
+div.pr-top.outline-6 {
     background-color: #e6f1ff;
     position: relative;
-    margin: 0 1em 0 1em; 
     padding: .55em .9em .4em .9em;
+}
+
+div.pr-top div.outline-4 {
+    margin: 0 1em 0 1em; 
+}
+
+div.pr-top.outline-5, 
+div.pr-top.outline-6  {
+    margin: 0 3em 0 3em; 
+
 }
 
 /*
@@ -551,7 +564,8 @@ div.pr-top div.outline-4 h4 {
     padding: 1em 0;
 }
 
-div.pr-top div.outline-5 {
+div.pr-top div.outline-5,
+div.pr-top.outline-6, {
     margin-bottom: 3em;
 }
 
