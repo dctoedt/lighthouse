@@ -59,28 +59,23 @@
 
     var contentEl = document.getElementById("content");
 
-    /* Centre the notice over the content column (i.e. over the page title). It is position:fixed
-       (see #nla-notice in TH.css), so it stays in view while scrolling. It is kept clear of the
-       hamburger button on the left and of the fixed .hlt bar (if shown) on the right. Because it
-       is centred with translateX(-50%), a change in its width (copy-rule.js adds a link to it)
-       only needs another call, which copy-rule.js triggers with a resize event. */
+    /* Position the notice to the side of the content column (to the right, or wrapped to the
+       corner if there isn't room), so it never sits over the page's own top line — important now
+       that clicking a link to a Clause can land right at the top of the viewport. */
     function positionNlaNotice() {
       if (!contentEl) { return; }
-      var rect   = contentEl.getBoundingClientRect();
-      var width  = nlaNotice.offsetWidth || 0;
-      var center = rect.left + rect.width / 2;
-      if (width) {
-        var hlt = document.querySelector(".hlt");
-        var limitRight = window.innerWidth - 8;
-        if (hlt && hlt.offsetWidth) {
-          limitRight = Math.min(limitRight, hlt.getBoundingClientRect().left - 8);
-        }
-        center = Math.min(center, limitRight - width / 2);
-        center = Math.max(center, 72 + width / 2);          /* clear of the hamburger button */
+      var rect = contentEl.getBoundingClientRect();
+      var noticeWidth = nlaNotice.offsetWidth || 160;
+      var gap = 12;
+      var availableRight = window.innerWidth - rect.right;
+      nlaNotice.style.transform = "none";
+      if (availableRight >= noticeWidth + gap) {
+        nlaNotice.style.left  = (rect.right + gap) + "px";
+        nlaNotice.style.right = "auto";
+      } else {
+        nlaNotice.style.left  = "auto";
+        nlaNotice.style.right = "0.5rem";
       }
-      nlaNotice.style.left      = Math.round(center) + "px";
-      nlaNotice.style.right     = "auto";
-      nlaNotice.style.transform = "translateX(-50%)";
     }
 
     positionNlaNotice();
@@ -271,8 +266,20 @@
   'use strict';
 
   var CONFIG = {
-    // A Rule is any element with this class (Org's :HTML_CONTAINER_CLASS: pr-top).
+    // A Clause is any element with this class (Org's :HTML_CONTAINER_CLASS: pr-top).
     ruleContainerSelector: '.pr-top',
+    // Inside a Clause, the operative language may be boxed off in one or more of these ("Clause
+    // text" in Org, :HTML_CONTAINER_CLASS: pr-txt) rather than filling the whole Clause. See
+    // extractOperativeContent.
+    clauseTextSelector: '.pr-txt',
+    // Show each such box's own inherited section number (e.g. "4.1.1") live on the page, not just
+    // when an Addendum or record copy is built. false leaves the box's on-page heading as written
+    // (the number is still added when a document is built, either way).
+    numberClauseTextHeadings: true,
+    // A trailing tag on a Clause's own title, kept on the live page but dropped everywhere a built
+    // document (Addendum, record copy, Word) shows or lists that title — e.g. "Entire Agreement
+    // Clause (and notes)" becomes "Entire Agreement Clause". Case-insensitive; add more as needed.
+    titleSuffixesToStrip: ['(and notes)'],
 
     // Text put in front of the Rule title in the copy ('' for none).
     titlePrefix: 'ADDENDUM: ',
@@ -326,7 +333,7 @@
     // "Add to Addendum" button + "Build Addendum": collect Clauses, then compile them into one
     // standalone HTML page (Print / Save as PDF from there). Runs entirely in the browser.
     addendumButton: true,
-    addendumTitle: 'Diamond Lane Addendum',
+    addendumTitle: 'Diamond Lane Custom Clause Addendum',
     // {date} = generation date (YYYY-MM-DD); {count} = number of Clauses.
     // "Build Full Document": every Clause on the page, top to bottom, no selection needed.
     fullDocButtonLabel: 'Create record copy w/ all Clauses',
@@ -336,7 +343,9 @@
     fullDocUrl: 'https://diamondlaneclauses.org',
     fullDocFileBase: 'Diamond-Lane-Clauses',
 
-    addendumPrefaceHtml: 'Generated {date} from the Diamond Lane Clauses at ' +
+    // {timestamp} = UTC date/time when built, e.g. "2026-09-29 19:50 UTC"; {count} = number of
+    // Clauses included.
+    addendumPrefaceHtml: 'Generated {timestamp} (without annotations) from the Diamond Lane Clauses at ' +
                 '<a href="https://diamondlaneclauses.org">https://diamondlaneclauses.org</a> \u2014 ' +
                 'each party certifies that it has not changed the text below ' +
                 'from the Diamond Lane version without redlining it.',
@@ -403,13 +412,52 @@
 
   /* ---------- locate Rules ---------- */
 
+  // Org sometimes nests a headline's deeper descendants inside its own container div, and
+  // sometimes exports them as flat siblings of it instead (their nominal heading level is still
+  // deeper, just not literally inside the parent's div). Everything below works from the
+  // headings' OWN reading order and levels rather than assuming either shape, so it handles both
+  // — and a document that mixes them.
+  var _allHeadings = null;
+  function allHeadingsInOrder() {
+    if (!_allHeadings) _allHeadings = [].slice.call(document.querySelectorAll(HEADING));
+    return _allHeadings;
+  }
+
+  // The nearest earlier heading (in reading order) that is shallower than h — h's chapter, or,
+  // repeated, each further step up its logical ancestry — regardless of how the HTML nests them.
+  function nearestShallowerHeading(h) {
+    var all = allHeadingsInOrder(), idx = all.indexOf(h), lvl = +h.tagName.charAt(1);
+    for (var i = idx - 1; i >= 0; i--) {
+      if (+all[i].tagName.charAt(1) < lvl) return all[i];
+    }
+    return null;
+  }
+
+  // True if h's own logical ancestry (by level and reading order, not HTML nesting) passes through
+  // another heading whose container also matches selector — regardless of how the HTML nests them.
+  function hasAncestorMatching(h, selector) {
+    var anc = nearestShallowerHeading(h);
+    while (anc) {
+      if (anc.parentElement && anc.parentElement.matches(selector)) return true;
+      anc = nearestShallowerHeading(anc);
+    }
+    return false;
+  }
+
+  // A Clause is any .pr-top whose own container isn't itself sitting inside another Clause (that
+  // would make it a distinct, already-nonexistent case now that "Clause text" boxes use their own
+  // class — see CONFIG.clauseTextSelector — but the check is cheap insurance either way).
   function findRuleHeadings() {
     var out = [];
     document.querySelectorAll(CONFIG.ruleContainerSelector).forEach(function (box) {
       if (box.closest('[class~="cmtry"]')) return;
+      var h = null;
       for (var c = box.firstElementChild; c; c = c.nextElementSibling) {
-        if (/^H[1-6]$/.test(c.tagName)) { if (c.id) out.push(c); break; }
+        if (/^H[1-6]$/.test(c.tagName)) { h = c; break; }
       }
+      if (!h || !h.id) return;
+      if (hasAncestorMatching(h, CONFIG.ruleContainerSelector)) return;
+      out.push(h);
     });
     return out;
   }
@@ -419,18 +467,109 @@
     return el ? el.closest(HEADING) : null;
   }
 
-  // Org wraps heading + body in <div class="outline-N ...">. If missing, fall back to the
-  // heading plus following siblings up to the next same-or-higher-level heading.
+  // Org wraps heading + own text in <div class="outline-N ...">. Gathers h plus everything at a
+  // deeper level up to the next heading at h's own level or shallower, whether that content is
+  // nested inside h's container in the HTML or laid out as flat siblings of it.
   function cloneRule(h) {
-    var p = h.parentElement;
-    if (p && /(^|\s)outline-\d+(\s|$)/.test(p.className)) return p.cloneNode(true);
-    var wrap = document.createElement('div'), lvl = +h.tagName.charAt(1);
-    wrap.appendChild(h.cloneNode(true));
-    for (var s = h.nextElementSibling; s; s = s.nextElementSibling) {
-      if (/^H[1-6]$/.test(s.tagName) && +s.tagName.charAt(1) <= lvl) break;
-      wrap.appendChild(s.cloneNode(true));
+    var p = h.parentElement, hasWrap = p && /(^|\s)outline-\d+(\s|$)/.test(p.className);
+    var root = hasWrap ? p.cloneNode(true) : document.createElement('div');
+    var covered = hasWrap ? [p] : [];
+    if (!hasWrap) {
+      root.appendChild(h.cloneNode(true));
+      for (var s = h.nextElementSibling; s; s = s.nextElementSibling) {
+        if (/^H[1-6]$/.test(s.tagName)) break;   // the sweep below picks up from here
+        root.appendChild(s.cloneNode(true));
+      }
     }
-    return wrap;
+    var lvl = +h.tagName.charAt(1), all = allHeadingsInOrder(), idx = all.indexOf(h);
+    for (var i = idx + 1; i < all.length; i++) {
+      var hh = all[i], hl = +hh.tagName.charAt(1);
+      if (hl <= lvl) break;
+      var cont = hh.parentElement;
+      if (covered.some(function (c) { return c && c.contains(cont); })) continue;   // already cloned
+      var toAppend = (cont && /(^|\s)outline-\d+(\s|$)/.test(cont.className)) ? cont : hh;
+      root.appendChild(toAppend.cloneNode(true));
+      covered.push(toAppend);
+    }
+    return root;
+  }
+
+  // The section number of box's nearest numbered ancestor within root — e.g. "4.1.1" for a box
+  // that sits under an unnumbered "Clause text" heading, itself under the numbered "4.1.1 ..."
+  // heading. Your export nests genuinely from "4.1.1" downward, even though "4.1.1" itself sits as
+  // a flat sibling of the Clause — so this walks root's headings in document order (however deep
+  // each actually sits), not just root's direct children. Called after the Clause's own title
+  // heading has already been moved out of root (see extractOperativeContent below), so root's own
+  // headings never include it — nothing to exclude here.
+  function numberedAncestor(root, box) {
+    var boxHeading = box.firstElementChild;
+    if (!boxHeading || !/^H[1-6]$/.test(boxHeading.tagName)) return '';
+    var headings = [].slice.call(root.querySelectorAll(HEADING));
+    var idx = headings.indexOf(boxHeading), minLvl = +boxHeading.tagName.charAt(1);
+    for (var i = idx - 1; i >= 0; i--) {
+      var hl = +headings[i].tagName.charAt(1);
+      if (hl < minLvl) {
+        var num = ruleNumber(headings[i]);
+        if (num) return num;
+        minLvl = hl;   // unnumbered (e.g. "Clause text"): keep climbing past it
+      }
+    }
+    return '';
+  }
+
+  // Live-page counterpart of numberedAncestor: adds each "Clause text" box's own inherited number
+  // (e.g. "4.1.1") to its heading on the page itself, once, on load — governed by
+  // CONFIG.numberClauseTextHeadings. Marks each one it touches (data-cr-numbered) so a later
+  // Addendum or record-copy build (extractOperativeContent) knows not to add it a second time.
+  function addLiveSectionNumbers() {
+    if (!CONFIG.numberClauseTextHeadings) return;
+    document.querySelectorAll(CONFIG.clauseTextSelector).forEach(function (box) {
+      var bh = box.firstElementChild;
+      if (!bh || !/^H[1-6]$/.test(bh.tagName) || bh.hasAttribute('data-cr-numbered')) return;
+      var anc = nearestShallowerHeading(bh), num = '';
+      while (anc) {
+        num = ruleNumber(anc);
+        if (num) break;
+        anc = nearestShallowerHeading(anc);   // unnumbered (e.g. "Clause text"): keep climbing
+      }
+      if (num) {
+        bh.insertBefore(document.createTextNode(num + '. '), bh.firstChild);
+        bh.setAttribute('data-cr-numbered', '');
+      }
+    });
+  }
+
+  // Some Clauses box off the operative language in one or more "Clause text" containers (Org's
+  // pr-txt, CONFIG.clauseTextSelector), surrounded by explanatory prose that isn't part of the
+  // Clause. When any such box exists, keep only the Clause's own title heading plus those boxes
+  // (each with its own heading, marked so it styles as a section heading below), and drop
+  // everything else. A Clause with no box is returned unchanged.
+  function extractOperativeContent(root) {
+    var raw = [].slice.call(root.querySelectorAll(CONFIG.clauseTextSelector));
+    // Keep only the outermost boxes: a box nested inside ANOTHER box (rare) comes along with its
+    // parent automatically, so don't also list it separately here.
+    var boxes = raw.filter(function (b) {
+      var anc = b.parentElement;
+      while (anc && anc !== root) {
+        if (anc.matches && anc.matches(CONFIG.clauseTextSelector)) return false;
+        anc = anc.parentElement;
+      }
+      return true;
+    });
+    if (!boxes.length) return root;
+    var frag = document.createElement('div'), title = root.firstElementChild;
+    if (title && /^H[1-6]$/.test(title.tagName)) frag.appendChild(title);
+    boxes.forEach(function (box) {
+      var bh = box.firstElementChild;
+      if (bh && /^H[1-6]$/.test(bh.tagName)) {
+        bh.setAttribute('data-cr-section', '');
+        // Already numbered live (addLiveSectionNumbers)? Don't prepend it again.
+        var num = bh.hasAttribute('data-cr-numbered') ? '' : numberedAncestor(root, box);
+        if (num) bh.insertBefore(document.createTextNode(num + '. '), bh.firstChild);
+      }
+      frag.appendChild(box);
+    });
+    return frag;
   }
 
   /* ---------- clean the copy ---------- */
@@ -503,11 +642,12 @@
       root.querySelectorAll('div').forEach(unwrap);
     }
 
-    // 6. strip id/class/style/etc.
+    // 6. strip id/class/style/etc. (data-cr-section is our own marker from extractOperativeContent,
+    // read afterward by compileSections; keep it alive through this cleanup)
     [root].concat([].slice.call(root.querySelectorAll('*'))).forEach(function (n) {
       var keep = KEEP_ATTRS[n.tagName.toLowerCase()] || [], keepV = keepFmt && isVar(n);
       [].slice.call(n.attributes).forEach(function (at) {
-        if (keep.indexOf(at.name) === -1) n.removeAttribute(at.name);
+        if (keep.indexOf(at.name) === -1 && at.name !== 'data-cr-section') n.removeAttribute(at.name);
       });
       if (keepV) n.setAttribute('class', 'v');
     });
@@ -582,17 +722,11 @@
     return sp ? sp.textContent.replace(/[^0-9A-Za-z.\-]/g, '').replace(/\.+$/, '') : '';
   }
 
-  // Build Full Document: the chapter (one heading level up, e.g. <h2>) that a Clause's own
-  // heading (e.g. <h3>) sits under on the live page. Generic on purpose — it doesn't assume any
-  // class name, just Org's own nesting (the container a heading level up has that heading as its
-  // first child), so it keeps working if the site's container classes ever change.
+  // Build Full Document: the chapter that a Clause's own heading sits under — the nearest shallower
+  // heading before it in reading order. Works whether or not the HTML actually nests the Clause
+  // inside the chapter's own container (see the note above allHeadingsInOrder).
   function chapterHeadingFor(h) {
-    var want = 'H' + (+h.tagName.charAt(1) - 1), anc = h.parentElement;
-    while (anc) {
-      if (anc.firstElementChild && anc.firstElementChild.tagName === want) return anc.firstElementChild;
-      anc = anc.parentElement;
-    }
-    return null;
+    return nearestShallowerHeading(h);
   }
 
   // A chapter heading's title text, with its own number ("6.") and any removed elements (comments,
@@ -829,6 +963,29 @@
   // then the Clause text (numbered sub-provisions get class="section-heading"). opts.idToAnchor,
   // when given, rewrites "#..." links that target another included Clause to point at that
   // Clause's own anchor within this document, instead of out to the published site.
+  // Removes a configured trailing tag (CONFIG.titleSuffixesToStrip), such as "(and notes)", from a
+  // Clause's own compiled title heading — e.g. a trailing "<i>(and notes)</i>" — along with the
+  // whitespace before it. Left alone if the title doesn't end with one of those exact tags.
+  function stripTitleSuffixes(heading) {
+    var suffixes = CONFIG.titleSuffixesToStrip || [];
+    if (!suffixes.length) return;
+    while (heading.lastChild && heading.lastChild.nodeType === 3 && !heading.lastChild.nodeValue.trim()) {
+      heading.removeChild(heading.lastChild);
+    }
+    var last = heading.lastChild;
+    if (!last) return;
+    var text = (last.textContent || '').trim().toLowerCase();
+    var hit = suffixes.some(function (s) { return text === s.toLowerCase(); });
+    if (!hit) return;
+    heading.removeChild(last);
+    while (heading.lastChild && heading.lastChild.nodeType === 3 && !heading.lastChild.nodeValue.trim()) {
+      heading.removeChild(heading.lastChild);
+    }
+    if (heading.lastChild && heading.lastChild.nodeType === 3) {
+      heading.lastChild.nodeValue = heading.lastChild.nodeValue.replace(/\s+$/, '');
+    }
+  }
+
   function compileSections(ids, opts) {
     opts = opts || {};
     var out = [];
@@ -836,7 +993,7 @@
       var h = headingForId(id);
       if (!h) return;
       var base = +h.tagName.charAt(1);
-      var root = clean(cloneRule(h), { addendum: true, idToAnchor: opts.idToAnchor });
+      var root = clean(extractOperativeContent(cloneRule(h)), { addendum: true, idToAnchor: opts.idToAnchor });
       [].slice.call(root.childNodes).forEach(function (x) {
         if (x.nodeType === 3 && !x.nodeValue.trim()) remove(x);
       });
@@ -845,8 +1002,9 @@
         var offset = +x.tagName.charAt(1) - base;
         var e = document.createElement('h' + Math.min(6, Math.max(2, offset + 2)));
         if (offset === 0) e.className = 'clause-title';
-        else if (offset === 1) e.className = 'section-heading';
+        else if (offset === 1 || x.hasAttribute('data-cr-section')) e.className = 'section-heading';
         while (x.firstChild) e.appendChild(x.firstChild);
+        if (offset === 0) stripTitleSuffixes(e);
         x.parentNode.replaceChild(e, x);
       });
       var url = clauseUrl(id), src = document.createElement('p');
@@ -865,7 +1023,9 @@
   }
 
   function prefaceHtml(n, date) {
-    return CONFIG.addendumPrefaceHtml.replace(/\{date\}/g, date || today()).replace(/\{count\}/g, n);
+    return CONFIG.addendumPrefaceHtml.replace(/\{date\}/g, date || today())
+      .replace(/\{timestamp\}/g, utcStamp())
+      .replace(/\{count\}/g, n);
   }
 
   // "2026-09-21 21:47 UTC"
@@ -1400,6 +1560,7 @@
   }
 
   function init() {
+    addLiveSectionNumbers();
     if (CONFIG.commentToggles) prepareComments();
     findRuleHeadings().forEach(function (h) {
       if (CONFIG.autoButtons && !document.querySelector('[data-copy-rule="' + h.id + '"]')) {
