@@ -1862,6 +1862,27 @@ div.footdef {
 .copy-rule-add::before { content: "Add to Addendum"; }
 .copy-rule-add[aria-pressed="true"]::before { content: "Added \2713"; }
 
+/* Chapter-level "add every Clause in this chapter" button (div.chap.addn only) */
+.cr-chapter-add {
+  margin-left: .5em;
+  padding: .1em .6em;
+  font: inherit;
+  font-size: .6em;
+  font-weight: normal;
+  line-height: 1.5;
+  vertical-align: middle;
+  color: var(--lh-blue, #1f4e8c);
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: .3em;
+  cursor: pointer;
+  opacity: .8;
+}
+.cr-chapter-add:hover,
+.cr-chapter-add:focus-visible { opacity: 1; background: var(--lh-blue-fill, #e8f0fb); }
+.cr-chapter-add::before { content: "Add Chapter to Addendum"; }
+.cr-chapter-add[aria-pressed="true"]::before { content: "Chapter Added \2713"; }
+
 /* Comments: a .cmtry block shows only its heading until the heading is clicked (copy-rule.js adds
    .cr-open). Delete this rule if you set commentsCollapsedOnLoad: false. (If scripts are off, add a
    <noscript> style that shows them.) */
@@ -1925,6 +1946,6 @@ div.footdef {
 .cr-panel-msg { margin: .5em 0 0; }
 .cr-panel-msg:empty { display: none; }
 @media print {
-  .copy-rule-btn, .copy-rule-add, .cr-global-bar, .cr-fulldoc-bar, .cr-notice-extra, .cr-panel { display: none; }
+  .copy-rule-btn, .copy-rule-add, .cr-chapter-add, .cr-global-bar, .cr-fulldoc-bar, .cr-notice-extra, .cr-panel { display: none; }
   .cmtry:not(.cr-open) { display: none !important; }
 }

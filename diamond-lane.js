@@ -276,6 +276,10 @@
     // when an Addendum or record copy is built. false leaves the box's on-page heading as written
     // (the number is still added when a document is built, either way).
     numberClauseTextHeadings: true,
+    // A chapter (its own <hN> heading's container) carrying BOTH these classes gets a button in
+    // its title that adds every Clause in that chapter to the Addendum in one click (and removes
+    // them again on a second click). Chapters without "addn" are unaffected.
+    chapterAddendumSelector: '.chap.addn',
     // A trailing tag on a Clause's own title, kept on the live page but dropped everywhere a built
     // document (Addendum, record copy, Word) shows or lists that title — e.g. "Entire Agreement
     // Clause (and notes)" becomes "Entire Agreement Clause". Case-insensitive; add more as needed.
@@ -400,6 +404,8 @@
       '[data-copy-rule]',
       '.copy-rule-add',
       '[data-add-addendum]',
+      '.cr-chapter-add',
+      '[data-chapter-addn]',
       '.tag',
       'script', 'style', 'noscript'
     ]
@@ -868,6 +874,15 @@
       b.setAttribute('aria-label', label);
       b.title = label;
     });
+    [].slice.call(document.querySelectorAll('[data-chapter-addn]')).forEach(function (b) {
+      var chH = document.getElementById(b.getAttribute('data-chapter-addn'));
+      var ids = chH ? clauseIdsInChapter(chH) : [];
+      var on = ids.length > 0 && ids.every(function (id) { return state.ids.indexOf(id) !== -1; });
+      var label = on ? 'Remove all Clauses in this chapter from the Addendum' : 'Add all Clauses in this chapter to the Addendum';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.setAttribute('aria-label', label);
+      b.title = label;
+    });
     if (!panel) {
       panel = document.createElement('aside');
       panel.className = 'cr-panel';
@@ -907,6 +922,29 @@
     dropUndo();
     var i = state.ids.indexOf(id);
     if (i === -1) state.ids.push(id); else state.ids.splice(i, 1);
+    setMsg('');
+    changed();
+  }
+
+  // Every top-level Clause whose chapter is exactly chapterHeading (see chapterHeadingFor).
+  function clauseIdsInChapter(chapterHeading) {
+    return findRuleHeadings()
+      .filter(function (h) { return chapterHeadingFor(h) === chapterHeading; })
+      .map(function (h) { return h.id; });
+  }
+
+  // One click adds every Clause in the chapter that isn't already in the Addendum; if they're all
+  // already in, the same click removes them instead (mirrors the per-Clause Add/Remove toggle).
+  function toggleChapter(chapterHeading) {
+    var ids = clauseIdsInChapter(chapterHeading);
+    if (!ids.length) return;
+    dropUndo();
+    var allIn = ids.every(function (id) { return state.ids.indexOf(id) !== -1; });
+    if (allIn) {
+      state.ids = state.ids.filter(function (id) { return ids.indexOf(id) === -1; });
+    } else {
+      ids.forEach(function (id) { if (state.ids.indexOf(id) === -1) state.ids.push(id); });
+    }
     setMsg('');
     changed();
   }
@@ -1538,6 +1576,13 @@
 
     var ad = e.target.closest && e.target.closest('[data-add-addendum]');
     if (ad) { e.preventDefault(); toggleId(ad.getAttribute('data-add-addendum')); return; }
+    var ca = e.target.closest && e.target.closest('[data-chapter-addn]');
+    if (ca) {
+      e.preventDefault();
+      var chH = document.getElementById(ca.getAttribute('data-chapter-addn'));
+      if (chH) toggleChapter(chH);
+      return;
+    }
     var act = e.target.closest && e.target.closest('[data-cr-act]');
     if (act) { e.preventDefault(); panelAction(act); return; }
 
@@ -1590,6 +1635,16 @@
         a.setAttribute('data-add-addendum', h.id);
         a.setAttribute('aria-pressed', 'false');
         h.appendChild(a);
+      });
+      document.querySelectorAll(CONFIG.chapterAddendumSelector).forEach(function (chap) {
+        var h = chap.firstElementChild;
+        if (!h || !/^H[1-6]$/.test(h.tagName) || !h.id || h.querySelector('[data-chapter-addn]')) return;
+        var c = document.createElement('button');
+        c.type = 'button';
+        c.className = 'cr-chapter-add';
+        c.setAttribute('data-chapter-addn', h.id);
+        c.setAttribute('aria-pressed', 'false');
+        h.appendChild(c);
       });
       loadState();
       applyLinkParam();
