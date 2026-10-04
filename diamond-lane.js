@@ -362,13 +362,19 @@
     chapterContentsLabel: 'Clauses in this chapter:',
     // Full-Document main table of contents lists chapters, not individual Clauses.
     fullDocContentsLabel: 'Chapters:',
+    // Body text (paragraphs, lists, the "Source:" line, contents lists) in the generated page.
+    bodyFont: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+    bodyFontSize: '13pt',
+    bodyLineHeight: '1.6',
+    bodyParagraphSpacing: '1.1em',   // space below each paragraph
     // Headings are <h1> ADDENDUM/full-document title, <h2 class="chapter-title"> chapter (Build
     // Full Document only), <h2 class="clause-title"> Clause title, <h3 class="section-heading">
     // numbered sub-provisions. Keep these in descending order: addendumTitleSize > chapterTitleSize
-    // > clauseTitleSize > the section-heading size set on .section-heading below.
-    addendumTitleSize: '20pt',
-    chapterTitleSize: '19pt',
-    clauseTitleSize: '15pt',
+    // > clauseTitleSize > the section-heading size set on .section-heading below — which in turn
+    // should stay a bit above bodyFontSize, so a section heading still reads as a heading.
+    addendumTitleSize: '22pt',
+    chapterTitleSize: '21pt',
+    clauseTitleSize: '17pt',
     // Font for the numbered sub-provision headings (h3.section-heading in the generated page).
     provisionHeadingFont: '"Helvetica Neue", Helvetica, Arial, sans-serif',
     sourceLabel: 'Source: ',    // printed before the source URL under each Clause heading
@@ -737,6 +743,19 @@
 
   // A chapter heading's title text, with its own number ("6.") and any removed elements (comments,
   // buttons) stripped — e.g. "Payments" from "6.  Payments".
+  // When every included Clause traces back to the SAME chapter, and that chapter is one marked
+  // for this (CONFIG.chapterAddendumSelector, e.g. "Ground Rules Addendum"), its bare title (no
+  // number, no "Chapter" word) — used to label this Addendum as that chapter's own package.
+  // '' for an ordinary Addendum spanning several chapters, or none at all.
+  function singleChapterTitleFor(ids) {
+    if (!ids.length) return '';
+    var chEls = ids.map(function (id) { var h = headingForId(id); return h && chapterHeadingFor(h); });
+    var first = chEls[0];
+    if (!first || !chEls.every(function (c) { return c === first; })) return '';
+    if (!first.parentElement || !first.parentElement.matches(CONFIG.chapterAddendumSelector)) return '';
+    return chapterTitleText(first);
+  }
+
   function chapterTitleText(h) {
     var t = displayTitle(h), num = ruleNumber(h);
     if (num) t = t.replace(new RegExp('^' + num.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\.?\\s*'), '');
@@ -977,22 +996,23 @@
   }
 
   var DOC_CSS =
-    'body{margin:0;background:#fff;color:#000;font:11pt/1.45 Georgia,"Times New Roman",serif}' +
+    'body{margin:0;background:#fff;color:#000;font:' + CONFIG.bodyFontSize + '/' + CONFIG.bodyLineHeight + ' ' + CONFIG.bodyFont + '}' +
     '.toolbar{position:sticky;top:0;padding:.6em 1em;background:#f1f3f7;border-bottom:1px solid #c9ceda;font:14px system-ui,sans-serif}' +
     '.toolbar button{margin-right:.5em;padding:.35em .9em;font:inherit;cursor:pointer}' +
-    'main{max-width:7in;margin:0 auto;padding:.6in}' +
+    'main{max-width:7.5in;margin:0 auto;padding:.6in}' +
     'h1{font-size:' + CONFIG.addendumTitleSize + ';margin:0 0 .6em}' +
     '.chapter-title{font-size:' + CONFIG.chapterTitleSize + ';margin:0 0 .5em;break-after:avoid}' +
     '.clause-title{font-size:' + CONFIG.clauseTitleSize + ';margin:2.4em 0 .15em;break-after:avoid}' +
     '.chapter .clause-title:first-of-type{margin-top:1.2em}' +
-    '.section-heading{font-family:' + CONFIG.provisionHeadingFont + ';font-size:12pt;font-weight:bold;font-style:normal;margin:1.1em 0 .3em;break-after:avoid}' +
-    'h4,h5,h6{font-size:11pt;margin:1em 0 .3em;break-after:avoid}' +
-    'p{margin:.5em 0}' +
-    '.src{margin:0 0 .9em;font-size:9.5pt;color:#333;overflow-wrap:anywhere}' +
+    '.section-heading{font-family:' + CONFIG.provisionHeadingFont + ';font-size:14pt;font-weight:bold;font-style:normal;margin:1.3em 0 .35em;break-after:avoid}' +
+    'h4,h5,h6{font-size:' + CONFIG.bodyFontSize + ';margin:1.1em 0 .35em;break-after:avoid}' +
+    'p{margin:0 0 ' + CONFIG.bodyParagraphSpacing + '}' +
+    'li{margin:0 0 .4em}' +
+    '.src{margin:0 0 .9em;font-size:10.5pt;color:#333;overflow-wrap:anywhere}' +
     '.end{margin-top:2em}' +
     '.v{color:' + CONFIG.variableColor + '}#wordmsg{margin-left:.5em;font-size:13px}' +
-    '.toc-label{margin-bottom:.2em}.toc{list-style:none;margin:0 0 1.2em;padding-left:1.2em}' +
-    '.toc li{margin:.15em 0}.toc a{text-decoration:none}' +
+    '.toc-label{margin-bottom:.3em}.toc{list-style:none;margin:0 0 1.4em;padding-left:1.3em}' +
+    '.toc li{margin:.25em 0}.toc a{text-decoration:none}' +
     'a{color:inherit;text-decoration:underline}' +
     '@page{margin:.9in}' +
     '@media print{.no-print{display:none!important}main{max-width:none;padding:0}}';
@@ -1140,11 +1160,16 @@
       }
     });
 
-    var tocLabel = chaptered ? CONFIG.fullDocContentsLabel : CONFIG.contentsLabel;
+    // When this Addendum is exactly one "chapter-add" chapter's worth of Clauses, label the
+    // contents list with that chapter's own title (no number, no "Chapter" word) and repeat it as
+    // a heading right after the list, identifying this Addendum as that chapter's package.
+    var singleChapterTitle = opts.fullDocument ? '' : singleChapterTitleFor(ids);
+    var tocLabel = chaptered ? CONFIG.fullDocContentsLabel : (singleChapterTitle || CONFIG.contentsLabel);
     var toc = (tocLabel && mainToc.length)
       ? '<p class="toc-label">' + esc(tocLabel) + '</p><ul class="toc">' +
         mainToc.map(function (t) { return '<li><a href="#' + t.anchor + '">' + t.label + '</a></li>'; }).join('') + '</ul>'
       : '';
+    var chapterHeadingHtml = singleChapterTitle ? '<h2 class="chapter-title">' + esc(singleChapterTitle) + '</h2>' : '';
     var dl = fileBase + '-' + date + '.html', wf = fileBase + '-' + date + '.docx';
     var showWord = !opts.fullDocument;   // full document is print/PDF or HTML only, for now
     // "Download HTML": saves this page without the toolbar and scripts.
@@ -1174,7 +1199,7 @@
       '<button type="button" id="dl" data-file="' + esc(dl) + '">Download HTML</button>' +
       (showWord ? '<button type="button" id="word" data-file="' + esc(wf) + '">Word (.docx)</button>' +
       '<span id="wordmsg" role="status"></span>' : '') + '</div>' +
-      '<main><h1>' + esc(title) + '</h1><p class="preface">' + preface + '</p>' + toc +
+      '<main><h1>' + esc(title) + '</h1><p class="preface">' + preface + '</p>' + toc + chapterHeadingHtml +
       sections.join('\n') +
       (endMarker ? '<p class="end">' + esc(endMarker) + '</p>' : '') +
       '</main><script>' + script + '<' + '/script></body></html>';
@@ -1315,18 +1340,26 @@
 
   function buildDocxBlob(D, o) {
     o = o || {};
-    var secs = compileSections(o.ids || state.ids);
+    var ids = o.ids || state.ids;
+    var secs = compileSections(ids);
     if (!secs.length) return Promise.reject(new Error('no Clauses selected'));
     var ctx = { lists: 0, breakNext: false }, kids = [], pf = document.createElement('p');
+    var singleChapterTitle = singleChapterTitleFor(ids);
 
     kids.push(new D.Paragraph({ heading: D.HeadingLevel.HEADING_1, children: [new D.TextRun(o.title || CONFIG.addendumTitle)] }));
     pf.innerHTML = prefaceHtml(secs.length, o.date);
     kids.push(new D.Paragraph({ children: inlineRuns(D, pf, []) }));
     if (CONFIG.contentsLabel) {
-      kids.push(new D.Paragraph({ children: [new D.TextRun(CONFIG.contentsLabel)], keepNext: true }));
+      kids.push(new D.Paragraph({ children: [new D.TextRun(singleChapterTitle || CONFIG.contentsLabel)], keepNext: true }));
       secs.forEach(function (r) {
         kids.push(new D.Paragraph({ children: [new D.TextRun(clauseTitle(r))], indent: { left: 360 }, spacing: { after: 40 } }));
       });
+    }
+    if (singleChapterTitle) {
+      kids.push(new D.Paragraph({
+        children: [new D.TextRun({ text: singleChapterTitle, bold: true, size: pt2half(CONFIG.chapterTitleSize) })],
+        spacing: { before: 240, after: 120 }
+      }));
     }
     secs.forEach(function (root, i) {
       ctx.breakNext = CONFIG.pageBreakBetweenClauses && i > 0;
