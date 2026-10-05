@@ -7,6 +7,51 @@
 /* Cleaned conservatively: disabled experimental CSS removed; active rule order
    largely preserved to avoid changing cascade behavior. */
 
+/* "Clauses Only" mode: diamond-lane.js applies this class directly to whatever should disappear
+   (comments, additional material, contents lists, pointers to them, and — for Clauses written with
+   "Clause text" boxes — the explanatory framing around those boxes). Placed first in the file so it
+   always parses, independent of anything later on (this stylesheet is long and still growing). */
+.cr-note-hidden { display: none !important; }
+
+/* "Clauses Only" mode — one quiet, bounded object per whole Clause, marked by a thin rule above
+   and below rather than a shaded box per numbered sub-provision. Blue stays reserved for the
+   normal "Notebook" view, where it marks "this is the actual contract language" among surrounding
+   explanatory text; in Clauses Only, everything shown already IS contract language, so the color
+   stops earning its keep. Specificity (the body.cr-clauses-only ancestor) makes these win over the
+   normal-view rules below regardless of source order, so this block can live anywhere in the file. */
+body.cr-clauses-only div.pr-top.outline-3 {
+  background: none;
+  padding: 1.75em 0 2em;
+  margin: 0 0 2.5em;
+  border: none;
+  border-top: 2px solid #ccc;   /* exactly one line per Clause boundary — never a bottom rule too */
+}
+body.cr-clauses-only div.pr-top h3 {
+  background: none;
+  padding: 0;
+  margin: 0 0 1em;
+}
+body.cr-clauses-only div.pr-txt.outline-5,
+body.cr-clauses-only div.pr-txt.outline-6 {
+  background: none;
+  padding: 0;
+  margin-left: 0;
+}
+/* Less space between a Clause's own numbered parts (they're one object now, not separate boxes);
+   more space is reserved for div.pr-top.outline-3's own margin, between one Clause and the next. */
+body.cr-clauses-only div.pr-top div.outline-4 {
+  margin-bottom: 1.1em;
+}
+body.cr-clauses-only div.pr-top div.outline-5,
+body.cr-clauses-only div.pr-txt.outline-6 {
+  margin-bottom: .3em;
+}
+/* Read as a UI control, not as part of the contract text it sits next to. */
+body.cr-clauses-only .copy-rule-add {
+  float: right;
+  margin: .1em 0 0 1em;
+}
+
 :root {
     --content-max-width: 1200px;
     --sidebar-width: 320px;
@@ -522,10 +567,18 @@ div.pr-txt.outline-6 {
     background-color: #e6f1ff;
     position: relative;
     padding: .55em .9em .4em .9em;
+    /* Same trick as div.pr-top h3 below: the negative margin cancels the left padding, so this
+       box's own text — and its blue background's left edge — line up with the Clause title's,
+       instead of sitting wherever the (now zero-margin) outline-4/outline-5 wrappers happen to
+       place it. */
+    margin-left: -1em;
 }
 
 div.pr-top div.outline-4 {
-    margin: 0 1em 3em 1em; 
+    /* No left/right margin: a numbered sub-heading's own wrapper no longer indents the Clause text
+       box nested inside it, so the box's left edge — set by its own margin-left above — lines up
+       with the Clause title's, in both the normal view and "Clauses Only" mode. */
+    margin: 0 0 3em 0;
 }
 
 div.pr-top div.outline-4 h4 {
@@ -540,7 +593,7 @@ div.pr-top div.outline-4 h4 {
 }
 
 div.pr-top div.outline-5,
-div.pr-txt.outline-6, {
+div.pr-txt.outline-6 {
     margin-bottom: 3em;
 }
 
@@ -1909,14 +1962,18 @@ div.footdef {
 }
 .cr-global-toggle:hover, .cr-global-toggle:focus-visible { background: var(--lh-blue-fill, #e8f0fb); }
 
-/* "Create record copy w/ all Clauses" — standalone, not tied to the Addendum list/panel below */
-.cr-fulldoc-bar { margin: .6em 0 1em; }
-.cr-fulldoc-btn {
+/* "Show Clauses Only" / "Create record copy w/ all Clauses" — standalone, not tied to the
+   Addendum list/panel below. The two buttons share one bar, "Clauses Only" on the left. */
+.cr-fulldoc-bar { margin: .6em 0 1em; display: flex; flex-wrap: wrap; gap: .5em; }
+.cr-fulldoc-btn,
+.cr-clauses-only-btn {
   padding: .25em .8em; font: inherit; font-size: .9em; cursor: pointer;
   color: var(--lh-blue, #1f4e8c); background: transparent;
   border: 1px solid currentColor; border-radius: .3em;
 }
-.cr-fulldoc-btn:hover, .cr-fulldoc-btn:focus-visible { background: var(--lh-blue-fill, #e8f0fb); }
+.cr-fulldoc-btn:hover, .cr-fulldoc-btn:focus-visible,
+.cr-clauses-only-btn:hover, .cr-clauses-only-btn:focus-visible { background: var(--lh-blue-fill, #e8f0fb); }
+.cr-clauses-only-btn[aria-pressed="true"] { background: var(--lh-blue-fill, #e8f0fb); font-weight: 600; }
 
 /* Addendum list panel */
 .cr-panel {

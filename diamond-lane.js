@@ -339,6 +339,14 @@
     addendumButton: true,
     addendumTitle: 'Diamond Lane Custom Clause Addendum',
     // {date} = generation date (YYYY-MM-DD); {count} = number of Clauses.
+    // "Show Clauses Only": a live reading-mode toggle, next to the full-document button. Hides,
+    // for every Clause written with "Clause text" boxes, everything except the Clause's own title
+    // and those boxes — the same material a built Addendum or record copy already leaves out
+    // (explanatory framing prose, "Clause text" labels, comments, additional material, contents
+    // lists). A Clause with no boxes (the older style) is untouched either way, since for it
+    // there's no separate framing layer to hide.
+    clausesOnlyLabel: 'Clauses only',
+    clausesOnlyActiveLabel: 'Clauses + notes',
     // "Build Full Document": every Clause on the page, top to bottom, no selection needed.
     fullDocButtonLabel: 'Create record copy w/ all Clauses',
     fullDocTitle: 'The Diamond Lane Clauses',
@@ -1563,10 +1571,102 @@
   // Standalone button, independent of the Addendum list: builds a document of every Clause on
   // the page. Placed near the top of the content, so it's reachable without picking anything or
   // scrolling down to the corner panels first.
+  var clausesOnlyOn = false;
+
+  // Hides el entirely, UNLESS el itself is an operative "Clause text" box or contains one
+  // somewhere inside it — in which case its non-box children are hidden one level down instead,
+  // recursing as needed, so a genuinely nested box stays fully visible no matter how many
+  // "framing" wrapper levels (a numbered sub-heading, a "Clause text" label) sit around it.
+  function markNonOperative(el, on) {
+    if (el.matches(CONFIG.clauseTextSelector)) return;
+    if (el.querySelector(CONFIG.clauseTextSelector)) {
+      [].slice.call(el.children).forEach(function (kid) { markNonOperative(kid, on); });
+      return;
+    }
+    el.classList.toggle('cr-note-hidden', on);
+  }
+
+  // Turns "Clauses Only" mode on or off across the whole page. Applies the cr-note-hidden class
+  // directly to everything that should disappear, rather than a body-level CSS rule, so it doesn't
+  // depend on this stylesheet's cascade order (it's long, and keeps growing).
+  function setClausesOnly(on) {
+    clausesOnlyOn = on;
+    document.body.classList.toggle('cr-clauses-only', on);
+    document.querySelectorAll('.cmtry, .addl, .see-addl').forEach(function (el) {
+      el.classList.toggle('cr-note-hidden', on);
+    });
+    // Mini tables of contents, scoped to INSIDE a Clause only — never the site's own navigation
+    // (the hamburger drawer's TOC is a clone of the page's main nav and also carries
+    // role="doc-toc", so an unscoped match here would empty out the drawer menu too).
+    document.querySelectorAll(CONFIG.ruleContainerSelector + ' [role="doc-toc"]').forEach(function (toc) {
+      toc.classList.toggle('cr-note-hidden', on);
+      // "Contents:" label right before it (no reliable pure-CSS way to catch this one either).
+      var prev = toc.previousElementSibling;
+      if (prev && prev.tagName === 'P' && /^\s*(table of )?contents:?\s*$/i.test(prev.textContent)) {
+        prev.classList.toggle('cr-note-hidden', on);
+      }
+    });
+    // Per-Clause framing (the numbered sub-headings and their own prose, "Clause text" labels):
+    // only for Clauses that actually use the box pattern — gathered the same way cloneRule does,
+    // since this material can sit as genuine descendants or as flat siblings of the Clause's own
+    // container. A Clause with no box anywhere in its range is left alone entirely.
+    findRuleHeadings().forEach(function (h) {
+      // A trailing tag on the Clause's own title (e.g. "(and notes)") describes material the
+      // reader has just asked not to see, so it disappears too — same suffix list as the one used
+      // when building a document (CONFIG.titleSuffixesToStrip).
+      var last = h.lastChild;
+      while (last && (
+        (last.nodeType === 3 && !last.nodeValue.trim()) ||
+        (last.nodeType === 1 && last.classList && last.classList.contains('copy-rule-add'))
+      )) last = last.previousSibling;
+      if (last && last.nodeType === 1) {
+        var suffixText = (last.textContent || '').trim().toLowerCase();
+        if ((CONFIG.titleSuffixesToStrip || []).some(function (s) { return suffixText === s.toLowerCase(); })) {
+          last.classList.toggle('cr-note-hidden', on);
+        }
+      }
+      var p = h.parentElement, hasWrap = p && /(^|\s)outline-\d+(\s|$)/.test(p.className);
+      var roots = hasWrap ? [p] : [], covered = hasWrap ? [p] : [];
+      var lvl = +h.tagName.charAt(1), all = allHeadingsInOrder(), idx = all.indexOf(h);
+      for (var i = idx + 1; i < all.length; i++) {
+        var hh = all[i], hl = +hh.tagName.charAt(1);
+        if (hl <= lvl) break;
+        var cont = hh.parentElement;
+        if (covered.some(function (c) { return c && c.contains(cont); })) continue;
+        var top = (cont && /(^|\s)outline-\d+(\s|$)/.test(cont.className)) ? cont : hh;
+        roots.push(top);
+        covered.push(top);
+      }
+      var hasBox = roots.some(function (r) { return r.matches(CONFIG.clauseTextSelector) || r.querySelector(CONFIG.clauseTextSelector); });
+      if (!hasBox) return;
+      roots.forEach(function (r) {
+        if (r === p) {
+          [].slice.call(p.children).forEach(function (kid) { if (kid !== h) markNonOperative(kid, on); });
+        } else {
+          markNonOperative(r, on);
+        }
+      });
+    });
+    syncClausesOnlyButton();
+  }
+
+  function syncClausesOnlyButton() {
+    var b = document.querySelector('[data-clauses-only]');
+    if (!b) return;
+    b.textContent = clausesOnlyOn ? CONFIG.clausesOnlyActiveLabel : CONFIG.clausesOnlyLabel;
+    b.setAttribute('aria-pressed', clausesOnlyOn ? 'true' : 'false');
+  }
+
   function addFullDocPanel() {
     if (document.querySelector('[data-cr-act="buildall"]') || !document.querySelector(CONFIG.ruleContainerSelector)) return;
-    var bar = document.createElement('div'), b = document.createElement('button');
+    var bar = document.createElement('div'), b = document.createElement('button'), t = document.createElement('button');
     bar.className = 'cr-fulldoc-bar';
+    t.type = 'button';
+    t.className = 'cr-clauses-only-btn';
+    t.setAttribute('data-clauses-only', '');
+    t.setAttribute('aria-pressed', 'false');
+    t.textContent = CONFIG.clausesOnlyLabel;
+    bar.appendChild(t);
     b.type = 'button';
     b.className = 'cr-fulldoc-btn';
     b.setAttribute('data-cr-act', 'buildall');
@@ -1618,6 +1718,9 @@
     }
     var act = e.target.closest && e.target.closest('[data-cr-act]');
     if (act) { e.preventDefault(); panelAction(act); return; }
+
+    var co = e.target.closest && e.target.closest('[data-clauses-only]');
+    if (co) { e.preventDefault(); setClausesOnly(!clausesOnlyOn); return; }
 
     var ga = e.target.closest && e.target.closest('[data-toggle-all]');
     if (ga) { e.preventDefault(); setAllOpen(!allOpen); return; }
