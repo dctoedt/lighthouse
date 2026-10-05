@@ -1536,21 +1536,30 @@
     }
   }
 
-  // "Show all comments" as a plain button under the page title. It is shown on narrow screens,
-  // where the site hides the yellow notice, and everywhere if the notice is missing.
+  // "Show all comments" as a plain button. It is shown on narrow screens, where the site hides the
+  // yellow notice, and everywhere if the notice is missing. Joins the "Clauses only" / "Create
+  // record copy" toolbar (addFullDocPanel, called first in init) when one exists, rather than
+  // opening a second stray-looking bar of its own right underneath it.
   function addFallbackToggle(solo) {
-    if (document.querySelector('.cr-global-bar')) return;
-    var bar = document.createElement('div'), b = document.createElement('button');
-    bar.className = 'cr-global-bar' + (solo ? ' cr-global-solo' : '');
+    if (document.querySelector('.cr-global-toggle')) return;
+    var b = document.createElement('button');
     b.type = 'button';
-    b.className = 'cr-global-toggle';
+    b.className = 'cr-global-toggle' + (solo ? ' cr-global-solo' : '');
     b.setAttribute('data-toggle-all', '');
-    bar.appendChild(b);
     var host = document.getElementById('content') || document.body, title = null;
     for (var c = host.firstElementChild; c; c = c.nextElementSibling) {
       if (c.tagName === 'H1') { title = c; break; }
     }
-    host.insertBefore(bar, title ? title.nextSibling : host.firstChild);
+    var shared = title && title.nextElementSibling && title.nextElementSibling.classList.contains('cr-fulldoc-bar')
+      ? title.nextElementSibling : null;
+    if (shared) {
+      shared.appendChild(b);
+    } else {
+      var bar = document.createElement('div');
+      bar.className = 'cr-global-bar';
+      bar.appendChild(b);
+      host.insertBefore(bar, title ? title.nextSibling : host.firstChild);
+    }
     syncGlobal();
   }
 
@@ -1760,9 +1769,11 @@
       window.addEventListener('hashchange', revealHash);
       document.addEventListener('keydown', onKey);
     }
-    placeGlobalToggle();
     if (CONFIG.addendumButton) {
       addFullDocPanel();
+    }
+    placeGlobalToggle();
+    if (CONFIG.addendumButton) {
       findRuleHeadings().forEach(function (h) {
         if (h.querySelector('[data-add-addendum]')) return;
         var a = document.createElement('button');

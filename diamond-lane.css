@@ -1235,6 +1235,33 @@ img {
     width: 12%;
 }
 
+/* The HOV-sign and no-legalese graphics above are floated at a percentage width with a large
+   negative top margin, tuned for a wide desktop column. On a narrow one that pulls them up into
+   whatever text happens to be there and shrinks them to the point of being hard to read. Placed
+   after those rules (not just inside a @media block earlier in the file) so it wins on source
+   order as well as by matching — this stylesheet relies on source order for its cascade throughout,
+   and a media-query rule placed earlier than the un-scoped rule it's meant to override loses to it
+   outside of a real media match. */
+@media (max-width: 640px) {
+  .photo-HOV-sign,
+  .photo-no-legalese {
+    display: block;
+    float: none;
+    position: static;
+    margin: 1em auto;
+    top: auto;
+  }
+  .photo-HOV-sign {
+    width: 90px;
+    max-width: 35%;
+  }
+  /* A round icon reads smaller than a tall sign at the same width, so it gets a bigger one here. */
+  .photo-no-legalese {
+    width: 150px;
+    max-width: 50%;
+  }
+}
+
 .photo-at-right {
     display: block;
     float: right;
@@ -1952,14 +1979,22 @@ div.footdef {
 
 /* "Show all comments" button under the page title: shown only where the yellow notice is hidden
    (your <=900px rule) or if the notice never appears. */
-.cr-global-bar { display: none; margin: .6em 0 1em; }
-.cr-global-bar.cr-global-solo { display: block; }
-@media (max-width: 900px) { .cr-global-bar { display: block; } }
+/* .cr-global-bar only wraps the button in the rare case there's no "Clauses only" / "Create record
+   copy" toolbar to join (addFallbackToggle falls back to it). The show/hide-by-width behavior
+   lives on the button itself, so it works the same whether or not it has its own wrapper. */
+.cr-global-bar { margin: .6em 0 1em; }
 .cr-global-toggle {
+  display: none;
   padding: .25em .8em; font: inherit; font-size: .9em; cursor: pointer;
   color: var(--lh-blue, #1f4e8c); background: transparent;
   border: 1px solid currentColor; border-radius: .3em;
 }
+.cr-global-toggle.cr-global-solo { display: inline-block; }
+/* Deliberately NOT shown at narrow widths: on a phone, "Clauses only" already covers the need to
+   get past the comments and additional material, so a separate "Show all comments" button here
+   would just be one more thing competing for the reader's attention. It still appears (via
+   .cr-global-solo above) in the rare case where the yellow notice itself isn't on the page at all,
+   since then there is no other way to reach it, at any width. */
 .cr-global-toggle:hover, .cr-global-toggle:focus-visible { background: var(--lh-blue-fill, #e8f0fb); }
 
 /* "Show Clauses Only" / "Create record copy w/ all Clauses" — standalone, not tied to the
