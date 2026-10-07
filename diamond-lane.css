@@ -31,6 +31,8 @@ body.cr-clauses-only div.pr-top h3 {
   padding: 0;
   margin: 0 0 1em;
 }
+body.cr-clauses-only div.pr-cont.outline-5,
+body.cr-clauses-only div.pr-cont.outline-6,
 body.cr-clauses-only div.pr-txt.outline-5,
 body.cr-clauses-only div.pr-txt.outline-6 {
   background: none;
@@ -42,6 +44,8 @@ body.cr-clauses-only div.pr-txt.outline-6 {
 body.cr-clauses-only div.pr-top div.outline-4 {
   margin-bottom: 1.1em;
 }
+body.cr-clauses-only div.pr-txt.outline-5,
+body.cr-clauses-only div.pr-txt.outline-6,
 body.cr-clauses-only div.pr-top div.outline-5,
 body.cr-clauses-only div.pr-txt.outline-6 {
   margin-bottom: .3em;
@@ -496,7 +500,6 @@ span.section-number-4:after {
 
 dt {
     margin-top: 0em;
-    font-style: italic;
 }
 
 dd {
@@ -562,7 +565,9 @@ div.pr-top h3 {
 
 /* Clause text: label above the operative-text field — but commenting out the text */
 div.pr-txt.outline-5,
-div.pr-txt.outline-6 {
+div.pr-txt.outline-6,
+div.pr-cont.outline-5,
+div.pr-cont.outline-6 {
     font-family: sans-serif;
     background-color: #e6f1ff;
     position: relative;
