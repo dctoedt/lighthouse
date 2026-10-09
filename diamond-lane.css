@@ -496,8 +496,6 @@ span.section-number-4:after {
     content: "    ";
 }
 
-
-
 dt {
     margin-top: 0em;
 }
@@ -583,13 +581,16 @@ div.pr-top div.outline-4 {
     /* No left/right margin: a numbered sub-heading's own wrapper no longer indents the Clause text
        box nested inside it, so the box's left edge — set by its own margin-left above — lines up
        with the Clause title's, in both the normal view and "Clauses Only" mode. */
+    font-family: sans-serif;
+    background-color: #e6f1ff;
+    position: relative;
+    padding: .55em .9em .4em .9em;
     margin: 0 0 3em 0;
 }
 
 div.pr-top div.outline-4 h4 {
     font-family: sans-serif;
-    font-weight: normal;
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-top: 0em;
     margin-bottom: -1em;
     text-wrap: balance;
@@ -755,21 +756,38 @@ div.addl.outline-4 [role="doc-toc"] i {
 }
 
 /* ========================================================================
-   COMMENTARY / NOTES (.cmtry class) - FIXED
+   COMMENTARY / NOTES (.cmtry = older export class; .cmt = current one — both are styled so
+   older pages keep working)
    ======================================================================== */
 
-/* Style for commentary sections (typically h5 or h6 level) */
-div.cmtry {
+/* A Comment sits inside a blue Clause box (div.pr-top div.outline-4, or a "Clause text" box —
+   both use the same .55em .9em .4em .9em padding). Give the Comment its own near-white page
+   background instead of letting the parent's blue show through, and pull it out by exactly the
+   parent's own left/right/bottom padding (negative margins matching those padding values) so the
+   Comment's background reaches the parent box's outer edges on those sides, painting over the
+   blue there instead of leaving a blue margin around (and under) the Comment. The top is left
+   alone on purpose — the Clause text above the Comment should stay blue.
+   Selector is "div.pr-top div.cmtry/.cmt", not just ".cmtry"/".cmt": a Comment also carries an
+   "outline-N" class (e.g. "outline-5 cmt"), and "div.pr-top div.outline-5 { margin-bottom: 3em }"
+   above has that same two-class-plus-type specificity — a plain ".cmt" rule would lose the
+   margin-bottom tug-of-war to it regardless of source order, leaving a strip of blue showing
+   below the Comment. Matching that specificity here, later in the file, wins on source order. */
+div.pr-top div.cmtry,
+div.pr-top div.cmt {
     font-family: Georgia, serif;
     font-size: 1em;
-    margin: 2em 0 0 0;
-    padding: 0 .9em;
+    background-color: #fcfcfc;
+    margin: 2em -.9em -.4em -.9em;
+    padding: .75em .9em .75em .9em;
 }
 
 
-/* Shared typography for the structural labels */
+/* Shared typography for the "Comment" label itself. The older .cmtry export always uses an h6;
+   the current .cmt export uses h5 (confirmed from real page markup), so both are covered. */
 div.pr-top div.outline-text-4::before,
-div.cmtry h6 {
+div.cmtry h6,
+div.cmt h5,
+div.cmt h6 {
     font-family: Georgia, serif;
     font-size: .9em;
     font-weight: normal;
@@ -777,17 +795,24 @@ div.cmtry h6 {
     color: #2980B9;
 }
 
-.cmtry h6, .cmtry h7 {
+.cmtry h6, .cmtry h7,
+.cmt h5, .cmt h6, .cmt h7 {
     margin-top: .2em;
 }
 
+/* Only .cmtry needs a colon added: its heading text is just "Comment". .cmt's heading text
+   already includes the colon ("Comment:") in the exported markup, so adding one here too would
+   print "Comment::". */
 div.cmtry h6::after {
     content: ":";
 }
 
 .cmtry .outline-text-5,
 .cmtry .outline-text-6,
-.cmtry .outline-text-7 {
+.cmtry .outline-text-7,
+.cmt .outline-text-5,
+.cmt .outline-text-6,
+.cmt .outline-text-7 {
     color: #555;
     font-size: .9em;
     font-style: normal;
@@ -796,13 +821,13 @@ div.cmtry h6::after {
     background-color: #fcfcfc;
 }
 
-.cmtry p, .cmtry li {
+.cmtry p, .cmtry li,
+.cmt p, .cmt li {
     color: #555;
 }
 
-/* Alternative: if cmtry is applied directly to divs */
-
-div.cmtry p {
+div.cmtry p,
+div.cmt p {
     color: #555;
 }
 
@@ -817,9 +842,6 @@ p.see-addl {
     margin: 2em 0 0 0;
     font-style: italic;
 }
-
-/* Collapsible "Comment" entries: see CLAUSE TOOLS at the end of this file and Part 2 of
-   diamond-lane.js (the old .cmt-open / .cmt-closed rules that used to be here are retired). */
 
 /* ========================================================================
    SPECIAL BOXES AND BORDERS
@@ -1130,8 +1152,7 @@ blockquote {
 
 
 
-/* Collapsible comments, "Add to Addendum" buttons and the Addendum panel: see CLAUSE TOOLS
-   at the end of this file. */
+/* "Add to Addendum" buttons and the Addendum panel: see CLAUSE TOOLS at the end of this file. */
 
 /* ========================================================================
    IMAGES
@@ -1620,11 +1641,11 @@ div.footdef {
         padding-left: 1.5rem;
     }
     
-    /* Reduce margins on mobile */
-    .cmtry {
-        margin-left: 1rem;
-    }
-    
+    /* (No mobile override for .cmtry/.cmt margin-left any more: the base rule's negative margin,
+       matching the parent box's own padding, is what makes the Comment's white background reach
+       the parent's edge, and that holds at every screen width — overriding it here would let the
+       blue show through again on narrow screens.) */
+
     div.bord,
     .bbox,
     div.alt,
@@ -1796,9 +1817,10 @@ div.footdef {
         page-break-inside: avoid;
     }
     
-    /* Commentary sections - smaller font */
-    .cmtry,
-    div.cmtry {
+    /* Commentary sections - smaller font (print strips backgrounds anyway, via the "*" rule
+       below, so the screen-only white-over-blue overlap margins are simply reset here) */
+    .cmtry, .cmt,
+    div.cmtry, div.cmt {
         font-size: 9pt !important;
         margin: 6pt 0 6pt 12pt !important;
     }
@@ -1914,9 +1936,9 @@ div.footdef {
 
 /* ========================================================================
    CLAUSE TOOLS  (used by Part 2 of diamond-lane.js; kept last so it wins ties)
-   Comments, "Add to Addendum" buttons, the Addendum panel and the notice's
-   "Show all comments" link. Colors fall back to a neutral blue; set
-   --lh-blue / --lh-blue-fill on :root to match the site palette.
+   "Add to Addendum" buttons, the Addendum panel, and the "Clauses only" / "Create record copy"
+   toolbar. Colors fall back to a neutral blue; set --lh-blue / --lh-blue-fill on :root to match
+   the site palette.
    ======================================================================== */
 
 .copy-rule-btn,
@@ -1968,40 +1990,6 @@ div.footdef {
 .cr-chapter-add::before { content: "Add Chapter to Addendum"; }
 .cr-chapter-add[aria-pressed="true"]::before { content: "Chapter Added \2713"; }
 
-/* Comments: a .cmtry block shows only its heading until the heading is clicked (copy-rule.js adds
-   .cr-open). Delete this rule if you set commentsCollapsedOnLoad: false. (If scripts are off, add a
-   <noscript> style that shows them.) */
-.cmtry:not(.cr-open) > :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) { display: none !important; }
-
-/* The clickable comment heading. user-select: none keeps it out of text you drag-select and copy. */
-.cr-cmtry-head { cursor: pointer; -webkit-user-select: none; user-select: none; }
-.cr-cmtry-head::before { content: "\25B8\00a0"; }
-.cmtry.cr-open > .cr-cmtry-head::before { content: "\25BE\00a0"; }
-.cr-cmtry-head:focus-visible { outline: 2px solid var(--lh-blue, #1f4e8c); outline-offset: 2px; }
-
-/* "Show all comments" link inside the yellow notice (the notice's own look is in TH.css). */
-#nla-notice .cr-notice-extra a { cursor: pointer; }
-
-/* "Show all comments" button under the page title: shown only where the yellow notice is hidden
-   (your <=900px rule) or if the notice never appears. */
-/* .cr-global-bar only wraps the button in the rare case there's no "Clauses only" / "Create record
-   copy" toolbar to join (addFallbackToggle falls back to it). The show/hide-by-width behavior
-   lives on the button itself, so it works the same whether or not it has its own wrapper. */
-.cr-global-bar { margin: .6em 0 1em; }
-.cr-global-toggle {
-  display: none;
-  padding: .25em .8em; font: inherit; font-size: .9em; cursor: pointer;
-  color: var(--lh-blue, #1f4e8c); background: transparent;
-  border: 1px solid currentColor; border-radius: .3em;
-}
-.cr-global-toggle.cr-global-solo { display: inline-block; }
-/* Deliberately NOT shown at narrow widths: on a phone, "Clauses only" already covers the need to
-   get past the comments and additional material, so a separate "Show all comments" button here
-   would just be one more thing competing for the reader's attention. It still appears (via
-   .cr-global-solo above) in the rare case where the yellow notice itself isn't on the page at all,
-   since then there is no other way to reach it, at any width. */
-.cr-global-toggle:hover, .cr-global-toggle:focus-visible { background: var(--lh-blue-fill, #e8f0fb); }
-
 /* "Show Clauses Only" / "Create record copy w/ all Clauses" — standalone, not tied to the
    Addendum list/panel below. The two buttons share one bar, "Clauses Only" on the left. */
 .cr-fulldoc-bar { margin: .6em 0 1em; display: flex; flex-wrap: wrap; gap: .5em; }
@@ -2043,6 +2031,5 @@ div.footdef {
 .cr-panel-msg { margin: .5em 0 0; }
 .cr-panel-msg:empty { display: none; }
 @media print {
-  .copy-rule-btn, .copy-rule-add, .cr-chapter-add, .cr-global-bar, .cr-fulldoc-bar, .cr-notice-extra, .cr-panel { display: none; }
-  .cmtry:not(.cr-open) { display: none !important; }
+  .copy-rule-btn, .copy-rule-add, .cr-chapter-add, .cr-fulldoc-bar, .cr-panel { display: none; }
 }

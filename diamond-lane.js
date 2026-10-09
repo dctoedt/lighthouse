@@ -321,18 +321,11 @@
     // Example, if ever needed:  [[/\bRules?\b/g, 'Clause']]
     termReplacements: [],
 
-    // Comments: each .cmtry block shows only its heading ("Comment") at first; clicking the
-    // heading shows or hides the text under it. A page-level control ("Show all comments" /
-    // "Hide all comments") opens or closes them all. This changes only what the browser displays, never
-    // what is copied or put in an Addendum.
-    commentToggles: true,
-    commentSelector: '.cmtry',
-    commentsCollapsedOnLoad: true,   // false = everything starts open (then also delete the hide rule in diamond-lane.css)
-    // "Show all comments" / "Hide all comments" is added as a link inside the yellow notice that
-    // Part 1 of this file puts at the top of the page (element id below). On narrow screens, where the
-    // site hides that notice, a plain button under the page title is used instead.
-    globalToggle: true,
-    noticeId: 'nla-notice',
+    // Comments always show in full now — no click-to-expand. (.cmtry is the older export class;
+    // .cmt is the current one; both are matched so older pages still work.) This selector is used
+    // to hide comments in "Clauses only" mode (setClausesOnly) and, via removeSelectors below, to
+    // exclude them when building an Addendum or record copy.
+    commentSelector: '.cmtry, .cmt',
 
     // "Add to Addendum" button + "Build Addendum": collect Clauses, then compile them into one
     // standalone HTML page (Print / Save as PDF from there). Runs entirely in the browser.
@@ -406,7 +399,8 @@
     // Set to '' to strip them to plain text instead.
     internalLinkBase: 'https://diamondlaneclauses.org/',
     removeSelectors: [          // everything matching is deleted from the copy
-      '[class~="cmtry"]',       // commentary (any element, incl. Org's outline-N cmtry containers)
+      '[class~="cmtry"]',       // commentary - older export class (any element, incl. outline-N cmtry containers)
+      '[class~="cmt"]',         // commentary - current export class
       '[role="doc-toc"]',       // every table of contents, at any depth
       '.addl',                  // additional-material blocks (any element)
       // Added by page scripts (toggle buttons, wrappers) or annotations, never Clause text:
@@ -470,7 +464,7 @@
   function findRuleHeadings() {
     var out = [];
     document.querySelectorAll(CONFIG.ruleContainerSelector).forEach(function (box) {
-      if (box.closest('[class~="cmtry"]')) return;
+      if (box.closest(CONFIG.commentSelector)) return;
       var h = null;
       for (var c = box.firstElementChild; c; c = c.nextElementSibling) {
         if (/^H[1-6]$/.test(c.tagName)) { h = c; break; }
@@ -1463,120 +1457,6 @@
     try { history.replaceState(null, '', window.location.pathname + window.location.hash); } catch (e) { }
   }
 
-  var OPEN = 'cr-open';               // on a .cmtry block: its text is showing
-  var HEAD = 'cr-cmtry-head';         // on the heading of a .cmtry block (the clickable part)
-  var allOpen = false;
-
-  // The hiding itself is a rule in diamond-lane.css (a .cmtry block without .cr-open shows only its
-  // heading), so nothing flashes on load; this script only adds/removes .cr-open.
-  function extrasSelector() { return CONFIG.commentSelector; }
-
-  function syncBox(box) {
-    var f = box.firstElementChild;
-    if (f && f.classList.contains(HEAD)) f.setAttribute('aria-expanded', box.classList.contains(OPEN) ? 'true' : 'false');
-  }
-
-  // Make each comment heading a button.
-  function prepareComments() {
-    [].slice.call(document.querySelectorAll(CONFIG.commentSelector)).forEach(function (box) {
-      var f = box.firstElementChild;
-      if (f && /^H[1-6]$/.test(f.tagName)) {
-        f.classList.add(HEAD);
-        f.setAttribute('role', 'button');
-        f.setAttribute('tabindex', '0');
-        f.setAttribute('aria-expanded', 'false');
-        f.title = 'Click to show or hide this comment';
-      }
-    });
-  }
-
-  function toggleComment(box) {
-    box.classList.toggle(OPEN);
-    syncBox(box);
-  }
-
-  // Open or close every comment on the page.
-  function setAllOpen(on) {
-    allOpen = on;
-    [].slice.call(document.querySelectorAll(extrasSelector())).forEach(function (el) {
-      el.classList.toggle(OPEN, on);
-      syncBox(el);
-    });
-    syncGlobal();
-  }
-
-  function syncGlobal() {
-    [].slice.call(document.querySelectorAll('[data-toggle-all]')).forEach(function (g) {
-      g.textContent = allOpen ? 'Hide all comments' : 'Show all comments';
-      g.setAttribute('aria-pressed', allOpen ? 'true' : 'false');
-    });
-  }
-
-  // Links (or URLs) that point INTO collapsed comments open them first, so a cross-reference
-  // still lands on something visible.
-  function revealId(id) {
-    var el = id && document.getElementById(id), changed = false;
-    if (!el) return false;
-    var x = el.closest(extrasSelector());
-    while (x) {
-      var head = x.firstElementChild && x.firstElementChild.classList.contains(HEAD) ? x.firstElementChild : null;
-      var onHeading = head && (head === el || head.contains(el));
-      if (!onHeading && !x.classList.contains(OPEN)) { x.classList.add(OPEN); syncBox(x); changed = true; }
-      x = x.parentElement && x.parentElement.closest(extrasSelector());
-    }
-    return changed;
-  }
-
-  function revealHash() {
-    var id = '';
-    try { id = decodeURIComponent(window.location.hash.slice(1)); } catch (e) { return; }
-    if (revealId(id)) {
-      var el = document.getElementById(id);
-      if (el && el.scrollIntoView) el.scrollIntoView();
-    }
-  }
-
-  // "Show all comments" as a plain button. It is shown on narrow screens, where the site hides the
-  // yellow notice, and everywhere if the notice is missing. Joins the "Clauses only" / "Create
-  // record copy" toolbar (addFullDocPanel, called first in init) when one exists, rather than
-  // opening a second stray-looking bar of its own right underneath it.
-  function addFallbackToggle(solo) {
-    if (document.querySelector('.cr-global-toggle')) return;
-    var b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'cr-global-toggle' + (solo ? ' cr-global-solo' : '');
-    b.setAttribute('data-toggle-all', '');
-    var host = document.getElementById('content') || document.body, title = null;
-    for (var c = host.firstElementChild; c; c = c.nextElementSibling) {
-      if (c.tagName === 'H1') { title = c; break; }
-    }
-    var shared = title && title.nextElementSibling && title.nextElementSibling.classList.contains('cr-fulldoc-bar')
-      ? title.nextElementSibling : null;
-    if (shared) {
-      shared.appendChild(b);
-    } else {
-      var bar = document.createElement('div');
-      bar.className = 'cr-global-bar';
-      bar.appendChild(b);
-      host.insertBefore(bar, title ? title.nextSibling : host.firstChild);
-    }
-    syncGlobal();
-  }
-
-  // Adds "· Show all comments" as a link inside the notice.
-  function attachNoticeLink(n) {
-    if (n.querySelector('.cr-notice-extra')) return;
-    var span = document.createElement('span'), a = document.createElement('a');
-    span.className = 'cr-notice-extra';
-    span.appendChild(document.createTextNode(' \u00B7 '));
-    a.setAttribute('role', 'button');
-    a.setAttribute('tabindex', '0');
-    a.setAttribute('data-toggle-all', '');
-    span.appendChild(a);
-    n.appendChild(span);
-    syncGlobal();
-  }
-
   // Standalone button, independent of the Addendum list: builds a document of every Clause on
   // the page. Placed near the top of the content, so it's reachable without picking anything or
   // scrolling down to the corner panels first.
@@ -1601,7 +1481,7 @@
   function setClausesOnly(on) {
     clausesOnlyOn = on;
     document.body.classList.toggle('cr-clauses-only', on);
-    document.querySelectorAll('.cmtry, .addl, .see-addl').forEach(function (el) {
+    document.querySelectorAll(CONFIG.commentSelector + ', .addl, .see-addl').forEach(function (el) {
       el.classList.toggle('cr-note-hidden', on);
     });
     // Mini tables of contents, scoped to INSIDE a Clause only — never the site's own navigation
@@ -1688,34 +1568,7 @@
     host.insertBefore(bar, title ? title.nextSibling : host.firstChild);
   }
 
-  function placeGlobalToggle() {
-    if (!CONFIG.globalToggle || !document.querySelector(CONFIG.commentSelector)) return;
-    var n = document.getElementById(CONFIG.noticeId);
-    if (n) {
-      attachNoticeLink(n);
-      addFallbackToggle(false);
-      window.dispatchEvent(new Event('resize'));   // lets the site re-center the (now wider) notice
-    } else {
-      addFallbackToggle(true);
-    }
-  }
-
-  function onKey(e) {
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    var gl = e.target && e.target.closest && e.target.closest('[data-toggle-all]');
-    if (gl && gl.tagName !== 'BUTTON') { e.preventDefault(); setAllOpen(!allOpen); return; }
-    var hd = e.target && e.target.classList && e.target.classList.contains(HEAD) ? e.target : null;
-    if (hd && hd.parentElement) { e.preventDefault(); toggleComment(hd.parentElement); }
-  }
-
   function onClick(e) {
-    var lk = e.target.closest && e.target.closest('a[href^="#"]');
-    if (lk && lk.getAttribute('href').length > 1) {
-      try { revealId(decodeURIComponent(lk.getAttribute('href').slice(1))); } catch (err) { }
-    }
-    var hd = e.target.closest && e.target.closest('.' + HEAD);
-    if (hd && !lk && hd.parentElement) { toggleComment(hd.parentElement); return; }
-
     var ad = e.target.closest && e.target.closest('[data-add-addendum]');
     if (ad) { e.preventDefault(); toggleId(ad.getAttribute('data-add-addendum')); return; }
     var ca = e.target.closest && e.target.closest('[data-chapter-addn]');
@@ -1730,9 +1583,6 @@
 
     var co = e.target.closest && e.target.closest('[data-clauses-only]');
     if (co) { e.preventDefault(); setClausesOnly(!clausesOnlyOn); return; }
-
-    var ga = e.target.closest && e.target.closest('[data-toggle-all]');
-    if (ga) { e.preventDefault(); setAllOpen(!allOpen); return; }
 
     var btn = e.target.closest && e.target.closest('[data-copy-rule]');
     if (!btn) return;
@@ -1751,7 +1601,6 @@
 
   function init() {
     addLiveSectionNumbers();
-    if (CONFIG.commentToggles) prepareComments();
     findRuleHeadings().forEach(function (h) {
       if (CONFIG.autoButtons && !document.querySelector('[data-copy-rule="' + h.id + '"]')) {
         var b = document.createElement('button');
@@ -1763,16 +1612,9 @@
         h.appendChild(b);
       }
     });
-    if (CONFIG.commentToggles) {
-      setAllOpen(!CONFIG.commentsCollapsedOnLoad);
-      revealHash();
-      window.addEventListener('hashchange', revealHash);
-      document.addEventListener('keydown', onKey);
-    }
     if (CONFIG.addendumButton) {
       addFullDocPanel();
     }
-    placeGlobalToggle();
     if (CONFIG.addendumButton) {
       findRuleHeadings().forEach(function (h) {
         if (h.querySelector('[data-add-addendum]')) return;
