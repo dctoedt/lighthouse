@@ -976,8 +976,7 @@ cite {
     border: none !important;
     font-family: sans-serif !important;
     font-size: .8em !important;
-    margin: .5em 0 0 0 !important;
-    text-indent: 2em;
+    margin: .5em 0 0 2.5em !important;
 }
 
 
