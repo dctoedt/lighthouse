@@ -1149,7 +1149,9 @@ blockquote {
 
 }
 
-
+.script {
+    font-family: Courier, monospace;
+}
 
 /* "Add to Addendum" buttons and the Addendum panel: see CLAUSE TOOLS at the end of this file. */
 
