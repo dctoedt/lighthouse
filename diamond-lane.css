@@ -341,7 +341,7 @@ h2 {
 h3 {
     font-family: Georgia, serif;
     font-size: 1.2em;
-    margin-top: 2.5em;
+    margin-top: 2em;
     line-height: 1.5;
 }
 
@@ -552,7 +552,7 @@ div.rule-toc a:not(:hover) {
 
 
 div.pr-top.outline-3 {
-    padding-bottom: 2em;
+/*    padding-bottom: 2em; */
 }
 
 div.pr-top h3 {
