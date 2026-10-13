@@ -788,11 +788,11 @@ div.pr-top div.outline-text-4::before,
 div.cmtry h6,
 div.cmt h5,
 div.cmt h6 {
-    font-family: Georgia, serif;
-    font-size: .9em;
+    font-family: Georgia, serif !important;
+    font-size: 1em !important;
     font-weight: normal;
     line-height: 1.6em;
-    color: #2980B9;
+/*    color: #2980B9; */
 }
 
 .cmtry h6, .cmtry h7,
@@ -814,7 +814,6 @@ div.cmtry h6::after {
 .cmt .outline-text-6,
 .cmt .outline-text-7 {
     color: #555;
-    font-size: .9em;
     font-style: normal;
     line-height: 1.4em;
     font-weight: normal;
