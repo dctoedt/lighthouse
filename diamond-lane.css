@@ -488,6 +488,10 @@ span.section-number-4  {
     font-weight: normal;
 }
 
+div.pr-top span.section-number-3:before {
+    content: "Practice ";
+}
+
 div.chap span.section-number-2:after, 
 div.chap-rule span.section-number-2:after, 
 div.intro span.section-number-2:after, 
@@ -495,6 +499,7 @@ span.section-number-3:after,
 span.section-number-4:after {
     content: "    ";
 }
+
 
 dt {
     margin-top: 0em;
