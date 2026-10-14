@@ -489,7 +489,7 @@ span.section-number-4  {
 }
 
 div.pr-top span.section-number-3:before {
-    content: "Practice ";
+    content: "Clause ";
 }
 
 div.chap span.section-number-2:after, 
@@ -1202,7 +1202,7 @@ img {
     display: block;
     float: right;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -11rem;
+    margin-top: -9rem;
     width: 8%;
 }
 
