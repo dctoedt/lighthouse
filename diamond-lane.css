@@ -701,7 +701,7 @@ span.section-number-5 {
 
 div.pr-top div.addl.outline-4 {
     background-color: transparent;
-    margin: 1.6em 1em 0 1.5em;
+    margin: 1.6em 1em 0 0;
     padding: 0;
 }
 
@@ -711,7 +711,7 @@ div.pr-top div.addl.outline-4 > h4 {
     padding: 0;
     font-family: sans-serif;
     font-size: 1em;
-    font-weight: normal;
+    font-weight: bold;
     line-height: 1.4;
 }
 
@@ -845,7 +845,7 @@ span.xr {
 
 p.see-addl {
     margin: 2em 0 0 0;
-    font-style: italic;
+    padding: 2px 5px;
 }
 
 /* ========================================================================
