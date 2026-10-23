@@ -635,19 +635,17 @@ div.pr-top .outline-text-3 ul {
 }
 
 
-div.cl-txt,
-div.cl-cmt {
-    margin-top: 1em;
-}
-
-div.cl-txt h5,
-div.cl-cmt h5 {
-    font-family: serif !important;
-    font-size; .9em;
-    font-weight: normal;
+div.cltxt ol li ul li {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
 }
 
 
+.cltxt ol > li > p:has(> span.cl-sub) {
+    padding-left: 2em;
+    text-indent: -1.5em;
+}
 
 /* ===========
    TABLE TEXT
