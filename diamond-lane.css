@@ -385,7 +385,8 @@ div.pr-alt .outline-5 h5 em {
     font-style: italic;
 }
 
-div.pr-top h6 {
+div.pr-top h6,
+div.pr-topp h6 {
     font-weight: bold;
     font-size: 1em;
     margin-top: 0em;
@@ -482,13 +483,16 @@ div.chap span.section-number-2,
 div.chap-rule span.section-number-2, 
 div.intro span.section-number-2, 
 div.pr-top span.section-number-3,
+div.pr-topp span.section-number-3,
+div.cltxt span.section-number-3,
 div.pr-alt span.section-number-3,
 span.section-number-4  {
     font-size: .9em;
     font-weight: normal;
 }
 
-div.pr-top span.section-number-3:before {
+div.pr-top span.section-number-3:before,
+div.pr-topp span.section-number-3:before {
     content: "Clause ";
 }
 
@@ -527,13 +531,17 @@ p-h-b {
     font-weight: bold;
 }
 
-div.pr-top h3 {
+div.pr-top h3,
+div.pr-topp h3,
+div.cltxt h3 {
     font-size: 1.3em;
     font-family: sans-serif;
     font-weight: bold;
     padding: 1em;
     margin-left: -1em;
     margin-bottom: 1em;
+    background-color: #e6f1ff;
+    padding: .55em .9em .4em .9em;
 }
 
 div.rule-toc {
@@ -556,17 +564,14 @@ div.rule-toc a:not(:hover) {
 }
 
 
-div.pr-top.outline-3 {
+div.pr-top.outline-3,
+div.pr-topp.outline-3 {
 /*    padding-bottom: 2em; */
 }
 
-div.pr-top h3 {
-    background-color: #e6f1ff;
-    padding: .55em .9em .4em .9em;
-
-}
 
 /* Clause text: label above the operative-text field — but commenting out the text */
+div.cltxt.outline-4,
 div.pr-txt.outline-5,
 div.pr-txt.outline-6,
 div.pr-cont.outline-5,
@@ -582,7 +587,8 @@ div.pr-cont.outline-6 {
     margin-left: -1em;
 }
 
-div.pr-top div.outline-4 {
+div.pr-top div.outline-4,
+div.pr-topp div.outline-4 {
     /* No left/right margin: a numbered sub-heading's own wrapper no longer indents the Clause text
        box nested inside it, so the box's left edge — set by its own margin-left above — lines up
        with the Clause title's, in both the normal view and "Clauses Only" mode. */
@@ -590,7 +596,7 @@ div.pr-top div.outline-4 {
     background-color: #e6f1ff;
     position: relative;
     padding: .55em .9em .4em .9em;
-    margin: 0 0 3em 0;
+    margin: 0 0 2em 0;
 }
 
 div.pr-top div.outline-4 h4 {
@@ -604,18 +610,32 @@ div.pr-top div.outline-4 h4 {
     padding: 1em 0;
 }
 
+div.pr-topp div.outline-4 h4 {
+    font-family: sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 0em;
+    margin-bottom: -2em;
+    text-wrap: balance;
+    /* Align the h4 heading with the clause/comment visual grid. */
+    padding: 1em 0;
+}
+
 div.pr-top div.outline-5,
+div.pr-topp div.outline-5,
 div.pr-txt.outline-6 {
     margin-bottom: 3em;
 }
 
+div.pr-top div.outline-4 h5,
 div.pr-top div.outline-4 h5 {
     font-size: 1.1em;
     font-family: sans-serif;
     font-weight: normal;
 }
 
-div.pr-top div.outline-4 h4 .section-number-4 {
+div.pr-top div.outline-4 h4 .section-number-4,
+div.pr-topp div.outline-4 h4 .section-number-4 {
 /*
     position: absolute;
     left: 1em;
@@ -630,7 +650,8 @@ div.pr-alt div.outline-5 h5 {
 }
 
 
-div.pr-top .outline-text-3 ul {
+div.pr-top .outline-text-3 ul,
+div.pr-topp .outline-text-3 ul {
     list-style: none;
 }
 
@@ -697,14 +718,16 @@ span.section-number-5 {
  * part of the Clause text.
  */
 
-div.pr-top div.addl.outline-4 {
+div.pr-top div.addl.outline-4,
+div.pr-topp div.addl.outline-4 {
     background-color: transparent;
     margin: 1.6em 1em 0 0;
     padding: 0;
 }
 
 /* "Notes (not part of this Clause)" / "Additional reading (...)" */
-div.pr-top div.addl.outline-4 > h4 {
+div.pr-top div.addl.outline-4 > h4,
+div.pr-topp div.addl.outline-4 > h4  {
     margin: 0 0 .5em 0 !important;
     padding: 0;
     font-family: sans-serif;
@@ -714,7 +737,8 @@ div.pr-top div.addl.outline-4 > h4 {
 }
 
 /* Portal material uses the normal page typography, not Clause typography. */
-div.pr-top div.addl.outline-4 > .outline-text-4 {
+div.pr-top div.addl.outline-4 > .outline-text-4,
+div.pr-topp div.addl.outline-4 > .outline-text-4 {
     background-color: transparent;
     margin: 0;
     padding: 0;
@@ -724,7 +748,8 @@ div.pr-top div.addl.outline-4 > .outline-text-4 {
 }
 
 /* Linked remote-section title, e.g. "Effective date:" */
-div.pr-top div.addl.outline-4 > .outline-text-4 > p:first-child {
+div.pr-top div.addl.outline-4 > .outline-text-4 > p:first-child,
+div.pr-topp div.addl.outline-4 > .outline-text-4 > p:first-child {
     margin: 0 0 .25em 0;
 }
 
@@ -777,7 +802,8 @@ div.addl.outline-4 [role="doc-toc"] i {
    margin-bottom tug-of-war to it regardless of source order, leaving a strip of blue showing
    below the Comment. Matching that specificity here, later in the file, wins on source order. */
 div.pr-top div.cmtry,
-div.pr-top div.cmt {
+div.pr-top div.cmt,
+div.pr-topp div.cmt {
     font-family: Georgia, serif;
     font-size: 1em;
     background-color: #fcfcfc;
@@ -789,6 +815,7 @@ div.pr-top div.cmt {
 /* Shared typography for the "Comment" label itself. The older .cmtry export always uses an h6;
    the current .cmt export uses h5 (confirmed from real page markup), so both are covered. */
 div.pr-top div.outline-text-4::before,
+div.pr-topp div.outline-text-4::before,
 div.cmtry h6,
 div.cmt h5,
 div.cmt h6 {
@@ -904,11 +931,15 @@ ol li ol li {
 
 
 div.pr-top div.outline-text-4 ol,
-div.pr-top div.outline-text-5 ol li {
+div.pr-top div.outline-text-5 ol li,
+div.pr-topp div.outline-text-4 ol,
+div.pr-topp div.outline-text-5 ol li {
     margin-top: -.25em;
 }
 div.pr-top div.outline-text-4 ol li,
-div.pr-top div.outline-text-5 ol li {
+div.pr-top div.outline-text-5 ol li,
+div.pr-topp div.outline-text-4 ol li,
+div.pr-topp div.outline-text-5 ol li {
     list-style-position: outside;
     list-style-type: decimal;
     margin-top: .75em;
@@ -916,7 +947,9 @@ div.pr-top div.outline-text-5 ol li {
 }
 
 div.pr-top div.outline-text-4 ol li ul li,
-div.pr-top div.outline-text-5 ol li ul li {
+div.pr-top div.outline-text-5 ol li ul li,
+div.pr-topp div.outline-text-4 ol li ul li,
+div.pr-topp div.outline-text-5 ol li ul li {
     list-style-position: outside;
     list-style-type: disc;
 }
