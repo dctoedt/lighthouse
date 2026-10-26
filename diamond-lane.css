@@ -737,12 +737,11 @@ div.pr-topp div.addl.outline-4 > h4  {
 }
 
 /* Portal material uses the normal page typography, not Clause typography. */
-div.pr-top div.addl.outline-4 > .outline-text-4,
-div.pr-topp div.addl.outline-4 > .outline-text-4 {
+div.addl.outline-4 {
     background-color: transparent;
     margin: 0;
     padding: 0;
-    font-family: Georgia, serif;
+    font-family: Georgia, serif !important;
     font-size: 1em;
     line-height: 1.6em;
 }
@@ -781,7 +780,6 @@ div.addl.outline-4 [role="doc-toc"] a,
 div.addl.outline-4 [role="doc-toc"] b,
 div.addl.outline-4 [role="doc-toc"] i {
     font-family: serif;
-    color: #444;
 }
 
 /* ========================================================================
