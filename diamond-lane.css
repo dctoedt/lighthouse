@@ -493,7 +493,7 @@ span.section-number-4  {
 
 div.pr-top span.section-number-3:before,
 div.pr-topp span.section-number-3:before {
-    content: "Clause ";
+    content: "Rule ";
 }
 
 div.chap span.section-number-2:after, 
@@ -599,17 +599,7 @@ div.pr-topp div.outline-4 {
     margin: 0 0 2em 0;
 }
 
-div.pr-top div.outline-4 h4 {
-    font-family: sans-serif;
-    font-size: 1.3em;
-    font-weight: normal;
-    margin-top: 0em;
-    margin-bottom: -1em;
-    text-wrap: balance;
-    /* Align the h4 heading with the clause/comment visual grid. */
-    padding: 1em 0;
-}
-
+div.pr-top div.outline-4 h4,
 div.pr-topp div.outline-4 h4 {
     font-family: sans-serif;
     font-size: 1em;
