@@ -593,7 +593,9 @@ div.pr-topp div.outline-4 {
        box nested inside it, so the box's left edge — set by its own margin-left above — lines up
        with the Clause title's, in both the normal view and "Clauses Only" mode. */
     font-family: sans-serif;
+/*
     background-color: #e6f1ff;
+*/
     position: relative;
     padding: .55em .9em .4em .9em;
     margin: 0 0 2em 0;
@@ -603,7 +605,7 @@ div.pr-top div.outline-4 h4,
 div.pr-topp div.outline-4 h4 {
     font-family: sans-serif;
     font-size: 1em;
-    font-weight: bold;
+    font-weight: normal;
     margin-top: 0em;
     margin-bottom: -2em;
     text-wrap: balance;
@@ -617,7 +619,6 @@ div.pr-txt.outline-6 {
     margin-bottom: 3em;
 }
 
-div.pr-top div.outline-4 h5,
 div.pr-top div.outline-4 h5 {
     font-size: 1.1em;
     font-family: sans-serif;
@@ -941,6 +942,20 @@ div.pr-topp div.outline-text-5 ol li ul li {
     list-style-position: outside;
     list-style-type: disc;
 }
+
+
+div.pr-top div.outline-text-3 [role="doc-toc"] ul {
+    background-color: #e6f1ff;
+    position: relative;
+    padding: .55em .9em .4em .9em;
+    margin: 0 0 2em 0;
+}
+
+div.pr-top div.outline-text-3 [role="doc-toc"] ul  a {
+    color: #444;
+    font-size: 1em;
+}
+
 
 div.pr-sub div.outline-text-4 ol li,
 div.pr-alt div.outline-text-5 ol li {
