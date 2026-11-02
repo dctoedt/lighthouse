@@ -495,19 +495,17 @@ span.section-number-4  {
     font-weight: normal;
 }
 
-/*
 div.pr-top span.section-number-3:before,
 div.pr-topp span.section-number-3:before {
     content: "Rule ";
 }
-*/
 
 div.chap span.section-number-2:after, 
 div.chap-rule span.section-number-2:after, 
 div.intro span.section-number-2:after, 
 span.section-number-3:after,
 span.section-number-4:after {
-    content: "    ";
+    content: "  ";
 }
 
 
@@ -2009,7 +2007,7 @@ div.footdef {
 .copy-rule-btn::before { content: "Copy Clause"; }
 .copy-rule-btn[data-state="copied"]::before { content: "Copied \2713"; }
 .copy-rule-btn[data-state="error"]::before  { content: "Copy failed"; }
-.copy-rule-add { margin-left: .4em; }
+.copy-rule-add { margin-left: 1.2em; }   /* breathing room between the Clause title and its buttons */
 .copy-rule-add::before { content: "Add to Addendum"; }
 .copy-rule-add[aria-pressed="true"]::before { content: "Added \2713"; }
 
