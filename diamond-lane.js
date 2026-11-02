@@ -327,6 +327,17 @@
     // exclude them when building an Addendum or record copy.
     commentSelector: '.cmtry, .cmt',
 
+    // "Hide notes" / "Show notes" button in each Clause's title (next to "Add to Addendum"):
+    // toggles that one Clause's notes on and off. A "note" is a container with one of these
+    // classes whose own heading (its first child) is at the level shown. A Clause with no such
+    // notes gets no button. (Labels are in diamond-lane.css, on .cr-notes-toggle::before.)
+    notesToggleButton: true,
+    notesToggleTargets: [
+      { cls: 'cmt',   heading: 'H5' },   // Comments (current export)
+      { cls: 'cmtry', heading: 'H6' },   // Comments (older export)
+      { cls: 'addl',  heading: 'H4' }    // Additional material
+    ],
+
     // "Add to Addendum" button + "Build Addendum": collect Clauses, then compile them into one
     // standalone HTML page (Print / Save as PDF from there). Runs entirely in the browser.
     addendumButton: true,
@@ -414,6 +425,8 @@
       '[data-add-addendum]',
       '.cr-chapter-add',
       '[data-chapter-addn]',
+      '.cr-notes-toggle',
+      '[data-notes-toggle]',
       '.tag',
       'script', 'style', 'noscript'
     ]
@@ -1506,7 +1519,8 @@
       var last = h.lastChild;
       while (last && (
         (last.nodeType === 3 && !last.nodeValue.trim()) ||
-        (last.nodeType === 1 && last.classList && last.classList.contains('copy-rule-add'))
+        (last.nodeType === 1 && last.classList &&
+          (last.classList.contains('copy-rule-add') || last.classList.contains('cr-notes-toggle')))
       )) last = last.previousSibling;
       if (last && last.nodeType === 1) {
         var suffixText = (last.textContent || '').trim().toLowerCase();
@@ -1537,6 +1551,96 @@
       });
     });
     syncClausesOnlyButton();
+  }
+
+  /* ---------- per-Clause "Hide notes" / "Show notes" ---------- */
+
+  // The top-level elements making up Clause h — its own container plus any deeper-level
+  // sub-headings' containers laid out as flat siblings — gathered the same way cloneRule does.
+  function clauseRoots(h) {
+    var p = h.parentElement, hasWrap = p && /(^|\s)outline-\d+(\s|$)/.test(p.className);
+    var roots = [], covered = [];
+    if (hasWrap) { roots.push(p); covered.push(p); }
+    else {
+      for (var s = h.nextElementSibling; s; s = s.nextElementSibling) {
+        if (/^H[1-6]$/.test(s.tagName)) break;
+        roots.push(s);
+      }
+    }
+    var lvl = +h.tagName.charAt(1), all = allHeadingsInOrder(), idx = all.indexOf(h);
+    for (var i = idx + 1; i < all.length; i++) {
+      var hh = all[i], hl = +hh.tagName.charAt(1);
+      if (hl <= lvl) break;
+      var cont = hh.parentElement;
+      if (covered.some(function (c) { return c && c.contains(cont); })) continue;
+      var top = (cont && /(^|\s)outline-\d+(\s|$)/.test(cont.className)) ? cont : hh;
+      roots.push(top);
+      covered.push(top);
+    }
+    return roots;
+  }
+
+  function isNoteBlock(el) {
+    var first = el.firstElementChild;
+    return !!first && CONFIG.notesToggleTargets.some(function (t) {
+      return el.classList.contains(t.cls) && first.tagName === t.heading;
+    });
+  }
+
+  // Every note block belonging to Clause h (outermost only — hiding one hides what's inside it).
+  function notesForClause(h) {
+    var sel = CONFIG.notesToggleTargets.map(function (t) { return '.' + t.cls; }).join(',');
+    var found = [];
+    clauseRoots(h).forEach(function (r) {
+      var cands = [r].concat([].slice.call(r.querySelectorAll(sel)));
+      cands.forEach(function (el) {
+        if (el.matches(sel) && isNoteBlock(el) && found.indexOf(el) === -1) found.push(el);
+      });
+    });
+    return found.filter(function (el) {
+      return !found.some(function (o) { return o !== el && o.contains(el); });
+    });
+  }
+
+  // Uses its own class (cr-notes-collapsed), separate from Clauses Only's cr-note-hidden, so the
+  // two never undo each other: leaving Clauses Only doesn't re-show notes a reader collapsed here.
+  function setClauseNotes(btn, show) {
+    var h = document.getElementById(btn.getAttribute('data-notes-toggle'));
+    if (!h) return;
+    notesForClause(h).forEach(function (el) { el.classList.toggle('cr-notes-collapsed', !show); });
+    btn.setAttribute('aria-expanded', show ? 'true' : 'false');
+  }
+
+  // Following a link (or a URL #fragment) into a collapsed note re-opens that Clause's notes.
+  function revealHashTarget() {
+    var id = decodeURIComponent((window.location.hash || '').slice(1));
+    var el = id && document.getElementById(id);
+    var hidden = el && el.closest('.cr-notes-collapsed');
+    if (!hidden) return;
+    [].slice.call(document.querySelectorAll('[data-notes-toggle]')).some(function (b) {
+      var h = document.getElementById(b.getAttribute('data-notes-toggle'));
+      if (h && notesForClause(h).indexOf(hidden) !== -1) {
+        setClauseNotes(b, true);
+        el.scrollIntoView();
+        return true;
+      }
+      return false;
+    });
+  }
+
+  function addNotesToggles() {
+    findRuleHeadings().forEach(function (h) {
+      if (h.querySelector('[data-notes-toggle]') || !notesForClause(h).length) return;
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'cr-notes-toggle';
+      b.setAttribute('data-notes-toggle', h.id);
+      b.setAttribute('aria-expanded', 'true');
+      b.title = 'Show or hide the comments and additional material for this Clause';
+      h.appendChild(b);
+    });
+    window.addEventListener('hashchange', revealHashTarget);
+    revealHashTarget();
   }
 
   function syncClausesOnlyButton() {
@@ -1580,6 +1684,9 @@
     }
     var act = e.target.closest && e.target.closest('[data-cr-act]');
     if (act) { e.preventDefault(); panelAction(act); return; }
+
+    var nt = e.target.closest && e.target.closest('[data-notes-toggle]');
+    if (nt) { e.preventDefault(); setClauseNotes(nt, nt.getAttribute('aria-expanded') !== 'true'); return; }
 
     var co = e.target.closest && e.target.closest('[data-clauses-only]');
     if (co) { e.preventDefault(); setClausesOnly(!clausesOnlyOn); return; }
@@ -1639,6 +1746,8 @@
       applyLinkParam();
       render();
     }
+    // After "Add to Addendum", so it sits to that button's right.
+    if (CONFIG.notesToggleButton) addNotesToggles();
     document.addEventListener('click', onClick);
   }
 

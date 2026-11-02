@@ -13,6 +13,9 @@
    "Clause text" boxes — the explanatory framing around those boxes). Placed first in the file so it
    always parses, independent of anything later on (this stylesheet is long and still growing). */
 .cr-note-hidden { display: none !important; }
+/* Per-Clause "Hide notes" toggle (diamond-lane.js) — a separate class, so it and "Clauses Only"
+   never undo each other. */
+.cr-notes-collapsed { display: none !important; }
 
 /* "Clauses Only" mode — one quiet, bounded object per whole Clause, marked by a thin rule above
    and below rather than a shaded box per numbered sub-provision. Blue stays reserved for the
@@ -492,10 +495,12 @@ span.section-number-4  {
     font-weight: normal;
 }
 
+/*
 div.pr-top span.section-number-3:before,
 div.pr-topp span.section-number-3:before {
     content: "Rule ";
 }
+*/
 
 div.chap span.section-number-2:after, 
 div.chap-rule span.section-number-2:after, 
@@ -2008,6 +2013,29 @@ div.footdef {
 .copy-rule-add::before { content: "Add to Addendum"; }
 .copy-rule-add[aria-pressed="true"]::before { content: "Added \2713"; }
 
+/* Per-Clause "Hide notes" / "Show notes" button, right of "Add to Addendum" */
+.cr-notes-toggle {
+  margin-left: .4em;
+  padding: .1em .6em;
+  font: inherit;
+  font-size: .6em;
+  font-weight: normal;
+  line-height: 1.5;
+  vertical-align: middle;
+  color: var(--lh-blue, #1f4e8c);
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: .3em;
+  cursor: pointer;
+  opacity: .8;
+}
+.cr-notes-toggle:hover,
+.cr-notes-toggle:focus-visible { opacity: 1; background: var(--lh-blue-fill, #e8f0fb); }
+.cr-notes-toggle::before { content: "Hide notes"; }
+.cr-notes-toggle[aria-expanded="false"]::before { content: "Show notes"; }
+/* Clauses Only already hides every note, so the per-Clause button has nothing to do there. */
+body.cr-clauses-only .cr-notes-toggle { display: none; }
+
 /* Chapter-level "add every Clause in this chapter" button (div.chap.addn only) */
 .cr-chapter-add {
   margin-left: .5em;
@@ -2070,5 +2098,5 @@ div.footdef {
 .cr-panel-msg { margin: .5em 0 0; }
 .cr-panel-msg:empty { display: none; }
 @media print {
-  .copy-rule-btn, .copy-rule-add, .cr-chapter-add, .cr-fulldoc-bar, .cr-panel { display: none; }
+  .copy-rule-btn, .copy-rule-add, .cr-chapter-add, .cr-notes-toggle, .cr-fulldoc-bar, .cr-panel { display: none; }
 }
