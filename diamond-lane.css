@@ -609,7 +609,7 @@ div.pr-topp div.outline-4 h4 {
     font-size: 1em;
     font-weight: bold;
     margin-top: 0em;
-    margin-bottom: -2em;
+    margin-bottom: -1em;
     text-wrap: balance;
     /* Align the h4 heading with the clause/comment visual grid. */
     padding: 1em 0;
