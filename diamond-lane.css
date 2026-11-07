@@ -541,8 +541,7 @@ div.cltxt h3 {
     font-size: 1.3em;
     font-family: sans-serif;
     font-weight: bold;
-    padding: 1em;
-    margin-left: -1em;
+    margin-left: -.5em;     /* was -1em: box now lines up with the Clause text boxes below */
     margin-bottom: 1em;
     background-color: #e6f1ff;
     padding: .55em .9em .4em .9em;
@@ -588,7 +587,7 @@ div.pr-cont.outline-6 {
        box's own text — and its blue background's left edge — line up with the Clause title's,
        instead of sitting wherever the (now zero-margin) outline-4/outline-5 wrappers happen to
        place it. */
-    margin-left: -1em;
+    margin-left: 0em;
 }
 
 div.pr-top div.outline-4,
