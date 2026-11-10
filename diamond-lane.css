@@ -495,10 +495,12 @@ span.section-number-4  {
     font-weight: normal;
 }
 
+/*
 div.pr-top span.section-number-3:before,
 div.pr-topp span.section-number-3:before {
     content: "Practice ";
 }
+*/
 
 div.chap span.section-number-2:after, 
 div.chap-rule span.section-number-2:after, 
