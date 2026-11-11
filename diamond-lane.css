@@ -639,6 +639,20 @@ div.pr-topp div.outline-4 h4 .section-number-4 {
     font-size: .9em;
 }
 
+p:has(> span.Q) {
+    margin: 0.5em 0 0.3em;
+}
+
+span.Q {
+    display: inline-block;
+    background: white;
+    padding: 0.35em 0.65em;
+}
+
+
+span.Q:before {
+    content: "Q: ";
+}
 
 div.pr-alt div.outline-5 h5 {
     font-weight: bold;
