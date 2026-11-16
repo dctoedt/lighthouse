@@ -294,12 +294,12 @@
     // Certification inserted right after the title (HTML allowed; '' to disable).
     // {date} = the copier's local date as YYYY-MM-DD; {rule} = the Clause's section number,
     // e.g. "4.1"; {url} = link to that Clause on the published site. If the Clause has no number, legendNoNumberHtml is used instead. To restore emphasis, wrap text in <i>/<b>.
-    legendHtml: 'Copied and pasted {date} from <a href="{url}">Clause {rule}</a> of the Diamond Lane Clauses at ' +
-                '<a href="https://diamondlaneclauses.org">https://diamondlaneclauses.org</a> \u2014 ' +
+    legendHtml: 'Copied and pasted {date} from <a href="{url}">Rule {rule}</a> of the Diamond Lane Contract Rules at ' +
+                '<a href="https://diamondlanerules.org">https://diamondlanerules.org</a> \u2014 ' +
                 'each party certifies that it has not changed the text below ' +
                 'from the Diamond Lane version without redlining it.',
-    legendNoNumberHtml: 'Copied and pasted {date} from the Diamond Lane Clauses at ' +
-                '<a href="https://diamondlaneclauses.org">https://diamondlaneclauses.org</a> \u2014 ' +
+    legendNoNumberHtml: 'Copied and pasted {date} from the Diamond Lane Rules at ' +
+                '<a href="https://diamondlanerules.org">https://diamondlanerules.org</a> \u2014 ' +
                 'each party certifies that it has not changed the text below ' +
                 'from the Diamond Lane version without redlining it.',
 
@@ -341,7 +341,7 @@
     // "Add to Addendum" button + "Build Addendum": collect Clauses, then compile them into one
     // standalone HTML page (Print / Save as PDF from there). Runs entirely in the browser.
     addendumButton: true,
-    addendumTitle: 'Diamond Lane Custom Clause Addendum',
+    addendumTitle: 'Diamond Lane Custom Rule Addendum',
     // {date} = generation date (YYYY-MM-DD); {count} = number of Clauses.
     // "Show Clauses Only": a live reading-mode toggle, next to the full-document button. Hides,
     // for every Clause written with "Clause text" boxes, everything except the Clause's own title
@@ -349,29 +349,29 @@
     // (explanatory framing prose, "Clause text" labels, comments, additional material, contents
     // lists). A Clause with no boxes (the older style) is untouched either way, since for it
     // there's no separate framing layer to hide.
-    clausesOnlyLabel: 'Clauses only',
-    clausesOnlyActiveLabel: 'Clauses + notes',
+    clausesOnlyLabel: 'Rules only',
+    clausesOnlyActiveLabel: 'Rules + notes',
     // "Build Full Document": every Clause on the page, top to bottom, no selection needed.
-    fullDocButtonLabel: 'Create record copy w/ all Clauses',
-    fullDocTitle: 'The Diamond Lane Clauses',
+    fullDocButtonLabel: 'Create record copy w/ all Rules',
+    fullDocTitle: 'The Diamond Lane Rules',
     // {timestamp} = UTC date/time when built, e.g. "2026-09-21 21:47 UTC". {url} = the site link below.
     fullDocSubtitleHtml: 'Downloaded {timestamp} from <a href="{url}">{url}</a>',
-    fullDocUrl: 'https://diamondlaneclauses.org',
-    fullDocFileBase: 'Diamond-Lane-Clauses',
+    fullDocUrl: 'https://diamondlanerules.org',
+    fullDocFileBase: 'Diamond-Lane-Rules',
 
     // {timestamp} = UTC date/time when built, e.g. "2026-09-29 19:50 UTC"; {count} = number of
     // Clauses included.
-    addendumPrefaceHtml: 'Generated {timestamp} (without annotations) from the Diamond Lane Clauses at ' +
-                '<a href="https://diamondlaneclauses.org">https://diamondlaneclauses.org</a> \u2014 ' +
+    addendumPrefaceHtml: 'Generated {timestamp} (without annotations) from the Diamond Lane Rules at ' +
+                '<a href="https://diamondlanerules.org">https://diamondlanerules.org</a> \u2014 ' +
                 'each party certifies that it has not changed the text below ' +
                 'from the Diamond Lane version without redlining it.',
-    contentsLabel: 'Clauses included:',   // list of the included Clauses under the preface ('' = no list)
+    contentsLabel: 'Rules included:',   // list of the included Rules under the preface ('' = no list)
     // Build Full Document only: group Clauses under the chapter (<h2>) each one falls under on the
     // live page, in document order. Each chapter starts on a new page, with its own title and a
     // local table of contents (Clauses only, not their numbered sub-provisions).
     groupIntoChapters: true,
     chapterTitleHtml: 'Chapter {num}&nbsp;&nbsp;&nbsp;{title}',
-    chapterContentsLabel: 'Clauses in this chapter:',
+    chapterContentsLabel: 'Rules in this chapter:',
     // Full-Document main table of contents lists chapters, not individual Clauses.
     fullDocContentsLabel: 'Chapters:',
     // Body text (paragraphs, lists, the "Source:" line, contents lists) in the generated page.
@@ -408,7 +408,7 @@
     stripSoftHyphens: true,     // remove U+00AD (&shy;) so Word text stays searchable
     // Internal links (href="#...") become absolute links into the published Protocol.
     // Set to '' to strip them to plain text instead.
-    internalLinkBase: 'https://diamondlaneclauses.org/',
+    internalLinkBase: 'https://diamondlanerules.org/',
     removeSelectors: [          // everything matching is deleted from the copy
       '[class~="cmtry"]',       // commentary - older export class (any element, incl. outline-N cmtry containers)
       '[class~="cmt"]',         // commentary - current export class
@@ -866,7 +866,7 @@
   }
 
   function clauseUrl(id) {
-    return (CONFIG.internalLinkBase || 'https://diamondlaneclauses.org/') + '#' + encodeURIComponent(id);
+    return (CONFIG.internalLinkBase || 'https://diamondlanerules.org/') + '#' + encodeURIComponent(id);
   }
 
   function displayTitle(h) {
@@ -903,7 +903,7 @@
   function render() {
     [].slice.call(document.querySelectorAll('[data-add-addendum]')).forEach(function (b) {
       var on = state.ids.indexOf(b.getAttribute('data-add-addendum')) !== -1;
-      var label = on ? 'Remove this Clause from the Addendum' : 'Add this Clause to the Addendum';
+      var label = on ? 'Remove this Rule from the Addendum' : 'Add this Rule to the Addendum';
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
       b.setAttribute('aria-label', label);
       b.title = label;
@@ -912,7 +912,7 @@
       var chH = document.getElementById(b.getAttribute('data-chapter-addn'));
       var ids = chH ? clauseIdsInChapter(chH) : [];
       var on = ids.length > 0 && ids.every(function (id) { return state.ids.indexOf(id) !== -1; });
-      var label = on ? 'Remove all Clauses in this chapter from the Addendum' : 'Add all Clauses in this chapter to the Addendum';
+      var label = on ? 'Remove all Rules in this chapter from the Addendum' : 'Add all Rules in this chapter to the Addendum';
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
       b.setAttribute('aria-label', label);
       b.title = label;
@@ -996,7 +996,7 @@
       state.ids = [];
       clearTimeout(undoTimer);
       undoTimer = setTimeout(function () { undoIds = null; msgHtml = ''; render(); }, CONFIG.undoSeconds * 1000);
-      msgHtml = 'Cleared ' + undoIds.length + ' Clause' + (undoIds.length === 1 ? '' : 's') +
+      msgHtml = 'Cleared ' + undoIds.length + ' Rule' + (undoIds.length === 1 ? '' : 's') +
                 '. <button type="button" data-cr-act="undo" style="margin-left:.4em">Undo</button>';
     } else if (act === 'undo') {
       if (!undoIds) return;
@@ -1228,7 +1228,7 @@
   }
 
   function openAddendum() {
-    openBuiltPage(buildAddendumHtml(), 'Add at least one Clause first.', 'Addendum');
+    openBuiltPage(buildAddendumHtml(), 'Add at least one Rule first.', 'Addendum');
   }
 
   // Every Clause on the page, top to bottom; no certification, since nothing was chosen or omitted.
@@ -1245,7 +1245,7 @@
       endMarker: '',
       fileBase: CONFIG.fullDocFileBase
     });
-    openBuiltPage(html, 'No Clauses were found on this page.', 'document');
+    openBuiltPage(html, 'No Rules were found on this page.', 'document');
   }
 
   /* ---------- Word (.docx) export ---------- */
@@ -1357,7 +1357,7 @@
     o = o || {};
     var ids = o.ids || state.ids;
     var secs = compileSections(ids);
-    if (!secs.length) return Promise.reject(new Error('no Clauses selected'));
+    if (!secs.length) return Promise.reject(new Error('no Rules selected'));
     var ctx = { lists: 0, breakNext: false }, kids = [], pf = document.createElement('p');
     var singleChapterTitle = singleChapterTitleFor(ids);
 
@@ -1399,7 +1399,7 @@
       };
     }
     var doc = new D.Document({
-      creator: 'diamondlaneclauses.org',
+      creator: 'diamondlanerules.org',
       title: o.title || CONFIG.addendumTitle,
       styles: {
         default: {
@@ -1421,14 +1421,14 @@
   // Needs docx.iife.js (CONFIG.docxLibUrl) on the site.
   function wordFile(ids, date) {
     var list = (ids || state.ids).filter(isClauseId);
-    if (!list.length) return Promise.reject(new Error('no Clauses selected'));
+    if (!list.length) return Promise.reject(new Error('no Rules selected'));
     return loadDocx().then(function (D) { return buildDocxBlob(D, { ids: list, date: date }); });
   }
 
   /* ---------- shareable selection link ---------- */
 
   function shareUrl() {
-    return (CONFIG.internalLinkBase || 'https://diamondlaneclauses.org/') +
+    return (CONFIG.internalLinkBase || 'https://diamondlanerules.org/') +
       '?addendum=' + state.ids.map(encodeURIComponent).join(',');
   }
 
@@ -1439,12 +1439,12 @@
       text: u,
       html: '<html><body><a href="' + esc(u) + '">' + esc(u) + '</a></body></html>'
     }).then(
-      function () { setMsg('Link copied (' + state.ids.length + ' Clause' + (state.ids.length === 1 ? '' : 's') + ').'); },
+      function () { setMsg('Link copied (' + state.ids.length + ' Rule' + (state.ids.length === 1 ? '' : 's') + ').'); },
       function () { setMsg('Could not copy automatically. Link: ' + esc(u)); }
     );
   }
 
-  // Opening a link like  https://diamondlaneclauses.org/?addendum=k-adopt,k-nomen  loads that list.
+  // Opening a link like  https://diamondlanerules.org/?addendum=k-adopt,k-nomen  loads that list.
   function applyLinkParam() {
     var raw = null;
     // 'appendix' is still accepted so links made before the rename keep working.
@@ -1462,10 +1462,10 @@
     if (ids.length) {
       state.ids = ids;
       saveState();
-      setMsg('Loaded ' + ids.length + ' Clause' + (ids.length === 1 ? '' : 's') + ' from a shared link.' +
+      setMsg('Loaded ' + ids.length + ' Rule' + (ids.length === 1 ? '' : 's') + ' from a shared link.' +
              (bad ? ' ' + bad + ' not found.' : ''));
     } else {
-      setMsg('None of the Clauses in that link were found.');
+      setMsg('None of the Rules in that link were found.');
     }
     try { history.replaceState(null, '', window.location.pathname + window.location.hash); } catch (e) { }
   }
@@ -1714,8 +1714,8 @@
         b.type = 'button';
         b.className = 'copy-rule-btn';
         b.setAttribute('data-copy-rule', h.id);
-        b.setAttribute('aria-label', 'Copy this Clause to the clipboard (commentary omitted)');
-        b.title = 'Copy this Clause to the clipboard (commentary omitted)';
+        b.setAttribute('aria-label', 'Copy this Rule to the clipboard (commentary omitted)');
+        b.title = 'Copy this Rule to the clipboard (commentary omitted)';
         h.appendChild(b);
       }
     });
