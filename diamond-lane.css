@@ -85,10 +85,9 @@ red {
 }
 
 .subtitle {
-    font-size: 1.3em;
+    font-size: 1.2em;
     hyphens: auto !important;
     line-height: 1.5em;
-    text-wrap: balance;
 }
 
 
@@ -1257,8 +1256,8 @@ img {
     display: block;
     float: right;
     padding: 0 0 0.5rem 0.5rem;
-    margin-top: -5rem;
-    width: 8%;
+    margin-top: -11rem;
+    width: 7%;
 }
 
 
