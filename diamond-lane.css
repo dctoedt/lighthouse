@@ -591,6 +591,68 @@ div.pr-cont.outline-6 {
     margin-left: 0em;
 }
 
+.rule-ref {
+    font-size: 0.85em;
+    white-space: nowrap;
+    color:  #2980B9;
+}
+ol.rule-table {
+    list-style: none;
+    padding: 0;
+}
+
+ol.rule-table > li {
+    counter-increment: list-item;
+    display: grid;
+    grid-template-columns: 1em 30% 1fr;
+    column-gap: 0.75em;
+    margin-bottom: 1em;
+    align-items: start;
+}
+
+ol.rule-table > li::before {
+    content: counter(list-item) ".";
+}
+
+ol.rule-table > li > p {
+    margin: 0;
+}
+
+ol.rule-table > li > p:nth-of-type(n+3) {
+    grid-column: 3;
+}
+
+/*
+
+ol.rule-table {
+    list-style: none;
+    counter-reset: subdivision;
+    padding: 0;
+}
+
+ol.rule-table > li {
+    counter-increment: subdivision;
+    display: grid;
+    grid-template-columns: 2em 30% 1fr;
+    column-gap: 0.5em;
+    margin-bottom: 1em;
+    align-items: start;
+}
+
+ol.rule-table > li::before {
+    content: counter(subdivision) ".";
+}
+
+ol.rule-table > li > p {
+    margin: 0;
+}
+
+ol.rule-table > li > p:nth-of-type(n+3) {
+    grid-column: 3;
+}
+*/
+
+div.pr-sub,
 div.pr-top div.outline-4,
 div.pr-topp div.outline-4 {
     /* No left/right margin: a numbered sub-heading's own wrapper no longer indents the Clause text
